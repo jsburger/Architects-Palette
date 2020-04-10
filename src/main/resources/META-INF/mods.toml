@@ -1,0 +1,17 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/SmellyModder/Architects-Palette/issues"
+
+[[mods]]
+    modId="architects_palette"
+    namespace="architects_palette"
+    version="1.0"
+    displayName="Architect's Palette"
+    authors="SmellyModder, Snakeblock, THX, Smash Brothers, Orisghost, Mista Jub"
+    description='''A mod that adds new stylish and unique building blocks'''
+    displayURL=""
+    [[dependencies.architects_palette]]
+        modId="forge"
+        mandatory=true
+        versionRange="[${forge_version},)"
+        ordering="NONE"
