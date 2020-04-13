@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_charged_8"
+    }
+}

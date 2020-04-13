@@ -1,0 +1,26 @@
+{
+    "variants": {
+        "charged=false": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks" },
+        "charged=true,light=0": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged" },
+        "charged=true,light=1": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_1" },
+        "charged=true,light=2": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_2" },
+        "charged=true,light=3": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_3" },
+        "charged=true,light=4": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_4" },
+        "charged=true,light=5": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_5" },
+        "charged=true,light=6": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_6" },
+        "charged=true,light=7": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_7" },
+        "charged=true,light=8": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_8" },
+        "charged=true,light=9": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_9" },
+        "charged=true,light=10": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_10" },
+        "charged=true,light=11": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_11" },
+        "charged=true,light=12": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_12" },
+        "charged=true,light=13": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_13" },
+        "charged=true,light=14": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_14" },
+        "charged=true,light=15": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_15" },
+        "charged=true,light=16": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_16" },
+        "charged=true,light=17": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_17" },
+        "charged=true,light=18": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_18" },
+        "charged=true,light=19": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_19" },
+        "charged=true,light=20": { "model": "architects_palette:block/chiseled_abyssaline/chiseled_abyssaline_bricks_charged_20" }
+    }
+}

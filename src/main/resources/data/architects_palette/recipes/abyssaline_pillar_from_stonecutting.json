@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "architects_palette:abyssaline_bricks"
+  },
+  "result": "architects_palette:abyssaline_pillar",
+  "count": 1
+}

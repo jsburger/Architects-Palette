@@ -3,6 +3,9 @@ package architectspalette.core;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.APItems;
+import architectspalette.core.registry.APTileEntities;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +22,10 @@ public class ArchitectsPalette {
 		instance = this;
 		
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		
+		APBlocks.BLOCKS.register(modEventBus);
+		APItems.ITEMS.register(modEventBus);
+		APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 		
 		modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
 	}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "architects_palette:block/abyssaline_top_charged",
+        "side": "architects_palette:block/abyssaline_side_charged"
+    }
+}
