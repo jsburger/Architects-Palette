@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "architects_palette:block/salmon_log" },
+        "axis=z":    { "model": "architects_palette:block/salmon_log", "x": 90 },
+        "axis=x":    { "model": "architects_palette:block/salmon_log", "x": 90, "y": 90 }
+    }
+}

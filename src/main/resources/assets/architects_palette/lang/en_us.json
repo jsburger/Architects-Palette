@@ -4,5 +4,10 @@
   "block.architects_palette.chiseled_abyssaline_bricks": "Chiseled Abyssaline Bricks",
   "block.architects_palette.abyssaline_pillar": "Abyssaline Pillar",
   "block.architects_palette.abyssaline_brick_stairs": "Abyssaline Brick Stairs",
-  "block.architects_palette.abyssaline_brick_slab": "Abyssaline Brick Slab"
+  "block.architects_palette.abyssaline_brick_slab": "Abyssaline Brick Slab",
+
+  "block.architects_palette.salmon_log": "Cut of Salmon",
+  "block.architects_palette.cod_log": "Cut of Cod",
+  "block.architects_palette.salmon_scales": "Salmon Scales",
+  "block.architects_palette.cod_scales": "Cod Scales"
 }
