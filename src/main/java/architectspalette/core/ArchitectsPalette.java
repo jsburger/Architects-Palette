@@ -1,16 +1,16 @@
 package architectspalette.core;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.APTileEntities;
+import architectspalette.core.trading.APTrades;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(value = ArchitectsPalette.MOD_ID)
 public class ArchitectsPalette {
@@ -31,6 +31,6 @@ public class ArchitectsPalette {
 	}
 	
 	void setupCommon(final FMLCommonSetupEvent event) {
-		
+		APTrades.registerTrades();
 	}
 }
