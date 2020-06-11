@@ -5,6 +5,7 @@ import architectspalette.common.blocks.*;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.RegistryUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
@@ -29,4 +30,7 @@ public class APBlocks {
 	public static final RegistryObject<Block> SALMON_SCALES = RegistryUtils.createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.RED_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
 	public static final RegistryObject<Block>    COD_SCALES = RegistryUtils.createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.YELLOW_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
 
+	// Charcoal Block
+	// Todo: Make flammable
+	public static final RegistryObject<Block> CHARCOAL_BLOCK = RegistryUtils.createBlockNoItem("charcoal_block", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.COAL_BLOCK)));
 }

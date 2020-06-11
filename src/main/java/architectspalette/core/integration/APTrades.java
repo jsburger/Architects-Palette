@@ -1,4 +1,4 @@
-package architectspalette.core.trading;
+package architectspalette.core.integration;
 
 
 import architectspalette.core.registry.APBlocks;

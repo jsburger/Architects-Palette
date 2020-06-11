@@ -1,9 +1,9 @@
 package architectspalette.core;
 
+import architectspalette.core.integration.APTrades;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.APTileEntities;
-import architectspalette.core.trading.APTrades;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
