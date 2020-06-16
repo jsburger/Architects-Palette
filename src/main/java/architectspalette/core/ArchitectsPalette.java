@@ -14,23 +14,23 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(value = ArchitectsPalette.MOD_ID)
 public class ArchitectsPalette {
-	public static final String MOD_ID = "architects_palette";
-	public static final Logger LOGGER = LogManager.getLogger(MOD_ID.toUpperCase());
-	public static ArchitectsPalette instance;
-	
-	public ArchitectsPalette() {
-		instance = this;
-		
-		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		
-		APBlocks.BLOCKS.register(modEventBus);
-		APItems.ITEMS.register(modEventBus);
-		APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
-		
-		modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
-	}
-	
-	void setupCommon(final FMLCommonSetupEvent event) {
-		APTrades.registerTrades();
-	}
+    public static final String MOD_ID = "architects_palette";
+    public static final Logger LOGGER = LogManager.getLogger(MOD_ID.toUpperCase());
+    public static ArchitectsPalette instance;
+
+    public ArchitectsPalette() {
+        instance = this;
+
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        APBlocks.BLOCKS.register(modEventBus);
+        APItems.ITEMS.register(modEventBus);
+        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
+
+        modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
+    }
+
+    void setupCommon(final FMLCommonSetupEvent event) {
+        APTrades.registerTrades();
+    }
 }
