@@ -4,9 +4,7 @@ import architectspalette.common.APBlockProperties;
 import architectspalette.common.blocks.*;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.RegistryUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -31,6 +29,20 @@ public class APBlocks {
     public static final RegistryObject<Block>    COD_SCALES = RegistryUtils.createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.YELLOW_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
 
     // Charcoal Block
-    // Todo: Make flammable
     public static final RegistryObject<Block> CHARCOAL_BLOCK = RegistryUtils.createBlockNoItem("charcoal_block", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.COAL_BLOCK)));
+
+    // Limestone
+    public static final RegistryObject<Block> LIMESTONE                      = RegistryUtils.createBlock("limestone",                    () -> new Block(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_SLAB               = RegistryUtils.createBlock("limestone_slab",               () -> new SlabBlock(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_STAIRS             = RegistryUtils.createBlock("limestone_stairs",             () -> new StairsBlock(() -> LIMESTONE.get().getDefaultState(), APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_WALL               = RegistryUtils.createBlock("limestone_wall",               () -> new WallBlock(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block> LIMESTONE_BRICKS               = RegistryUtils.createBlock("limestone_bricks",             () -> new Block(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_BRICK_SLAB         = RegistryUtils.createBlock("limestone_brick_slab",         () -> new SlabBlock(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_BRICK_STAIRS       = RegistryUtils.createBlock("limestone_brick_stairs",       () -> new StairsBlock(() -> LIMESTONE_BRICKS.get().getDefaultState(), APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   LIMESTONE_BRICK_WALL         = RegistryUtils.createBlock("limestone_brick_wall",         () -> new WallBlock(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block> MUSHY_LIMESTONE_BRICKS         = RegistryUtils.createBlock("mushy_limestone_bricks",       () -> new Block(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   MUSHY_LIMESTONE_BRICK_SLAB   = RegistryUtils.createBlock("mushy_limestone_brick_slab",   () -> new SlabBlock(APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   MUSHY_LIMESTONE_BRICK_STAIRS = RegistryUtils.createBlock("mushy_limestone_brick_stairs", () -> new StairsBlock(() -> MUSHY_LIMESTONE_BRICKS.get().getDefaultState(), APBlockProperties.LIMESTONE));
+    public static final RegistryObject<Block>   MUSHY_LIMESTONE_BRICK_WALL   = RegistryUtils.createBlock("mushy_limestone_brick_wall",   () -> new WallBlock(APBlockProperties.LIMESTONE));
+
 }

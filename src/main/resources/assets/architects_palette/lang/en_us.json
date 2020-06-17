@@ -11,5 +11,18 @@
   "block.architects_palette.salmon_scales": "Salmon Scales",
   "block.architects_palette.cod_scales": "Cod Scales",
 
-  "block.architects_palette.charcoal_block": "Charcoal Block"
+  "block.architects_palette.charcoal_block": "Charcoal Block",
+
+  "block.architects_palette.limestone": "Limestone",
+  "block.architects_palette.limestone_bricks": "Limestone Bricks",
+  "block.architects_palette.mushy_limestone_bricks": "Mushy Limestone Bricks",
+  "block.architects_palette.limestone_wall": "Limestone Wall",
+  "block.architects_palette.limestone_slab": "Limestone Slab",
+  "block.architects_palette.limestone_stairs": "Limestone Stairs",
+  "block.architects_palette.limestone_brick_wall": "Limestone Brick Wall",
+  "block.architects_palette.limestone_brick_slab": "Limestone Brick Slab",
+  "block.architects_palette.limestone_brick_stairs": "Limestone Brick Stairs",
+  "block.architects_palette.mushy_limestone_brick_wall": "Mushy Limestone Brick Wall",
+  "block.architects_palette.mushy_limestone_brick_slab": "Mushy Limestone Brick Slab",
+  "block.architects_palette.mushy_limestone_brick_stairs": "Mushy Limestone Brick Stairs"
 }

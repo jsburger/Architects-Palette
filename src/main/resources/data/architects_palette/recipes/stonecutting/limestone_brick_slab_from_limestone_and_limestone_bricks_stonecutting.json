@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:limestone"
+        },
+        {
+            "item": "architects_palette:limestone_bricks"
+        }
+    ],
+    "result": "architects_palette:limestone_brick_slab",
+    "count": 2
+}

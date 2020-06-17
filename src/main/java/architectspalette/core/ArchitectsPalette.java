@@ -1,5 +1,6 @@
 package architectspalette.core;
 
+import architectspalette.core.integration.APBlockData;
 import architectspalette.core.integration.APTrades;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
@@ -31,6 +32,7 @@ public class ArchitectsPalette {
     }
 
     void setupCommon(final FMLCommonSetupEvent event) {
+        APBlockData.registerFlammables();
         APTrades.registerTrades();
     }
 }

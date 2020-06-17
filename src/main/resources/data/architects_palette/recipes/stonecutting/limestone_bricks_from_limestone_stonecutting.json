@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:limestone"
+        }
+    ],
+    "result": "architects_palette:limestone_bricks",
+    "count": 1
+}

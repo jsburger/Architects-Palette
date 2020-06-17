@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "architects_palette:block/limestone_brick_slab" },
+        "type=top": { "model": "architects_palette:block/limestone_brick_slab_top" },
+        "type=double": { "model": "architects_palette:block/limestone_bricks" }
+    }
+}

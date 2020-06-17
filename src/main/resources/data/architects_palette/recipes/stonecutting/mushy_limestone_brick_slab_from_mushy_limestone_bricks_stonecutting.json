@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:mushy_limestone_bricks"
+        }
+    ],
+    "result": "architects_palette:mushy_limestone_brick_slab",
+    "count": 2
+}

@@ -13,4 +13,5 @@ public class APBlockProperties {
 		return Block.Properties.create(Material.GOURD, color).hardnessAndResistance(1.0F).sound(SoundType.CORAL);
 	}
 
+	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
 }
