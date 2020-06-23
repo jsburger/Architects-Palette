@@ -17,7 +17,7 @@ public class APTrades {
 
         // Temporary survival recipes until properly implemented
         add_trade(MASON, 1, new BasicTrade(1, new ItemStack(APBlocks.LIMESTONE.get(), 16), 5, 3, 0.05f));
-        add_trade(MASON, 1, new BasicTrade(1, new ItemStack(APBlocks.OLIVESTONE_BRICKS.get(), 16), 5, 3, 0.05f));
+        add_trade(MASON, 1, new BasicTrade(1, new ItemStack(APBlocks.OLIVESTONE_BRICK.get(), 16), 5, 3, 0.05f));
     }
 
 }
