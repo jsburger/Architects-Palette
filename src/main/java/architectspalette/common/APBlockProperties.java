@@ -14,4 +14,5 @@ public class APBlockProperties {
 	}
 
 	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
+	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
 }

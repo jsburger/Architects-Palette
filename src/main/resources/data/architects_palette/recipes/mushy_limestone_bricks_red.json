@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "mushy_bricks",
+  "ingredients": [
+    {
+      "item": "architects_palette:limestone_bricks"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    }
+  ],
+  "result": {
+    "item": "architects_palette:mushy_limestone_bricks",
+    "count": 1
+  }
+}

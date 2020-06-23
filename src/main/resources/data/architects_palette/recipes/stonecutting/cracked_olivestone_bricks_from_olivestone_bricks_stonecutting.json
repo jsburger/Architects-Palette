@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:olivestone_bricks"
+        }
+    ],
+    "result": "architects_palette:cracked_olivestone_bricks",
+    "count": 1
+}

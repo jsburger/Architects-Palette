@@ -45,4 +45,20 @@ public class APBlocks {
     public static final RegistryObject<Block>   MUSHY_LIMESTONE_BRICK_STAIRS = RegistryUtils.createBlock("mushy_limestone_brick_stairs", () -> new StairsBlock(() -> MUSHY_LIMESTONE_BRICKS.get().getDefaultState(), APBlockProperties.LIMESTONE));
     public static final RegistryObject<Block>   MUSHY_LIMESTONE_BRICK_WALL   = RegistryUtils.createBlock("mushy_limestone_brick_wall",   () -> new WallBlock(APBlockProperties.LIMESTONE));
 
+    // Olivestone
+    public static final RegistryObject<Block> OLIVESTONE_BRICKS           = RegistryUtils.createBlock("olivestone_bricks",         () -> new Block(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   CRACKED_OLIVESTONE_BRICKS = RegistryUtils.createBlock("cracked_olivestone_bricks", () -> new Block(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_BRICK_SLAB     = RegistryUtils.createBlock("olivestone_brick_slab",     () -> new SlabBlock(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_BRICK_STAIRS   = RegistryUtils.createBlock("olivestone_brick_stairs",   () -> new StairsBlock(() -> OLIVESTONE_BRICKS.get().getDefaultState(), APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_BRICK_WALL     = RegistryUtils.createBlock("olivestone_brick_wall",     () -> new WallBlock(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block> OLIVESTONE_TILES            = RegistryUtils.createBlock("olivestone_tiles",          () -> new Block(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   CRACKED_OLIVESTONE_TILES  = RegistryUtils.createBlock("cracked_olivestone_tiles",  () -> new Block(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_TILE_SLAB      = RegistryUtils.createBlock("olivestone_tile_slab",      () -> new SlabBlock(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_TILE_STAIRS    = RegistryUtils.createBlock("olivestone_tile_stairs",    () -> new StairsBlock(() -> OLIVESTONE_TILES.get().getDefaultState(),APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block>   OLIVESTONE_TILE_WALL      = RegistryUtils.createBlock("olivestone_tile_wall",      () -> new WallBlock(APBlockProperties.OLIVESTONE));
+    public static final RegistryObject<Block> OLIVESTONE_PILLAR           = RegistryUtils.createBlock("olivestone_pillar",         () -> new RotatedPillarBlock(APBlockProperties.OLIVESTONE));
+
+
+
+
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#O#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone_bricks"
+    },
+    "O": {
+      "item": "minecraft:green_dye"
+    }
+  },
+  "result": {
+    "item": "architects_palette:olivestone_bricks",
+    "count": 8
+  }
+}

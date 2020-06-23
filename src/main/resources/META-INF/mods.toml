@@ -7,7 +7,10 @@ issueTrackerURL="https://github.com/SmellyModder/Architects-Palette/issues"
     namespace="architects_palette"
     version="1.0"
     displayName="Architect's Palette"
-    authors="SmellyModder, Snakeblock, THX, Smash Brothers, Orisghost, Mista Jub"
+     # bro idk if i like having my name at the front but that seems to be the way to do it
+     # technically i *am* the dev since im coding it all, but the whole point is the art and design, which i didnt do
+     # kinda fucked up
+    authors="Jsburg, SmellyModder, Snakeblock, THX, Smash Brothers, Orisghost, Mista Jub"
     description='''A mod that adds new stylish and unique building blocks'''
     displayURL=""
     [[dependencies.architects_palette]]

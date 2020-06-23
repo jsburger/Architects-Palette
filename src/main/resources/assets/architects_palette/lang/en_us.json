@@ -24,5 +24,17 @@
   "block.architects_palette.limestone_brick_stairs": "Limestone Brick Stairs",
   "block.architects_palette.mushy_limestone_brick_wall": "Mushy Limestone Brick Wall",
   "block.architects_palette.mushy_limestone_brick_slab": "Mushy Limestone Brick Slab",
-  "block.architects_palette.mushy_limestone_brick_stairs": "Mushy Limestone Brick Stairs"
+  "block.architects_palette.mushy_limestone_brick_stairs": "Mushy Limestone Brick Stairs",
+
+  "block.architects_palette.olivestone_bricks": "Olivestone Bricks",
+  "block.architects_palette.cracked_olivestone_bricks": "Cracked Olivestone Bricks",
+  "block.architects_palette.olivestone_tiles": "Olivestone Tiles",
+  "block.architects_palette.cracked_olivestone_tiles": "Cracked Olivestone Tiles",
+  "block.architects_palette.olivestone_pillar": "Olivestone Pillar",
+  "block.architects_palette.olivestone_brick_wall": "Olivestone Brick Wall",
+  "block.architects_palette.olivestone_brick_slab": "Olivestone Brick Slab",
+  "block.architects_palette.olivestone_brick_stairs": "Olivestone Brick Stairs",
+  "block.architects_palette.olivestone_tile_wall": "Olivestone Tile Wall",
+  "block.architects_palette.olivestone_tile_slab": "Olivestone Tile Slab",
+  "block.architects_palette.olivestone_tile_stairs": "Olivestone Tile Stairs"
 }
