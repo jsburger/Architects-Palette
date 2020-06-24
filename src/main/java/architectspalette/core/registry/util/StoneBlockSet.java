@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.WallBlock;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 
 public class StoneBlockSet {
@@ -16,6 +17,7 @@ public class StoneBlockSet {
     public StoneBlockSet(RegistryObject<Block> base_block){
         this.BLOCK = base_block;
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
+        this.addAll();
     }
 
     // Stone Bricks Slab -> Stone Brick Slab. Oak Planks Stairs -> Oak Stairs
@@ -45,7 +47,7 @@ public class StoneBlockSet {
     }
 
     public StoneBlockSet addWalls() {
-        WALL = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()));
+        WALL = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), ItemGroup.DECORATIONS);
         return this;
     }
 

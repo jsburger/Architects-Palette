@@ -14,4 +14,8 @@ public class APItems {
     // Todo: Find a better solution for this
     public static final RegistryObject<Item> CHARCOAL_BLOCK = ITEMS.register("charcoal_block", () -> new APBlockItem(APBlocks.CHARCOAL_BLOCK.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setBurnTime(1600));
 
+    // Algal Brick Crafting
+    public static final RegistryObject<Item> ALGAL_BLEND = ITEMS.register("algal_blend", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> ALGAL_BRICK = ITEMS.register("algal_brick", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+
 }

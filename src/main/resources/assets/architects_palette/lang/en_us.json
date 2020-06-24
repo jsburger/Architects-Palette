@@ -36,5 +36,18 @@
   "block.architects_palette.olivestone_brick_stairs": "Olivestone Brick Stairs",
   "block.architects_palette.olivestone_tile_wall": "Olivestone Tile Wall",
   "block.architects_palette.olivestone_tile_slab": "Olivestone Tile Slab",
-  "block.architects_palette.olivestone_tile_stairs": "Olivestone Tile Stairs"
+  "block.architects_palette.olivestone_tile_stairs": "Olivestone Tile Stairs",
+
+  "block.architects_palette.algal_bricks": "Algal Bricks",
+  "block.architects_palette.cracked_algal_bricks": "Cracked Algal Bricks",
+  "block.architects_palette.overgrown_algal_bricks": "Overgrown Algal Bricks",
+  "block.architects_palette.chiseled_algal_bricks": "Chiseled Algal Bricks",
+  "block.architects_palette.algal_brick_wall": "Algal Brick Wall",
+  "block.architects_palette.algal_brick_slab": "Algal Brick Slab",
+  "block.architects_palette.algal_brick_stairs": "Algal Brick Stairs",
+  "block.architects_palette.overgrown_algal_brick_wall": "Overgrown Algal Brick Wall",
+  "block.architects_palette.overgrown_algal_brick_slab": "Overgrown Algal Brick Slab",
+  "block.architects_palette.overgrown_algal_brick_stairs": "Overgrown Algal Brick Stairs",
+  "item.architects_palette.algal_brick": "Algal Brick",
+  "item.architects_palette.algal_blend": "Algal Blend"
 }

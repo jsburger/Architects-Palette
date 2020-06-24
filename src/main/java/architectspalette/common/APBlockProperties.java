@@ -14,5 +14,8 @@ public class APBlockProperties {
 	}
 
 	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
+	 // As Prismarine
 	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
+	 // As Nether Bricks
+	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F);
 }

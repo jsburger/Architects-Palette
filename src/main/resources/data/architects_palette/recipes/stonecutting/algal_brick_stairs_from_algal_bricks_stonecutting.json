@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:algal_bricks"
+        }
+    ],
+    "result": "architects_palette:algal_brick_stairs",
+    "count": 1
+}
