@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:gold_ore_bricks"
+        }
+    },
+    "result": {
+        "count": 6,
+        "item": "architects_palette:gold_ore_brick_wall"
+    }
+}

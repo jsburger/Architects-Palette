@@ -13,6 +13,10 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 
@@ -51,9 +55,24 @@ public class APBlocks {
 
     // Algal Brick
     public static final StoneBlockSet ALGAL_BRICK = new StoneBlockSet(createBlock("algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK)));
-    public static final StoneBlockSet OVERGROWN_ALGAL_BRICK = new StoneBlockSet(createBlock("overgrown_algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK)));
-
     public static final RegistryObject<Block> CRACKED_ALGAL_BRICKS  = createBlock("cracked_algal_bricks",  () -> new Block(APBlockProperties.ALGAL_BRICK));
     public static final RegistryObject<Block> CHISELED_ALGAL_BRICKS = createBlock("chiseled_algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK));
+    public static final StoneBlockSet OVERGROWN_ALGAL_BRICK = new StoneBlockSet(createBlock("overgrown_algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK)));
+
+    // Ore Bricks
+    public static final List<StoneBlockSet> ORE_BRICKS = addOreBricks();
+
+    private static List<StoneBlockSet> addOreBricks() {
+        List<String> ores = Arrays.asList("coal", "lapis", "redstone", "iron", "gold", "emerald", "diamond");
+        List<StoneBlockSet> l = new LinkedList<>();
+        ores.forEach((ore) -> {
+                StoneBlockSet set = new StoneBlockSet(createBlock(ore + "_ore_bricks", () -> new Block(Block.Properties.from(Blocks.STONE_BRICKS))), false);
+                createBlock("cracked_" + ore + "_ore_bricks", () -> new Block(Block.Properties.from(Blocks.CRACKED_STONE_BRICKS)));
+                createBlock("chiseled_" + ore + "_ore_bricks", () -> new Block(Block.Properties.from(Blocks.CHISELED_STONE_BRICKS)));
+                l.add(set.addSlabs().addWalls());
+            }
+        );
+        return l;
+    }
 
 }

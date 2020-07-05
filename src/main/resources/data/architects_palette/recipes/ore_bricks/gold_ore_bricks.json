@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#O#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:stone_bricks"
+        },
+        "O": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "count": 8,
+        "item": "architects_palette:gold_ore_bricks"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:diamond_ore_bricks"
+        }
+    ],
+    "result": "architects_palette:diamond_ore_brick_wall",
+    "count": 1
+}

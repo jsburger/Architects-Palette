@@ -14,10 +14,16 @@ public class StoneBlockSet {
     public RegistryObject<Block> BLOCK;
     private final String material_name;
 
-    public StoneBlockSet(RegistryObject<Block> base_block){
+    public StoneBlockSet(RegistryObject<Block> base_block) {
+        this(base_block, true);
+    }
+
+    public StoneBlockSet(RegistryObject<Block> base_block, Boolean auto_fill){
         this.BLOCK = base_block;
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
-        this.addAll();
+        if (auto_fill) {
+            this.addAll();
+        }
     }
 
     // Stone Bricks Slab -> Stone Brick Slab. Oak Planks Stairs -> Oak Stairs
