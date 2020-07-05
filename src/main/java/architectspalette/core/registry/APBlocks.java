@@ -75,4 +75,10 @@ public class APBlocks {
         return l;
     }
 
+    // Flint Blocks
+    public static final RegistryObject<Block> FLINT_BLOCK  = createBlock("flint_block",  () -> new FlintBlock(APBlockProperties.FLINT));
+    public static final RegistryObject<Block> FLINT_TILES  = createBlock("flint_tiles",  () -> new FlintBlock(APBlockProperties.FLINT));
+    public static final RegistryObject<Block> FLINT_PILLAR = createBlock("flint_pillar", () -> new FlintPillarBlock(APBlockProperties.FLINT));
+
+
 }

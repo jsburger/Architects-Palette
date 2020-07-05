@@ -85,6 +85,9 @@
   "block.architects_palette.cracked_diamond_ore_bricks": "Cracked Diamond Ore Bricks",
   "block.architects_palette.chiseled_diamond_ore_bricks": "Chiseled Diamond Ore Bricks",
   "block.architects_palette.diamond_ore_brick_wall": "Diamond Ore Brick Wall",
-  "block.architects_palette.diamond_ore_brick_slab": "Diamond Ore Brick Slab"
+  "block.architects_palette.diamond_ore_brick_slab": "Diamond Ore Brick Slab",
 
+  "block.architects_palette.flint_block": "Flint Block",
+  "block.architects_palette.flint_tiles": "Flint Tiles",
+  "block.architects_palette.flint_pillar": "Flint Pillar"
 }

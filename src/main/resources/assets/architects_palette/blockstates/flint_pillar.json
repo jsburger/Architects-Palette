@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "architects_palette:block/flint_pillar" },
+        "axis=z":    { "model": "architects_palette:block/flint_pillar", "x": 90 },
+        "axis=x":    { "model": "architects_palette:block/flint_pillar", "x": 90, "y": 90 }
+    }
+}
