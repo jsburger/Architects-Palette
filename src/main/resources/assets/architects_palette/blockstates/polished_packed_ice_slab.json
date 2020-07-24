@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "architects_palette:block/polished_packed_ice_slab" },
+        "type=top": { "model": "architects_palette:block/polished_packed_ice_slab_top" },
+        "type=double": { "model": "architects_palette:block/polished_packed_ice" }
+    }
+}

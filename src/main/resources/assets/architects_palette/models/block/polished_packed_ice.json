@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "architects_palette:block/polished_packed_ice",
+    "particle": "architects_palette:block/polished_packed_ice"
+  }
+}

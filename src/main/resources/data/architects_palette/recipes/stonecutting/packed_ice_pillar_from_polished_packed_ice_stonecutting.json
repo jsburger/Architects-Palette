@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:polished_packed_ice"
+        }
+    ],
+    "result": "architects_palette:packed_ice_pillar",
+    "count": 1
+}

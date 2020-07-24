@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:polished_packed_ice"
+        }
+    },
+    "result": {
+        "count": 4,
+        "item": "architects_palette:polished_packed_ice_stairs"
+    }
+}

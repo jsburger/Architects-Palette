@@ -89,5 +89,12 @@
 
   "block.architects_palette.flint_block": "Flint Block",
   "block.architects_palette.flint_tiles": "Flint Tiles",
-  "block.architects_palette.flint_pillar": "Flint Pillar"
+  "block.architects_palette.flint_pillar": "Flint Pillar",
+
+  "block.architects_palette.polished_packed_ice": "Polished Packed Ice",
+  "block.architects_palette.chiseled_packed_ice": "Chiseled Packed Ice",
+  "block.architects_palette.packed_ice_pillar": "Packed Ice Pillar",
+  "block.architects_palette.polished_packed_ice_wall": "Polished Packed Ice Wall",
+  "block.architects_palette.polished_packed_ice_stairs": "Polished Packed Ice Stairs",
+  "block.architects_palette.polished_packed_ice_slab": "Polished Packed Ice Slab"
 }
