@@ -31,6 +31,7 @@ public class StoneBlockSet {
         return block
                 .replace("bricks", "brick")
                 .replace("_planks", "")
+                .replace("_block", "")
                 .replace("tiles", "tile");
     }
 

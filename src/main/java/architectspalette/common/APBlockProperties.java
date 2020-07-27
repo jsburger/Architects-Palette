@@ -15,6 +15,7 @@ public class APBlockProperties {
 
 	public static final Block.Properties FLINT = Block.Properties.create(Material.ROCK, MaterialColor.GRAY).hardnessAndResistance(3.0F, 16.0F);
 	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
+	public static final Block.Properties SUNMETAL = Block.Properties.create(Material.IRON, MaterialColor.BROWN).hardnessAndResistance(2.0F, 8.0F);
 	 // Should be less slippery?
 	public static final Block.Properties BUILDING_ICE = Block.Properties.from(Blocks.PACKED_ICE).slipperiness(0.8F);
 	 // As Prismarine
