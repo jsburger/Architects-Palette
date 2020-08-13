@@ -17,6 +17,8 @@
     "architects_palette:emerald_ore_brick_slab",
     "architects_palette:diamond_ore_brick_slab",
     "architects_palette:polished_packed_ice_slab",
-    "architects_palette:sunmetal_slab"
+    "architects_palette:sunmetal_slab",
+    "architects_palette:osseous_brick_slab",
+    "architects_palette:withered_osseous_brick_slab"
   ]
 }

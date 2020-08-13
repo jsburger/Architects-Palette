@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "architects_palette:block/withered_osseous_pillar" },
+        "axis=z":    { "model": "architects_palette:block/withered_osseous_pillar", "x": 90 },
+        "axis=x":    { "model": "architects_palette:block/withered_osseous_pillar", "x": 90, "y": 90 }
+    }
+}

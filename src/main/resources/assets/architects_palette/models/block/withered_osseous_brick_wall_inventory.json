@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "architects_palette:block/withered_osseous_bricks"
+  }
+}

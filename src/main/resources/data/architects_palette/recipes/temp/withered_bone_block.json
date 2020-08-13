@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        },
+        {
+            "item": "architects_palette:withered_bone"
+        }
+    ],
+    "result": {
+        "count": 3,
+        "item": "architects_palette:withered_bone_block"
+    }
+}

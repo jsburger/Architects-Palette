@@ -18,4 +18,7 @@ public class APItems {
     public static final RegistryObject<Item> ALGAL_BLEND = ITEMS.register("algal_blend", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
     public static final RegistryObject<Item> ALGAL_BRICK = ITEMS.register("algal_brick", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
 
+    // Withered Bones, Todo: Inject bones into loot tables
+    public static final RegistryObject<Item> WITHERED_BONE = ITEMS.register("withered_bone", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+
 }

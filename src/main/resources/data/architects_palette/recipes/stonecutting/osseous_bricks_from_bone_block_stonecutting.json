@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:bone_block"
+        }
+    ],
+    "result": "architects_palette:osseous_bricks",
+    "count": 1
+}

@@ -101,5 +101,19 @@
   "block.architects_palette.sunmetal_block": "Sunmetal Block",
   "block.architects_palette.chiseled_sunmetal_block": "Chiseled Sunmetal Block",
   "block.architects_palette.sunmetal_pillar": "Sunmetal Pillar",
-  "block.architects_palette.sunmetal_slab": "Sunmetal Slab"
+  "block.architects_palette.sunmetal_slab": "Sunmetal Slab",
+
+  "block.architects_palette.osseous_bricks": "Osseous Bricks",
+  "block.architects_palette.osseous_pillar": "Osseous Pillar",
+  "block.architects_palette.osseous_brick_wall": "Osseous Brick Wall",
+  "block.architects_palette.osseous_brick_stairs": "Osseous Brick Stairs",
+  "block.architects_palette.osseous_brick_slab": "Osseous Brick Slab",
+
+  "block.architects_palette.withered_osseous_bricks": "Withered Osseous Bricks",
+  "block.architects_palette.withered_osseous_pillar": "Withered Osseous Pillar",
+  "block.architects_palette.withered_bone_block": "Withered Bone Block",
+  "block.architects_palette.withered_osseous_brick_wall": "Withered Osseous Brick Wall",
+  "block.architects_palette.withered_osseous_brick_stairs": "Withered Osseous Brick Stairs",
+  "block.architects_palette.withered_osseous_brick_slab": "Withered Osseous Brick Slab",
+  "item.architects_palette.withered_bone": "Withered Bone"
 }
