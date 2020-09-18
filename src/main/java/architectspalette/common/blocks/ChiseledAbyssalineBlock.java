@@ -53,17 +53,6 @@ public class ChiseledAbyssalineBlock extends AbyssalineBlock {
 	}
 	
 	@Override
-	public boolean isEmissiveRendering(BlockState state) {
-		return state.get(LIGHT) / 2 > 0;
-	}
-	
-	@Override
-	public boolean needsPostProcessing(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		int light = state.get(LIGHT) / 2;
-		return light < 6;
-	}
-	
-	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return true;
 	}

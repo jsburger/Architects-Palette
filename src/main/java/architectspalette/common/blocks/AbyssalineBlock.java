@@ -88,7 +88,7 @@ public class AbyssalineBlock extends Block {
 	}
 	
 	public static boolean isChargedBlock(BlockState state) {
-		return state.getBlock() != APBlocks.CHISELED_ABYSSALINE_BRICKS.get() && state.has(CHARGED) && state.get(CHARGED);
+		return state.getBlock() != APBlocks.CHISELED_ABYSSALINE_BRICKS.get() && state.hasProperty(CHARGED) && state.get(CHARGED);
 	}
 	
 	@Override

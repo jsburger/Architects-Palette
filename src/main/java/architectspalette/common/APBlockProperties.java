@@ -1,13 +1,18 @@
 package architectspalette.common;
 
+import architectspalette.common.blocks.ChiseledAbyssalineBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 
 public class APBlockProperties {
-	public static final Block.Properties ABYSSALINE = Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F);
+	public static final Block.Properties ABYSSALINE 			= Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F);
+	public static final Block.Properties CHISELED_ABYSSALINE 	= Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F).setEmmisiveRendering(APBlockProperties::setEmmisiveRendering).setNeedsPostProcessing(APBlockProperties::needsPostProcessing);
 
 	public static Block.Properties Meat(MaterialColor color) {
 		return Block.Properties.create(Material.GOURD, color).hardnessAndResistance(1.0F).sound(SoundType.CORAL);
@@ -22,4 +27,13 @@ public class APBlockProperties {
 	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
 	 // As Nether Bricks
 	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F);
+	
+	private static boolean setEmmisiveRendering(BlockState state, IBlockReader reader, BlockPos pos) {
+		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 0;
+	}
+	
+	private static boolean needsPostProcessing(BlockState state, IBlockReader reader, BlockPos pos) {
+		int light = state.get(ChiseledAbyssalineBlock.LIGHT) / 2;
+		return light < 6;
+	}
 }
