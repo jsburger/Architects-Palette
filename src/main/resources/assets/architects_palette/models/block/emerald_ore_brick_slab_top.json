@@ -1,5 +1,5 @@
 {
-  "parent": "block/slab_top",
+  "parent": "minecraft:block/slab_top",
   "textures": {
     "bottom": "architects_palette:block/emerald_ore_bricks",
     "top": "architects_palette:block/emerald_ore_bricks",

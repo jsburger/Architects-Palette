@@ -1,6 +1,6 @@
 {
-  "parent": "block/wall_inventory",
-  "textures": {
-    "wall": "architects_palette:block/emerald_ore_bricks"
-  }
+    "parent": "block/wall_inventory",
+    "textures": {
+        "wall": "architects_palette:block/emerald_ore_bricks"
+    }
 }

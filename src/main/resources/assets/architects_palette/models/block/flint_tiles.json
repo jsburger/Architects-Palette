@@ -1,7 +1,6 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/flint_tiles",
-    "particle": "architects_palette:block/flint_tiles"
-  }
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "architects_palette:block/flint_tiles"
+    }
 }

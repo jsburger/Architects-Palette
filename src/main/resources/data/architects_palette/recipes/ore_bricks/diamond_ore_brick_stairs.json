@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "architects_palette:diamond_ore_bricks"
+    }
+  },
+  "result": {
+    "item": "architects_palette:diamond_ore_brick_stairs",
+    "count": 4
+  }
+}

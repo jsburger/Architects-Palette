@@ -11,6 +11,6 @@ public class FlintPillarBlock extends RotatedPillarBlock {
     }
 
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        entityIn.onLivingFall(fallDistance, FlintBlock.fallDamageMultiplier);
+        entityIn.onLivingFall(fallDistance, 1.25f);
     }
 }

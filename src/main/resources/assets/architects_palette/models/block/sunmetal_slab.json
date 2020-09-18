@@ -1,5 +1,5 @@
 {
-  "parent": "block/slab",
+  "parent": "minecraft:block/slab",
   "textures": {
     "bottom": "architects_palette:block/sunmetal_block",
     "top": "architects_palette:block/sunmetal_block",

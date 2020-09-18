@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "architects_palette:block/sunmetal_block",
+    "top": "architects_palette:block/sunmetal_block",
+    "side": "architects_palette:block/sunmetal_block"
+  }
+}

@@ -7,14 +7,12 @@ import net.minecraft.world.World;
 
 public class FlintBlock extends Block {
 
-    public static float fallDamageMultiplier = 1.25f;
-
     public FlintBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        entityIn.onLivingFall(fallDistance, fallDamageMultiplier);
+        entityIn.onLivingFall(fallDistance, 1.25f);
     }
 }
