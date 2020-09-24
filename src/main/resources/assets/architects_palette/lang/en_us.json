@@ -132,5 +132,7 @@
   "block.architects_palette.withered_osseous_brick_wall": "Withered Osseous Brick Wall",
   "block.architects_palette.withered_osseous_brick_stairs": "Withered Osseous Brick Stairs",
   "block.architects_palette.withered_osseous_brick_slab": "Withered Osseous Brick Slab",
-  "item.architects_palette.withered_bone": "Withered Bone"
+  "item.architects_palette.withered_bone": "Withered Bone",
+
+  "block.architects_palette.entrails": "Entrails"
 }

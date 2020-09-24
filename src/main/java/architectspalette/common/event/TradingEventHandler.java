@@ -17,6 +17,8 @@ import java.util.Map;
 public class TradingEventHandler {
 
      //this sucks, please let me know how to make it better, thanks
+     //To break it down a little
+     // this + Profession -> Map of trades for that profession, Map + Trade level -> List of trades of that level
     private static final Map<VillagerProfession, Map<Integer, LinkedList<VillagerTrades.ITrade>>> professionMap = new HashMap<>();
 
     public static void add_trade(VillagerProfession prof, Integer level, VillagerTrades.ITrade trade) {
@@ -26,7 +28,7 @@ public class TradingEventHandler {
     }
 
      // i think i can use this to save memory, idk tho
-    public static void clear_map() {
+    private static void clear_map() {
         professionMap.clear();
     }
 
