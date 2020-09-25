@@ -20,14 +20,16 @@ public class APBlockProperties {
 
 	public static final Block.Properties FLINT = Block.Properties.create(Material.ROCK, MaterialColor.GRAY).hardnessAndResistance(3.0F, 16.0F);
 	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
-	public static final Block.Properties SUNMETAL = Block.Properties.create(Material.IRON, MaterialColor.BROWN).hardnessAndResistance(2.0F, 8.0F);
+	public static final Block.Properties SUNMETAL = Block.Properties.create(Material.IRON, MaterialColor.BROWN).hardnessAndResistance(2.0F, 8.0F).sound(SoundType.NETHERITE);
 	 // Should be less slippery?
 	public static final Block.Properties BUILDING_ICE = Block.Properties.from(Blocks.PACKED_ICE).slipperiness(0.8F);
 	 // As Prismarine
 	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
 	 // As Nether Bricks
 	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F);
-	
+	 // Hardness and Resistance as Iron Bars
+	public static Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(5.0F, 6.0F);
+
 	private static boolean setEmmisiveRendering(BlockState state, IBlockReader reader, BlockPos pos) {
 		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 0;
 	}

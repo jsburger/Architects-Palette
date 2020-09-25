@@ -21,4 +21,6 @@ public class APItems {
     // Withered Bones, Todo: Inject bones into loot tables
     public static final RegistryObject<Item> WITHERED_BONE = ITEMS.register("withered_bone", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
 
+    public static final RegistryObject<Item> ENTWINE_ROD = ITEMS.register("entwine_rod", () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+
 }

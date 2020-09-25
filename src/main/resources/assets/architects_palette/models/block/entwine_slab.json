@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "architects_palette:block/entwine_block",
+    "top": "architects_palette:block/entwine_block",
+    "side": "architects_palette:block/entwine_block"
+  }
+}

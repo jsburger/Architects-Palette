@@ -1,0 +1,34 @@
+{
+  "block.entwine.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds" : [
+      {
+        "name": "architects_palette:block/entwine_1"
+      },
+      {
+        "name": "architects_palette:block/entwine_1",
+        "pitch" : 0.9
+      },
+      {
+        "name": "architects_palette:block/entwine_1",
+        "pitch" : 1.1
+      }
+    ]
+  },
+  "block.entwine.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds" : [
+      {
+        "name": "architects_palette:block/entwine_1"
+      },
+      {
+        "name": "architects_palette:block/entwine_1",
+        "pitch" : 0.9
+      },
+      {
+        "name": "architects_palette:block/entwine_1",
+        "pitch" : 1.1
+      }
+    ]
+  }
+}

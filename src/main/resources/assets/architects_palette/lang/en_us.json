@@ -134,5 +134,13 @@
   "block.architects_palette.withered_osseous_brick_slab": "Withered Osseous Brick Slab",
   "item.architects_palette.withered_bone": "Withered Bone",
 
-  "block.architects_palette.entrails": "Entrails"
+  "block.architects_palette.entrails": "Entrails",
+
+  "block.architects_palette.entwine_block": "Entwine",
+  "block.architects_palette.chiseled_entwine": "Chiseled Entwine",
+  "block.architects_palette.entwine_pillar": "Entwine Pillar",
+  "block.architects_palette.entwine_bars": "Entwine Bars",
+  "block.architects_palette.entwine_slab": "Entwine Slab",
+  "block.architects_palette.entwine_stairs": "Entwine Stairs",
+  "item.architects_palette.entwine_rod": "Entwine Rod"
 }

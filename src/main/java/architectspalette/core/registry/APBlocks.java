@@ -4,9 +4,7 @@ import architectspalette.common.APBlockProperties;
 import architectspalette.common.blocks.*;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -92,7 +90,7 @@ public class APBlocks {
 
     // Sunmetal
      // Todo: use 1.16 bone block sounds + some metal sounds once ported over
-    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), false).addStairs().addSlabs();
+    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), false).addSlabs().addStairs();
     public static final RegistryObject<Block> CHISELED_SUNMETAL_BLOCK = createBlock("chiseled_sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL));
     public static final RegistryObject<Block> SUNMETAL_PILLAR         = createBlock("sunmetal_pillar", () -> new RotatedPillarBlock(APBlockProperties.SUNMETAL));
 
@@ -105,5 +103,10 @@ public class APBlocks {
     public static final StoneBlockSet      WITHERED_OSSEOUS_BRICK = new StoneBlockSet(createBlock("withered_osseous_bricks", () -> new Block(Block.Properties.from(Blocks.BONE_BLOCK))));
     public static final RegistryObject<Block> WITHERED_OSSEOUS_PILLAR = createBlock("withered_osseous_pillar", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.BONE_BLOCK)));
 
+    // Entwine
+    public static final StoneBlockSet ENTWINE = new StoneBlockSet(createBlock("entwine_block", () -> new Block(APBlockProperties.ENTWINE)), false).addSlabs().addStairs();
+    public static final RegistryObject<Block> ENTWINE_PILLAR = createBlock("entwine_pillar", () -> new RotatedPillarBlock(APBlockProperties.ENTWINE));
+    public static final RegistryObject<Block> CHISELED_ENTWINE = createBlock("chiseled_entwine", () -> new Block(APBlockProperties.ENTWINE));
+    public static final RegistryObject<Block> ENTWINE_BARS = createBlock("entwine_bars", () -> new PaneBlock(AbstractBlock.Properties.from(ENTWINE.get()).notSolid()));
 
 }
