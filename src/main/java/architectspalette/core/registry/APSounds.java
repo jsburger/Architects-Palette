@@ -2,6 +2,7 @@ package architectspalette.core.registry;
 
 import architectspalette.core.ArchitectsPalette;
 import net.minecraft.block.SoundType;
+import net.minecraft.util.LazyValue;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -20,6 +21,61 @@ public class APSounds {
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_BREAK = register("block.entwine.break");
 
     public static class APSoundTypes {
-        public static final SoundType ENTWINE = new SoundType(1.0F, 1.0F, APSounds.BLOCK_ENTWINE_BREAK.get(), SoundEvents.BLOCK_GLASS_STEP, APSounds.BLOCK_ENTWINE_PLACE.get(), SoundEvents.BLOCK_GLASS_HIT, SoundEvents.BLOCK_GLASS_FALL);
+        public static final SoundType ENTWINE = new LazySoundType(
+                1.0F, 1.0F,
+                new LazyValue<SoundEvent>(BLOCK_ENTWINE_BREAK),
+                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_STEP),
+                new LazyValue<SoundEvent>(BLOCK_ENTWINE_PLACE),
+                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_HIT),
+                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_FALL)
+        );
+    }
+
+    private static class LazySoundType extends SoundType {
+        private final LazyValue<SoundEvent> breakSound;
+        private final LazyValue<SoundEvent> stepSound;
+        private final LazyValue<SoundEvent> placeSound;
+        private final LazyValue<SoundEvent> hitSound;
+        private final LazyValue<SoundEvent> fallSound;
+
+        public LazySoundType(float volumeIn, float pitchIn, LazyValue<SoundEvent> breakSoundIn, LazyValue<SoundEvent> stepSoundIn, LazyValue<SoundEvent> placeSoundIn, LazyValue<SoundEvent> hitSoundIn, LazyValue<SoundEvent> fallSoundIn) {
+            // shut up java i dont care about the original constructor i just want this to be a sound type
+            super(volumeIn, pitchIn, SoundEvents.BLOCK_STONE_BREAK, SoundEvents.BLOCK_STONE_STEP, SoundEvents.BLOCK_STONE_PLACE, SoundEvents.BLOCK_STONE_HIT, SoundEvents.BLOCK_STONE_FALL);
+            // now we're talking
+            this.breakSound = breakSoundIn;
+            this.stepSound = stepSoundIn;
+            this.placeSound = placeSoundIn;
+            this.hitSound = hitSoundIn;
+            this.fallSound = fallSoundIn;
+        }
+
+        public float getVolume() {
+            return this.volume;
+        }
+
+        public float getPitch() {
+            return this.pitch;
+        }
+
+        public SoundEvent getBreakSound() {
+            return this.breakSound.getValue();
+        }
+
+        public SoundEvent getStepSound() {
+            return this.stepSound.getValue();
+        }
+
+        public SoundEvent getPlaceSound() {
+            return this.placeSound.getValue();
+        }
+
+        public SoundEvent getHitSound() {
+            return this.hitSound.getValue();
+        }
+
+        public SoundEvent getFallSound() {
+            return this.fallSound.getValue();
+        }
+
     }
 }
