@@ -3,8 +3,11 @@
     "ingredient": [
         {
             "item": "architects_palette:polished_packed_ice"
+        },
+        {
+            "item": "minecraft:packed_ice"
         }
     ],
-    "result": "architects_palette:chiseled_packed_ice",
-    "count": 1
+    "result": "architects_palette:polished_packed_ice_slab",
+    "count": 2
 }
