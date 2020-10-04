@@ -109,4 +109,9 @@ public class APBlocks {
     public static final RegistryObject<Block> CHISELED_ENTWINE = createBlock("chiseled_entwine", () -> new Block(APBlockProperties.ENTWINE));
     public static final RegistryObject<Block> ENTWINE_BARS = createBlock("entwine_bars", () -> new PaneBlock(AbstractBlock.Properties.from(ENTWINE.get()).notSolid()));
 
+    // Heavy Stone Bricks
+    public static final RegistryObject<Block> HEAVY_STONE_BRICKS = createBlock("heavy_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.STONE_BRICKS)));
+    public static final RegistryObject<Block> HEAVY_MOSSY_STONE_BRICKS = createBlock("heavy_mossy_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> HEAVY_CRACKED_STONE_BRICKS = createBlock("heavy_cracked_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.CRACKED_STONE_BRICKS)));
+
 }

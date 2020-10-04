@@ -1,0 +1,25 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "architects_palette:block/heavy_stone_bricks_half",
+    "half": "architects_palette:block/heavy_stone_bricks_half",
+    "left": "architects_palette:block/heavy_stone_bricks_left",
+    "right": "architects_palette:block/heavy_stone_bricks_right",
+    "bottom": "architects_palette:block/heavy_stone_bricks_bottom",
+    "top": "architects_palette:block/heavy_stone_bricks_top"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#half"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#left"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#half"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#right"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+      }
+    }
+  ]
+}

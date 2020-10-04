@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=down,paired=false":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=up,paired=false":    { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=north,paired=false": { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=south,paired=false": { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=west,paired=false":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=east,paired=false":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/half"},
+    "facing=down,paired=true":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/top"},
+    "facing=up,paired=true":    { "model": "architects_palette:block/heavy_mossy_stone_bricks/bottom"},
+    "facing=north,paired=true": { "model": "architects_palette:block/heavy_mossy_stone_bricks/north"},
+    "facing=south,paired=true": { "model": "architects_palette:block/heavy_mossy_stone_bricks/south"},
+    "facing=west,paired=true":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/west"},
+    "facing=east,paired=true":  { "model": "architects_palette:block/heavy_mossy_stone_bricks/east"}
+  }
+}

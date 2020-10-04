@@ -143,5 +143,9 @@
   "block.architects_palette.entwine_bars": "Entwine Bars",
   "block.architects_palette.entwine_slab": "Entwine Slab",
   "block.architects_palette.entwine_stairs": "Entwine Stairs",
-  "item.architects_palette.entwine_rod": "Entwine Rod"
+  "item.architects_palette.entwine_rod": "Entwine Rod",
+
+  "block.architects_palette.heavy_stone_bricks": "Heavy Stone Bricks",
+  "block.architects_palette.heavy_mossy_stone_bricks": "Heavy Mossy Stone Bricks",
+  "block.architects_palette.heavy_cracked_stone_bricks": "Heavy Cracked Stone Bricks"
 }
