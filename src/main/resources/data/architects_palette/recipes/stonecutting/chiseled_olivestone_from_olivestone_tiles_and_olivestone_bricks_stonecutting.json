@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:olivestone_tiles"
+        },
+        {
+            "item": "architects_palette:olivestone_bricks"
+        }
+    ],
+    "result": "architects_palette:chiseled_olivestone",
+    "count": 1
+}

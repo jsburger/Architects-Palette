@@ -5,11 +5,11 @@
             "item": "architects_palette:heavy_stone_bricks"
         },
         {
-            "item": "minecraft:vines"
+            "item": "minecraft:vine"
         }
     ],
     "result": {
         "count": 1,
-        "item": ":"
+        "item": "architects_palette:heavy_mossy_stone_bricks"
     }
 }
