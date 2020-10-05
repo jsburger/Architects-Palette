@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:polished_glowstone"
+        },
+        {
+            "item": "minecraft:glowstone"
+        }
+    ],
+    "result": "architects_palette:runic_glowstone",
+    "count": 1
+}
