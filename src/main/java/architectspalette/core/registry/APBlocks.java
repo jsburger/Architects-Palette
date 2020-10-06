@@ -129,4 +129,10 @@ public class APBlocks {
     public static final RegistryObject<Block> GILDED_SANDSTONE_PILLAR = createBlock("gilded_sandstone_pillar", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> CHISELED_GILDED_SANDSTONE = createBlock("chiseled_gilded_sandstone", () -> new Block(AbstractBlock.Properties.from(Blocks.SANDSTONE)));
 
+    // Mossy Blackstone Variants
+    public static final RegistryObject<Block> WEEPING_BLACKSTONE = createBlock("weeping_blackstone", () -> new Block(AbstractBlock.Properties.from(Blocks.BLACKSTONE)));
+    public static final RegistryObject<Block> TWISTING_BLACKSTONE = createBlock("twisting_blackstone", () -> new Block(AbstractBlock.Properties.from(Blocks.BLACKSTONE)));
+    public static final RegistryObject<Block> WEEPING_BLACKSTONE_BRICKS = createBlock("weeping_blackstone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+    public static final RegistryObject<Block> TWISTING_BLACKSTONE_BRICKS = createBlock("twisting_blackstone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
 }

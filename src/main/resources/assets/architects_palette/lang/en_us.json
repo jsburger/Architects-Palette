@@ -161,5 +161,10 @@
   "block.architects_palette.chiseled_gilded_sandstone": "Chiseled Gilded Sandstone",
   "block.architects_palette.gilded_sandstone_pillar": "Gilded Sandstone Pillar",
   "block.architects_palette.gilded_sandstone_slab": "Gilded Sandstone Slab",
-  "block.architects_palette.gilded_sandstone_stairs": "Gilded Sandstone Stairs"
+  "block.architects_palette.gilded_sandstone_stairs": "Gilded Sandstone Stairs",
+
+  "block.architects_palette.weeping_blackstone": "Weeping Blackstone",
+  "block.architects_palette.weeping_blackstone_bricks": "Weeping Blackstone Bricks",
+  "block.architects_palette.twisting_blackstone": "Twisting Blackstone",
+  "block.architects_palette.twisting_blackstone_bricks": "Twisting Blackstone Bricks"
 }
