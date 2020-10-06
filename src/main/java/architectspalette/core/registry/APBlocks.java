@@ -5,6 +5,7 @@ import architectspalette.common.blocks.*;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -119,5 +120,13 @@ public class APBlocks {
     // Polished Glowstone
     public static final StoneBlockSet POLISHED_GLOWSTONE = new StoneBlockSet(createBlock("polished_glowstone", () -> new Block(AbstractBlock.Properties.from(Blocks.GLOWSTONE))), false).addSlabs();
     public static final RegistryObject<Block> RUNIC_GLOWSTONE = createBlock("runic_glowstone", () -> new Block(AbstractBlock.Properties.from(Blocks.GLOWSTONE)));
+
+    // Scute Block
+    public static final RegistryObject<Block> SCUTE_BLOCK = createBlock("scute_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.LIME).hardnessAndResistance(5.0F, 6.0F).sound(SoundType.BASALT)));
+
+    // Gilded Sandstone
+    public static final StoneBlockSet GILDED_SANDSTONE = new StoneBlockSet(createBlock("gilded_sandstone", () -> new Block(AbstractBlock.Properties.from(Blocks.SANDSTONE))), false).addSlabs().addStairs();
+    public static final RegistryObject<Block> GILDED_SANDSTONE_PILLAR = createBlock("gilded_sandstone_pillar", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> CHISELED_GILDED_SANDSTONE = createBlock("chiseled_gilded_sandstone", () -> new Block(AbstractBlock.Properties.from(Blocks.SANDSTONE)));
 
 }

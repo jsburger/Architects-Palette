@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end":  "architects_palette:block/gilded_sandstone",
+        "side": "architects_palette:block/chiseled_gilded_sandstone",
+        "particle": "architects_palette:block/chiseled_gilded_sandstone"
+    }
+}

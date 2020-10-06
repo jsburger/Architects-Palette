@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:sandstone"
+        },
+        {
+            "item": "minecraft:sandstone"
+        },
+        {
+            "item": "minecraft:gold_nugget"
+        },
+        {
+            "item": "minecraft:gold_nugget"
+        }
+    ],
+    "result": {
+        "count": 2,
+        "item": "architects_palette:gilded_sandstone"
+    }
+}

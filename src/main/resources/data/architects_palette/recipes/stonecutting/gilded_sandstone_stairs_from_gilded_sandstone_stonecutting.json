@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:gilded_sandstone"
+        }
+    ],
+    "result": "architects_palette:gilded_sandstone_stairs",
+    "count": 1
+}

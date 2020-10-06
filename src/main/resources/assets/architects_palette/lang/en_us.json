@@ -153,6 +153,13 @@
 
   "block.architects_palette.polished_glowstone": "Polished Glowstone",
   "block.architects_palette.polished_glowstone_slab": "Polished Glowstone Slab",
-  "block.architects_palette.runic_glowstone": "Runic Glowstone"
+  "block.architects_palette.runic_glowstone": "Runic Glowstone",
 
+  "block.architects_palette.scute_block": "Scute Block",
+
+  "block.architects_palette.gilded_sandstone": "Gilded Sandstone",
+  "block.architects_palette.chiseled_gilded_sandstone": "Chiseled Gilded Sandstone",
+  "block.architects_palette.gilded_sandstone_pillar": "Gilded Sandstone Pillar",
+  "block.architects_palette.gilded_sandstone_slab": "Gilded Sandstone Slab",
+  "block.architects_palette.gilded_sandstone_stairs": "Gilded Sandstone Stairs"
 }
