@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "architects_palette:block/warpstone",
+    "top": "architects_palette:block/warpstone",
+    "side": "architects_palette:block/warpstone"
+  }
+}

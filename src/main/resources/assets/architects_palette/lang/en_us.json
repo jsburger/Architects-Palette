@@ -12,6 +12,14 @@
   "block.architects_palette.salmon_scales": "Salmon Scales",
   "block.architects_palette.cod_scales": "Cod Scales",
 
+  "block.architects_palette.entrails": "Entrails",
+  "block.architects_palette.plating_block": "Plating Block",
+  "block.architects_palette.plating_wall": "Plating Wall",
+  "block.architects_palette.plating_stairs": "Plating Stairs",
+  "block.architects_palette.plating_slab": "Plating Slab",
+
+  "block.architects_palette.spool": "Spool",
+
   "block.architects_palette.charcoal_block": "Charcoal Block",
 
   "block.architects_palette.limestone": "Limestone",
@@ -135,9 +143,8 @@
   "block.architects_palette.withered_osseous_brick_wall": "Withered Osseous Brick Wall",
   "block.architects_palette.withered_osseous_brick_stairs": "Withered Osseous Brick Stairs",
   "block.architects_palette.withered_osseous_brick_slab": "Withered Osseous Brick Slab",
+  "block.architects_palette.wither_lamp": "Wither Lamp",
   "item.architects_palette.withered_bone": "Withered Bone",
-
-  "block.architects_palette.entrails": "Entrails",
 
   "block.architects_palette.entwine_block": "Entwine",
   "block.architects_palette.chiseled_entwine": "Chiseled Entwine",
@@ -166,5 +173,16 @@
   "block.architects_palette.weeping_blackstone": "Weeping Blackstone",
   "block.architects_palette.weeping_blackstone_bricks": "Weeping Blackstone Bricks",
   "block.architects_palette.twisting_blackstone": "Twisting Blackstone",
-  "block.architects_palette.twisting_blackstone_bricks": "Twisting Blackstone Bricks"
+  "block.architects_palette.twisting_blackstone_bricks": "Twisting Blackstone Bricks",
+
+  "block.architects_palette.rotten_flesh_block": "Rotten Flesh Block",
+
+  "block.architects_palette.warpstone": "Warpstone",
+  "block.architects_palette.warpstone_wall": "Warpstone Wall",
+  "block.architects_palette.warpstone_stairs": "Warpstone Stairs",
+  "block.architects_palette.warpstone_slab": "Warpstone Slab",
+
+  "block.architects_palette.choral_end_stone_bricks": "Choral End Stone Bricks",
+  "block.architects_palette.cracked_end_stone_bricks": "Cracked End Stone Bricks",
+  "block.architects_palette.chiseled_end_stone_bricks": "Chiseled End Stone Bricks"
 }

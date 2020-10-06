@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "architects_palette:block/warpstone_slab" },
+        "type=top": { "model": "architects_palette:block/warpstone_slab_top" },
+        "type=double": { "model": "architects_palette:block/warpstone" }
+    }
+}

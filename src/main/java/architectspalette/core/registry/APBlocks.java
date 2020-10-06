@@ -39,7 +39,11 @@ public class APBlocks {
     public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.YELLOW_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
      // Entrails
     public static final RegistryObject<Block> ENTRAILS = createBlock("entrails", () -> new Block(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
-
+     // Plating & Piping
+    public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)));
+    //public static final RegistryObject<Block> PIPE = createBlock(...
+     //Spools
+    public static final RegistryObject<Block> SPOOL = createBlock("spool", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.WHITE_WOOL)));
 
     // Charcoal Block
     public static final RegistryObject<Block> CHARCOAL_BLOCK = createBlockNoItem("charcoal_block", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.COAL_BLOCK)));
@@ -105,6 +109,8 @@ public class APBlocks {
     public static final RegistryObject<Block> WITHERED_BONE_BLOCK = createBlock("withered_bone_block", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.BONE_BLOCK)));
     public static final StoneBlockSet      WITHERED_OSSEOUS_BRICK = new StoneBlockSet(createBlock("withered_osseous_bricks", () -> new Block(Block.Properties.from(Blocks.BONE_BLOCK))));
     public static final RegistryObject<Block> WITHERED_OSSEOUS_PILLAR = createBlock("withered_osseous_pillar", () -> new RotatedPillarBlock(Block.Properties.from(Blocks.BONE_BLOCK)));
+    // Wither Lamp
+    public static final RegistryObject<Block> WITHER_LAMP = createBlock("wither_lamp", () -> new Block(AbstractBlock.Properties.from(Blocks.SEA_LANTERN)));
 
     // Entwine
     public static final StoneBlockSet ENTWINE = new StoneBlockSet(createBlock("entwine_block", () -> new Block(APBlockProperties.ENTWINE)), false).addSlabs().addStairs();
@@ -123,6 +129,8 @@ public class APBlocks {
 
     // Scute Block
     public static final RegistryObject<Block> SCUTE_BLOCK = createBlock("scute_block", () -> new Block(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.LIME).hardnessAndResistance(5.0F, 6.0F).sound(SoundType.BASALT)));
+    // Rotten Flesh Block
+    public static final RegistryObject<Block> ROTTEN_FLESH_BLOCK = createBlock("rotten_flesh_block", () -> new Block(APBlockProperties.Meat(MaterialColor.ADOBE)));
 
     // Gilded Sandstone
     public static final StoneBlockSet GILDED_SANDSTONE = new StoneBlockSet(createBlock("gilded_sandstone", () -> new Block(AbstractBlock.Properties.from(Blocks.SANDSTONE))), false).addSlabs().addStairs();
@@ -134,5 +142,13 @@ public class APBlocks {
     public static final RegistryObject<Block> TWISTING_BLACKSTONE = createBlock("twisting_blackstone", () -> new Block(AbstractBlock.Properties.from(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> WEEPING_BLACKSTONE_BRICKS = createBlock("weeping_blackstone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.POLISHED_BLACKSTONE_BRICKS)));
     public static final RegistryObject<Block> TWISTING_BLACKSTONE_BRICKS = createBlock("twisting_blackstone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    // End Stone Variants
+    public static final RegistryObject<Block> CHORAL_END_STONE_BRICKS = createBlock("choral_end_stone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS)));
+    public static final RegistryObject<Block> CRACKED_END_STONE_BRICKS = createBlock("cracked_end_stone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS)));
+    public static final RegistryObject<Block> CHISELED_END_STONE_BRICKS = createBlock("chiseled_end_stone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS)));
+
+    // Warpstone
+    public static final StoneBlockSet WARPSTONE = new StoneBlockSet(createBlock("warpstone", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE))));
 
 }

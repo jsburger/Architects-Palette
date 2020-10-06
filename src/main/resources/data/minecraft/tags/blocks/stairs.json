@@ -22,6 +22,8 @@
     "architects_palette:sunmetal_stairs",
     "architects_palette:flint_tile_stairs",
     "architects_palette:entwine_stairs",
-    "architects_palette:gilded_sandstone_stairs"
+    "architects_palette:gilded_sandstone_stairs",
+    "architects_palette:plating_stairs",
+    "architects_palette:warpstone_stairs"
   ]
 }

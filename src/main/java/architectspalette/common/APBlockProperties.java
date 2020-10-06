@@ -2,10 +2,7 @@ package architectspalette.common;
 
 import architectspalette.common.blocks.ChiseledAbyssalineBlock;
 import architectspalette.core.registry.APSounds;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.util.math.BlockPos;
@@ -27,9 +24,10 @@ public class APBlockProperties {
 	 // As Prismarine
 	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
 	 // As Nether Bricks
-	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F);
+	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.NETHER_BRICK);
 
 	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE);
+	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE);
 
 	private static boolean setEmmisiveRendering(BlockState state, IBlockReader reader, BlockPos pos) {
 		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 0;

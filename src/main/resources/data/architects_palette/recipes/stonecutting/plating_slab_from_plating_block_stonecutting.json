@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:plating_block"
+        }
+    ],
+    "result": "architects_palette:plating_slab",
+    "count": 2
+}
