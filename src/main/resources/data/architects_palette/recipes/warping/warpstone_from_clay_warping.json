@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "item": "minecraft:clay"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:warpstone"
+    },
+    "dimension": "minecraft:the_nether"
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "architectspalette.core.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "architectspalette.refmap.json",
+  "mixins": [
+    "ItemEntityMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -27,7 +27,7 @@ public class TradingEventHandler {
         professionMap.get(prof).get(level).add(trade);
     }
 
-     // i think i can use this to save memory, idk tho
+     // i think i can use this to save memory, idk tho (currently un-used as i dont know where to put it)
     private static void clear_map() {
         professionMap.clear();
     }
