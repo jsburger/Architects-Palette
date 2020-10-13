@@ -16,5 +16,20 @@
       {"name": "architects_palette:block/entwine3"},
       {"name": "architects_palette:block/entwine4"}
     ]
+  },
+  "block.warping.item_warps": {
+    "subtitle": "subtitles.architects_palette.warping.item_warps",
+    "sounds" : [
+      {
+        "name": "entity/endermen/portal",
+        "pitch": 1.2,
+        "volume": 0.1
+      },
+      {
+        "name": "entity/endermen/portal2",
+        "pitch": 1.2,
+        "volume": 0.1
+      }
+    ]
   }
 }

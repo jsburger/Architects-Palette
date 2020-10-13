@@ -20,6 +20,8 @@ public class APSounds {
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_PLACE = register("block.entwine.place");
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_BREAK = register("block.entwine.break");
 
+    public static final RegistryObject<SoundEvent> ITEM_WARPS = register("block.warping.item_warps");
+
     public static class APSoundTypes {
         public static final SoundType ENTWINE = new LazySoundType(
                 1.0F, 1.0F,
