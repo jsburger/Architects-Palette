@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:basalt"
+        },
+        {
+            "item": "minecraft:polished_basalt"
+        }
+    ],
+    "result": "architects_palette:basalt_tiles",
+    "count": 1
+}

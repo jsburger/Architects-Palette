@@ -171,7 +171,10 @@ public class APBlocks {
     public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new OakTree(), AbstractBlock.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> POTTED_TWISTED_SAPLING = createPottedPlant(TWISTED_SAPLING);
 
-
+    // Basalt Tiles
+    public static final StoneBlockSet BASALT_TILES = new StoneBlockSet(createBlock("basalt_tiles", () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT))));
+    public static final RegistryObject<Block>  CRACKED_BASALT_TILES = createBlock("cracked_basalt_tiles",  () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
+    public static final RegistryObject<Block> CHISELED_BASALT_TILES = createBlock("chiseled_basalt_tiles", () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

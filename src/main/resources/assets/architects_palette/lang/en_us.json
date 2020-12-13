@@ -204,5 +204,12 @@
   "block.architects_palette.twisted_stairs": "Twisted Stairs",
   "block.architects_palette.twisted_leaves": "Twisted Leaves",
   "block.architects_palette.twisted_sapling": "Twisted Sapling",
-  "block.architects_palette.potted_twisted_sapling": "Potted Twisted Sapling"
+  "block.architects_palette.potted_twisted_sapling": "Potted Twisted Sapling",
+
+  "block.architects_palette.basalt_tiles": "Basalt Tiles",
+  "block.architects_palette.basalt_tile_wall": "Basalt Tile Wall",
+  "block.architects_palette.basalt_tile_stairs": "Basalt Tile Stairs",
+  "block.architects_palette.basalt_tile_slab": "Basalt Tile Slab",
+  "block.architects_palette.chiseled_basalt_tiles": "Chiseled Basalt Tiles",
+  "block.architects_palette.cracked_basalt_tiles": "Cracked Basalt Tiles"
 }
