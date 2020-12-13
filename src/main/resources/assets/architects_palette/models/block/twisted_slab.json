@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "architects_palette:block/twisted_planks",
+    "top": "architects_palette:block/twisted_planks",
+    "side": "architects_palette:block/twisted_planks"
+  }
+}

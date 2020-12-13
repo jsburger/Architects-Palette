@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":    { "model": "architects_palette:block/twisted_wood" },
+        "axis=z":    { "model": "architects_palette:block/twisted_wood", "x": 90 },
+        "axis=x":    { "model": "architects_palette:block/twisted_wood", "x": 90, "y": 90 }
+    }
+}

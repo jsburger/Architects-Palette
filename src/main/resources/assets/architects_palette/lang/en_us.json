@@ -187,5 +187,22 @@
 
   "block.architects_palette.choral_end_stone_bricks": "Choral End Stone Bricks",
   "block.architects_palette.cracked_end_stone_bricks": "Cracked End Stone Bricks",
-  "block.architects_palette.chiseled_end_stone_bricks": "Chiseled End Stone Bricks"
+  "block.architects_palette.chiseled_end_stone_bricks": "Chiseled End Stone Bricks",
+
+  "block.architects_palette.twisted_log": "Twisted Log",
+  "block.architects_palette.stripped_twisted_log": "Stripped Twisted Log",
+  "block.architects_palette.twisted_wood": "Twisted Wood",
+  "block.architects_palette.stripped_twisted_wood": "Stripped Twisted Wood",
+  "block.architects_palette.twisted_planks": "Twisted Planks",
+  "block.architects_palette.twisted_fence": "Twisted Fence",
+  "block.architects_palette.twisted_fence_gate": "Twisted Fence Gate",
+  "block.architects_palette.twisted_door": "Twisted Door",
+  "block.architects_palette.twisted_button": "Twisted Button",
+  "block.architects_palette.twisted_pressure_plate": "Twisted Pressure Plate",
+  "block.architects_palette.twisted_trapdoor": "Twisted Trapdoor",
+  "block.architects_palette.twisted_slab": "Twisted Slab",
+  "block.architects_palette.twisted_stairs": "Twisted Stairs",
+  "block.architects_palette.twisted_leaves": "Twisted Leaves",
+  "block.architects_palette.twisted_sapling": "Twisted Sapling",
+  "block.architects_palette.potted_twisted_sapling": "Potted Twisted Sapling"
 }

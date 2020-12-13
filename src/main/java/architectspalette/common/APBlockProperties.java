@@ -29,12 +29,25 @@ public class APBlockProperties {
 	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE);
 	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE);
 
+	// This makes a new property each time so that setting the door to not solid doesn't interfere.
+	// That might not be a thing but I don't care to come up with a way of checking.
+	public static AbstractBlock.Properties TwistedWood() {
+		return AbstractBlock.Properties.create(Material.WOOD, MaterialColor.PURPLE).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD);
+	}
+	public static AbstractBlock.Properties TwistedWood(boolean redstoneComponent) {
+		AbstractBlock.Properties p = TwistedWood();
+		if (redstoneComponent) {
+			return p.doesNotBlockMovement().hardnessAndResistance(0.5f);
+		}
+		return p;
+	}
+
 	private static boolean setEmmisiveRendering(BlockState state, IBlockReader reader, BlockPos pos) {
-		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 0;
+		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 4;
 	}
 	
 	private static boolean needsPostProcessing(BlockState state, IBlockReader reader, BlockPos pos) {
 		int light = state.get(ChiseledAbyssalineBlock.LIGHT) / 2;
-		return light < 6;
+		return light < 4;
 	}
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "block/button_inventory",
+  "textures": {
+    "texture": "architects_palette:block/twisted_planks"
+  }
+}

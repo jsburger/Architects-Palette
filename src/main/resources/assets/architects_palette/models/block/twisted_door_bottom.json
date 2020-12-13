@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom",
+  "textures": {
+    "bottom": "architects_palette:block/twisted_door_bottom",
+    "top": "architects_palette:block/twisted_door_top"
+  }
+}
