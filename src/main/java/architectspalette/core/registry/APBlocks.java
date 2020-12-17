@@ -176,6 +176,9 @@ public class APBlocks {
     public static final RegistryObject<Block>  CRACKED_BASALT_TILES = createBlock("cracked_basalt_tiles",  () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
     public static final RegistryObject<Block> CHISELED_BASALT_TILES = createBlock("chiseled_basalt_tiles", () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
 
+    public static final RegistryObject<Block> SUNSTONE  = createBlock("sunstone",  () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::sunstoneLight));
+    public static final RegistryObject<Block> MOONSTONE = createBlock("moonstone", () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::moonstoneLight));
+
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
         Block pot = new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT.delegate.get(), plant, Block.Properties.from(Blocks.POTTED_AZURE_BLUET));

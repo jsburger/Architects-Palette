@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "architects_palette:block/sunstone_bright",
+    "particle": "architects_palette:block/sunstone_bright"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "light=0": { "model": "architects_palette:block/moonstone" },
+    "light=1": { "model": "architects_palette:block/moonstone_dim" },
+    "light=2": { "model": "architects_palette:block/moonstone_bright" }
+  }
+}
