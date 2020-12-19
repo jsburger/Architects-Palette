@@ -42,7 +42,7 @@ public class SunstoneBlock extends Block {
     }
 
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        worldIn.getPendingBlockTicks().scheduleTick(pos, this, 100);
+        worldIn.getPendingBlockTicks().scheduleTick(pos, this, 100 + rand.nextInt(5));
         Integer lightstate = this.lightSupplier.apply(worldIn);
         if (!lightstate.equals(state.get(LIGHT))) {
             worldIn.setBlockState(pos, state.with(LIGHT, lightstate));
