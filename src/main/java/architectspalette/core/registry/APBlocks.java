@@ -2,12 +2,12 @@ package architectspalette.core.registry;
 
 import architectspalette.common.APBlockProperties;
 import architectspalette.common.blocks.*;
+import architectspalette.common.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.trees.OakTree;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -153,7 +153,7 @@ public class APBlocks {
     public static final StoneBlockSet WARPSTONE = new StoneBlockSet(createBlock("warpstone", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE))));
 
     // Twisted Wood
-     // Todo: Bookshelf, sign(?), boat(?), leaves, tree gen
+     // Todo: Bookshelf, sign(?), boat(?), tree gen
     public static final StoneBlockSet TWISTED_PLANKS = new StoneBlockSet(createBlock("twisted_planks", () -> new Block(APBlockProperties.TwistedWood())), false).addSlabs().addStairs();
 
     public static final RegistryObject<Block>           TWISTED_LOG = createBlock("twisted_log",          () -> new RotatedPillarBlock(APBlockProperties.TwistedWood()));
@@ -168,7 +168,7 @@ public class APBlocks {
     public static final RegistryObject<Block>        TWISTED_BUTTON = createBlock("twisted_button",       () -> new    WoodButtonBlock(APBlockProperties.TwistedWood(true)), ItemGroup.REDSTONE);
     public static final RegistryObject<Block> TWISTED_PRESSURE_PLATE = createBlock("twisted_pressure_plate",
             () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, APBlockProperties.TwistedWood(true)), ItemGroup.REDSTONE);
-    public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new OakTree(), AbstractBlock.Properties.from(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new TwistedTree(), AbstractBlock.Properties.from(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> POTTED_TWISTED_SAPLING = createPottedPlant(TWISTED_SAPLING);
 
     // Basalt Tiles
@@ -176,6 +176,7 @@ public class APBlocks {
     public static final RegistryObject<Block>  CRACKED_BASALT_TILES = createBlock("cracked_basalt_tiles",  () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
     public static final RegistryObject<Block> CHISELED_BASALT_TILES = createBlock("chiseled_basalt_tiles", () -> new Block(AbstractBlock.Properties.from(Blocks.BASALT)));
 
+    // Celestial Stones
     public static final RegistryObject<Block> SUNSTONE  = createBlock("sunstone",  () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::sunstoneLight));
     public static final RegistryObject<Block> MOONSTONE = createBlock("moonstone", () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::moonstoneLight));
 
