@@ -21,12 +21,12 @@
     "subtitle": "subtitles.architects_palette.warping.item_warps",
     "sounds" : [
       {
-        "name": "minecraft:entity/endermen/portal",
+        "name": "mob/endermen/portal",
         "pitch": 1.2,
         "volume": 0.1
       },
       {
-        "name": "minecraft:entity/endermen/portal2",
+        "name": "mob/endermen/portal2",
         "pitch": 1.2,
         "volume": 0.1
       }

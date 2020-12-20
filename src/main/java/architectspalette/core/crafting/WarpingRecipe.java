@@ -41,14 +41,16 @@ public class WarpingRecipe implements IRecipe<IInventory> {
 
     @Override
     public boolean matches(IInventory inv, World worldIn) {
-        // According to this tutorial, I don't really need this, since my recipe is also in world.
-        // Idk man. Would help if I knew what this was supposed to mean.
         return this.input.test(inv.getStackInSlot(0));
     }
 
     @Override
+    public boolean isDynamic() {
+        return true;
+    }
+
+    @Override
     public ItemStack getCraftingResult(IInventory inv) {
-        // The tutorial says I also ignore this, spooky.
         return this.getRecipeOutput().copy();
     }
 
@@ -80,7 +82,6 @@ public class WarpingRecipe implements IRecipe<IInventory> {
     private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<WarpingRecipe> {
 
         Serializer() {
-
             this.setRegistryName(new ResourceLocation(ArchitectsPalette.MOD_ID, "warping"));
         }
 
@@ -119,7 +120,7 @@ public class WarpingRecipe implements IRecipe<IInventory> {
 
         @Override
         public String toString() {
-            return ArchitectsPalette.MOD_ID + ":warping";
+            return ArchitectsPalette.MOD_ID.concat(":warping");
         }
     }
 }
