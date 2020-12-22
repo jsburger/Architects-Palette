@@ -1,0 +1,8 @@
+{
+	"parent": "architects_palette:block/pipe",
+	"textures": {
+		"edge": "architects_palette:block/pipe_edge",
+		"inner": "architects_palette:block/pipe_inner",
+		"face": "architects_palette:block/pipe_bottom"
+	}
+}

@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "axis=y,part=middle":    { "model": "architects_palette:block/pipe" },
+        "axis=z,part=middle":    { "model": "architects_palette:block/pipe", "x": 90 },
+        "axis=x,part=middle":    { "model": "architects_palette:block/pipe", "x": 90, "y": 90 },
+
+        "axis=y,part=top":    { "model": "architects_palette:block/pipe_top" },
+        "axis=z,part=top":    { "model": "architects_palette:block/pipe_top", "x": 90 },
+        "axis=x,part=top":    { "model": "architects_palette:block/pipe_top", "x": 90, "y": 90 },
+
+        "axis=y,part=bottom":    { "model": "architects_palette:block/pipe_bottom" },
+        "axis=z,part=bottom":    { "model": "architects_palette:block/pipe_bottom", "x": 90 },
+        "axis=x,part=bottom":    { "model": "architects_palette:block/pipe_bottom", "x": 90, "y": 90 }
+    }
+}

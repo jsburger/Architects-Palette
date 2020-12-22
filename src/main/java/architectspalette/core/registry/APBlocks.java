@@ -42,7 +42,7 @@ public class APBlocks {
     public static final RegistryObject<Block> ENTRAILS = createBlock("entrails", () -> new Block(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)));
-    //public static final RegistryObject<Block> PIPE = createBlock(...
+    public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING.notSolid()));
      //Spools
     public static final RegistryObject<Block> SPOOL = createBlock("spool", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.WHITE_WOOL)));
 
