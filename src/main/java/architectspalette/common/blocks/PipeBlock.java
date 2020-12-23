@@ -1,9 +1,6 @@
 package architectspalette.common.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
@@ -14,12 +11,20 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.IBooleanFunction;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
 public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
 
     public static final EnumProperty<PipeBlockPart> PART = EnumProperty.create("part", PipeBlockPart.class);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    protected static final VoxelShape Y_AXIS_SHAPE = cutout(Block.makeCuboidShape(2, 0, 2, 14, 16, 14));
+    protected static final VoxelShape Z_AXIS_SHAPE = cutout(Block.makeCuboidShape(2, 2, 0, 14, 14, 16));
+    protected static final VoxelShape X_AXIS_SHAPE = cutout(Block.makeCuboidShape(0, 2, 2, 16, 14, 14));
 
     public PipeBlock(Properties properties) {
         super(properties);
@@ -29,6 +34,23 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AXIS, PART, WATERLOGGED);
+    }
+
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        switch(state.get(AXIS)) {
+            case X:
+            default:
+                return X_AXIS_SHAPE;
+            case Z:
+                return Z_AXIS_SHAPE;
+            case Y:
+                return Y_AXIS_SHAPE;
+        }
+    }
+
+    @Override
+    public VoxelShape getRaytraceShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return VoxelShapes.fullCube();
     }
 
     @Override
@@ -55,6 +77,9 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
 
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
 
     public PipeBlockPart checkNearbyPipes(BlockState state, IWorld world, BlockPos pos) {
         Direction.Axis facing = state.get(AXIS);
@@ -80,6 +105,15 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
         return checking.getBlock() instanceof PipeBlock && checking.get(AXIS) == base.get(AXIS);
     }
 
+    // referenced (copied) from Farmer's Delight by _vectorwing
+    // cuts out voxel regions from a cube
+    private static VoxelShape cutout(VoxelShape... cutouts){
+        VoxelShape shape = VoxelShapes.fullCube();
+        for (VoxelShape cutout : cutouts) {
+            shape = VoxelShapes.combine(shape, cutout, IBooleanFunction.ONLY_FIRST);
+        }
+        return shape.simplify();
+    }
 
     public enum PipeBlockPart implements IStringSerializable {
         TOP,

@@ -18,6 +18,8 @@ public class APTrades {
         add_trade(BUTCHER, 2, new BasicTrade(1, new ItemStack(APBlocks.ENTRAILS.get(), 5), 5, 4, 0.0f));
         // Plating
         add_trade(ARMORER, 2, new BasicTrade(3, new ItemStack(APBlocks.PLATING_BLOCK.get(), 12), 6, 4, 0.1F));
+        // Pipes
+        add_trade(TOOLSMITH, 2, new BasicTrade(4, new ItemStack(APBlocks.PIPE.get(), 12), 6, 4, 0.1F));
         // Spools
         add_trade(SHEPHERD, 2, new BasicTrade(1, new ItemStack(APBlocks.SPOOL.get(), 2), 5, 4, 0.0F));
 
