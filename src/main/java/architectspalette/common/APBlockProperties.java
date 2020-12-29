@@ -29,6 +29,13 @@ public class APBlockProperties {
 	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE);
 	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE);
 
+	public static final AbstractBlock.Properties MOLTEN_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK)
+			.setRequiresTool()
+			.hardnessAndResistance(2.0F, 6.0F)
+			.setLightLevel((state) -> {return 3;})
+			.setNeedsPostProcessing((a, b, c) -> true)
+			.setEmmisiveRendering((a, b, c) -> true);
+
 	// This makes a new property each time so that setting the door to not solid doesn't interfere.
 	// That might not be a thing but I don't care to come up with a way of checking.
 	public static AbstractBlock.Properties TwistedWood() {

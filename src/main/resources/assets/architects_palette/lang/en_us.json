@@ -62,6 +62,7 @@
   "block.architects_palette.overgrown_algal_brick_wall": "Overgrown Algal Brick Wall",
   "block.architects_palette.overgrown_algal_brick_slab": "Overgrown Algal Brick Slab",
   "block.architects_palette.overgrown_algal_brick_stairs": "Overgrown Algal Brick Stairs",
+  "block.architects_palette.algal_lamp": "Algal Lantern",
   "item.architects_palette.algal_brick": "Algal Brick",
   "item.architects_palette.algal_blend": "Algal Blend",
 
@@ -214,5 +215,8 @@
   "block.architects_palette.cracked_basalt_tiles": "Cracked Basalt Tiles",
 
   "block.architects_palette.sunstone": "Sunstone",
-  "block.architects_palette.moonstone": "Moonstone"
+  "block.architects_palette.moonstone": "Moonstone",
+
+  "block.architects_palette.molten_nether_bricks": "Molten Nether Bricks",
+  "block.architects_palette.coarse_snow": "Coarse Snow"
 }

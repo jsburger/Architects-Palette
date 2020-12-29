@@ -105,7 +105,7 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
         return checking.getBlock() instanceof PipeBlock && checking.get(AXIS) == base.get(AXIS);
     }
 
-    // referenced (copied) from Farmer's Delight by _vectorwing
+    // referenced (copied) from Farmer's Delight by .vectorwing
     // cuts out voxel regions from a cube
     private static VoxelShape cutout(VoxelShape... cutouts){
         VoxelShape shape = VoxelShapes.fullCube();

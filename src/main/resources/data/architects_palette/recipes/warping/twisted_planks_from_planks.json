@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "tag": "minecraft:planks"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:twisted_planks"
+    },
+    "dimension": "minecraft:the_nether"
+}

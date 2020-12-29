@@ -69,6 +69,7 @@ public class APBlocks {
     public static final RegistryObject<Block> CRACKED_ALGAL_BRICKS  = createBlock("cracked_algal_bricks",  () -> new Block(APBlockProperties.ALGAL_BRICK));
     public static final RegistryObject<Block> CHISELED_ALGAL_BRICKS = createBlock("chiseled_algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK));
     public static final StoneBlockSet OVERGROWN_ALGAL_BRICK = new StoneBlockSet(createBlock("overgrown_algal_bricks", () -> new Block(APBlockProperties.ALGAL_BRICK)));
+    public static final RegistryObject<Block> ALGAL_LAMP = createBlock("algal_lamp", () -> new Block(AbstractBlock.Properties.from(Blocks.SEA_LANTERN)));
 
     // Ore Bricks
     public static final List<StoneBlockSet> ORE_BRICKS = addOreBricks();
@@ -179,6 +180,11 @@ public class APBlocks {
     // Celestial Stones
     public static final RegistryObject<Block> SUNSTONE  = createBlock("sunstone",  () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::sunstoneLight));
     public static final RegistryObject<Block> MOONSTONE = createBlock("moonstone", () -> new SunstoneBlock(AbstractBlock.Properties.from(Blocks.BASALT).notSolid(), SunstoneBlock::moonstoneLight));
+
+    // Odd block variants
+    public static final RegistryObject<Block> MOLTEN_NETHER_BRICKS = createBlock("molten_nether_bricks", () -> new Block(APBlockProperties.MOLTEN_BRICK));
+    public static final RegistryObject<Block> COARSE_SNOW = createBlock("coarse_snow", () -> new Block(AbstractBlock.Properties.from(Blocks.SNOW_BLOCK)));
+
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

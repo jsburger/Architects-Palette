@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xdx",
+        "ddd",
+        "xdx"
+    ],
+    "key": {
+        "x": {
+            "item": "architects_palette:algal_brick"
+        },
+        "d": {
+            "item": "minecraft:glowstone_dust"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:algal_lamp"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:snow_block"
+        },
+        {
+            "item": "minecraft:snow_block"
+        },
+        {
+            "item": "minecraft:gravel"
+        },
+        {
+            "item": "minecraft:gravel"
+        }
+    ],
+    "result": {
+        "count": 4,
+        "item": "architects_palette:coarse_snow"
+    }
+}
