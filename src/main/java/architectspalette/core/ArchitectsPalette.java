@@ -3,6 +3,7 @@ package architectspalette.core;
 import architectspalette.core.crafting.WarpingRecipe;
 import architectspalette.core.integration.APBlockData;
 import architectspalette.core.integration.APTrades;
+import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.APSounds;
@@ -10,6 +11,7 @@ import architectspalette.core.registry.APTileEntities;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +41,7 @@ public class ArchitectsPalette {
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
         modEventBus.addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
+        modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
 
     }
 
@@ -52,6 +55,10 @@ public class ArchitectsPalette {
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(WarpingRecipe.TYPE.toString()), WarpingRecipe.TYPE);
         //Register the serializer
         event.getRegistry().register(WarpingRecipe.SERIALIZER);
+    }
+
+    void registerLootSerializers(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+        event.getRegistry().register(WitheredBoneLootModifier.SERIALIZER);
     }
 
     void setupClient(final FMLClientSetupEvent event) {
