@@ -77,7 +77,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
+    minecraft 'net.minecraftforge:forge:1.16.3-34.1.42'
     implementation fg.deobf("curse.maven:jei:3104018")
     annotationProcessor 'org.spongepowered:mixin:0.8:processor'
 }
