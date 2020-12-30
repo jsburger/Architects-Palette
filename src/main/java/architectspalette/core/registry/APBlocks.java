@@ -184,6 +184,9 @@ public class APBlocks {
     public static final RegistryObject<Block> MOLTEN_NETHER_BRICKS = createBlock("molten_nether_bricks", () -> new Block(APBlockProperties.MOLTEN_BRICK));
     public static final RegistryObject<Block> COARSE_SNOW = createBlock("coarse_snow", () -> new Block(AbstractBlock.Properties.from(Blocks.SNOW_BLOCK)));
 
+    // Heavy End Stone Bricks
+    public static final RegistryObject<Block> HEAVY_END_STONE_BRICKS = createBlock("heavy_end_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));
+    public static final RegistryObject<Block> HEAVY_CRACKED_END_STONE_BRICKS = createBlock("heavy_cracked_end_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

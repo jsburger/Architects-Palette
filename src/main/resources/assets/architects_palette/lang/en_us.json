@@ -218,5 +218,8 @@
   "block.architects_palette.moonstone": "Moonstone",
 
   "block.architects_palette.molten_nether_bricks": "Molten Nether Bricks",
-  "block.architects_palette.coarse_snow": "Coarse Snow"
+  "block.architects_palette.coarse_snow": "Coarse Snow",
+
+  "block.architects_palette.heavy_end_stone_bricks": "Heavy End Stone Bricks",
+  "block.architects_palette.heavy_cracked_end_stone_bricks": "Heavy Cracked End Stone Bricks"
 }

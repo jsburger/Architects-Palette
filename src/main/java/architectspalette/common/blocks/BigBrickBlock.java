@@ -23,9 +23,15 @@ import javax.annotation.Nullable;
 public class BigBrickBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     private static final BooleanProperty PAIRED = BooleanProperty.create("paired");
+    public final BrickType TYPE;
 
     public BigBrickBlock(AbstractBlock.Properties properties) {
+        this(properties, BrickType.STONE);
+    }
+
+    public BigBrickBlock(AbstractBlock.Properties properties, BrickType type) {
         super(properties);
+        this.TYPE = type;
         this.setDefaultState(this.getStateContainer().getBaseState().with(FACING, Direction.DOWN).with(PAIRED, false));
     }
 
@@ -36,7 +42,7 @@ public class BigBrickBlock extends Block {
         BlockState targetState = context.getWorld().getBlockState(targetPos);
         boolean pairing = false;
 
-        if (context.getPlayer() != null && !context.getPlayer().isSneaking() && targetState.getBlock() instanceof BigBrickBlock && !targetState.get(PAIRED)) {
+        if (context.getPlayer() != null && !context.getPlayer().isSneaking() && BrickMatches(this, targetState) && !targetState.get(PAIRED)) {
             pairing = true;
         }
 
@@ -51,7 +57,7 @@ public class BigBrickBlock extends Block {
             }
             BlockPos blockpos = pos.offset(state.get(FACING));
             BlockState blockstate = worldIn.getBlockState(blockpos);
-            if (blockstate.getBlock() instanceof BigBrickBlock && !blockstate.get(PAIRED)) {
+            if (BrickMatches(this, blockstate) && !blockstate.get(PAIRED)) {
                 worldIn.setBlockState(blockpos, blockstate.with(FACING, state.get(FACING).getOpposite()).with(PAIRED, true), 3);
                 worldIn.func_230547_a_(pos, Blocks.AIR);
                 state.updateNeighbours(worldIn, pos, 3);
@@ -59,9 +65,17 @@ public class BigBrickBlock extends Block {
         }
     }
 
+    private boolean BrickMatches(BigBrickBlock thisBlock, BlockState suspect) {
+        if (suspect.getBlock() instanceof BigBrickBlock) {
+            BigBrickBlock b = (BigBrickBlock)suspect.getBlock();
+            return b.TYPE == thisBlock.TYPE;
+        }
+        return false;
+    }
+
     @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (facing.equals(stateIn.get(FACING)) && stateIn.get(PAIRED) && !(worldIn.getBlockState(facingPos).getBlock() instanceof BigBrickBlock)) {
+        if (facing.equals(stateIn.get(FACING)) && stateIn.get(PAIRED) && !(BrickMatches(this, worldIn.getBlockState(facingPos)))) {
             return stateIn.with(PAIRED, false);
         }
         return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
@@ -70,6 +84,11 @@ public class BigBrickBlock extends Block {
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING, PAIRED);
+    }
+
+    public enum BrickType {
+        STONE,
+        END_STONE
     }
 }
 

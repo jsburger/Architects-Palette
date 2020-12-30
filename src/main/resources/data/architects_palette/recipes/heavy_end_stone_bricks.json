@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        },
+        {
+            "item": "minecraft:end_stone"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "item": "architects_palette:heavy_end_stone_bricks"
+    }
+}
