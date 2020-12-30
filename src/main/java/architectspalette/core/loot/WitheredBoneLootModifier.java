@@ -2,9 +2,11 @@ package architectspalette.core.loot;
 
 import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonObject;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameters;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
@@ -30,16 +32,19 @@ public class WitheredBoneLootModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        int amountOfBones = 0;
-        for (ItemStack i : generatedLoot) {
-            //check if item is the item to replace, take note of how many there are
-            if (i.getItem() == replacedItem) {
-                amountOfBones += i.getCount();
+        Entity t = context.get(LootParameters.THIS_ENTITY);
+        if (t == null) return generatedLoot;
+        if (t.getType().delegate.name().equals(new ResourceLocation("minecraft:wither_skeleton"))) {
+            int amountOfBones = 0;
+            for (ItemStack i : generatedLoot) {
+                //check if item is the item to replace, take note of how many there are
+                if (i.getItem() == replacedItem) {
+                    amountOfBones += i.getCount();
+                }
             }
+            generatedLoot.removeIf(i -> i.getItem() == replacedItem);
+            generatedLoot.add(new ItemStack(boneItem, amountOfBones));
         }
-        generatedLoot.removeIf(i -> i.getItem() == replacedItem);
-        generatedLoot.add(new ItemStack(boneItem, amountOfBones));
-
         return generatedLoot;
     }
 
