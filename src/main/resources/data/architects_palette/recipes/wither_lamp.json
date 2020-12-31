@@ -7,7 +7,7 @@
     ],
     "key": {
         "#": {
-            "item": "architects_palette:withered_bone"
+            "tag": "architects_palette:withered_bones"
         },
         "d": {
             "item": "minecraft:glowstone_dust"
