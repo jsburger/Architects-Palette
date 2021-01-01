@@ -1,0 +1,7 @@
+{
+	"parent": "architects_palette:block/redstone_cage_lantern",
+	"textures": {
+		"0": "architects_palette:block/algal_cage_lantern_lit",
+		"particle": "architects_palette:block/algal_cage_lantern"
+	}
+}

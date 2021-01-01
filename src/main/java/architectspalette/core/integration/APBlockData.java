@@ -24,5 +24,9 @@ public class APBlockData {
         RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_TRAPDOOR.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(APBlocks.POTTED_TWISTED_SAPLING.get(), RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(APBlocks.REDSTONE_CAGE_LANTERN.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(APBlocks.GLOWSTONE_CAGE_LANTERN.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(APBlocks.ALGAL_CAGE_LANTERN.get(), RenderType.getCutout());
     }
 }

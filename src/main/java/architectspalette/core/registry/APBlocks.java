@@ -42,7 +42,7 @@ public class APBlocks {
     public static final RegistryObject<Block> ENTRAILS = createBlock("entrails", () -> new Block(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)));
-    public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING));
+    public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING.notSolid()));
      //Spools
     public static final RegistryObject<Block> SPOOL = createBlock("spool", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.WHITE_WOOL)));
 
@@ -187,6 +187,10 @@ public class APBlocks {
     // Heavy End Stone Bricks
     public static final RegistryObject<Block> HEAVY_END_STONE_BRICKS = createBlock("heavy_end_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));
     public static final RegistryObject<Block> HEAVY_CRACKED_END_STONE_BRICKS = createBlock("heavy_cracked_end_stone_bricks", () -> new BigBrickBlock(AbstractBlock.Properties.from(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));
+
+    public static final RegistryObject<Block> REDSTONE_CAGE_LANTERN  = createBlock("redstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> GLOWSTONE_CAGE_LANTERN = createBlock("glowstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> ALGAL_CAGE_LANTERN     = createBlock("algal_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), ItemGroup.REDSTONE);
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

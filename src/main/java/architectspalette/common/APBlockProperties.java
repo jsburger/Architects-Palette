@@ -1,5 +1,6 @@
 package architectspalette.common;
 
+import architectspalette.common.blocks.CageLanternBlock;
 import architectspalette.common.blocks.ChiseledAbyssalineBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -31,9 +32,17 @@ public class APBlockProperties {
 	public static final AbstractBlock.Properties MOLTEN_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK)
 			.setRequiresTool()
 			.hardnessAndResistance(2.0F, 6.0F)
-			.setLightLevel((state) -> {return 3;})
+			.setLightLevel((state) -> 3)
 			.setNeedsPostProcessing((a, b, c) -> true)
 			.setEmmisiveRendering((a, b, c) -> true);
+
+	public static final AbstractBlock.Properties CAGE_LANTERN = AbstractBlock.Properties.create(Material.IRON)
+			.setRequiresTool()
+			.setEmmisiveRendering((state, reader, pos) -> state.get(CageLanternBlock.LIT))
+			.setNeedsPostProcessing((state, reader, pos) -> state.get(CageLanternBlock.LIT))
+			.hardnessAndResistance(3.5f)
+			.sound(SoundType.LANTERN)
+			.notSolid();
 
 	// This makes a new property each time so that setting the door to not solid doesn't interfere.
 	// That might not be a thing but I don't care to come up with a way of checking.
