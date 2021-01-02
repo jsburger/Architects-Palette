@@ -11,9 +11,7 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -76,8 +74,8 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
         boolean flag = fluidstate.getFluid() == Fluids.WATER;
-
-        return this.getDefaultState().with(FACING, context.getFace().getOpposite()).with(WATERLOGGED, flag);
+        boolean lit = getLitState(this.getDefaultState(), context.getWorld(), context.getPos());
+        return this.getDefaultState().with(FACING, context.getFace().getOpposite()).with(WATERLOGGED, flag).with(LIT, lit);
     }
 
     public BlockRenderType getRenderType(BlockState state) {
@@ -92,6 +90,10 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         BlockState newState = state.with(INVERTED, !state.get(INVERTED));
         worldIn.setBlockState(pos, newState.with(LIT, getLitState(newState, worldIn, pos)), 2);
+        //SoundEvent click = state.get(INVERTED) ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
+        SoundEvent click = SoundEvents.BLOCK_LEVER_CLICK;
+        float pitch = state.get(INVERTED) ? 1.4F : 1.6F;
+        worldIn.playSound(player, pos, click, SoundCategory.BLOCKS, 0.7F, pitch);
         return ActionResultType.func_233537_a_(worldIn.isRemote);
     }
 
