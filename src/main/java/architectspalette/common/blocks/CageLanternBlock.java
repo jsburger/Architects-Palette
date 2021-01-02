@@ -3,6 +3,7 @@ package architectspalette.common.blocks;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.*;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
@@ -10,8 +11,11 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -28,6 +32,7 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = DirectionalBlock.FACING;
+    public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
 
     private static final Map<Direction, VoxelShape> SHAPES = new ImmutableMap.Builder<Direction, VoxelShape>()
             .put(Direction.DOWN, Block.makeCuboidShape(5, 0, 5, 11, 6, 11))
@@ -40,7 +45,7 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
 
     public CageLanternBlock(Properties properties, int poweredLightLevel) {
         super(properties.setLightLevel(getLightValueLit(poweredLightLevel)));
-        this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(LIT, false).with(WATERLOGGED, false));
+        this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(LIT, true).with(WATERLOGGED, false).with(INVERTED, true));
     }
 
     private static ToIntFunction<BlockState> getLightValueLit(int lightValue) {
@@ -49,7 +54,7 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(LIT, WATERLOGGED, FACING);
+        builder.add(LIT, WATERLOGGED, FACING, INVERTED);
     }
 
     @Override
@@ -84,11 +89,23 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     }
 
     @Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        BlockState newState = state.with(INVERTED, !state.get(INVERTED));
+        worldIn.setBlockState(pos, newState.with(LIT, getLitState(newState, worldIn, pos)), 2);
+        return ActionResultType.func_233537_a_(worldIn.isRemote);
+    }
+
+    private boolean getLitState(BlockState state, World world, BlockPos pos) {
+        return state.get(INVERTED) ^ world.isBlockPowered(pos);
+    }
+
+    @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (!worldIn.isRemote) {
-            boolean powered = state.get(LIT);
-            if (powered != worldIn.isBlockPowered(pos)) {
-                if (powered) {
+            boolean lit = state.get(LIT);
+            boolean shouldBeLit = getLitState(state, worldIn, pos);
+            if (lit != shouldBeLit) {
+                if (lit) {
                     worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
                     worldIn.getPendingBlockTicks().scheduleTick(pos, this, 2);
                 } else {
@@ -104,8 +121,9 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     }
 
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        if (state.get(LIT) && !worldIn.isBlockPowered(pos)) {
-            worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
+        boolean shouldBeLit = getLitState(state, worldIn, pos);
+        if (shouldBeLit != state.get(LIT)) {
+            worldIn.setBlockState(pos, state.with(LIT, shouldBeLit), 2);
         }
     }
 
