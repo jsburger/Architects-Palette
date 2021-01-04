@@ -136,6 +136,9 @@
   "block.architects_palette.sunmetal_pillar": "Sunmetal Pillar",
   "block.architects_palette.sunmetal_slab": "Sunmetal Slab",
   "block.architects_palette.sunmetal_stairs": "Sunmetal Stairs",
+  "block.architects_palette.sunmetal_bars": "Sunmetal Bars",
+  "item.architects_palette.sunmetal_brick": "Sunmetal Brick",
+  "item.architects_palette.sunmetal_blend": "Sunmetal Blend",
 
   "block.architects_palette.osseous_bricks": "Osseous Bricks",
   "block.architects_palette.osseous_pillar": "Osseous Pillar",

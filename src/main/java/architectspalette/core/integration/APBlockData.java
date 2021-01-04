@@ -19,6 +19,7 @@ public class APBlockData {
 
     public static void setupRenderLayers() {
         RenderTypeLookup.setRenderLayer(APBlocks.ENTWINE_BARS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(APBlocks.SUNMETAL_BARS.get(), RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_DOOR.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_TRAPDOOR.get(), RenderType.getCutout());
