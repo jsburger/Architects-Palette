@@ -31,5 +31,25 @@
         "volume": 0.1
       }
     ]
+  },
+  "block.cage_lantern.toggle_on": {
+    "subtitle": "subtitles.architects_palette.cage_lantern.toggle_on",
+    "sounds": [
+      {
+        "name": "random/click",
+        "pitch": 1.6,
+        "volume": 0.7
+      }
+    ]
+  },
+  "block.cage_lantern.toggle_off": {
+    "subtitle": "subtitles.architects_palette.cage_lantern.toggle_off",
+    "sounds": [
+      {
+        "name": "random/click",
+        "pitch": 1.4,
+        "volume": 0.7
+      }
+    ]
   }
 }

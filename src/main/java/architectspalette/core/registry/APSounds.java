@@ -21,6 +21,8 @@ public class APSounds {
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_BREAK = register("block.entwine.break");
 
     public static final RegistryObject<SoundEvent> ITEM_WARPS = register("block.warping.item_warps");
+    public static final RegistryObject<SoundEvent> CAGE_LANTERN_TOGGLE_ON = register("block.cage_lantern.toggle_on");
+    public static final RegistryObject<SoundEvent> CAGE_LANTERN_TOGGLE_OFF = register("block.cage_lantern.toggle_off");
 
     public static class APSoundTypes {
         public static final SoundType ENTWINE = new LazySoundType(

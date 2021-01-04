@@ -1,6 +1,8 @@
 {
 
   "subtitles.architects_palette.warping.item_warps" : "Item Warps",
+  "subtitles.architects_palette.cage_lantern.toggle_on": "Cage Lantern Toggled",
+  "subtitles.architects_palette.cage_lantern.toggle_off": "Cage Lantern Toggled",
 
   "block.architects_palette.abyssaline": "Abyssaline",
   "block.architects_palette.abyssaline_bricks": "Abyssaline Bricks",

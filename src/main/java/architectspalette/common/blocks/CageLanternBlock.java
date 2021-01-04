@@ -1,5 +1,6 @@
 package architectspalette.common.blocks;
 
+import architectspalette.core.registry.APSounds;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.*;
 import net.minecraft.block.material.PushReaction;
@@ -90,10 +91,8 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         BlockState newState = state.with(INVERTED, !state.get(INVERTED));
         worldIn.setBlockState(pos, newState.with(LIT, getLitState(newState, worldIn, pos)), 2);
-        //SoundEvent click = state.get(INVERTED) ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
-        SoundEvent click = SoundEvents.BLOCK_LEVER_CLICK;
-        float pitch = state.get(INVERTED) ? 1.4F : 1.6F;
-        worldIn.playSound(player, pos, click, SoundCategory.BLOCKS, 0.7F, pitch);
+        SoundEvent click = state.get(INVERTED) ? APSounds.CAGE_LANTERN_TOGGLE_OFF.get() : APSounds.CAGE_LANTERN_TOGGLE_ON.get();
+        worldIn.playSound(player, pos, click, SoundCategory.BLOCKS, 1, 1);
         return ActionResultType.func_233537_a_(worldIn.isRemote);
     }
 
