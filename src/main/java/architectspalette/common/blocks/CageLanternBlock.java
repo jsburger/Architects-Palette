@@ -44,7 +44,7 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
 
     public CageLanternBlock(Properties properties, int poweredLightLevel) {
         super(properties.setLightLevel(getLightValueLit(poweredLightLevel)));
-        this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(LIT, true).with(WATERLOGGED, false).with(INVERTED, true));
+        this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(LIT, true).with(WATERLOGGED, false).with(INVERTED, false));
     }
 
     private static ToIntFunction<BlockState> getLightValueLit(int lightValue) {
