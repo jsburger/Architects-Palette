@@ -44,6 +44,10 @@ public class APBlockProperties {
 			.sound(SoundType.LANTERN)
 			.notSolid();
 
+	public static final AbstractBlock.Properties ACACIA_TOTEM = AbstractBlock.Properties.create(Material.WOOD, MaterialColor.ADOBE)
+			.hardnessAndResistance(2.0F)
+			.sound(SoundType.WOOD);
+
 	// This makes a new property each time so that setting the door to not solid doesn't interfere.
 	// That might not be a thing but I don't care to come up with a way of checking.
 	public static AbstractBlock.Properties TwistedWood() {

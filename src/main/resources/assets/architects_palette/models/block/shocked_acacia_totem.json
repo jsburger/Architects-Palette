@@ -1,0 +1,6 @@
+{
+    "parent": "architects_palette:block/grinning_acacia_totem",
+    "textures": {
+        "front": "architects_palette:block/acacia_totem_face3"
+    }
+}

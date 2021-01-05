@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:stripped_acacia_log"
+        }
+    },
+    "result": {
+        "item": "architects_palette:grinning_acacia_totem",
+        "count": 2
+    }
+}

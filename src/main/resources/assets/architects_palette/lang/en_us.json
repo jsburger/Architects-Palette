@@ -230,5 +230,11 @@
 
   "block.architects_palette.redstone_cage_lantern": "Redstone Cage Lamp",
   "block.architects_palette.glowstone_cage_lantern": "Glowstone Cage Lantern",
-  "block.architects_palette.algal_cage_lantern": "Algal Cage Lantern"
+  "block.architects_palette.algal_cage_lantern": "Algal Cage Lantern",
+
+  "block.architects_palette.grinning_acacia_totem": "Grinning Acacia Totem",
+  "block.architects_palette.placid_acacia_totem": "Placid Acacia Totem",
+  "block.architects_palette.shocked_acacia_totem": "Shocked Acacia Totem",
+  "block.architects_palette.acacia_totem_wing": "Acacia Totem Wing"
+
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "architects_palette:block/acacia_totem_wing"
+  }
+}

@@ -47,6 +47,7 @@ public class ArchitectsPalette {
 
     void setupCommon(final FMLCommonSetupEvent event) {
         APBlockData.registerFlammables();
+        APBlockData.registerStrippables();
         APTrades.registerTrades();
     }
 

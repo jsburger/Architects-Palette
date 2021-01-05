@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "architects_palette:block/shocked_acacia_totem",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "architects_palette:block/shocked_acacia_totem"
+    },
+    "facing=south": {
+      "model": "architects_palette:block/shocked_acacia_totem",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "architects_palette:block/shocked_acacia_totem",
+      "y": 270
+    }
+  }
+}
