@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/jsburger/Architects-Palette/issues"
 [[mods]]
     modId="architects_palette"
     namespace="architects_palette"
-    version="1.0.0"
+    version="1.0.0b"
     displayName="Architect's Palette"
     authors="Snakeblock, THX, Smash Brothers, Orisghost, Mista Jub, Jsburg, with assistance from bageldotjpg and SmellyModder"
     description='''A mod that adds new stylish and unique building blocks'''
