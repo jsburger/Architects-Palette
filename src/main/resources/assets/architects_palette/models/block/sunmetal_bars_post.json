@@ -2,7 +2,7 @@
     "ambientocclusion": false,
     "textures": {
         "particle": "architects_palette:block/sunmetal_bars",
-        "bars": "architects_palette:block/sunmetal_bars"
+        "bars": "architects_palette:block/sunmetal_bars_top"
     },
     "elements": [
         {   "from": [ 8, 0, 7 ],

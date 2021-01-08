@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "sfs",
+        "wfw",
+        "sss"
+    ],
+    "key": {
+        "s": {
+            "tag": "minecraft:wooden_slabs"
+        },
+        "f": {
+            "tag": "minecraft:wooden_fences"
+        },
+        "w": {
+            "item": "minecraft:white_wool"
+        }
+    },
+    "result": {
+        "count": 3,
+        "item": "architects_palette:spool"
+    }
+}
