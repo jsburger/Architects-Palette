@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "type=bottom,charged=false": { "model": "architects_palette:block/abyssaline_tile_slab" },
+        "type=top,charged=false": { "model": "architects_palette:block/abyssaline_tile_slab_top" },
+        "type=double,charged=false": { "model": "architects_palette:block/abyssaline_tiles" },
+        "type=bottom,charged=true": { "model": "architects_palette:block/abyssaline_tile_slab_charged" },
+        "type=top,charged=true": { "model": "architects_palette:block/abyssaline_tile_slab_top_charged" },
+        "type=double,charged=true": { "model": "architects_palette:block/abyssaline_tiles_charged" }
+    }
+}

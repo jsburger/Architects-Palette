@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:abyssaline"
+        },
+        {
+            "item": "architects_palette:abyssaline_bricks"
+        },
+        {
+            "item": "architects_palette:abyssaline_tiles"
+        }
+    ],
+    "result": "architects_palette:abyssaline_tile_slab",
+    "count": 2
+}

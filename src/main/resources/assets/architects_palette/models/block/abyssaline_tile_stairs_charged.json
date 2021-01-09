@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "architects_palette:block/abyssaline_tiles_charged",
+    "top": "architects_palette:block/abyssaline_tiles_charged",
+    "side": "architects_palette:block/abyssaline_tiles_charged"
+  }
+}
