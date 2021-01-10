@@ -1,6 +1,7 @@
 package architectspalette.common.tileentity;
 
-import architectspalette.common.blocks.ChiseledAbyssalineBlock;
+import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
+import architectspalette.common.blocks.abyssaline.NewAbyssalineBlock;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APTileEntities;
 import net.minecraft.block.BlockState;
@@ -22,7 +23,7 @@ public class ChiseledAbyssalineTileEntity extends TileEntity implements ITickabl
 		BlockState state = this.getBlockState();
 		World world = this.getWorld();
 		if(!world.isRemote && state != null && state.getBlock() == APBlocks.CHISELED_ABYSSALINE_BRICKS.get()) {
-			if(state.get(ChiseledAbyssalineBlock.CHARGED)) {
+			if(state.get(NewAbyssalineBlock.CHARGED)) {
 				if(this.pausedTicks > 0) {
 					this.pausedTicks--;
 				} else {

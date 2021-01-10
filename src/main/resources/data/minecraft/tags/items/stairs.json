@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "architects_palette:abyssaline_brick_stairs",
     "architects_palette:limestone_stairs",
     "architects_palette:limestone_brick_stairs",
     "architects_palette:mushy_limestone_brick_stairs",
@@ -25,7 +24,6 @@
     "architects_palette:gilded_sandstone_stairs",
     "architects_palette:plating_stairs",
     "architects_palette:warpstone_stairs",
-    "architects_palette:basalt_tile_stairs",
-    "architects_palette:abyssaline_tile_stairs"
+    "architects_palette:basalt_tile_stairs"
   ]
 }

@@ -1,7 +1,8 @@
 package architectspalette.common;
 
 import architectspalette.common.blocks.CageLanternBlock;
-import architectspalette.common.blocks.ChiseledAbyssalineBlock;
+import architectspalette.common.blocks.abyssaline.AbyssalineHelper;
+import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -9,8 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
 public class APBlockProperties {
-	public static final Block.Properties ABYSSALINE 			= Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F);
-	public static final Block.Properties CHISELED_ABYSSALINE 	= Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F).setEmmisiveRendering(APBlockProperties::setEmmisiveRendering).setNeedsPostProcessing(APBlockProperties::needsPostProcessing);
+	public static final Block.Properties ABYSSALINE = Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F).setEmmisiveRendering(AbyssalineHelper::needsPostProcessing).setNeedsPostProcessing(AbyssalineHelper::needsPostProcessing);
 
 	public static Block.Properties Meat(MaterialColor color) {
 		return Block.Properties.create(Material.GOURD, color).hardnessAndResistance(1.0F).sound(SoundType.CORAL);

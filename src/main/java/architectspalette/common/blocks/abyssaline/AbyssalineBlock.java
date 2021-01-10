@@ -1,4 +1,4 @@
-package architectspalette.common.blocks;
+package architectspalette.common.blocks.abyssaline;
 
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.block.Block;
