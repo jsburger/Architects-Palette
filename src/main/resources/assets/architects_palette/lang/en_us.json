@@ -1,5 +1,5 @@
 {
-
+  "__comment__": "Translators; 'Warps' in this context might be tricky to translate. Even in english its exact meaning is somewhere between teleporting and transforming.",
   "subtitles.architects_palette.warping.item_warps" : "Item Warps",
   "subtitles.architects_palette.cage_lantern.toggle_on": "Cage Lantern Toggled",
   "subtitles.architects_palette.cage_lantern.toggle_off": "Cage Lantern Toggled",
@@ -14,7 +14,7 @@
   "block.architects_palette.abyssaline_tiles": "Abyssaline Tiles",
   "block.architects_palette.abyssaline_tile_stairs": "Abyssaline Tile Stairs",
   "block.architects_palette.abyssaline_tile_slab": "Abyssaline Tile Slab",
-
+  "block.architects_palette.abyssaline_lamp": "Abyssaline Lamp",
 
   "block.architects_palette.salmon_log": "Cut of Salmon",
   "block.architects_palette.cod_log": "Cut of Cod",
@@ -68,6 +68,7 @@
   "block.architects_palette.overgrown_algal_brick_wall": "Overgrown Algal Brick Wall",
   "block.architects_palette.overgrown_algal_brick_slab": "Overgrown Algal Brick Slab",
   "block.architects_palette.overgrown_algal_brick_stairs": "Overgrown Algal Brick Stairs",
+  "__comment__": "Translators; The Algal Lamp is intentionally referred to as a 'lantern' in game for consistency with the sea lantern. Pardon the discrepancy.",
   "block.architects_palette.algal_lamp": "Algal Lantern",
   "item.architects_palette.algal_brick": "Algal Brick",
   "item.architects_palette.algal_blend": "Algal Blend",

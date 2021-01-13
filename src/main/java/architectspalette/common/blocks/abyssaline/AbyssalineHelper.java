@@ -21,13 +21,13 @@ public class AbyssalineHelper {
         return stateIn.getBlock() instanceof IAbyssalineChargeable;
     }
 
-    public static boolean getAbyssalineCharge(BlockState stateIn) {
+    public static boolean getCharged(BlockState stateIn) {
         if (!isAbyssaline(stateIn)) return false;
         IAbyssalineChargeable block = (IAbyssalineChargeable) stateIn.getBlock();
         return block.isCharged(stateIn);
     }
 
-    public static boolean getAbyssalineCharge(BlockState stateIn, Direction faceIn) {
+    public static boolean getOutputsFrom(BlockState stateIn, Direction faceIn) {
         if (!isAbyssaline(stateIn)) return false;
         IAbyssalineChargeable block = (IAbyssalineChargeable) stateIn.getBlock();
         return block.outputsChargeFrom(stateIn, faceIn);
@@ -51,7 +51,7 @@ public class AbyssalineHelper {
 
     public static boolean isValidConnection(BlockState unpoweredState, BlockState poweringState, Direction unpoweredFace) {
         return (getAcceptsCharge(unpoweredState, unpoweredFace) || getPushesPower(poweringState))
-                && (getAbyssalineCharge(poweringState, unpoweredFace.getOpposite()) || (getAbyssalineCharge(poweringState) && getPullsPower(unpoweredState, unpoweredFace)));
+                && (getOutputsFrom(poweringState, unpoweredFace.getOpposite()) || (getCharged(poweringState) && getPullsPower(unpoweredState, unpoweredFace)));
     }
 
     @Nullable
@@ -90,7 +90,7 @@ public class AbyssalineHelper {
 
         // If the block isn't charged, it doesn't lead back to a source, so break the chain
         BlockState nextState = world.getBlockState(nextPos);
-        if (!getAbyssalineCharge(nextState))
+        if (!getCharged(nextState))
             return true;
         if (--tries > 0) return checkForLoop(nextState, world, nextPos, tries, accumulator);
         // If out of tries, it likely isn't a loop.

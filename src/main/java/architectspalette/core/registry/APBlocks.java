@@ -2,10 +2,7 @@ package architectspalette.core.registry;
 
 import architectspalette.common.APBlockProperties;
 import architectspalette.common.blocks.*;
-import architectspalette.common.blocks.abyssaline.AbyssalinePillarBlock;
-import architectspalette.common.blocks.abyssaline.AbyssalineSlabBlock;
-import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
-import architectspalette.common.blocks.abyssaline.NewAbyssalineBlock;
+import architectspalette.common.blocks.abyssaline.*;
 import architectspalette.common.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
@@ -35,6 +32,7 @@ public class APBlocks {
     public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_BRICK_SLAB      = createBlock("abyssaline_brick_slab",      () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<NewAbyssalineBlock>      ABYSSALINE_TILES           = createBlock("abyssaline_tiles",           () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_TILE_SLAB       = createBlock("abyssaline_tile_slab",       () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<AbyssalineLampBlock>     ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE.sound(SoundType.GLASS)));
 //    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_BRICK_STAIRS    = createBlock("abyssaline_brick_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_BRICKS.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);
 //    public static final RegistryObject<AbyssalineBrickWallBlock>   ABYSSALINE_BRICK_WALL      = createBlock("abyssaline_brick_wall",      () -> new AbyssalineBrickWallBlock(APBlockProperties.ABYSSALINE), ItemGroup.DECORATIONS);
 //    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_TILE_STAIRS    = createBlock("abyssaline_tile_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_TILES.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);

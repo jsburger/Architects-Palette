@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "O#O",
-    "# #",
-    "O#O"
+    "OCO",
+    "#C#",
+    "OCO"
   ],
   "key": {
     "#": {
@@ -11,10 +11,13 @@
     },
     "O": {
       "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "minecraft:prismarine_crystal"
     }
   },
   "result": {
-    "item": "architects_palette:abyssaline",
+    "item": "architects_palette:abyssaline_lamp",
     "count": 8
   }
 }
