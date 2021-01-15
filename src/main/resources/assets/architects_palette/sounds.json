@@ -2,19 +2,18 @@
   "block.entwine.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds" : [
-      {"name": "architects_palette:block/entwine1"},
-      {"name": "architects_palette:block/entwine2"},
-      {"name": "architects_palette:block/entwine3"},
-      {"name": "architects_palette:block/entwine4"}
+      {"name": "architects_palette:block/entwine/break1"},
+      {"name": "architects_palette:block/entwine/break2"},
+      {"name": "architects_palette:block/entwine/break3"}
     ]
   },
   "block.entwine.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds" : [
-      {"name": "architects_palette:block/entwine1"},
-      {"name": "architects_palette:block/entwine2"},
-      {"name": "architects_palette:block/entwine3"},
-      {"name": "architects_palette:block/entwine4"}
+      {"name": "architects_palette:block/entwine/place1"},
+      {"name": "architects_palette:block/entwine/place2"},
+      {"name": "architects_palette:block/entwine/place3"},
+      {"name": "architects_palette:block/entwine/place4"}
     ]
   },
   "block.warping.item_warps": {
