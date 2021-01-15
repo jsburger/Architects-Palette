@@ -1,10 +1,12 @@
 package architectspalette.common.blocks.abyssaline;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
@@ -123,5 +125,13 @@ public class AbyssalineHelper {
     public static void abyssalineTick(BlockState state, ServerWorld worldIn, BlockPos pos) {
         worldIn.setBlockState(pos, getStateWithNeighborCharge(state, worldIn, pos));
     }
+
+    public static void abyssalineNeighborUpdate(IAbyssalineChargeable thiz, BlockState stateIn, World worldIn, BlockPos pos, Block neighborBlock, BlockPos neighborPos) {
+        boolean interested = (!thiz.isCharged(stateIn) && neighborBlock instanceof IAbyssalineChargeable)
+                || !isValidConnection(stateIn, worldIn.getBlockState(pos.add(thiz.getSourceOffset(stateIn))), thiz.getSourceDirection(stateIn));
+        if (neighborPos.equals(pos.add(thiz.getSourceOffset(stateIn))) || interested)
+            worldIn.getPendingBlockTicks().scheduleTick(pos, (Block) thiz, 1);
+    }
+
 
 }

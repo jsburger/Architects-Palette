@@ -42,9 +42,7 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 
 	@Override
 	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
-		boolean interested = (!this.isCharged(state) && blockIn instanceof IAbyssalineChargeable);
-		if (fromPos.equals(pos.add(this.getSourceOffset(state))) || interested)
-			worldIn.getPendingBlockTicks().scheduleTick(pos, this, 1);
+		AbyssalineHelper.abyssalineNeighborUpdate(this, state, worldIn, pos, blockIn, fromPos);
 	}
 
 	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
