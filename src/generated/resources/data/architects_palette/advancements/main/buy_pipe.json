@@ -1,0 +1,35 @@
+{
+  "parent": "architects_palette:main/root",
+  "display": {
+    "icon": {
+      "item": "architects_palette:pipe"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.buy_pipe"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.buy_pipe.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pipe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:pipe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pipe"
+    ]
+  ]
+}

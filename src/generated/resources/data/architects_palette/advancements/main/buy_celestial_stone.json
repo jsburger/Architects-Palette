@@ -1,0 +1,46 @@
+{
+  "parent": "architects_palette:main/root",
+  "display": {
+    "icon": {
+      "item": "architects_palette:sunstone"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.buy_celestial_stone"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.buy_celestial_stone.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "moonstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:moonstone"
+          }
+        ]
+      }
+    },
+    "sunstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:sunstone"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "moonstone",
+      "sunstone"
+    ]
+  ]
+}

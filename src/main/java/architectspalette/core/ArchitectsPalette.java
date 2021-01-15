@@ -1,7 +1,9 @@
 package architectspalette.core;
 
 import architectspalette.core.crafting.WarpingRecipe;
+import architectspalette.core.data.GatherData;
 import architectspalette.core.integration.APBlockData;
+import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;
 import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.APBlocks;
@@ -43,12 +45,17 @@ public class ArchitectsPalette {
         modEventBus.addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
 
+        GatherData.load();
+
     }
 
     void setupCommon(final FMLCommonSetupEvent event) {
         APBlockData.registerFlammables();
         APBlockData.registerStrippables();
         APTrades.registerTrades();
+
+        // Is this okay to go here?
+        APCriterion.register();
     }
 
     void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {

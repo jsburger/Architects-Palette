@@ -66,7 +66,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'architects_palette', '--all', '--output', file('src/generated/resources/'), '--existing', file("src/main/resources")
+
+            environment 'target', 'fmluserdevdata'
+
             mods {
                 architects_palette {
                     source sourceSets.main
@@ -74,6 +77,10 @@ minecraft {
             }
         }
     }
+}
+
+sourceSets.main.resources {
+    srcDirs += 'src/generated/resources'
 }
 
 dependencies {

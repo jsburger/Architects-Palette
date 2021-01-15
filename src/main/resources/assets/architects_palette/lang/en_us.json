@@ -4,6 +4,29 @@
   "subtitles.architects_palette.cage_lantern.toggle_on": "Cage Lantern Toggled",
   "subtitles.architects_palette.cage_lantern.toggle_off": "Cage Lantern Toggled",
 
+  "architects_palette.advancement.root": "Architect's Palette",
+  "architects_palette.advancement.root.desc": "Time to build with something new.",
+  "architects_palette.advancement.totem_carving": "Wipe that Grin off Your Face",
+  "architects_palette.advancement.totem_carving.desc": "Carve one Acacia Totem into another using an axe.",
+  "architects_palette.advancement.buy_fish_block": "What a Catch!",
+  "architects_palette.advancement.buy_fish_block.desc": "Trade with a Fisherman for a cut of fine fish.",
+  "architects_palette.advancement.buy_pipe": "Local Plumber",
+  "architects_palette.advancement.buy_pipe.desc": "Buy some Pipe blocks off of a Toolsmith.",
+  "architects_palette.advancement.buy_entrails": "Finely Butchered",
+  "architects_palette.advancement.buy_entrails.desc": "Trade your precious Emeralds for a... block of guts?",
+  "architects_palette.advancement.place_entrails": "Somehow Worse than Imagined",
+  "architects_palette.advancement.place_entrails.desc": "Place down and gaze upon your newly purchased Entrails.",
+  "architects_palette.advancement.buy_plating": "Thick Steel",
+  "architects_palette.advancement.buy_plating.desc": "Trade with an Armorer for some of their Plating.",
+  "architects_palette.advancement.buy_spool": "Buying in Bulk",
+  "architects_palette.advancement.buy_spool.desc": "Buy a Spool of a Shepherd's wool. Or, you know, craft one.",
+  "architects_palette.advancement.buy_celestial_stone": "Wanna Buy a Watch?",
+  "architects_palette.advancement.buy_celestial_stone.desc": "Purchase some Sunstone or Moonstone off of the Wandering Trader.",
+  "architects_palette.advancement.find_warpstone": "What is this Stuff?",
+  "architects_palette.advancement.find_warpstone.desc": "Throw a Clay block through a Nether portal and find something else on the other side.",
+  "architects_palette.advancement.find_twisted_sapling": "What a Twist!",
+  "architects_palette.advancement.find_twisted_sapling.desc": "Get a Twisted Sapling by warping another one.",
+
   "block.architects_palette.abyssaline": "Abyssaline",
   "block.architects_palette.abyssaline_bricks": "Abyssaline Bricks",
   "block.architects_palette.chiseled_abyssaline_bricks": "Chiseled Abyssaline Bricks",
@@ -240,6 +263,7 @@
   "block.architects_palette.grinning_acacia_totem": "Grinning Acacia Totem",
   "block.architects_palette.placid_acacia_totem": "Placid Acacia Totem",
   "block.architects_palette.shocked_acacia_totem": "Shocked Acacia Totem",
+  "block.architects_palette.blank_acacia_totem": "Blank Acacia Totem",
   "block.architects_palette.acacia_totem_wing": "Acacia Totem Wing"
 
 }

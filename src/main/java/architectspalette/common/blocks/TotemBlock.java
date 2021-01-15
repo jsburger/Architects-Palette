@@ -1,11 +1,13 @@
 package architectspalette.common.blocks;
 
+import architectspalette.core.integration.APCriterion;
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItemUseContext;
@@ -76,9 +78,11 @@ public class TotemBlock extends Block {
         if (playerItem.getItem() instanceof AxeItem) {
             BlockState newState = this.totemType.getStrip().getDefaultState().with(FACING, state.get(FACING));
             worldIn.setBlockState(pos, newState, 3);
-
             playerItem.damageItem(1, player, (p) -> p.sendBreakAnimation(handIn));
             worldIn.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1, 1);
+            if (player instanceof ServerPlayerEntity) {
+                APCriterion.CARVE_TOTEM.trigger((ServerPlayerEntity) player);
+            }
             return ActionResultType.func_233537_a_(worldIn.isRemote);
         }
         return ActionResultType.FAIL;
@@ -87,12 +91,14 @@ public class TotemBlock extends Block {
     public enum TotemFace {
         GRINNING,
         PLACID,
-        SHOCKED;
+        SHOCKED,
+        BLANK;
 
         public Block getStrip() {
             switch(this){
                 case GRINNING: return APBlocks.PLACID_ACACIA_TOTEM.get();
                 case PLACID: return APBlocks.SHOCKED_ACACIA_TOTEM.get();
+                case SHOCKED: return APBlocks.BLANK_ACACIA_TOTEM.get();
                 default: return APBlocks.GRINNING_ACACIA_TOTEM.get();
             }
         }

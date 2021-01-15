@@ -1,0 +1,35 @@
+{
+  "parent": "architects_palette:main/root",
+  "display": {
+    "icon": {
+      "item": "architects_palette:entrails"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.buy_entrails"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.buy_entrails.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "entrails": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:entrails"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entrails"
+    ]
+  ]
+}

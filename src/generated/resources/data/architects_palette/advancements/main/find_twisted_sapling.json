@@ -1,0 +1,35 @@
+{
+  "parent": "architects_palette:main/find_warpstone",
+  "display": {
+    "icon": {
+      "item": "architects_palette:twisted_sapling"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.find_twisted_sapling"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.find_twisted_sapling.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sapling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:twisted_sapling"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sapling"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "architects_palette:main/root",
+  "display": {
+    "icon": {
+      "item": "architects_palette:warpstone"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.find_warpstone"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.find_warpstone.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "warpstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "architects_palette:warpstone"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "warpstone"
+    ]
+  ]
+}

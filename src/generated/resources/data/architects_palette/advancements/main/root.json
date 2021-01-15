@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "architects_palette:chiseled_abyssaline_bricks"
+    },
+    "title": {
+      "translate": "architects_palette.advancement.root"
+    },
+    "description": {
+      "translate": "architects_palette.advancement.root.desc"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "architects_palette:textures/block/limestone_bricks.png"
+  },
+  "criteria": {
+    "craftingtable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "craftingtable"
+    ]
+  ]
+}
