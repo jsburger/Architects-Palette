@@ -18,7 +18,7 @@ public class APSounds {
     }
 
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_PLACE = register("block.entwine.place");
-    public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_BREAK = register("block.entwine.break");
+    public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_HIT = register("block.entwine.hit");
 
     public static final RegistryObject<SoundEvent> ITEM_WARPS = register("block.warping.item_warps");
     public static final RegistryObject<SoundEvent> CAGE_LANTERN_TOGGLE_ON = register("block.cage_lantern.toggle_on");
@@ -27,10 +27,10 @@ public class APSounds {
     public static class APSoundTypes {
         public static final SoundType ENTWINE = new LazySoundType(
                 1.0F, 1.0F,
-                new LazyValue<SoundEvent>(BLOCK_ENTWINE_BREAK),
+                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_STONE_BREAK),
                 new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_STEP),
                 new LazyValue<SoundEvent>(BLOCK_ENTWINE_PLACE),
-                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_HIT),
+                new LazyValue<SoundEvent>(BLOCK_ENTWINE_HIT),
                 new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_FALL)
         );
     }

@@ -17,19 +17,19 @@ public class APBlockProperties {
 		return Block.Properties.create(Material.GOURD, color).hardnessAndResistance(1.0F).sound(SoundType.CORAL);
 	}
 
-	public static final Block.Properties FLINT = Block.Properties.create(Material.ROCK, MaterialColor.GRAY).hardnessAndResistance(3.0F, 16.0F);
+	public static final Block.Properties FLINT = Block.Properties.create(Material.ROCK, MaterialColor.GRAY).hardnessAndResistance(3.0F, 16.0F).setRequiresTool();
 	public static final Block.Properties LIMESTONE = Block.Properties.from(Blocks.STONE);
-	public static final Block.Properties SUNMETAL = Block.Properties.create(Material.IRON, MaterialColor.BROWN).hardnessAndResistance(2.0F, 8.0F).sound(SoundType.NETHERITE);
+	public static final Block.Properties SUNMETAL = Block.Properties.create(Material.IRON, MaterialColor.BROWN).hardnessAndResistance(2.0F, 8.0F).sound(SoundType.NETHERITE).setRequiresTool();
 	 // Should be less slippery?
 	public static final Block.Properties BUILDING_ICE = Block.Properties.from(Blocks.PACKED_ICE).slipperiness(0.8F);
 	 // As Prismarine
-	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F);
+	public static final Block.Properties OLIVESTONE = Block.Properties.create(Material.ROCK, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F, 6.0F).setRequiresTool();
 	 // As Nether Bricks
-	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.NETHER_BRICK);
+	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.NETHER_BRICK).setRequiresTool();
 
-	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE);
+	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE).setRequiresTool();
 	public static final Block.Properties ENDER_PEARL = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(1.5F).sound(SoundType.SHROOMLIGHT);
-	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE);
+	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE).setRequiresTool();
 
 	public static final AbstractBlock.Properties MOLTEN_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK)
 			.setRequiresTool()

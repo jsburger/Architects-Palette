@@ -1,10 +1,10 @@
 {
-  "block.entwine.break": {
-    "subtitle": "subtitles.block.generic.break",
+  "block.entwine.hit": {
+    "subtitle": "subtitles.block.generic.hit",
     "sounds" : [
-      {"name": "architects_palette:block/entwine/break1"},
-      {"name": "architects_palette:block/entwine/break2"},
-      {"name": "architects_palette:block/entwine/break3"}
+      {"name": "architects_palette:block/entwine/hit1"},
+      {"name": "architects_palette:block/entwine/hit2"},
+      {"name": "architects_palette:block/entwine/hit3"}
     ]
   },
   "block.entwine.place": {
