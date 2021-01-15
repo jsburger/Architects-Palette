@@ -1,8 +1,8 @@
 {
 
-  "subtitles.architects_palette.warping.item_warps": "Item verzieht",
-  "subtitles.architects_palette.cage_lantern.toggle_on": "Käfiglaterne An",
-  "subtitles.architects_palette.cage_lantern.toggle_off": "Käfiglaterne Aus",
+  "subtitles.architects_palette.warping.item_warps": "Item teleportiert",
+  "subtitles.architects_palette.cage_lantern.toggle_on": "Käfiglaterne umgeschaltet",
+  "subtitles.architects_palette.cage_lantern.toggle_off": "Käfiglaterne umgeschaltet",
 
   "block.architects_palette.abyssaline": "Abyssalin",
   "block.architects_palette.abyssaline_bricks": "Abyssalinziegel",
@@ -11,17 +11,21 @@
   "block.architects_palette.abyssaline_brick_stairs": "Abyssalinziegeltreppe",
   "block.architects_palette.abyssaline_brick_slab": "Abyssalinziegelstufe",
   "block.architects_palette.abyssaline_brick_wall": "Abyssalinziegelmauer",
+  "block.architects_palette.abyssaline_tiles": "Abyssalinfliesen",
+  "block.architects_palette.abyssaline_tile_stairs": "Abyssalinfliesentreppe",
+  "block.architects_palette.abyssaline_tile_slab": "Abyssalinfliesenstufe",
+  "block.architects_palette.abyssaline_lamp": "Abyssalinfliesenlampe",
 
-  "block.architects_palette.salmon_log": "Lachsschnitt",
-  "block.architects_palette.cod_log": "Kabeljauschnitt",
+  "block.architects_palette.salmon_log": "Lachsfilet",
+  "block.architects_palette.cod_log": "Kabeljaufilet",
   "block.architects_palette.salmon_scales": "Lachsschuppen",
   "block.architects_palette.cod_scales": "Kabeljauschuppen",
 
   "block.architects_palette.entrails": "Gedärme",
-  "block.architects_palette.plating_block": "Beschichtung",
-  "block.architects_palette.plating_wall": "Beschichtete Mauer",
-  "block.architects_palette.plating_stairs": "Beschichtete Treppe",
-  "block.architects_palette.plating_slab": "Beschichtete stufe",
+  "block.architects_palette.plating_block": "Platten",
+  "block.architects_palette.plating_wall": "Plattenmauer",
+  "block.architects_palette.plating_stairs": "Plattentreppe",
+  "block.architects_palette.plating_slab": "Plattenstufe",
   "block.architects_palette.pipe": "Röhre",
   "block.architects_palette.spool": "Spule",
 
@@ -162,6 +166,7 @@
   "block.architects_palette.entwine_slab": "Entwindstufe",
   "block.architects_palette.entwine_stairs": "Entwindtreppe",
   "item.architects_palette.entwine_rod": "Entwindrute",
+  "block.architects_palette.ender_pearl_block": "Enderperlenblock",
 
   "block.architects_palette.heavy_stone_bricks": "Schwere Steinziegel",
   "block.architects_palette.heavy_mossy_stone_bricks": "Schwere bemooste Steinziegel",
@@ -235,6 +240,29 @@
   "block.architects_palette.grinning_acacia_totem": "Grinsender Akazientotem",
   "block.architects_palette.placid_acacia_totem": "Stiller Akazientotem",
   "block.architects_palette.shocked_acacia_totem": "Schockierter Akazientotem",
-  "block.architects_palette.acacia_totem_wing": "Akazientotemflügel"
+  "block.architects_palette.acacia_totem_wing": "Akazientotemflügel",
+
+  "architects_palette.advancement.root": "Architect's Palette", //it's a name im not gonna translate it
+  "architects_palette.advancement.root.desc": "Zeit etwas neues mit etwas neuem zu bauen.",
+  "architects_palette.advancement.totem_carving": "Wisch dir das Grinsen aus deinen Gesicht",
+  "architects_palette.advancement.totem_carving.desc": "Schnitze einen Akazientotem in einen anderen mithilfe einer Axt um.",
+  "architects_palette.advancement.buy_fish_block": "Was für ein Fang!",
+  "architects_palette.advancement.buy_fish_block.desc": "Tausche mit einen Fischer für ein feines Fischfilet.",
+  "architects_palette.advancement.buy_pipe": "Lokaler Klempner",
+  "architects_palette.advancement.buy_pipe.desc": "Kaufe ein paar Röhren von einem Werkzeugschmied.",
+  "architects_palette.advancement.buy_entrails": "Fein Geschlachtet",
+  "architects_palette.advancement.buy_entrails.desc": "Tausche deine kostbaren Smaragde für einen... Block aus Eingeweiden?",
+  "architects_palette.advancement.place_entrails": "Schmlimmer als erwartet",
+  "architects_palette.advancement.place_entrails.desc": "Platziere und betrachte deine frisch gekauften Gedärme.",
+  "architects_palette.advancement.buy_plating": "Dicker Stahl",
+  "architects_palette.advancement.buy_plating.desc": "Tausche mit einen Rüstungsschmied für ein paar Platten.",
+  "architects_palette.advancement.buy_spool": "Massenankauf",
+  "architects_palette.advancement.buy_spool.desc": "Kaufe eine Spule von einem Hirten, oder crafte eine.",
+  "architects_palette.advancement.buy_celestial_stone": "Willst du 'ne Uhr kaufen?",
+  "architects_palette.advancement.buy_celestial_stone.desc": "Kaufe einen Sonnenstein oder einen Mondstein von einem Fahrenden Händler.",
+  "architects_palette.advancement.find_warpstone": "Was ist dieses Zeug?",
+  "architects_palette.advancement.find_warpstone.desc": "Wirf einen Lehmblock durch ein Netherportal und finde etwas neues auf der anderen Seite.",
+  "architects_palette.advancement.find_twisted_sapling": "Eine echte Wendung der Dinge",
+  "architects_palette.advancement.find_twisted_sapling.desc": "Erhalte einen verzogenen Setzling durch verziehen eines ordinären Setzlings."
 
 }
