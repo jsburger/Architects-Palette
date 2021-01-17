@@ -57,8 +57,7 @@ public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargea
 	
 	@Override
 	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-		int light = state.get(LIGHT) / 2;
-		return light;
+		return this.isCharged(state) ? (state.get(LIGHT) / 2) + 4 : 0;
 	}
 	
 	@Override

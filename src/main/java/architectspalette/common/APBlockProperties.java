@@ -11,7 +11,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
 public class APBlockProperties {
-	public static final Block.Properties ABYSSALINE = Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F).setEmmisiveRendering(AbyssalineHelper::needsPostProcessing).setNeedsPostProcessing(AbyssalineHelper::needsPostProcessing);
+	public static final Block.Properties ABYSSALINE = Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F)
+			.setEmmisiveRendering(AbyssalineHelper::needsPostProcessing)
+			.setNeedsPostProcessing(AbyssalineHelper::needsPostProcessing)
+			.setAllowsSpawn(AbyssalineHelper::allowsMobSpawning);
 
 	public static Block.Properties Meat(MaterialColor color) {
 		return Block.Properties.create(Material.GOURD, color).hardnessAndResistance(1.0F).sound(SoundType.CORAL);
