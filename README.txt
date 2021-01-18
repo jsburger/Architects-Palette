@@ -8,5 +8,3 @@ And for any devs that are here because my mod is being weird;
 - The mixin is on ItemEntitys and is hooking into them changing dimension
 - Withered bone drop handling is in core/loot, and yes, the item tag is just for mass replacing in recipes
 - Trades are listed in APTrades in core/integration, handled in common/event/TradingEventHandler
-- Final thing to note; I did not program abyssaline. Smelly did, and he says his implementation was meant to be temporary.
-I don't know how to handle a system like this properly, so I left it for now. I may (should) revisit it, but a cute little PR would be sweet.
