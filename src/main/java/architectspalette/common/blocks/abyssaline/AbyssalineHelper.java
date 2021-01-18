@@ -22,7 +22,7 @@ public class AbyssalineHelper {
     }
 
     public static boolean allowsMobSpawning(BlockState stateIn, IBlockReader reader, BlockPos pos, EntityType<?> entity) {
-        return ((IAbyssalineChargeable) stateIn.getBlock()).isCharged(stateIn);
+        return !((IAbyssalineChargeable) stateIn.getBlock()).isCharged(stateIn);
     }
 
     public static boolean isAbyssaline(BlockState stateIn) {
