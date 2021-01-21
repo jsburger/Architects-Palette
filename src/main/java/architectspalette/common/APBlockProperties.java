@@ -31,7 +31,7 @@ public class APBlockProperties {
 	public static final Block.Properties ALGAL_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.CYAN_TERRACOTTA).hardnessAndResistance(2.0F, 6.0F).sound(SoundType.NETHER_BRICK).setRequiresTool();
 
 	public static final Block.Properties ENTWINE = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE).setRequiresTool();
-	public static final Block.Properties ENDER_PEARL = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(1.5F).sound(SoundType.SHROOMLIGHT);
+	public static final Block.Properties ENDER_PEARL = Block.Properties.create(Material.ROCK, MaterialColor.CYAN).hardnessAndResistance(1.5F).sound(APSounds.APSoundTypes.ENDER_PEARL);
 	public static final AbstractBlock.Properties PLATING = AbstractBlock.Properties.create(Material.IRON, MaterialColor.STONE).hardnessAndResistance(4.0F, 10.0F).sound(SoundType.NETHERITE).setRequiresTool();
 
 	public static final AbstractBlock.Properties MOLTEN_BRICK = Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK)

@@ -56,6 +56,14 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
         builder.add(LIT, WATERLOGGED, FACING, INVERTED);
     }
 
+    public BlockState rotate(BlockState state, Rotation rot) {
+        return state.with(FACING, rot.rotate(state.get(FACING)));
+    }
+
+    public BlockState mirror(BlockState state, Mirror mirrorIn) {
+        return state.rotate(mirrorIn.toRotation(state.get(FACING)));
+    }
+
     @Override
     public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (state.get(WATERLOGGED)) {

@@ -1,7 +1,6 @@
 package architectspalette.core.integration;
 
 import architectspalette.core.registry.APBlocks;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
@@ -38,11 +37,6 @@ public class APBlockData {
     public static void registerStrippables() {
         registerStrippable(TWISTED_LOG.get(), STRIPPED_TWISTED_LOG.get());
         registerStrippable(TWISTED_WOOD.get(), STRIPPED_TWISTED_WOOD.get());
-
-        registerStrippable(Blocks.STRIPPED_ACACIA_LOG, APBlocks.GRINNING_ACACIA_TOTEM.get());
-        registerStrippable(GRINNING_ACACIA_TOTEM.get(), PLACID_ACACIA_TOTEM.get());
-        registerStrippable(PLACID_ACACIA_TOTEM.get(), SHOCKED_ACACIA_TOTEM.get());
-        registerStrippable(SHOCKED_ACACIA_TOTEM.get(), GRINNING_ACACIA_TOTEM.get());
     }
 
 }

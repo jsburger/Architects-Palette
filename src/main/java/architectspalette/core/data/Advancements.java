@@ -82,7 +82,7 @@ public class Advancements extends AdvancementProvider {
         }
 
         protected Advancement buyAdvancement(Advancement parent, IItemProvider display, String name, String item, Consumer<Advancement> advancementConsumer) {
-            return getAdvancement(parent, display, name, FrameType.TASK, true, true, false)
+            return getAdvancement(parent, display, name, FrameType.TASK, true, false, false)
                     .withCriterion(item, InventoryChangeTrigger.Instance.forItems(display))
                     .register(advancementConsumer, getNameId("main/" + name));
         }
@@ -102,7 +102,7 @@ public class Advancements extends AdvancementProvider {
                     .withCriterion("carve_totem", CarveTotemTrigger.Instance.simple())
                     .register(advancementConsumer, getNameId("main/totem_carving"));
 
-            Advancement whatACatch = getAdvancement(architectsPalette, APBlocks.COD_LOG.get().asItem(), "buy_fish_block", FrameType.TASK, true, true, false)
+            Advancement whatACatch = getAdvancement(architectsPalette, APBlocks.COD_LOG.get().asItem(), "buy_fish_block", FrameType.TASK, true, false, false)
                     .withCriterion("cod_log", InventoryChangeTrigger.Instance.forItems(APBlocks.COD_LOG.get().asItem()))
                     .withCriterion("salmon_log", InventoryChangeTrigger.Instance.forItems(APBlocks.SALMON_LOG.get().asItem()))
                     .withRequirementsStrategy(IRequirementsStrategy.OR)
@@ -117,7 +117,7 @@ public class Advancements extends AdvancementProvider {
             Advancement buyPlating = buyAdvancement(architectsPalette, APBlocks.PLATING_BLOCK.get().asItem(), "buy_plating", "plating", advancementConsumer);
             Advancement buySpool = buyAdvancement(architectsPalette, APBlocks.SPOOL.get().asItem(), "buy_spool", "spool", advancementConsumer);
 
-            Advancement buyCelestialStone = getAdvancement(architectsPalette, APBlocks.SUNSTONE.get().asItem(), "buy_celestial_stone", FrameType.TASK, true, true, false)
+            Advancement buyCelestialStone = getAdvancement(architectsPalette, APBlocks.SUNSTONE.get().asItem(), "buy_celestial_stone", FrameType.TASK, true, false, false)
                     .withCriterion("moonstone", InventoryChangeTrigger.Instance.forItems(APBlocks.MOONSTONE.get().asItem()))
                     .withCriterion("sunstone", InventoryChangeTrigger.Instance.forItems(APBlocks.SUNSTONE.get().asItem()))
                     .withRequirementsStrategy(IRequirementsStrategy.OR)

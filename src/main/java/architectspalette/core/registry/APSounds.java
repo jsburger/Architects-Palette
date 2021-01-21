@@ -27,11 +27,20 @@ public class APSounds {
     public static class APSoundTypes {
         public static final SoundType ENTWINE = new LazySoundType(
                 1.0F, 1.0F,
-                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_STONE_BREAK),
-                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_STEP),
-                new LazyValue<SoundEvent>(BLOCK_ENTWINE_PLACE),
-                new LazyValue<SoundEvent>(BLOCK_ENTWINE_HIT),
-                new LazyValue<SoundEvent>(() -> SoundEvents.BLOCK_GLASS_FALL)
+                new LazyValue<>(() -> SoundEvents.BLOCK_STONE_BREAK),
+                new LazyValue<>(() -> SoundEvents.BLOCK_GLASS_STEP),
+                new LazyValue<>(BLOCK_ENTWINE_PLACE),
+                new LazyValue<>(BLOCK_ENTWINE_HIT),
+                new LazyValue<>(() -> SoundEvents.BLOCK_GLASS_FALL)
+        );
+
+        public static final SoundType ENDER_PEARL = new SoundType(
+                1.0F, 2.0F,
+                SoundEvents.BLOCK_SHROOMLIGHT_BREAK,
+                SoundEvents.BLOCK_SHROOMLIGHT_STEP,
+                SoundEvents.BLOCK_SHROOMLIGHT_PLACE,
+                SoundEvents.BLOCK_SHROOMLIGHT_HIT,
+                SoundEvents.BLOCK_SHROOMLIGHT_FALL
         );
     }
 

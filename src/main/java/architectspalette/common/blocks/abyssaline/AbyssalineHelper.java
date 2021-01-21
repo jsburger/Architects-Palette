@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 
 public class AbyssalineHelper {
 
-    public static final int CHARGE_LIGHT = 0;
+    public static final int CHARGE_LIGHT = 1;
     private static final int RECURSION_MAX = 12;
 
     public static boolean needsPostProcessing(BlockState stateIn, IBlockReader reader, BlockPos pos) {
