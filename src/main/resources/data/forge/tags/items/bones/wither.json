@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:bones/wither"
+    "architects_palette:withered_bone"
   ]
 }

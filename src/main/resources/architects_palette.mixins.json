@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "architects_palette.refmap.json",
   "mixins": [
-    "ItemEntityMixin"
+    "ServerWorldMixin"
   ],
   "client": [],
   "server": [],

@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class WarpingRecipe implements IRecipe<IInventory> {
 
@@ -41,7 +42,7 @@ public class WarpingRecipe implements IRecipe<IInventory> {
 
     @Override
     public boolean matches(IInventory inv, World worldIn) {
-        return this.input.test(inv.getStackInSlot(0));
+        return this.input.test(inv.getStackInSlot(0)) && (this.dimension.compareTo(worldIn.getDimensionKey().getLocation()) == 0);
     }
 
     @Override
@@ -122,5 +123,11 @@ public class WarpingRecipe implements IRecipe<IInventory> {
         public String toString() {
             return ArchitectsPalette.MOD_ID.concat(":warping");
         }
+
+        public <C extends IInventory> Optional<WarpingRecipe> find(C inv, World world) {
+            return world.getRecipeManager()
+                    .getRecipe(WarpingRecipe.TYPE, inv, world);
+        }
+
     }
 }
