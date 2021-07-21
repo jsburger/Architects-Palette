@@ -1,14 +1,15 @@
 package architectspalette.common;
 
 import architectspalette.common.blocks.CageLanternBlock;
+import architectspalette.common.blocks.SunstoneBlock;
 import architectspalette.common.blocks.abyssaline.AbyssalineHelper;
-import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
 import architectspalette.core.registry.APSounds;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 
 public class APBlockProperties {
 	public static final Block.Properties ABYSSALINE = Block.Properties.from(Blocks.OBSIDIAN).hardnessAndResistance(25.0F, 600.0F)
@@ -66,12 +67,10 @@ public class APBlockProperties {
 		return p;
 	}
 
-	private static boolean setEmmisiveRendering(BlockState state, IBlockReader reader, BlockPos pos) {
-		return state.get(ChiseledAbyssalineBlock.LIGHT) / 2 > 4;
-	}
-	
-	private static boolean needsPostProcessing(BlockState state, IBlockReader reader, BlockPos pos) {
-		int light = state.get(ChiseledAbyssalineBlock.LIGHT) / 2;
-		return light < 4;
-	}
+	public static final AbstractBlock.Properties SUNSTONE = AbstractBlock.Properties.from(Blocks.BASALT)
+//			.setOpaque(SunstoneBlock::isOpaque).variableOpacity()
+			.setLightLevel(SunstoneBlock::lightValue);
+			//Causes really wack lighting
+//			.setEmmisiveRendering(SunstoneBlock::isLit).setNeedsPostProcessing(SunstoneBlock::isLit);
+
 }

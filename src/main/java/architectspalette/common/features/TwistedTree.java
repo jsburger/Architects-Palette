@@ -21,8 +21,8 @@ public class TwistedTree extends Tree {
                     new ForkyTrunkPlacer(5, 2, 2),
                     new TwoLayerFeature(1, 0, 2)
             )
-                    .setIgnoreVines()
-                    .build()
+            .setIgnoreVines()
+            .build()
     );
 
 
