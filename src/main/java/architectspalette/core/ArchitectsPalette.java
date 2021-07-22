@@ -9,7 +9,6 @@ import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.APSounds;
-import architectspalette.core.registry.APTileEntities;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -38,7 +37,7 @@ public class ArchitectsPalette {
         APSounds.SOUNDS.register(modEventBus);
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
-        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
+//        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
