@@ -39,9 +39,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraftforge.fml.ModList;
 
-/*
+/**
  * From Quark
- * Original: https://github.com/Vazkii/Quark/blob/master/src/main/java/vazkii/quark/content/building/block/VerticalSlabBlock.java
+ * Original: https://github.com/Vazkii/Quark/blob/fae8f48eae8157424dcf4f97f9be186d567a344d/src/main/java/vazkii/quark/content/building/block/VerticalSlabBlock.java
  * @author Vazkii
  */
 public class VerticalSlabBlock extends Block implements IWaterLoggable {
