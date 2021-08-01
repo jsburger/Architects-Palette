@@ -34,6 +34,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
@@ -77,7 +78,7 @@ public class VerticalSlabBlock extends Block implements IWaterLoggable {
 	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if(!isQuarkEnabled())
-			tooltip.add(new TranslationTextComponent("architects_palette.misc.no_quark"));
+			tooltip.add(new TranslationTextComponent("architects_palette.misc.no_quark").mergeStyle(TextFormatting.RED));
 	}
 	
 	@Override

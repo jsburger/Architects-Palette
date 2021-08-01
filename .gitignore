@@ -20,6 +20,7 @@ build
 # other
 eclipse
 run
+src/main/resources/genscripts
 
 # Files from Forge MDK
 forge*changelog.txt
