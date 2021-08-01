@@ -1,29 +1,28 @@
 package architectspalette.common.blocks.abyssaline;
 
+import static architectspalette.common.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
+import static architectspalette.common.blocks.abyssaline.NewAbyssalineBlock.CHARGE_SOURCE;
+
+import java.util.Random;
+
+import architectspalette.common.blocks.VerticalSlabBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-import java.util.Random;
+public class AbyssalineVerticalSlabBlock extends VerticalSlabBlock implements IAbyssalineChargeable {
 
-import static architectspalette.common.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
-import static architectspalette.common.blocks.abyssaline.NewAbyssalineBlock.CHARGE_SOURCE;
-
-public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargeable {
-
-	public AbyssalineSlabBlock(Properties properties) {
-		super(properties);
+	public AbyssalineVerticalSlabBlock(Properties props) {
+		super(props);
 		this.setDefaultState(this.getDefaultState().with(CHARGE_SOURCE, Direction.NORTH).with(CHARGED, false));
 	}
-
+	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		builder.add(CHARGED, CHARGE_SOURCE, TYPE, WATERLOGGED);
@@ -53,11 +52,8 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	//Interface stuff
 	@Override
 	public boolean acceptsChargeFrom(BlockState stateIn, Direction faceIn) {
-		switch(stateIn.get(TYPE)) {
-			case TOP: return faceIn != Direction.DOWN;
-			case BOTTOM: return faceIn != Direction.UP;
-			default: return true;
-		}
+		VerticalSlabType type = stateIn.get(TYPE);
+		return type == VerticalSlabType.DOUBLE || faceIn != type.direction;
 	}
 
 	@Override
@@ -68,9 +64,10 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	// Slabs should never transfer power through the faces that don't collide, so don't provide a state here that can.
 	@Override
 	public BlockState getStateWithChargeDirection(BlockState stateIn, Direction faceOut) {
-		SlabType type = stateIn.get(TYPE);
-		if (type == SlabType.TOP && faceOut == Direction.DOWN) return stateIn;
-		if (type == SlabType.BOTTOM && faceOut == Direction.UP) return stateIn;
+		VerticalSlabType type = stateIn.get(TYPE);
+		if(type.direction == faceOut)
+			return stateIn;
+		
 		return stateIn.with(CHARGE_SOURCE, faceOut);
 	}
 
