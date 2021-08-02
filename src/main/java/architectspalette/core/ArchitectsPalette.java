@@ -5,6 +5,7 @@ import architectspalette.core.data.GatherData;
 import architectspalette.core.integration.APBlockData;
 import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;
+import architectspalette.core.integration.APVerticalSlabsCondition;
 import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
@@ -12,6 +13,7 @@ import architectspalette.core.registry.APSounds;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -44,6 +46,8 @@ public class ArchitectsPalette {
         modEventBus.addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
 
+		CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
+        
         GatherData.load();
 
     }

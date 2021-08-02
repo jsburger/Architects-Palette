@@ -1,5 +1,6 @@
 package architectspalette.core.registry.util;
 
+import architectspalette.common.blocks.VerticalSlabBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class StoneBlockSet {
     public RegistryObject<Block> SLAB;
+    public RegistryObject<Block> VERTICAL_SLAB;
     public RegistryObject<Block> STAIRS;
     public RegistryObject<Block> WALL;
     public RegistryObject<Block> BLOCK;
@@ -45,6 +47,7 @@ public class StoneBlockSet {
 
     public StoneBlockSet addSlabs() {
         SLAB = RegistryUtils.createBlock(material_name + "_slab", () -> new SlabBlock(properties()));
+        VERTICAL_SLAB = RegistryUtils.createBlock(material_name + "_vertical_slab", () -> new VerticalSlabBlock(properties()));
         return this;
     }
 

@@ -44,6 +44,7 @@ public class AbyssalineStairsBlock extends StairsBlock implements IAbyssalineCha
 		AbyssalineHelper.abyssalineNeighborUpdate(this, state, worldIn, pos, blockIn, fromPos);
 	}
 
+	@Override
 	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
 		AbyssalineHelper.abyssalineTick(state, worldIn, pos);
 	}

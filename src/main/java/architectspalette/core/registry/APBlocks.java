@@ -1,25 +1,52 @@
 package architectspalette.core.registry;
 
+import static architectspalette.core.registry.util.RegistryUtils.createBlock;
+import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import architectspalette.common.APBlockProperties;
-import architectspalette.common.blocks.*;
-import architectspalette.common.blocks.abyssaline.*;
+import architectspalette.common.blocks.BigBrickBlock;
+import architectspalette.common.blocks.CageLanternBlock;
+import architectspalette.common.blocks.DrippyBlock;
+import architectspalette.common.blocks.FlintBlock;
+import architectspalette.common.blocks.FlintPillarBlock;
+import architectspalette.common.blocks.PipeBlock;
+import architectspalette.common.blocks.SunstoneBlock;
+import architectspalette.common.blocks.TotemBlock;
+import architectspalette.common.blocks.TotemWingBlock;
+import architectspalette.common.blocks.abyssaline.AbyssalineLampBlock;
+import architectspalette.common.blocks.abyssaline.AbyssalinePillarBlock;
+import architectspalette.common.blocks.abyssaline.AbyssalineSlabBlock;
+import architectspalette.common.blocks.abyssaline.AbyssalineVerticalSlabBlock;
+import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
+import architectspalette.common.blocks.abyssaline.NewAbyssalineBlock;
 import architectspalette.common.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.FenceBlock;
+import net.minecraft.block.FenceGateBlock;
+import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.PaneBlock;
+import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.SaplingBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.TrapDoorBlock;
+import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
-import static architectspalette.core.registry.util.RegistryUtils.createBlock;
-import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
@@ -37,6 +64,9 @@ public class APBlocks {
 //    public static final RegistryObject<AbyssalineBrickWallBlock>   ABYSSALINE_BRICK_WALL      = createBlock("abyssaline_brick_wall",      () -> new AbyssalineBrickWallBlock(APBlockProperties.ABYSSALINE), ItemGroup.DECORATIONS);
 //    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_TILE_STAIRS    = createBlock("abyssaline_tile_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_TILES.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);
 
+    public static final RegistryObject<AbyssalineVerticalSlabBlock>     ABYSSALINE_BRICK_VERTICAL_SLAB      = createBlock("abyssaline_brick_vertical_slab",      () -> new AbyssalineVerticalSlabBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<AbyssalineVerticalSlabBlock>     ABYSSALINE_TILE_VERTICAL_SLAB       = createBlock("abyssaline_tile_vertical_slab",       () -> new AbyssalineVerticalSlabBlock(APBlockProperties.ABYSSALINE));
+    
     // Villager Trade blocks
      // Funny fish blocks
     public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.RED_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);

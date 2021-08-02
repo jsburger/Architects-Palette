@@ -44,7 +44,8 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
 		AbyssalineHelper.abyssalineNeighborUpdate(this, state, worldIn, pos, blockIn, fromPos);
 	}
-
+	
+	@Override
 	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
 		AbyssalineHelper.abyssalineTick(state, worldIn, pos);
 	}
