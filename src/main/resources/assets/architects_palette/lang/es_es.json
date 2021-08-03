@@ -4,6 +4,8 @@
   "subtitles.architects_palette.cage_lantern.toggle_on": "Linterna de jaula encendida",
   "subtitles.architects_palette.cage_lantern.toggle_off": "Linterna de jaula apagada",
 
+  "architects_palette.misc.no_quark": "Requiere tener el mod Quark instalado",
+
   "architects_palette.advancement.root": "Architect's Palette",
   "architects_palette.advancement.root.desc": "Hora de construir algo nuevo.",
   "architects_palette.advancement.totem_carving": "Quita esa sonrisa de tu rostro",
@@ -33,10 +35,12 @@
   "block.architects_palette.abyssaline_pillar": "Pilar de abisalina",
   "block.architects_palette.abyssaline_brick_stairs": "Escaleras de ladrillos de abisalina",
   "block.architects_palette.abyssaline_brick_slab": "Losa de ladrillos de abisalina",
+  "block.architects_palette.abyssaline_brick_vertical_slab": "Losa vertical de ladrillos de abisalina",
   "block.architects_palette.abyssaline_brick_wall": "Muro de ladrillos de abisalina",
   "block.architects_palette.abyssaline_tiles": "Baldosas de abisalina",
   "block.architects_palette.abyssaline_tile_stairs": "Escaleras de baldosas de abisalina",
   "block.architects_palette.abyssaline_tile_slab": "Losa de baldosas de abisalina",
+  "block.architects_palette.abyssaline_tile_vertical_slab": "Losa vertical de baldosas de abisalina",
   "block.architects_palette.abyssaline_lamp": "Lámpara de abisalina",
 
   "block.architects_palette.salmon_log": "Filete de salmón",
@@ -45,10 +49,11 @@
   "block.architects_palette.cod_scales": "Escamas de bacalao",
 
   "block.architects_palette.entrails": "Entrañas",
-  "block.architects_palette.plating_block": "Bloque de placa de acero",
+  "block.architects_palette.plating_block": "Placa de acero",
   "block.architects_palette.plating_wall": "Muro de placa de acero",
   "block.architects_palette.plating_stairs": "Escaleras de placa de acero",
   "block.architects_palette.plating_slab": "Losa de placa de acero",
+  "block.architects_palette.plating_vertical_slab": "Losa vertical de placa de acero",
   "block.architects_palette.pipe": "Tubo",
   "block.architects_palette.spool": "Carrete",
 
@@ -59,12 +64,15 @@
   "block.architects_palette.mushy_limestone_bricks": "Ladrillos de caliza fungosos",
   "block.architects_palette.limestone_wall": "Muro de caliza",
   "block.architects_palette.limestone_slab": "Losa de caliza",
+  "block.architects_palette.limestone_vertical_slab": "Losa vertical de caliza",
   "block.architects_palette.limestone_stairs": "Escaleras de caliza",
   "block.architects_palette.limestone_brick_wall": "Muro de ladrillos de caliza",
   "block.architects_palette.limestone_brick_slab": "Losa de ladrillos de caliza",
+  "block.architects_palette.limestone_brick_vertical_slab": "Losa vertical de ladrillos de caliza",
   "block.architects_palette.limestone_brick_stairs": "Escaleras de ladrillos de caliza",
   "block.architects_palette.mushy_limestone_brick_wall": "Muro de ladrillos de caliza fungosos",
   "block.architects_palette.mushy_limestone_brick_slab": "Losa de ladrillos de caliza fungosos",
+  "block.architects_palette.mushy_limestone_brick_vertical_slab": "Losa vertical de ladrillos de caliza fungosos",
   "block.architects_palette.mushy_limestone_brick_stairs": "Escaleras de ladrillos de caliza fungosos",
 
   "block.architects_palette.olivestone_bricks": "Ladrillos de olivita",
@@ -74,9 +82,11 @@
   "block.architects_palette.olivestone_pillar": "Pilar de olivita",
   "block.architects_palette.olivestone_brick_wall": "Muro de ladrillos de olivita",
   "block.architects_palette.olivestone_brick_slab": "Losa de ladrillos de olivita",
+  "block.architects_palette.olivestone_brick_vertical_slab": "Losa vertical de ladrillos de olivita",
   "block.architects_palette.olivestone_brick_stairs": "Escaleras de ladrillos de olivita",
   "block.architects_palette.olivestone_tile_wall": "Muro de baldosas de olivita",
   "block.architects_palette.olivestone_tile_slab": "Losa de baldosas de olivita",
+  "block.architects_palette.olivestone_tile_vertical_slab": "Losa vertical de baldosas de olivita",
   "block.architects_palette.olivestone_tile_stairs": "Escaleras de baldosas de olivita",
   "block.architects_palette.illuminated_olivestone": "Olivita iluminada",
   "block.architects_palette.chiseled_olivestone": "Olivita cincelada",
@@ -87,9 +97,11 @@
   "block.architects_palette.chiseled_algal_bricks": "Ladrillos de algas cincelados",
   "block.architects_palette.algal_brick_wall": "Muro de ladrillos de algas",
   "block.architects_palette.algal_brick_slab": "Losa de ladrillos de algas",
+  "block.architects_palette.algal_brick_vertical_slab": "Losa vertical de ladrillos de algas",
   "block.architects_palette.algal_brick_stairs": "Escaleras de ladrillos de algas",
   "block.architects_palette.overgrown_algal_brick_wall": "Muro de ladrillos de algas frondosos",
   "block.architects_palette.overgrown_algal_brick_slab": "Losa de ladrillos de algas frondosos",
+  "block.architects_palette.overgrown_algal_brick_vertical_slab": "Losa vertical de ladrillos de algas frondosos",
   "block.architects_palette.overgrown_algal_brick_stairs": "Escaleras de ladrillos de algas frondosos",
   "__comment__": "Translators; The Algal Lamp is intentionally referred to as a 'lantern' in game for consistency with the sea lantern. Pardon the discrepancy.",
   "block.architects_palette.algal_lamp": "Linterna de algas",
@@ -101,6 +113,7 @@
   "block.architects_palette.chiseled_coal_ore_bricks": "Ladrillos de mena de carbón cincelados",
   "block.architects_palette.coal_ore_brick_wall": "Muro de ladrillos de mena de carbón",
   "block.architects_palette.coal_ore_brick_slab": "Losa de ladrillos de mena de carbón",
+  "block.architects_palette.coal_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de carbón",
   "block.architects_palette.coal_ore_brick_stairs": "Escaleras de ladrillos de mena de carbón",
   
   "block.architects_palette.lapis_ore_bricks": "Ladrillos de mena de lapislázuli",
@@ -108,6 +121,7 @@
   "block.architects_palette.chiseled_lapis_ore_bricks": "Ladrillos de mena de lapislázuli cincelados",
   "block.architects_palette.lapis_ore_brick_wall": "Muro de ladrillos de mena de lapislázuli",
   "block.architects_palette.lapis_ore_brick_slab": "Losa de ladrillos de mena de lapislázuli",
+  "block.architects_palette.lapis_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de lapislázuli",
   "block.architects_palette.lapis_ore_brick_stairs": "Escaleras de ladrillos de mena de lapislázuli",
   
   "block.architects_palette.redstone_ore_bricks": "Ladrillos de mena de redstone",
@@ -115,6 +129,7 @@
   "block.architects_palette.chiseled_redstone_ore_bricks": "Ladrillos de mena de redstone cincelados",
   "block.architects_palette.redstone_ore_brick_wall": "Muro de ladrillos de mena de redstone",
   "block.architects_palette.redstone_ore_brick_slab": "Losa de ladrillos de mena de redstone",
+  "block.architects_palette.redstone_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de redstone",
   "block.architects_palette.redstone_ore_brick_stairs": "Escaleras de ladrillos de mena de redstone",
   
   "block.architects_palette.iron_ore_bricks": "Ladrillos de mena de hierro",
@@ -122,6 +137,7 @@
   "block.architects_palette.chiseled_iron_ore_bricks": "Ladrillos de mena de hierro cincelados",
   "block.architects_palette.iron_ore_brick_wall": "Muro de ladrillos de mena de hierro",
   "block.architects_palette.iron_ore_brick_slab": "Losa de ladrillos de mena de hierro",
+  "block.architects_palette.iron_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de hierro",
   "block.architects_palette.iron_ore_brick_stairs": "Esclaeras de ladrillos de mena de hierro",
   
   "block.architects_palette.gold_ore_bricks": "Ladrillos de mena de oro",
@@ -129,6 +145,7 @@
   "block.architects_palette.chiseled_gold_ore_bricks": "Ladrillos de mena de oro cincelados",
   "block.architects_palette.gold_ore_brick_wall": "Muro de ladrillos de mena de oro",
   "block.architects_palette.gold_ore_brick_slab": "Losa de ladrillos de mena de oro",
+  "block.architects_palette.gold_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de oro",
   "block.architects_palette.gold_ore_brick_stairs": "Escaleras de ladrillos de mena de oro",
   
   "block.architects_palette.emerald_ore_bricks": "Ladrillos de mena de esmeralda",
@@ -136,6 +153,7 @@
   "block.architects_palette.chiseled_emerald_ore_bricks": "Ladrillos de mena de esmeralda cincelados",
   "block.architects_palette.emerald_ore_brick_wall": "Muro de ladrillos de mena de esmeralda",
   "block.architects_palette.emerald_ore_brick_slab": "Losa de ladrillos de mena de esmeralda",
+  "block.architects_palette.emerald_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de esmeralda",
   "block.architects_palette.emerald_ore_brick_stairs": "Escaleras de ladrillos de mena de esmeralda",
   
   "block.architects_palette.diamond_ore_bricks": "Ladrillos de mena de diamante",
@@ -143,12 +161,14 @@
   "block.architects_palette.chiseled_diamond_ore_bricks": "Ladrillos de mena de diamante cincelados",
   "block.architects_palette.diamond_ore_brick_wall": "Muro de ladrillos de mena de diamante",
   "block.architects_palette.diamond_ore_brick_slab": "Losa de ladrillos de mena de diamante",
+  "block.architects_palette.diamond_ore_brick_vertical_slab": "Losa vertical de ladrillos de mena de diamante",
   "block.architects_palette.diamond_ore_brick_stairs": "Escaleras de ladrillos de mena de diamante",
 
   "block.architects_palette.flint_block": "Bloque de pedernal",
   "block.architects_palette.flint_tiles": "Baldosas de pedernal",
   "block.architects_palette.flint_tile_wall": "Muro de baldosas de pedernal",
   "block.architects_palette.flint_tile_slab": "Losa de baldosas de pedernal",
+  "block.architects_palette.flint_tile_vertical_slab": "Losa vertical de baldosas de pedernal",
   "block.architects_palette.flint_tile_stairs": "Escaleras de baldosas de pedernal",
   "block.architects_palette.flint_pillar": "Pilar de pedernal",
 
@@ -157,12 +177,14 @@
   "block.architects_palette.packed_ice_pillar": "Pilar de hielo compacto",
   "block.architects_palette.polished_packed_ice_stairs": "Escaleras de hielo compacto pulido",
   "block.architects_palette.polished_packed_ice_slab": "Losa de hielo compacto pulido",
+  "block.architects_palette.polished_packed_ice_vertical_slab": "Losa vertical de hielo compacto pulido",
   "block.architects_palette.polished_packed_ice_wall": "Muro de hielo compacto pulido",
 
   "block.architects_palette.sunmetal_block": "Bloque de solacero",
   "block.architects_palette.chiseled_sunmetal_block": "Bloque de solacero cincelado",
   "block.architects_palette.sunmetal_pillar": "Pilar de solacero",
   "block.architects_palette.sunmetal_slab": "Losa de solacero",
+  "block.architects_palette.sunmetal_vertical_slab": "Losa vertical de solacero",
   "block.architects_palette.sunmetal_stairs": "Escaleras de solacero",
   "block.architects_palette.sunmetal_bars": "Barrotes de solacero",
   "item.architects_palette.sunmetal_brick": "Ladrillo de solacero",
@@ -173,6 +195,7 @@
   "block.architects_palette.osseous_brick_wall": "Muro de ladrillos óseos",
   "block.architects_palette.osseous_brick_stairs": "Escaleras de ladrillos óseos",
   "block.architects_palette.osseous_brick_slab": "Losa de ladrillos óseos",
+  "block.architects_palette.osseous_brick_vertical_slab": "Losa vertical de ladrillos óseos",
 
   "block.architects_palette.withered_osseous_bricks": "Ladrillos óseos descompuestos",
   "block.architects_palette.withered_osseous_pillar": "Pilar óseo descompuesto",
@@ -180,6 +203,7 @@
   "block.architects_palette.withered_osseous_brick_wall": "Muro de ladrillos óseos descompuestos",
   "block.architects_palette.withered_osseous_brick_stairs": "Escaleras de ladrillos óseos descompuestos",
   "block.architects_palette.withered_osseous_brick_slab": "Losa de ladrillos óseos descompuestos",
+  "block.architects_palette.withered_osseous_brick_vertical_slab": "Losa vertical de ladrillos óseos descompuestos",
   "block.architects_palette.wither_lamp": "Lámpara de Wither",
   "item.architects_palette.withered_bone": "Hueso descompuesto",
 
@@ -188,6 +212,7 @@
   "block.architects_palette.entwine_pillar": "Pilar entrelazado",
   "block.architects_palette.entwine_bars": "Barrotes entrelazados",
   "block.architects_palette.entwine_slab": "Losa entrelazada",
+  "block.architects_palette.entwine_vertical_slab": "Losa vertical entrelazada",
   "block.architects_palette.entwine_stairs": "Escaleras entrelazadas",
   "item.architects_palette.entwine_rod": "Vara entrelazada",
 
@@ -197,6 +222,7 @@
 
   "block.architects_palette.polished_glowstone": "Piedra luminosa pulida",
   "block.architects_palette.polished_glowstone_slab": "Losa de piedra luminosa pulida",
+  "block.architects_palette.polished_glowstone_vertical_slab": "Losa vertical de piedra luminosa pulida",
   "block.architects_palette.runic_glowstone": "Piedra luminosa rúnica",
 
   "block.architects_palette.scute_block": "Bloque de escamas",
@@ -205,6 +231,7 @@
   "block.architects_palette.chiseled_gilded_sandstone": "Arenisca áurea cincelada",
   "block.architects_palette.gilded_sandstone_pillar": "Pilar de arenisca áurea",
   "block.architects_palette.gilded_sandstone_slab": "Losa de arenisca áurea",
+  "block.architects_palette.gilded_sandstone_vertical_slab": "Losa vertical de arenisca áurea",
   "block.architects_palette.gilded_sandstone_stairs": "Escaleras de arenisca áurea",
 
   "block.architects_palette.weeping_blackstone": "Piedra negra lacrimosa",
@@ -218,6 +245,7 @@
   "block.architects_palette.warpstone_wall": "Muro de piedra distorsionada",
   "block.architects_palette.warpstone_stairs": "Escaleras de piedra distorsionada",
   "block.architects_palette.warpstone_slab": "Losa de piedra distorsionada",
+  "block.architects_palette.warpstone_vertical_slab": "Losa vertical de piedra distorsionada",
 
   "block.architects_palette.choral_end_stone_bricks": "Ladrillos de piedra del End corales",
   "block.architects_palette.cracked_end_stone_bricks": "Ladrillos de piedra del End agrietados",
@@ -235,6 +263,7 @@
   "block.architects_palette.twisted_pressure_plate": "Placa de presión retorcida",
   "block.architects_palette.twisted_trapdoor": "Trampilla retorcida",
   "block.architects_palette.twisted_slab": "Losa retorcida",
+  "block.architects_palette.twisted_vertical_slab": "Losa vertical retorcida",
   "block.architects_palette.twisted_stairs": "Escaleras retorcidas",
   "block.architects_palette.twisted_leaves": "Hojas retorcidas",
   "block.architects_palette.twisted_sapling": "Brote retorcido",
@@ -244,6 +273,7 @@
   "block.architects_palette.basalt_tile_wall": "Muro de baldosas de basalto",
   "block.architects_palette.basalt_tile_stairs": "Escaleras de baldosas de basalto",
   "block.architects_palette.basalt_tile_slab": "Losa de baldosas de basalto",
+  "block.architects_palette.basalt_tile_vertical_slab": "Losa vertical de baldosas de basalto",
   "block.architects_palette.chiseled_basalt_tiles": "Baldosas de basalto cinceladas",
   "block.architects_palette.cracked_basalt_tiles": "Baldosas de basalto agrietadas",
 
