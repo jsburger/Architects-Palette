@@ -26,6 +26,21 @@
           ],
           "name": "architects_palette:polished_packed_ice_vertical_slab"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "enchantments": [
+              {
+                "enchantment": "minecraft:silk_touch",
+                "levels": {
+                  "min": 1
+                }
+              }
+            ]
+          }
+        }
       ]
     }
   ]
