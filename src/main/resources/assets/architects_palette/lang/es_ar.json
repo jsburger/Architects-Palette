@@ -296,5 +296,9 @@
   "block.architects_palette.blank_acacia_totem": "Tótem de acacia en blanco",
   "block.architects_palette.acacia_totem_wing": "Ala de tótem de acacia",
 
-  "block.architects_palette.ender_pearl_block": "Bloque de perlas de ender"
+  "block.architects_palette.ender_pearl_block": "Bloque de perlas de ender",
+
+  "block.architects_palette.entrails_slab": "Baldosa de entrañas",
+  "block.architects_palette.entrails_vertical_slab": "Baldosa vertical de entrañas",
+  "block.architects_palette.entrails_stairs": "Escaleras de entrañas"
 }
