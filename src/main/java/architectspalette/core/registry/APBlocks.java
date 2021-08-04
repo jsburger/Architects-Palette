@@ -1,52 +1,30 @@
 package architectspalette.core.registry;
 
-import static architectspalette.core.registry.util.RegistryUtils.createBlock;
-import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 import architectspalette.common.APBlockProperties;
-import architectspalette.common.blocks.BigBrickBlock;
-import architectspalette.common.blocks.CageLanternBlock;
-import architectspalette.common.blocks.DrippyBlock;
-import architectspalette.common.blocks.FlintBlock;
-import architectspalette.common.blocks.FlintPillarBlock;
-import architectspalette.common.blocks.PipeBlock;
-import architectspalette.common.blocks.SunstoneBlock;
-import architectspalette.common.blocks.TotemBlock;
-import architectspalette.common.blocks.TotemWingBlock;
-import architectspalette.common.blocks.abyssaline.AbyssalineLampBlock;
-import architectspalette.common.blocks.abyssaline.AbyssalinePillarBlock;
-import architectspalette.common.blocks.abyssaline.AbyssalineSlabBlock;
-import architectspalette.common.blocks.abyssaline.AbyssalineVerticalSlabBlock;
-import architectspalette.common.blocks.abyssaline.ChiseledAbyssalineBlock;
-import architectspalette.common.blocks.abyssaline.NewAbyssalineBlock;
+import architectspalette.common.blocks.*;
+import architectspalette.common.blocks.abyssaline.*;
+import architectspalette.common.blocks.entrails.DrippyBlock;
+import architectspalette.common.blocks.entrails.DrippySlabBlock;
+import architectspalette.common.blocks.entrails.DrippyVerticalSlabBlock;
+import architectspalette.common.blocks.flint.FlintBlock;
+import architectspalette.common.blocks.flint.FlintPillarBlock;
 import architectspalette.common.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DoorBlock;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.FenceGateBlock;
-import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.PaneBlock;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.TrapDoorBlock;
-import net.minecraft.block.WoodButtonBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import static architectspalette.core.registry.util.RegistryUtils.createBlock;
+import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
@@ -74,7 +52,10 @@ public class APBlocks {
     public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.RED_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.YELLOW_TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
      // Entrails
-    public static final RegistryObject<Block> ENTRAILS = createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
+    public static final RegistryObject<Block> ENTRAILS               = createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
+    public static final RegistryObject<Block> ENTRAILS_SLAB          = createBlock("entrails_slab", () -> new DrippySlabBlock(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
+    public static final RegistryObject<Block> ENTRAILS_VERTICAL_SLAB = createBlock("entrails_vertical_slab", () -> new DrippyVerticalSlabBlock(APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
+    public static final RegistryObject<Block> ENTRAILS_STAIRS =        createBlock("entrails_stairs", () -> new StairsBlock(() -> ENTRAILS.get().getDefaultState(), APBlockProperties.Meat(MaterialColor.PINK_TERRACOTTA)));
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)));
     public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING.notSolid()));

@@ -296,5 +296,9 @@
   "block.architects_palette.blank_acacia_totem": "Blank Acacia Totem",
   "block.architects_palette.acacia_totem_wing": "Acacia Totem Wing",
 
-  "block.architects_palette.ender_pearl_block": "Ender Pearl Block"
+  "block.architects_palette.ender_pearl_block": "Ender Pearl Block",
+
+  "block.architects_palette.entrails_slab": "Entrails Slab",
+  "block.architects_palette.entrails_vertical_slab": "Entrails Vertical Slab",
+  "block.architects_palette.entrails_stairs": "Entrails Stairs"
 }

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:entrails"
+        }
+    },
+    "result": {
+        "count": 6,
+        "item": "architects_palette:entrails_slab"
+    }
+}
