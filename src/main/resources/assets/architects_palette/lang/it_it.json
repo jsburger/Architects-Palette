@@ -105,7 +105,7 @@
   "block.architects_palette.overgrown_algal_brick_stairs": "Scalini di mattoni algali proliferati",
   "__comment__": "Translators; The Algal Lamp is intentionally referred to as a 'lantern' in game for consistency with the sea lantern. Pardon the discrepancy.",
   "block.architects_palette.algal_lamp": "Lanterna algale",
-  "item.architects_palette.algal_brick": "Mattoni algali",
+  "item.architects_palette.algal_brick": "Mattone algale",
   "item.architects_palette.algal_blend": "Miscela algale",
 
   "block.architects_palette.coal_ore_bricks": "Mattoni di minerale di carbone",
@@ -187,7 +187,7 @@
   "block.architects_palette.sunmetal_vertical_slab": "Lastra verticale di metallo solare",
   "block.architects_palette.sunmetal_stairs": "Scalini di metallo solare",
   "block.architects_palette.sunmetal_bars": "Barre di metallo solare",
-  "item.architects_palette.sunmetal_brick": "Mattoni di metallo solare",
+  "item.architects_palette.sunmetal_brick": "Mattone di metallo solare",
   "item.architects_palette.sunmetal_blend": "Miscela di metallo solare",
   
   "block.architects_palette.osseous_bricks": "Mattoni ossei",
