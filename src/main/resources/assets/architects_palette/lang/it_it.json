@@ -186,7 +186,7 @@
   "block.architects_palette.sunmetal_slab": "Lastra di metallo solare",
   "block.architects_palette.sunmetal_vertical_slab": "Lastra verticale di metallo solare",
   "block.architects_palette.sunmetal_stairs": "Scalini di metallo solare",
-  "block.architects_palette.sunmetal_bars": "Barre di metallo solare",
+  "block.architects_palette.sunmetal_bars": "Sbarre di metallo solare",
   "item.architects_palette.sunmetal_brick": "Mattone di metallo solare",
   "item.architects_palette.sunmetal_blend": "Miscela di metallo solare",
   
@@ -208,9 +208,9 @@
   "item.architects_palette.withered_bone": "Osso wither",
 
   "block.architects_palette.entwine_block": "Attorce",
-  "block.architects_palette.chiseled_entwine": "attorce cesellato",
+  "block.architects_palette.chiseled_entwine": "Attorce cesellato",
   "block.architects_palette.entwine_pillar": "Pilastro di attorce",
-  "block.architects_palette.entwine_bars": "Barre di attorce",
+  "block.architects_palette.entwine_bars": "Sbarre di attorce",
   "block.architects_palette.entwine_slab": "Lastra di attorce",
   "block.architects_palette.entwine_vertical_slab": "Lastra verticale di attorce",
   "block.architects_palette.entwine_stairs": "Scalini di attorce",
