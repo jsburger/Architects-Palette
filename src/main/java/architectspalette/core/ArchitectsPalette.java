@@ -1,5 +1,6 @@
 package architectspalette.core;
 
+import architectspalette.core.config.APConfig;
 import architectspalette.core.crafting.WarpingRecipe;
 import architectspalette.core.data.GatherData;
 import architectspalette.core.integration.APBlockData;
@@ -18,7 +19,9 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,6 +38,8 @@ public class ArchitectsPalette {
         instance = this;
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, APConfig.COMMON_CONFIG);
 
         APSounds.SOUNDS.register(modEventBus);
         APBlocks.BLOCKS.register(modEventBus);

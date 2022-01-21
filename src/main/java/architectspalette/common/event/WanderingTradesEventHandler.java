@@ -1,6 +1,7 @@
 package architectspalette.common.event;
 
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.config.APConfig;
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.ItemStack;
@@ -16,11 +17,11 @@ public class WanderingTradesEventHandler {
 
     @SubscribeEvent
     public static void onWanderingTradesLoaded(WandererTradesEvent event) {
+        if (APConfig.WANDERER_TRADES_ENABLED.get()) {
+            List<VillagerTrades.ITrade> generic = event.getGenericTrades();
 
-        List<VillagerTrades.ITrade> generic = event.getGenericTrades();
-
-        generic.add(new BasicTrade(2, new ItemStack(APBlocks.SUNSTONE.get(), 6), 20, 2, 0f));
-        generic.add(new BasicTrade(2, new ItemStack(APBlocks.MOONSTONE.get(), 6), 20, 2, 0f));
-
+            generic.add(new BasicTrade(2, new ItemStack(APBlocks.SUNSTONE.get(), 6), 20, 2, 0f));
+            generic.add(new BasicTrade(2, new ItemStack(APBlocks.MOONSTONE.get(), 6), 20, 2, 0f));
+        }
     }
 }

@@ -1,9 +1,9 @@
 package architectspalette.core.integration;
 
-import com.google.gson.JsonObject;
-
 import architectspalette.common.blocks.VerticalSlabBlock;
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.config.APConfig;
+import com.google.gson.JsonObject;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.ICondition;
@@ -31,8 +31,7 @@ public class APVerticalSlabsCondition implements ICondition {
 			dummyObject.addProperty("flag", "vertical_slabs");
 			return CraftingHelper.getCondition(dummyObject).test();
 		}
-		
-		return false;
+		return APConfig.VERTICAL_SLABS_FORCED.get();
 	}
 	
 	public static class Serializer implements IConditionSerializer<APVerticalSlabsCondition> {
