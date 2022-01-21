@@ -4,6 +4,8 @@
   "subtitles.architects_palette.cage_lantern.toggle_on": "Lanterna gradeada acionada",
   "subtitles.architects_palette.cage_lantern.toggle_off": "Lanterna gradeada acionada",
 
+  "architects_palette.misc.no_quark": "Requer o Quark Mod instalado",
+
   "architects_palette.advancement.root": "A Paleta do Arquiteto",
   "architects_palette.advancement.root.desc": "Hora de construir algo novo.",
   "architects_palette.advancement.totem_carving": "Tira esse sorriso do rosto",
@@ -15,7 +17,7 @@
   "architects_palette.advancement.buy_entrails": "Carne de Primeira",
   "architects_palette.advancement.buy_entrails.desc": "Troque suas preciosas esmeraldas por um... bloco de entranhas?",
   "architects_palette.advancement.place_entrails": "Ainda pior que o esperado",
-  "architects_palette.advancement.place_entrails.desc": "Ponha seu mais novo bloco de entranhas no mundo e contemple a sua beleza.",
+  "architects_palette.advancement.place_entrails.desc": "Ponha seu mais novo bloco de entranhas no mundo e contemple sua beleza.",
   "architects_palette.advancement.buy_plating": "Oi, meu chapa",
   "architects_palette.advancement.buy_plating.desc": "Negocie chapas metálicas com um ferreiro de armaduras.",
   "architects_palette.advancement.buy_spool": "No atacado sai mais em conta",
@@ -33,10 +35,12 @@
   "block.architects_palette.abyssaline_pillar": "Pilar de abissalina",
   "block.architects_palette.abyssaline_brick_stairs": "Escadas de tijolos de abissalina",
   "block.architects_palette.abyssaline_brick_slab": "Laje de tijolos de abissalina",
+  "block.architects_palette.abyssaline_brick_vertical_slab": "Laje vertical de tijolos de abissalina",
   "block.architects_palette.abyssaline_brick_wall": "Muro de tijolos de abissalina",
   "block.architects_palette.abyssaline_tiles": "Azulejos de abissalina",
   "block.architects_palette.abyssaline_tile_stairs": "Escadas de azulejos de abissalina",
   "block.architects_palette.abyssaline_tile_slab": "Laje de azulejos de abissalina",
+  "block.architects_palette.abyssaline_tile_vertical_slab": "Laje vertical de azulejos de abissalina",
   "block.architects_palette.abyssaline_lamp": "Lâmpada de abissalina",
 
   "block.architects_palette.salmon_log": "Posta de salmão",
@@ -49,6 +53,7 @@
   "block.architects_palette.plating_wall": "Muro de chapas metálicas",
   "block.architects_palette.plating_stairs": "Escadas de chapas metálicas",
   "block.architects_palette.plating_slab": "Laje de chapas metálicas",
+  "block.architects_palette.plating_vertical_slab": "Laje vertical de chapas metálicas",
   "block.architects_palette.pipe": "Cano",
   "block.architects_palette.spool": "Carretel",
 
@@ -59,12 +64,15 @@
   "block.architects_palette.mushy_limestone_bricks": "Tijolos de calcário fúngicos",
   "block.architects_palette.limestone_wall": "Muro de calcário",
   "block.architects_palette.limestone_slab": "Laje de calcário",
+  "block.architects_palette.limestone_vertical_slab": "Laje vertical de calcário",
   "block.architects_palette.limestone_stairs": "Escadas de calcário",
   "block.architects_palette.limestone_brick_wall": "Muro de tijolos de calcário",
   "block.architects_palette.limestone_brick_slab": "Laje de tijolos de calcário",
+  "block.architects_palette.limestone_brick_vertical_slab": "Laje vertical de tijolos de calcário",
   "block.architects_palette.limestone_brick_stairs": "Escadas de tijolos de calcário",
   "block.architects_palette.mushy_limestone_brick_wall": "Muro de tijolos de calcário fúngicos",
   "block.architects_palette.mushy_limestone_brick_slab": "Laje de tijolos de calcário fúngicos",
+  "block.architects_palette.mushy_limestone_brick_vertical_slab": "Laje vertical de tijolos de calcário fúngicos",
   "block.architects_palette.mushy_limestone_brick_stairs": "Escadas de tijolos de calcário fúngicos",
 
   "block.architects_palette.olivestone_bricks": "Tijolos de olivina",
@@ -74,9 +82,11 @@
   "block.architects_palette.olivestone_pillar": "Pilar de olivina",
   "block.architects_palette.olivestone_brick_wall": "Muro de tijolos de olivina",
   "block.architects_palette.olivestone_brick_slab": "Laje de tijolos de olivina",
+  "block.architects_palette.olivestone_brick_vertical_slab": "Laje vertical de tijolos de olivina",
   "block.architects_palette.olivestone_brick_stairs": "Escadas de tijolos de olivina",
   "block.architects_palette.olivestone_tile_wall": "Muro de azulejos de olivina",
   "block.architects_palette.olivestone_tile_slab": "Laje de azulejos de olivina",
+  "block.architects_palette.olivestone_tile_vertical_slab": "Laje vertical de azulejos de olivina",
   "block.architects_palette.olivestone_tile_stairs": "Escadas de azulejos de olivina",
   "block.architects_palette.illuminated_olivestone": "Olivina luminescente",
   "block.architects_palette.chiseled_olivestone": "Olivina talhada",
@@ -87,9 +97,11 @@
   "block.architects_palette.chiseled_algal_bricks": "Tijolos algais talhados",
   "block.architects_palette.algal_brick_wall": "Muro de tijolos algais",
   "block.architects_palette.algal_brick_slab": "Laje de tijolos algais",
+  "block.architects_palette.algal_brick_vertical_slab": "Laje vertical de tijolos algais",
   "block.architects_palette.algal_brick_stairs": "Escadas de tijolos algais",
   "block.architects_palette.overgrown_algal_brick_wall": "Muro de tijolos algais musgosos",
   "block.architects_palette.overgrown_algal_brick_slab": "Laje de tijolos algais musgosos",
+  "block.architects_palette.overgrown_algal_brick_vertical_slab": "Laje vertical de tijolos algais musgosos",
   "block.architects_palette.overgrown_algal_brick_stairs": "Escadas de tijolos algais musgosos",
   "__comment__": "Translators; The Algal Lamp is intentionally referred to as a 'lantern' in game for consistency with the sea lantern. Pardon the discrepancy.",
   "block.architects_palette.algal_lamp": "Lanterna algal",
@@ -101,6 +113,7 @@
   "block.architects_palette.chiseled_coal_ore_bricks": "Tijolos de minério de carvão talhados",
   "block.architects_palette.coal_ore_brick_wall": "Muro de tijolos de minério de carvão",
   "block.architects_palette.coal_ore_brick_slab": "Laje de tijolos de minério de carvão",
+  "block.architects_palette.coal_ore_brick_vertical_slab": "Laje vertical de tijolos de minério de carvão",
   "block.architects_palette.coal_ore_brick_stairs": "Escadas de tijolos de minério de carvão",
 
   "block.architects_palette.lapis_ore_bricks": "Tijolos de minério de lápis-lazúli",
@@ -108,6 +121,7 @@
   "block.architects_palette.chiseled_lapis_ore_bricks": "Tijolos de minério de lápis-lazúli talhados",
   "block.architects_palette.lapis_ore_brick_wall": "Muro de tijolos de minério de lápis-lazúli",
   "block.architects_palette.lapis_ore_brick_slab": "Laje de tijolos de minério de lápis-lazúli",
+  "block.architects_palette.lapis_ore_brick_vertical_slab": "Laje vertical de tijolos de minério de lápis-lazúli",
   "block.architects_palette.lapis_ore_brick_stairs": "Escadas de tijolos de minério de lápis-lazúli",
 
   "block.architects_palette.redstone_ore_bricks": "Tijolos de minério de redstone",
@@ -115,6 +129,7 @@
   "block.architects_palette.chiseled_redstone_ore_bricks": "Tijolos de minério de redstone talhados",
   "block.architects_palette.redstone_ore_brick_wall": "Muro de tijolos de minério de redstone",
   "block.architects_palette.redstone_ore_brick_slab": "Laje de tijolos de minério de redstone",
+  "block.architects_palette.redstone_ore_brick_vertical_slab": "Laje vertical de tijolos de minério de redstone",
   "block.architects_palette.redstone_ore_brick_stairs": "Escadas de tijolos de minério de redstone",
 
   "block.architects_palette.iron_ore_bricks": "Tijolos de minério de ferro",
@@ -122,6 +137,7 @@
   "block.architects_palette.chiseled_iron_ore_bricks": "Tijolos de minério de ferro talhados",
   "block.architects_palette.iron_ore_brick_wall": "Muro de tijolos de minério de ferro",
   "block.architects_palette.iron_ore_brick_slab": "Laje de tijolos de minério de ferro",
+  "block.architects_palette.iron_ore_brick_vertical_slab": "Laje vertical de tijolos de minério de ferro",
   "block.architects_palette.iron_ore_brick_stairs": "Escadas de tijolos de minério de ferro",
 
   "block.architects_palette.gold_ore_bricks": "Tijolos de minério de ouro",
@@ -129,6 +145,7 @@
   "block.architects_palette.chiseled_gold_ore_bricks": "Tijolos de minério de ouro talhados",
   "block.architects_palette.gold_ore_brick_wall": "Muro de tijolos de minério de ouro",
   "block.architects_palette.gold_ore_brick_slab": "Laje de tijolos de minério de ouro",
+  "block.architects_palette.gold_ore_brick_vertical_slab": "Laje vertical de tijolos de minério de ouro",
   "block.architects_palette.gold_ore_brick_stairs": "Escadas de tijolos de minério de ouro",
 
   "block.architects_palette.emerald_ore_bricks": "Tijolos de minério de esmeralda",
@@ -136,6 +153,7 @@
   "block.architects_palette.chiseled_emerald_ore_bricks": "Tijolos de minério de esmeralda talhados",
   "block.architects_palette.emerald_ore_brick_wall": "Muro de tijolos de minério de esmeralda",
   "block.architects_palette.emerald_ore_brick_slab": "Laje tijolos de minério de esmeralda",
+  "block.architects_palette.emerald_ore_brick_vertical_slab": "Laje vertical tijolos de minério de esmeralda",
   "block.architects_palette.emerald_ore_brick_stairs": "Escadas de tijolos de minério de esmeralda",
 
   "block.architects_palette.diamond_ore_bricks": "Tijolos de minério de diamante",
@@ -143,12 +161,14 @@
   "block.architects_palette.chiseled_diamond_ore_bricks": "Tijolos de minério de diamante talhados",
   "block.architects_palette.diamond_ore_brick_wall": "Muro de tijolos de minério de diamante",
   "block.architects_palette.diamond_ore_brick_slab": "Laje de tijolos de minério de diamante",
+  "block.architects_palette.diamond_ore_brick_vertical_slab": "Laje de tijolos de minério de diamante",
   "block.architects_palette.diamond_ore_brick_stairs": "Escadas de tijolos de minério de diamante",
 
   "block.architects_palette.flint_block": "Bloco de sílex",
   "block.architects_palette.flint_tiles": "Azulejos de sílex",
   "block.architects_palette.flint_tile_wall": "Muro de azujelos de sílex",
   "block.architects_palette.flint_tile_slab": "Laje de azulejos de sílex",
+  "block.architects_palette.flint_tile_vertical_slab": "Laje vertical de azulejos de sílex",
   "block.architects_palette.flint_tile_stairs": "Escadas de azulejos de sílex",
   "block.architects_palette.flint_pillar": "Pilar de sílex",
 
@@ -157,15 +177,17 @@
   "block.architects_palette.packed_ice_pillar": "Pilar de gelo compactado",
   "block.architects_palette.polished_packed_ice_stairs": "Escadas de gelo compactado polido",
   "block.architects_palette.polished_packed_ice_slab": "Laje de gelo compactado polido",
+  "block.architects_palette.polished_packed_ice_vertical_slab": "Laje vertical de gelo compactado polido",
   "block.architects_palette.polished_packed_ice_wall": "Muro de gelo compactado polido",
 
   "block.architects_palette.sunmetal_block": "Bloco de metal solar",
   "block.architects_palette.chiseled_sunmetal_block": "Bloco de metal solar talhado",
   "block.architects_palette.sunmetal_pillar": "Pilar de metal solar",
   "block.architects_palette.sunmetal_slab": "Laje de metal solar",
+  "block.architects_palette.sunmetal_vertical_slab": "Laje vertical de metal solar",
   "block.architects_palette.sunmetal_stairs": "Escadas de metal solar",
   "block.architects_palette.sunmetal_bars": "Grades de metal solar",
-  "item.architects_palette.sunmetal_brick": "Tijolos de metal solar",
+  "item.architects_palette.sunmetal_brick": "Tijolo de metal solar",
   "item.architects_palette.sunmetal_blend": "Mistura para metal solar",
 
   "block.architects_palette.osseous_bricks": "Tijolos ósseos",
@@ -173,6 +195,7 @@
   "block.architects_palette.osseous_brick_wall": "Muro de tijolos ósseos",
   "block.architects_palette.osseous_brick_stairs": "Escadas de tijolos ósseos",
   "block.architects_palette.osseous_brick_slab": "Laje de tijolos ósseos",
+  "block.architects_palette.osseous_brick_vertical_slab": "Laje vertical de tijolos ósseos",
 
   "block.architects_palette.withered_osseous_bricks": "Tijolos ósseos decompostos",
   "block.architects_palette.withered_osseous_pillar": "Pilar de tijolos ósseos decompostos",
@@ -180,6 +203,7 @@
   "block.architects_palette.withered_osseous_brick_wall": "Muro de tijolos ósseos decompostos",
   "block.architects_palette.withered_osseous_brick_stairs": "Escadas de tijolos ósseos decompostos",
   "block.architects_palette.withered_osseous_brick_slab": "Laje de tijolos ósseos decompostos",
+  "block.architects_palette.withered_osseous_brick_vertical_slab": "Laje vertical de tijolos ósseos decompostos",
   "block.architects_palette.wither_lamp": "Lâmpada wither",
   "item.architects_palette.withered_bone": "Osso decomposto",
 
@@ -188,6 +212,7 @@
   "block.architects_palette.entwine_pillar": "Pilar de entwine",
   "block.architects_palette.entwine_bars": "Grades de entwine",
   "block.architects_palette.entwine_slab": "Laje de entwine",
+  "block.architects_palette.entwine_vertical_slab": "Laje vertical de entwine",
   "block.architects_palette.entwine_stairs": "Escadas de entwine",
   "item.architects_palette.entwine_rod": "Vara de entwine",
 
@@ -197,6 +222,7 @@
 
   "block.architects_palette.polished_glowstone": "Pedra luminosa polida",
   "block.architects_palette.polished_glowstone_slab": "Laje de pedra luminosa polida",
+  "block.architects_palette.polished_glowstone_vertical_slab": "Laje vertical de pedra luminosa polida",
   "block.architects_palette.runic_glowstone": "Pedra luminosa rúnica",
 
   "block.architects_palette.scute_block": "Bloco de casco",
@@ -205,12 +231,13 @@
   "block.architects_palette.chiseled_gilded_sandstone": "Arenito dourado talhado",
   "block.architects_palette.gilded_sandstone_pillar": "Pilar de arenito dourado",
   "block.architects_palette.gilded_sandstone_slab": "Laje de arenito dourado",
+  "block.architects_palette.gilded_sandstone_vertical_slab": "Laje vertical de arenito dourado",
   "block.architects_palette.gilded_sandstone_stairs": "Escadas de arenito dourado",
 
-  "block.architects_palette.weeping_blackstone": "Pedra-negra chorosa",
-  "block.architects_palette.weeping_blackstone_bricks": "Tijolos de pedra-negra chorosa",
+  "block.architects_palette.weeping_blackstone": "Pedra-negra chorona",
+  "block.architects_palette.weeping_blackstone_bricks": "Tijolos de pedra-negra chorões",
   "block.architects_palette.twisting_blackstone": "Pedra-negra retorcida",
-  "block.architects_palette.twisting_blackstone_bricks": "Pedra-negra retorcida",
+  "block.architects_palette.twisting_blackstone_bricks": "Tijolos de pedra-negra retorcidos",
 
   "block.architects_palette.rotten_flesh_block": "Bloco de carne podre",
 
@@ -218,6 +245,7 @@
   "block.architects_palette.warpstone_wall": "Muro de pedra corrupta",
   "block.architects_palette.warpstone_stairs": "Escadas de pedra corrupta",
   "block.architects_palette.warpstone_slab": "Laje de pedra corrupta",
+  "block.architects_palette.warpstone_vertical_slab": "Laje vertical de pedra corrupta",
 
   "block.architects_palette.choral_end_stone_bricks": "Tijolos de pedra do End corais",
   "block.architects_palette.cracked_end_stone_bricks": "Tijolos de pedra do End rachados",
@@ -235,6 +263,7 @@
   "block.architects_palette.twisted_pressure_plate": "Placa de pressão corrupta",
   "block.architects_palette.twisted_trapdoor": "Alçapão corrupto",
   "block.architects_palette.twisted_slab": "Laje corrupta",
+  "block.architects_palette.twisted_vertical_slab": "Laje vertical corrupta",
   "block.architects_palette.twisted_stairs": "Escadas corruptas",
   "block.architects_palette.twisted_leaves": "Folhas corruptas",
   "block.architects_palette.twisted_sapling": "Muda corrupta",
@@ -244,6 +273,7 @@
   "block.architects_palette.basalt_tile_wall": "Muro de azulejos de basalto",
   "block.architects_palette.basalt_tile_stairs": "Escadas de azulejo de basalto",
   "block.architects_palette.basalt_tile_slab": "Laje de azulejos de basalto",
+  "block.architects_palette.basalt_tile_vertical_slab": "Laje vertical de azulejos de basalto",
   "block.architects_palette.chiseled_basalt_tiles": "Azulejos de basalto polidos",
   "block.architects_palette.cracked_basalt_tiles": "Azulejos de basalto rachados",
 
@@ -266,5 +296,9 @@
   "block.architects_palette.blank_acacia_totem": "Totem de acácia em branco",
   "block.architects_palette.acacia_totem_wing": "Asa do totem de acácia",
 
-  "block.architects_palette.ender_pearl_block": "Bloco de pérola de ender"
+  "block.architects_palette.ender_pearl_block": "Bloco de pérola de ender",
+
+  "block.architects_palette.entrails_slab": "Laje de entranhas",
+  "block.architects_palette.entrails_vertical_slab": "Laje vertical de entranhas",
+  "block.architects_palette.entrails_stairs": "Escadas de entranhas"
 }
