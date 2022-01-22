@@ -1,5 +1,6 @@
 package architectspalette.common.blocks;
 
+import architectspalette.core.config.APConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -62,9 +63,13 @@ public class SunstoneBlock extends Block {
     @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (facingState.getBlock() instanceof SunstoneBlock) {
-            Random rand = worldIn.getRandom();
-            if (rand.nextBoolean() && rand.nextBoolean()) {
-                worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 8);
+            //Default 35%
+            Double chance = APConfig.SUNSTONE_SPREAD_CHANCE.get();
+            if (chance > 0) {
+                Random rand = worldIn.getRandom();
+                if (rand.nextDouble() <= chance) {
+                    worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, (int) (2 + Math.floor(rand.nextDouble() * 6)));
+                }
             }
         }
         return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
@@ -84,8 +89,8 @@ public class SunstoneBlock extends Block {
         ServerWorld overworld = s.getWorld(World.OVERWORLD);
         if (overworld != null) {
             long time = (overworld.getDayTime() + offset) % 24000;
-            if (time >= 13000 && time <= 23000) return 0;
-            if (time >= 3000 && time <= 9000) return 2;
+            if (time >= 12500 && time <= 23500) return 0;
+            if (time >= 3500 && time <= 8500) return 2;
             return 1;
         }
         return 0;

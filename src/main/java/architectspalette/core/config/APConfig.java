@@ -11,6 +11,7 @@ public class APConfig {
     public static ForgeConfigSpec.BooleanValue VILLAGER_TRADES_ENABLED;
     public static ForgeConfigSpec.BooleanValue WANDERER_TRADES_ENABLED;
     public static ForgeConfigSpec.BooleanValue VERTICAL_SLABS_FORCED;
+    public static ForgeConfigSpec.DoubleValue SUNSTONE_SPREAD_CHANCE;
 
     static {
 
@@ -25,6 +26,12 @@ public class APConfig {
                 .define("verticalSlabsForced", false);
 
         BUILDER.pop();
+
+        SUNSTONE_SPREAD_CHANCE = BUILDER.comment("Whenever Sunstone and Moonstone update their states, there is a chance for adjacent ones to update as well.",
+                "This causes the updates to cascade and helps the blocks stay in sync over large areas.",
+                "Default is .35, for a 35% chance of each adjacent block updating.")
+                .defineInRange("sunstoneSpreadChance", 0.35, 0, 1);
+
         COMMON_CONFIG = BUILDER.build();
     }
 
