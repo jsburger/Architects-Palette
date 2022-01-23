@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -202,7 +201,7 @@ public class APBlocks {
 
     // Odd block variants
     public static final RegistryObject<Block> MOLTEN_NETHER_BRICKS = createBlock("molten_nether_bricks", () -> new Block(APBlockProperties.MOLTEN_BRICK));
-    public static final RegistryObject<Block> COARSE_SNOW = createBlock("coarse_snow", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK).harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> COARSE_SNOW = createBlock("coarse_snow", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK)));
 
     // Heavy End Stone Bricks
     public static final RegistryObject<Block> HEAVY_END_STONE_BRICKS = createBlock("heavy_end_stone_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));

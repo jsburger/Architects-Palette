@@ -90,7 +90,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
 //    implementation fg.deobf("curse.maven:jei:${project.jei}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-//    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
 jar {
