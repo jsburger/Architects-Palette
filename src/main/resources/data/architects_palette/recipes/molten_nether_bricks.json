@@ -1,19 +1,17 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:magma_block"
-        },
-        {
-            "item": "minecraft:magma_block"
-        },
-        {
-            "item": "minecraft:nether_bricks"
-        },
-        {
-            "item": "minecraft:nether_bricks"
-        }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XY",
+        "YX"
     ],
+    "key": {
+        "X": {
+            "item": "minecraft:nether_bricks"
+        },
+        "Y": {
+            "item": "minecraft:magma_block"
+        }
+    },
     "result": {
         "count": 4,
         "item": "architects_palette:molten_nether_bricks"
