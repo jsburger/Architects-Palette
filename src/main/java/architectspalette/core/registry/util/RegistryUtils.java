@@ -2,11 +2,11 @@ package architectspalette.core.registry.util;
 
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
@@ -19,12 +19,12 @@ public class RegistryUtils {
 	}
 
 	public static <B extends Block> RegistryObject<B> createBlock(String name, Supplier<? extends B> supplier) {
-		return createBlock(name, supplier, ItemGroup.BUILDING_BLOCKS);
+		return createBlock(name, supplier, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	}
 
-	public static <B extends Block> RegistryObject<B> createBlock(String name, Supplier<? extends B> supplier, @Nullable ItemGroup group) {
+	public static <B extends Block> RegistryObject<B> createBlock(String name, Supplier<? extends B> supplier, @Nullable CreativeModeTab group) {
 		RegistryObject<B> block = APBlocks.BLOCKS.register(name, supplier);
-		APItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().group(group)));
+		APItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(group)));
 		return block;
 	}
 	

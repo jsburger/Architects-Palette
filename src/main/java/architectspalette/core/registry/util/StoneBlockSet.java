@@ -1,12 +1,12 @@
 package architectspalette.core.registry.util;
 
 import architectspalette.common.blocks.VerticalSlabBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallBlock;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
 public class StoneBlockSet {
     public RegistryObject<Block> SLAB;
@@ -38,7 +38,7 @@ public class StoneBlockSet {
     }
 
     private Block.Properties properties() {
-        return Block.Properties.from(BLOCK.get());
+        return Block.Properties.copy(BLOCK.get());
     }
 
     public Block get() {
@@ -52,12 +52,12 @@ public class StoneBlockSet {
     }
 
     public StoneBlockSet addStairs() {
-        STAIRS = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairsBlock(() -> BLOCK.get().getDefaultState(), properties()));
+        STAIRS = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairBlock(() -> BLOCK.get().defaultBlockState(), properties()));
         return this;
     }
 
     public StoneBlockSet addWalls() {
-        WALL = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), ItemGroup.DECORATIONS);
+        WALL = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), CreativeModeTab.TAB_DECORATIONS);
         return this;
     }
 

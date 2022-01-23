@@ -1,43 +1,47 @@
 package architectspalette.common.blocks;
 
-import net.minecraft.block.*;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.IBooleanFunction;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
+public class PipeBlock extends RotatedPillarBlock implements SimpleWaterloggedBlock {
 
     public static final EnumProperty<PipeBlockPart> PART = EnumProperty.create("part", PipeBlockPart.class);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    protected static final VoxelShape Y_AXIS_SHAPE = cutout(Block.makeCuboidShape(2, 0, 2, 14, 16, 14));
-    protected static final VoxelShape Z_AXIS_SHAPE = cutout(Block.makeCuboidShape(2, 2, 0, 14, 14, 16));
-    protected static final VoxelShape X_AXIS_SHAPE = cutout(Block.makeCuboidShape(0, 2, 2, 16, 14, 14));
+    protected static final VoxelShape Y_AXIS_SHAPE = cutout(Block.box(2, 0, 2, 14, 16, 14));
+    protected static final VoxelShape Z_AXIS_SHAPE = cutout(Block.box(2, 2, 0, 14, 14, 16));
+    protected static final VoxelShape X_AXIS_SHAPE = cutout(Block.box(0, 2, 2, 16, 14, 14));
 
     public PipeBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y).with(PART, PipeBlockPart.MIDDLE).with(WATERLOGGED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(PART, PipeBlockPart.MIDDLE).setValue(WATERLOGGED, false));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AXIS, PART, WATERLOGGED);
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        switch(state.get(AXIS)) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        switch (state.getValue(AXIS)) {
             case X:
             default:
                 return X_AXIS_SHAPE;
@@ -49,43 +53,43 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
     }
 
     @Override
-    public VoxelShape getRaytraceShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return VoxelShapes.fullCube();
+    public VoxelShape getInteractionShape(BlockState state, BlockGetter worldIn, BlockPos pos) {
+        return Shapes.block();
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
         //also stole this from chains, still dunno if im supposed to
-        if (state.get(WATERLOGGED)) {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+        if (state.getValue(WATERLOGGED)) {
+            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
 
-        return state.with(PART, checkNearbyPipes(state, worldIn, currentPos));
+        return state.setValue(PART, checkNearbyPipes(state, worldIn, currentPos));
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
         //stole this from chains, dunno if im supposed to.
-        FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
-        boolean flag = fluidstate.getFluid() == Fluids.WATER;
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        boolean flag = fluidstate.getType() == Fluids.WATER;
 
         BlockState b = super.getStateForPlacement(context);
-        return b.with(PART, checkNearbyPipes(b, context.getWorld(), context.getPos())).with(WATERLOGGED, flag);
+        return b.setValue(PART, checkNearbyPipes(b, context.getLevel(), context.getClickedPos())).setValue(WATERLOGGED, flag);
     }
 
     public FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
-    public PipeBlockPart checkNearbyPipes(BlockState state, IWorld world, BlockPos pos) {
-        Direction.Axis facing = state.get(AXIS);
+    public PipeBlockPart checkNearbyPipes(BlockState state, LevelAccessor world, BlockPos pos) {
+        Direction.Axis facing = state.getValue(AXIS);
         // this function is just offset, but for axis
-        BlockPos forward = pos.func_241872_a(facing, 1);
-        BlockPos reverse = pos.func_241872_a(facing, -1);
+        BlockPos forward = pos.relative(facing, 1);
+        BlockPos reverse = pos.relative(facing, -1);
         boolean ffound = pipeMatches(state, world.getBlockState(forward));
         boolean rfound = pipeMatches(state, world.getBlockState(reverse));
 
@@ -102,31 +106,36 @@ public class PipeBlock extends RotatedPillarBlock implements IWaterLoggable {
     }
 
     private boolean pipeMatches(BlockState base, BlockState checking) {
-        return checking.getBlock() instanceof PipeBlock && checking.get(AXIS) == base.get(AXIS);
+        return checking.getBlock() instanceof PipeBlock && checking.getValue(AXIS) == base.getValue(AXIS);
     }
 
     // referenced (copied) from Farmer's Delight by .vectorwing
     // cuts out voxel regions from a cube
-    private static VoxelShape cutout(VoxelShape... cutouts){
-        VoxelShape shape = VoxelShapes.fullCube();
+    private static VoxelShape cutout(VoxelShape... cutouts) {
+        VoxelShape shape = Shapes.block();
         for (VoxelShape cutout : cutouts) {
-            shape = VoxelShapes.combine(shape, cutout, IBooleanFunction.ONLY_FIRST);
+            shape = Shapes.joinUnoptimized(shape, cutout, BooleanOp.ONLY_FIRST);
         }
-        return shape.simplify();
+        return shape.optimize();
     }
 
-    public enum PipeBlockPart implements IStringSerializable {
+    public enum PipeBlockPart implements StringRepresentable {
         TOP,
         MIDDLE,
         BOTTOM;
 
-        public String toString() { return this.getString(); }
+        public String toString() {
+            return this.getSerializedName();
+        }
 
-        public String getString() {
-            switch(this) {
-                case TOP: return "top";
-                case BOTTOM: return "bottom";
-                default: return "middle";
+        public String getSerializedName() {
+            switch (this) {
+                case TOP:
+                    return "top";
+                case BOTTOM:
+                    return "bottom";
+                default:
+                    return "middle";
             }
         }
     }

@@ -1,35 +1,40 @@
 package architectspalette.common.features;
 
 import architectspalette.core.registry.APBlocks;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.util.LazyValue;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
-import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class TwistedTree extends Tree {
+public class TwistedTree extends AbstractTreeGrower {
 
-    public static final LazyValue<BaseTreeFeatureConfig> TWISTED_TREE_CONFIG = new LazyValue<>(() ->
-            new BaseTreeFeatureConfig.Builder(
-                    new SimpleBlockStateProvider(APBlocks.TWISTED_LOG.get().getDefaultState()),
-                    new SimpleBlockStateProvider(APBlocks.TWISTED_LEAVES.get().getDefaultState()),
-                    new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)),
-                    new ForkyTrunkPlacer(5, 2, 2),
-                    new TwoLayerFeature(1, 0, 2)
+    public static final LazyLoadedValue<TreeConfiguration> TWISTED_TREE_CONFIG = new LazyLoadedValue<>(() ->
+            new TreeConfiguration.TreeConfigurationBuilder(
+                    new SimpleStateProvider(APBlocks.TWISTED_LOG.get().defaultBlockState()),
+                    new ForkingTrunkPlacer(5, 2, 2),
+                    new SimpleStateProvider(APBlocks.TWISTED_LEAVES.get().defaultBlockState()),
+                    new SimpleStateProvider(APBlocks.TWISTED_SAPLING.get().defaultBlockState()),
+                    new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                    new TwoLayersFeatureSize(1, 0, 2)
             )
-            .setIgnoreVines()
+            .ignoreVines()
             .build()
     );
 
 
     @Nullable
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return Feature.TREE.withConfiguration(TWISTED_TREE_CONFIG.getValue());
+    protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
+        return Feature.TREE.configured(TWISTED_TREE_CONFIG.get());
     }
 
 }

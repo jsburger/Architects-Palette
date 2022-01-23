@@ -2,14 +2,14 @@ package architectspalette.core.loot;
 
 import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonObject;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,7 +23,7 @@ public class WitheredBoneLootModifier extends LootModifier {
 
     public static final Serializer SERIALIZER = new Serializer();
 
-    protected WitheredBoneLootModifier(ILootCondition[] conditionsIn, Item replacedItem, Item boneItem) {
+    protected WitheredBoneLootModifier(LootItemCondition[] conditionsIn, Item replacedItem, Item boneItem) {
         super(conditionsIn);
         this.replacedItem = replacedItem;
         this.boneItem = boneItem;
@@ -32,7 +32,7 @@ public class WitheredBoneLootModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        Entity t = context.get(LootParameters.THIS_ENTITY);
+        Entity t = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         if (t == null) return generatedLoot;
         if (t.getType().delegate.name().equals(new ResourceLocation("minecraft:wither_skeleton"))) {
             int amountOfBones = 0;
@@ -55,9 +55,9 @@ public class WitheredBoneLootModifier extends LootModifier {
         }
 
         @Override
-        public WitheredBoneLootModifier read(ResourceLocation location, JsonObject object, ILootCondition[] ailootcondition) {
-            String boneItem = JSONUtils.getString(object, "bone");
-            String replacedItem = JSONUtils.getString(object, "replaces");
+        public WitheredBoneLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
+            String boneItem = GsonHelper.getAsString(object, "bone");
+            String replacedItem = GsonHelper.getAsString(object, "replaces");
 
             Item witheredBone = ForgeRegistries.ITEMS.getValue(new ResourceLocation(boneItem));
             Item bone         = ForgeRegistries.ITEMS.getValue(new ResourceLocation(replacedItem));
@@ -74,8 +74,8 @@ public class WitheredBoneLootModifier extends LootModifier {
             else {
                 obj = new JsonObject();
             }
-            obj.addProperty("bone", instance.boneItem.getItem().getRegistryName().toString());
-            obj.addProperty("replaces", instance.replacedItem.getItem().getRegistryName().toString());
+            obj.addProperty("bone", instance.boneItem.getRegistryName().toString());
+            obj.addProperty("replaces", instance.replacedItem.getRegistryName().toString());
             return obj;
         }
     }

@@ -2,8 +2,8 @@ package architectspalette.common.event;
 
 import architectspalette.core.ArchitectsPalette;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.entity.merchant.villager.VillagerProfession;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,9 +19,9 @@ public class TradingEventHandler {
      //this sucks, please let me know how to make it better, thanks
      //To break it down a little
      // this + Profession -> Map of trades for that profession, Map + Trade level -> List of trades of that level
-    private static final Map<VillagerProfession, Map<Integer, LinkedList<VillagerTrades.ITrade>>> professionMap = new HashMap<>();
+    private static final Map<VillagerProfession, Map<Integer, LinkedList<VillagerTrades.ItemListing>>> professionMap = new HashMap<>();
 
-    public static void add_trade(VillagerProfession prof, Integer level, VillagerTrades.ITrade trade) {
+    public static void add_trade(VillagerProfession prof, Integer level, VillagerTrades.ItemListing trade) {
         professionMap.putIfAbsent(prof, new HashMap<>());
         professionMap.get(prof).putIfAbsent(level, new LinkedList<>());
         professionMap.get(prof).get(level).add(trade);
@@ -35,9 +35,9 @@ public class TradingEventHandler {
     @SubscribeEvent
     public static void onTradesLoaded (VillagerTradesEvent event) {
         VillagerProfession profession = event.getType();
-        Map<Integer, LinkedList<VillagerTrades.ITrade>> prof_trades = professionMap.get(profession);
+        Map<Integer, LinkedList<VillagerTrades.ItemListing>> prof_trades = professionMap.get(profession);
         if (prof_trades != null) {
-            Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             trades.forEach((level, list) -> {
                     if (prof_trades.containsKey(level)) {
                         list.addAll(prof_trades.get(level));

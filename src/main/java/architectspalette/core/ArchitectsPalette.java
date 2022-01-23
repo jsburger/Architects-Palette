@@ -11,9 +11,9 @@ import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.APSounds;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
@@ -48,7 +48,7 @@ public class ArchitectsPalette {
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
-        modEventBus.addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
+        modEventBus.addGenericListener(RecipeSerializer.class, this::registerRecipeSerializers);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
 
 		CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
@@ -66,7 +66,7 @@ public class ArchitectsPalette {
         APCriterion.register();
     }
 
-    void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
+    void registerRecipeSerializers(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         //Register the recipe type
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(WarpingRecipe.TYPE.toString()), WarpingRecipe.TYPE);
         //Register the serializer

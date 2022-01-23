@@ -1,16 +1,15 @@
 package architectspalette.common.blocks.abyssaline;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
 
 import java.util.Random;
 
@@ -22,46 +21,41 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 
 	public AbyssalinePillarBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.getDefaultState().with(CHARGE_SOURCE, Direction.NORTH).with(CHARGED, false));
+		this.registerDefaultState(this.defaultBlockState().setValue(CHARGE_SOURCE, Direction.NORTH).setValue(CHARGED, false));
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(AXIS, CHARGED, CHARGE_SOURCE);
 	}
 
 	@Override
-	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-		return this.isCharged(state) ? AbyssalineHelper.CHARGE_LIGHT : 0;
-	}
-
-	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		context.getWorld().getPendingBlockTicks().scheduleTick(context.getPos(), this, 1);
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		context.getLevel().getBlockTicks().scheduleTick(context.getClickedPos(), this, 1);
 		return super.getStateForPlacement(context);
 	}
 
 	@Override
-	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+	public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
 		AbyssalineHelper.abyssalineNeighborUpdate(this, state, worldIn, pos, blockIn, fromPos);
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		AbyssalineHelper.abyssalineTick(state, worldIn, pos);
 	}
 
 	//Interface stuff
 	@Override
 	public boolean acceptsChargeFrom(BlockState stateIn, Direction faceIn) {
-		return faceIn.getAxis() == stateIn.get(AXIS);
+		return faceIn.getAxis() == stateIn.getValue(AXIS);
 	}
 
 	@Override
 	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
 		return this.isCharged(stateIn) &&
 				!(faceIn == this.getSourceDirection(stateIn)) &&
-				faceIn.getAxis() == stateIn.get(AXIS);
+				faceIn.getAxis() == stateIn.getValue(AXIS);
 
 //		return this.isCharged(stateIn) &&
 //				!(faceIn.getAxisDirection().getOffset() == stateIn.get(CHARGE_SIDE).toScalar()) &&
@@ -75,7 +69,7 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 
 	@Override
 	public boolean pullsPowerFrom(BlockState stateIn, Direction faceIn) {
-		return faceIn.getAxis() == stateIn.get(AXIS);
+		return faceIn.getAxis() == stateIn.getValue(AXIS);
 	}
 
 //	@Override
@@ -107,7 +101,7 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 		return integer > 0 ? PillarSide.FRONT : PillarSide.BACK;
 	}
 
-	private enum PillarSide implements IStringSerializable {
+	private enum PillarSide implements StringRepresentable {
 		FRONT,
 		BACK;
 
@@ -115,9 +109,9 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 			return this == FRONT ? 1 : -1;
 		}
 
-		public String toString() { return this.getString(); }
+		public String toString() { return this.getSerializedName(); }
 
-		public String getString() {
+		public String getSerializedName() {
 			return this == FRONT ? "front" : "back";
 		}
 	}

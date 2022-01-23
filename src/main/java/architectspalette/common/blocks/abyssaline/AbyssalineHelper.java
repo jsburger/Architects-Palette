@@ -1,14 +1,14 @@
 package architectspalette.common.blocks.abyssaline;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -17,11 +17,11 @@ public class AbyssalineHelper {
     public static final int CHARGE_LIGHT = 1;
     private static final int RECURSION_MAX = 12;
 
-    public static boolean needsPostProcessing(BlockState stateIn, IBlockReader reader, BlockPos pos) {
+    public static boolean needsPostProcessing(BlockState stateIn, BlockGetter reader, BlockPos pos) {
         return ((IAbyssalineChargeable) stateIn.getBlock()).isCharged(stateIn);
     }
 
-    public static boolean allowsMobSpawning(BlockState stateIn, IBlockReader reader, BlockPos pos, EntityType<?> entity) {
+    public static boolean allowsMobSpawning(BlockState stateIn, BlockGetter reader, BlockPos pos, EntityType<?> entity) {
         return !((IAbyssalineChargeable) stateIn.getBlock()).isCharged(stateIn);
     }
 
@@ -74,12 +74,12 @@ public class AbyssalineHelper {
         return ((IAbyssalineChargeable) stateIn.getBlock()).getStateWithChargeDirection(stateIn, faceOut);
     }
 
-    public static boolean createsChargeLoop(BlockState startState, IWorld world, BlockPos pos) {
-        BlockPos.Mutable accumulator = new BlockPos(0, 0, 0).toMutable();
+    public static boolean createsChargeLoop(BlockState startState, LevelAccessor world, BlockPos pos) {
+        BlockPos.MutableBlockPos accumulator = new BlockPos(0, 0, 0).mutable();
         return checkForLoop(startState, world, pos, RECURSION_MAX, accumulator, startState);
     }
 
-    private static boolean checkForLoop(BlockState startState, IWorld world, BlockPos pos, int tries, BlockPos.Mutable accumulator, BlockState chainStarter) {
+    private static boolean checkForLoop(BlockState startState, LevelAccessor world, BlockPos pos, int tries, BlockPos.MutableBlockPos accumulator, BlockState chainStarter) {
         // These blocks form chains, if any block isn't a part, the chain should break
         if (!(startState.getBlock() instanceof IAbyssalineChargeable))
             return false;
@@ -87,7 +87,7 @@ public class AbyssalineHelper {
         IAbyssalineChargeable startBlock = (IAbyssalineChargeable) startState.getBlock();
 
         BlockPos offset = startBlock.getSourceOffset(startState);
-        BlockPos nextPos = pos.add(offset);
+        BlockPos nextPos = pos.offset(offset);
         // The only blocks with no offset are charge sources, so end the search, the source is found
         if (nextPos == pos)
             return false;
@@ -100,7 +100,7 @@ public class AbyssalineHelper {
         if (isMagnitudeOne(accumulator) && tries < RECURSION_MAX) {
             // Need to check if the side in question is even a possible route, though.
             Direction facing = directionFromOffset(accumulator).getOpposite();
-            if (isValidConnection(getStateWithChargeDirection(chainStarter, facing), world.getBlockState(pos.offset(facing)), facing)) {
+            if (isValidConnection(getStateWithChargeDirection(chainStarter, facing), world.getBlockState(pos.relative(facing)), facing)) {
                 return true;
             }
         }
@@ -136,12 +136,12 @@ public class AbyssalineHelper {
         return pos.getZ() > 0 ? Direction.SOUTH : Direction.NORTH;
     }
 
-    public static BlockState getStateWithNeighborCharge(BlockState stateIn, IWorld world, BlockPos pos) {
+    public static BlockState getStateWithNeighborCharge(BlockState stateIn, LevelAccessor world, BlockPos pos) {
         Direction source = null;
         boolean powered = false;
 
         for (Direction side : Direction.values()) {
-            BlockPos offset = pos.offset(side);
+            BlockPos offset = pos.relative(side);
             BlockState state = world.getBlockState(offset);
             if (isValidConnection(stateIn, state, side) && !createsChargeLoop(getStateWithChargeDirection(stateIn, side), world, pos)) {
                 source = side;
@@ -155,15 +155,15 @@ public class AbyssalineHelper {
         return getChargedState(stateIn, false);
     }
 
-    public static void abyssalineTick(BlockState state, ServerWorld worldIn, BlockPos pos) {
-        worldIn.setBlockState(pos, getStateWithNeighborCharge(state, worldIn, pos), 4 | 3);
+    public static void abyssalineTick(BlockState state, ServerLevel worldIn, BlockPos pos) {
+        worldIn.setBlock(pos, getStateWithNeighborCharge(state, worldIn, pos), 4 | 3);
     }
 
-    public static void abyssalineNeighborUpdate(IAbyssalineChargeable thiz, BlockState stateIn, World worldIn, BlockPos pos, Block neighborBlock, BlockPos neighborPos) {
+    public static void abyssalineNeighborUpdate(IAbyssalineChargeable thiz, BlockState stateIn, Level worldIn, BlockPos pos, Block neighborBlock, BlockPos neighborPos) {
         boolean interested = (!thiz.isCharged(stateIn) && neighborBlock instanceof IAbyssalineChargeable)
-                || !isValidConnection(stateIn, worldIn.getBlockState(pos.add(thiz.getSourceOffset(stateIn))), thiz.getSourceDirection(stateIn));
-        if (neighborPos.equals(pos.add(thiz.getSourceOffset(stateIn))) || interested)
-            worldIn.getPendingBlockTicks().scheduleTick(pos, (Block) thiz, 1);
+                || !isValidConnection(stateIn, worldIn.getBlockState(pos.offset(thiz.getSourceOffset(stateIn))), thiz.getSourceDirection(stateIn));
+        if (neighborPos.equals(pos.offset(thiz.getSourceOffset(stateIn))) || interested)
+            worldIn.getBlockTicks().scheduleTick(pos, (Block) thiz, 1);
     }
 
 

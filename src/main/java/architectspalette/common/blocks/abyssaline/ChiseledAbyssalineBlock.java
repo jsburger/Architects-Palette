@@ -1,18 +1,21 @@
 package architectspalette.common.blocks.abyssaline;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Random;
 
@@ -24,11 +27,11 @@ public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargea
 
 	//Abyssaline stuff
 	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
-		return stateIn.get(CHARGED);
+		return stateIn.getValue(CHARGED);
 	}
 
 	public boolean isCharged(BlockState stateIn) {
-		return stateIn.get(CHARGED);
+		return stateIn.getValue(CHARGED);
 	}
 
 	public BlockPos getSourceOffset(BlockState stateIn) {
@@ -38,41 +41,40 @@ public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargea
 	//Normal Block stuff
 	public ChiseledAbyssalineBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(CHARGED, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(CHARGED, false));
 	}
 	
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return this.getDefaultState();
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return this.defaultBlockState();
+	}
+	
+	public static int getLightValue(BlockState state) {
+		return state.getValue(CHARGED) ? 14 : 0;
 	}
 	
 	@Override
-	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-		return this.isCharged(state) ? 14 : 0;
-	}
-	
-	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(CHARGED);
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult traceResult) {
-		ItemStack stack = player.getHeldItem(hand);
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult traceResult) {
+		ItemStack stack = player.getItemInHand(hand);
 		if (!this.isCharged(state) && stack.getItem() == KEY) {
 			if(!player.isCreative())
 				stack.shrink(1);
-			world.setBlockState(pos, this.getStateWithCharge(state, true));
-			world.playSound(null, pos, SoundEvents.BLOCK_CONDUIT_ACTIVATE, SoundCategory.BLOCKS, 0.5F, new Random().nextFloat() * 0.2F + 0.8F);
-			return ActionResultType.CONSUME;
+			world.setBlockAndUpdate(pos, this.getStateWithCharge(state, true));
+			world.playSound(null, pos, SoundEvents.CONDUIT_ACTIVATE, SoundSource.BLOCKS, 0.5F, new Random().nextFloat() * 0.2F + 0.8F);
+			return InteractionResult.CONSUME;
 		}
 		else if (this.isCharged(state) && stack.isEmpty()) {
-			world.setBlockState(pos, this.getStateWithCharge(state, false));
-			world.playSound(null, pos, SoundEvents.BLOCK_CONDUIT_DEACTIVATE, SoundCategory.BLOCKS, 0.5F, new Random().nextFloat() * 0.2F + 0.8F);
-			if(!player.isCreative() || (player.inventory.count(KEY) <= 0))
-				player.addItemStackToInventory(new ItemStack(KEY));
-			return ActionResultType.SUCCESS;
+			world.setBlockAndUpdate(pos, this.getStateWithCharge(state, false));
+			world.playSound(null, pos, SoundEvents.CONDUIT_DEACTIVATE, SoundSource.BLOCKS, 0.5F, new Random().nextFloat() * 0.2F + 0.8F);
+			if(!player.isCreative() || (player.getInventory().countItem(KEY) <= 0))
+				player.addItem(new ItemStack(KEY));
+			return InteractionResult.SUCCESS;
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

@@ -1,8 +1,8 @@
 package architectspalette.core.integration;
 
 import architectspalette.core.registry.APBlocks;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 
 import static architectspalette.core.registry.APBlocks.*;
 import static architectspalette.core.registry.util.DataUtils.registerFlammable;
@@ -19,19 +19,19 @@ public class APBlockData {
     }
 
     public static void setupRenderLayers() {
-        RenderTypeLookup.setRenderLayer(APBlocks.ENTWINE_BARS.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.SUNMETAL_BARS.get(), RenderType.getCutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.ENTWINE_BARS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.SUNMETAL_BARS.get(), RenderType.cutout());
 
-        RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_DOOR.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_TRAPDOOR.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.TWISTED_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.POTTED_TWISTED_SAPLING.get(), RenderType.getCutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.TWISTED_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.TWISTED_TRAPDOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.TWISTED_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.POTTED_TWISTED_SAPLING.get(), RenderType.cutout());
 
-        RenderTypeLookup.setRenderLayer(APBlocks.REDSTONE_CAGE_LANTERN.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.GLOWSTONE_CAGE_LANTERN.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(APBlocks.ALGAL_CAGE_LANTERN.get(), RenderType.getCutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.REDSTONE_CAGE_LANTERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.GLOWSTONE_CAGE_LANTERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.ALGAL_CAGE_LANTERN.get(), RenderType.cutout());
 
-        RenderTypeLookup.setRenderLayer(APBlocks.ACACIA_TOTEM_WING.get(), RenderType.getCutout());
+        ItemBlockRenderTypes.setRenderLayer(APBlocks.ACACIA_TOTEM_WING.get(), RenderType.cutout());
     }
 
     public static void registerStrippables() {

@@ -6,26 +6,28 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
-plugins {
-  id "com.wynprice.cursemaven" version "2.1.1"
-}
+//plugins {
+//  id "com.wynprice.cursemaven" version "2.1.1"
+//}
 
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.spongepowered.mixin'
 
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+//apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 version = project.modVersion
 group = 'architectspalette.core.ArchitectsPalette'
 archivesBaseName = "${project.modName}-${project.minecraftVersion}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
 mixin {
     add sourceSets.main, "${project.modId}.refmap.json"
@@ -86,8 +88,9 @@ sourceSets.main.resources {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
-    implementation fg.deobf("curse.maven:jei:${project.jei}")
-    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+//    implementation fg.deobf("curse.maven:jei:${project.jei}")
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+//    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
 jar {
@@ -104,3 +107,5 @@ jar {
         ])
     }
 }
+
+jar.finalizedBy('reobfJar')

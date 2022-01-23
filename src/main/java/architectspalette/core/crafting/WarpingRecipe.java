@@ -3,22 +3,22 @@ package architectspalette.core.crafting;
 import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.*;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-public class WarpingRecipe implements IRecipe<IInventory> {
+public class WarpingRecipe implements Recipe<Container> {
 
     public static final Serializer SERIALIZER = new Serializer();
-    public static WarpingRecipe.RecipeType TYPE = new RecipeType();
+    public static WarpingRecipe.WarpRecipeType TYPE = new WarpRecipeType();
 
     private final Ingredient input;
     private final ItemStack output;
@@ -41,27 +41,27 @@ public class WarpingRecipe implements IRecipe<IInventory> {
     }
 
     @Override
-    public boolean matches(IInventory inv, World worldIn) {
-        return this.input.test(inv.getStackInSlot(0)) && (this.dimension.compareTo(worldIn.getDimensionKey().getLocation()) == 0);
+    public boolean matches(Container inv, Level worldIn) {
+        return this.input.test(inv.getItem(0)) && (this.dimension.compareTo(worldIn.dimension().location()) == 0);
     }
 
     @Override
-    public boolean isDynamic() {
+    public boolean isSpecial() {
         return true;
     }
 
     @Override
-    public ItemStack getCraftingResult(IInventory inv) {
-        return this.getRecipeOutput().copy();
+    public ItemStack assemble(Container inv) {
+        return this.getResultItem().copy();
     }
 
     @Override
-    public boolean canFit(int width, int height) {
+    public boolean canCraftInDimensions(int width, int height) {
         return false;
     }
 
     @Override
-    public ItemStack getRecipeOutput() {
+    public ItemStack getResultItem() {
         return this.output;
     }
 
@@ -71,62 +71,62 @@ public class WarpingRecipe implements IRecipe<IInventory> {
     }
 
     @Override
-    public IRecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
         return SERIALIZER;
     }
 
     @Override
-    public IRecipeType<?> getType() {
+    public RecipeType<?> getType() {
         return WarpingRecipe.TYPE;
     }
 
-    private static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<WarpingRecipe> {
+    private static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<WarpingRecipe> {
 
         Serializer() {
             this.setRegistryName(new ResourceLocation(ArchitectsPalette.MOD_ID, "warping"));
         }
 
         @Override
-        public WarpingRecipe read(ResourceLocation recipeId, JsonObject json) {
+        public WarpingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 
-            final JsonElement inputElement = JSONUtils.isJsonArray(json, "ingredient") ?
-                    JSONUtils.getJsonArray(json, "ingredient") : JSONUtils.getJsonObject(json, "ingredient");
-            final Ingredient input = Ingredient.deserialize(inputElement);
-            final ItemStack output = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
-            final ResourceLocation dimensionId = new ResourceLocation(JSONUtils.getString(json, "dimension"));
+            final JsonElement inputElement = GsonHelper.isArrayNode(json, "ingredient") ?
+                    GsonHelper.getAsJsonArray(json, "ingredient") : GsonHelper.getAsJsonObject(json, "ingredient");
+            final Ingredient input = Ingredient.fromJson(inputElement);
+            final ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
+            final ResourceLocation dimensionId = new ResourceLocation(GsonHelper.getAsString(json, "dimension"));
 
             return new WarpingRecipe(recipeId, input, output, dimensionId);
         }
 
         @Nullable
         @Override
-        public WarpingRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+        public WarpingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
 
-            final Ingredient input = Ingredient.read(buffer);
-            final ItemStack output = buffer.readItemStack();
+            final Ingredient input = Ingredient.fromNetwork(buffer);
+            final ItemStack output = buffer.readItem();
             final ResourceLocation dimensionId = buffer.readResourceLocation();
 
             return new WarpingRecipe(recipeId, input, output, dimensionId);
         }
 
         @Override
-        public void write(PacketBuffer buffer, WarpingRecipe recipe) {
-            recipe.input.write(buffer);
-            buffer.writeItemStack(recipe.output);
+        public void toNetwork(FriendlyByteBuf buffer, WarpingRecipe recipe) {
+            recipe.input.toNetwork(buffer);
+            buffer.writeItem(recipe.output);
             buffer.writeResourceLocation(recipe.dimension);
         }
     }
 
-    public static class RecipeType implements IRecipeType<WarpingRecipe> {
+    public static class WarpRecipeType implements RecipeType<WarpingRecipe> {
 
         @Override
         public String toString() {
             return ArchitectsPalette.MOD_ID.concat(":warping");
         }
 
-        public <C extends IInventory> Optional<WarpingRecipe> find(C inv, World world) {
+        public <C extends Container> Optional<WarpingRecipe> find(C inv, Level world) {
             return world.getRecipeManager()
-                    .getRecipe(WarpingRecipe.TYPE, inv, world);
+                    .getRecipeFor(WarpingRecipe.TYPE, inv, world);
         }
 
     }

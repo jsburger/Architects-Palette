@@ -3,11 +3,11 @@ package architectspalette.core.integration;
 
 import architectspalette.core.config.APConfig;
 import architectspalette.core.registry.APBlocks;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.BasicTrade;
 
 import static architectspalette.common.event.TradingEventHandler.add_trade;
-import static net.minecraft.entity.merchant.villager.VillagerProfession.*;
+import static net.minecraft.world.entity.npc.VillagerProfession.*;
 
 public class APTrades {
 
