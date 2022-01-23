@@ -99,9 +99,10 @@ public class AbyssalineHelper {
         // Has the side effect of stopping some loops early and making placing while charged more consistent
         if (isMagnitudeOne(accumulator) && tries < RECURSION_MAX) {
             // Need to check if the side in question is even a possible route, though.
-            Direction facing = directionFromOffset(accumulator);
-            if (isValidConnection(getStateWithChargeDirection(chainStarter, facing), world.getBlockState(pos.offset(facing)), facing))
+            Direction facing = directionFromOffset(accumulator).getOpposite();
+            if (isValidConnection(getStateWithChargeDirection(chainStarter, facing), world.getBlockState(pos.offset(facing)), facing)) {
                 return true;
+            }
         }
 
         BlockState nextState = world.getBlockState(nextPos);
