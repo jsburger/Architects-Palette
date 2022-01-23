@@ -116,11 +116,11 @@ public class CageLanternBlock extends Block implements IWaterLoggable {
             boolean shouldBeLit = getLitState(state, worldIn, pos);
             if (lit != shouldBeLit) {
                 if (lit) {
-                    worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
+                    worldIn.setBlockState(pos, state.cycleValue(LIT), 2);
                     worldIn.getPendingBlockTicks().scheduleTick(pos, this, 2);
                 } else {
                     // fuck if i know what this does, i copied it from the redstone lamp
-                    worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
+                    worldIn.setBlockState(pos, state.cycleValue(LIT), 2);
                 }
             }
         }

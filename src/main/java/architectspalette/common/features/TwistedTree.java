@@ -17,7 +17,7 @@ public class TwistedTree extends Tree {
             new BaseTreeFeatureConfig.Builder(
                     new SimpleBlockStateProvider(APBlocks.TWISTED_LOG.get().getDefaultState()),
                     new SimpleBlockStateProvider(APBlocks.TWISTED_LEAVES.get().getDefaultState()),
-                    new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)),
+                    new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)),
                     new ForkyTrunkPlacer(5, 2, 2),
                     new TwoLayerFeature(1, 0, 2)
             )

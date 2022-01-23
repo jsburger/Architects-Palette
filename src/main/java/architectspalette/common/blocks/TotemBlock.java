@@ -67,7 +67,7 @@ public class TotemBlock extends Block {
                         .with(TotemWingBlock.FACING, state.get(FACING).rotateYCCW())
                         .with(TotemWingBlock.WATERLOGGED, waterlogged), 3);
             }
-            worldIn.func_230547_a_(pos, Blocks.AIR);
+            worldIn.updateBlock(pos, Blocks.AIR);
             state.updateNeighbours(worldIn, pos, 3);
         }
     }
