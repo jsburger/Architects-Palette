@@ -68,7 +68,7 @@ public class SunstoneBlock extends Block {
             if (chance > 0) {
                 Random rand = worldIn.getRandom();
                 if (rand.nextDouble() <= chance) {
-                    worldIn.getBlockTicks().scheduleTick(currentPos, this, (int) (2 + Math.floor(rand.nextDouble() * 6)));
+                    worldIn.scheduleTick(currentPos, this, (int) (2 + Math.floor(rand.nextDouble() * 6)));
                 }
             }
         }

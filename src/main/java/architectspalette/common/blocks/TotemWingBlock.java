@@ -68,7 +68,7 @@ public class TotemWingBlock extends Block implements SimpleWaterloggedBlock {
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
         //also stole this from chains, still dunno if im supposed to
         if (state.getValue(WATERLOGGED)) {
-            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
         if (state.getValue(FACING).getOpposite() == facing && !state.canSurvive(worldIn, currentPos)) {return Blocks.AIR.defaultBlockState();}
         return state;

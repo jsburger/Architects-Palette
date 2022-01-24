@@ -72,7 +72,7 @@ public class CageLanternBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (state.getValue(WATERLOGGED)) {
-            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
         if (state.getValue(FACING) == facing && !state.canSurvive(worldIn, currentPos)) {return Blocks.AIR.defaultBlockState();}
         return state;
@@ -122,7 +122,7 @@ public class CageLanternBlock extends Block implements SimpleWaterloggedBlock {
             if (lit != shouldBeLit) {
                 if (lit) {
                     worldIn.setBlock(pos, state.cycle(LIT), 2);
-                    worldIn.getBlockTicks().scheduleTick(pos, this, 2);
+                    worldIn.scheduleTick(pos, this, 2);
                 } else {
                     // fuck if i know what this does, i copied it from the redstone lamp
                     worldIn.setBlock(pos, state.cycle(LIT), 2);

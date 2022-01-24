@@ -8,7 +8,7 @@ public class DataUtils {
 
     public static void registerFlammable(Block block, Integer encouragement, Integer flammability) {
         FireBlock fire = (FireBlock) Blocks.FIRE;
-        fire.setFlammable(block, encouragement, flammability);
+//        fire.setFlammable(block, encouragement, flammability);
     }
 
     public static void registerStrippable(Block log, Block stripped) {

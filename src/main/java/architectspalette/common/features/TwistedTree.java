@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 
 import javax.annotation.Nullable;
@@ -19,10 +19,9 @@ public class TwistedTree extends AbstractTreeGrower {
 
     public static final LazyLoadedValue<TreeConfiguration> TWISTED_TREE_CONFIG = new LazyLoadedValue<>(() ->
             new TreeConfiguration.TreeConfigurationBuilder(
-                    new SimpleStateProvider(APBlocks.TWISTED_LOG.get().defaultBlockState()),
+                    BlockStateProvider.simple(APBlocks.TWISTED_LOG.get().defaultBlockState()),
                     new ForkingTrunkPlacer(5, 2, 2),
-                    new SimpleStateProvider(APBlocks.TWISTED_LEAVES.get().defaultBlockState()),
-                    new SimpleStateProvider(APBlocks.TWISTED_SAPLING.get().defaultBlockState()),
+                    BlockStateProvider.simple(APBlocks.TWISTED_LEAVES.get().defaultBlockState()),
                     new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                     new TwoLayersFeatureSize(1, 0, 2)
             )

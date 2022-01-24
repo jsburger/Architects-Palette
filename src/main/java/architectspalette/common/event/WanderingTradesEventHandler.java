@@ -5,7 +5,7 @@ import architectspalette.core.config.APConfig;
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.BasicTrade;
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,8 +20,8 @@ public class WanderingTradesEventHandler {
         if (APConfig.WANDERER_TRADES_ENABLED.get()) {
             List<VillagerTrades.ItemListing> generic = event.getGenericTrades();
 
-            generic.add(new BasicTrade(2, new ItemStack(APBlocks.SUNSTONE.get(), 6), 20, 2, 0f));
-            generic.add(new BasicTrade(2, new ItemStack(APBlocks.MOONSTONE.get(), 6), 20, 2, 0f));
+            generic.add(new BasicItemListing(2, new ItemStack(APBlocks.SUNSTONE.get(), 6), 20, 2, 0f));
+            generic.add(new BasicItemListing(2, new ItemStack(APBlocks.MOONSTONE.get(), 6), 20, 2, 0f));
         }
     }
 }

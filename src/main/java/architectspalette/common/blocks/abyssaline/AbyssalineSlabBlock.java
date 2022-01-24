@@ -30,7 +30,7 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		context.getLevel().getBlockTicks().scheduleTick(context.getClickedPos(), this, 1);
+		context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
 		return super.getStateForPlacement(context);
 	}
 
