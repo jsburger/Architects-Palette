@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "architects_palette:plating_block"
+            "items": [
+              "architects_palette:plating_block"
+            ]
           }
         ]
       }

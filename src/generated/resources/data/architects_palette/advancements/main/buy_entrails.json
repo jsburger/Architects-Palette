@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "architects_palette:entrails"
+            "items": [
+              "architects_palette:entrails"
+            ]
           }
         ]
       }
