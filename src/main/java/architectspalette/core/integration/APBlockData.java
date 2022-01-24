@@ -4,9 +4,10 @@ import architectspalette.core.registry.APBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 
+import java.util.stream.Stream;
+
 import static architectspalette.core.registry.APBlocks.*;
 import static architectspalette.core.registry.util.DataUtils.registerFlammable;
-import static architectspalette.core.registry.util.DataUtils.registerStrippable;
 
 public class APBlockData {
 
@@ -15,7 +16,14 @@ public class APBlockData {
         // Planks: 5, 20
         // Leaves & Wool: 30, 60
         // Plants: 60, 100
-        registerFlammable(CHARCOAL_BLOCK.get(), 5, 5);
+        registerFlammable(TWISTED_FENCE.get(), 5, 20);
+        TWISTED_PLANKS.registerFlammable(5, 20);
+        Stream.of(GRINNING_ACACIA_TOTEM, PLACID_ACACIA_TOTEM, SHOCKED_ACACIA_TOTEM, BLANK_ACACIA_TOTEM,
+                TWISTED_LOG, STRIPPED_TWISTED_LOG, TWISTED_WOOD, STRIPPED_TWISTED_WOOD,
+                SPOOL, CHARCOAL_BLOCK
+                ).forEach((t) -> {
+            registerFlammable(t.get(), 5, 5);
+        });
     }
 
     public static void setupRenderLayers() {
@@ -32,11 +40,6 @@ public class APBlockData {
         ItemBlockRenderTypes.setRenderLayer(APBlocks.ALGAL_CAGE_LANTERN.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(APBlocks.ACACIA_TOTEM_WING.get(), RenderType.cutout());
-    }
-
-    public static void registerStrippables() {
-        registerStrippable(TWISTED_LOG.get(), STRIPPED_TWISTED_LOG.get());
-        registerStrippable(TWISTED_WOOD.get(), STRIPPED_TWISTED_WOOD.get());
     }
 
 }

@@ -8,12 +8,14 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.stream.Stream;
+
 public class StoneBlockSet {
-    public RegistryObject<Block> SLAB;
-    public RegistryObject<Block> VERTICAL_SLAB;
-    public RegistryObject<Block> STAIRS;
-    public RegistryObject<Block> WALL;
-    public RegistryObject<Block> BLOCK;
+    public RegistryObject<Block> slab;
+    public RegistryObject<Block> verticalSlab;
+    public RegistryObject<Block> stairs;
+    public RegistryObject<Block> wall;
+    public RegistryObject<Block> block;
     private final String material_name;
 
     public StoneBlockSet(RegistryObject<Block> base_block) {
@@ -21,7 +23,7 @@ public class StoneBlockSet {
     }
 
     public StoneBlockSet(RegistryObject<Block> base_block, Boolean auto_fill){
-        this.BLOCK = base_block;
+        this.block = base_block;
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
         if (auto_fill) {
             this.addAll();
@@ -38,26 +40,26 @@ public class StoneBlockSet {
     }
 
     private Block.Properties properties() {
-        return Block.Properties.copy(BLOCK.get());
+        return Block.Properties.copy(block.get());
     }
 
     public Block get() {
-        return this.BLOCK.get();
+        return this.block.get();
     }
 
     public StoneBlockSet addSlabs() {
-        SLAB = RegistryUtils.createBlock(material_name + "_slab", () -> new SlabBlock(properties()));
-        VERTICAL_SLAB = RegistryUtils.createBlock(material_name + "_vertical_slab", () -> new VerticalSlabBlock(properties()));
+        slab = RegistryUtils.createBlock(material_name + "_slab", () -> new SlabBlock(properties()));
+        verticalSlab = RegistryUtils.createBlock(material_name + "_vertical_slab", () -> new VerticalSlabBlock(properties()));
         return this;
     }
 
     public StoneBlockSet addStairs() {
-        STAIRS = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairBlock(() -> BLOCK.get().defaultBlockState(), properties()));
+        stairs = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairBlock(() -> block.get().defaultBlockState(), properties()));
         return this;
     }
 
     public StoneBlockSet addWalls() {
-        WALL = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), CreativeModeTab.TAB_DECORATIONS);
+        wall = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), CreativeModeTab.TAB_DECORATIONS);
         return this;
     }
 
@@ -68,5 +70,12 @@ public class StoneBlockSet {
         return this;
     }
 
+    public void registerFlammable(int encouragement, int flammability) {
+        Stream.of(slab, verticalSlab, stairs, wall, block).forEach((b) -> {
+                if (b!=null)
+                    DataUtils.registerFlammable(b.get(), encouragement, flammability);
+            }
+        );
+    }
 
 }
