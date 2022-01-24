@@ -34,12 +34,12 @@ public class APBlocks {
     // Abyssaline
     public static final RegistryObject<NewAbyssalineBlock> ABYSSALINE                 = createBlock("abyssaline",                 () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<NewAbyssalineBlock>      ABYSSALINE_BRICKS          = createBlock("abyssaline_bricks",          () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
     public static final RegistryObject<AbyssalinePillarBlock>   ABYSSALINE_PILLAR          = createBlock("abyssaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_BRICK_SLAB      = createBlock("abyssaline_brick_slab",      () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<NewAbyssalineBlock>      ABYSSALINE_TILES           = createBlock("abyssaline_tiles",           () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_TILE_SLAB       = createBlock("abyssaline_tile_slab",       () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineLampBlock>     ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE.sound(SoundType.GLASS)));
+    public static final RegistryObject<AbyssalineLampBlock>     ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE_LAMP.sound(SoundType.GLASS)));
 //    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_BRICK_STAIRS    = createBlock("abyssaline_brick_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_BRICKS.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);
 //    public static final RegistryObject<AbyssalineBrickWallBlock>   ABYSSALINE_BRICK_WALL      = createBlock("abyssaline_brick_wall",      () -> new AbyssalineBrickWallBlock(APBlockProperties.ABYSSALINE), ItemGroup.DECORATIONS);
 //    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_TILE_STAIRS    = createBlock("abyssaline_tile_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_TILES.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);

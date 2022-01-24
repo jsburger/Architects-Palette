@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:chiseled_entwine",
+    "architects_palette:chiseled_sunmetal_block",
+    "architects_palette:entwine_bars",
+    "architects_palette:entwine_block",
+    "architects_palette:entwine_pillar",
+    "architects_palette:entwine_slab",
+    "architects_palette:entwine_stairs",
+    "architects_palette:entwine_vertical_slab",
+    "architects_palette:flint_block",
+    "architects_palette:flint_pillar",
+    "architects_palette:flint_tiles",
+    "architects_palette:flint_tile_slab",
+    "architects_palette:flint_tile_stairs",
+    "architects_palette:flint_tile_vertical_slab",
+    "architects_palette:flint_tile_wall",
+    "architects_palette:sunmetal_bars",
+    "architects_palette:sunmetal_block",
+    "architects_palette:sunmetal_pillar",
+    "architects_palette:sunmetal_slab",
+    "architects_palette:sunmetal_stairs",
+    "architects_palette:sunmetal_vertical_slab"
+  ]
+}
