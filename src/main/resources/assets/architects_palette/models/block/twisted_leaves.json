@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/twisted_leaves",
-    "particle": "architects_palette:block/twisted_leaves"
-  }
-}

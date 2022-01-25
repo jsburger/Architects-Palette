@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/chiseled_gold_ore_bricks",
-    "particle": "architects_palette:block/chiseled_gold_ore_bricks"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/cracked_basalt_tiles",
-    "particle": "architects_palette:block/cracked_basalt_tiles"
-  }
-}

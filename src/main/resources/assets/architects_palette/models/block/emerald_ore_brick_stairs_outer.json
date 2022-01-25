@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/emerald_ore_bricks",
-    "top": "architects_palette:block/emerald_ore_bricks",
-    "side": "architects_palette:block/emerald_ore_bricks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "architects_palette:block/osseous_bricks",
-    "top": "architects_palette:block/osseous_bricks",
-    "side": "architects_palette:block/osseous_bricks"
-  }
-}

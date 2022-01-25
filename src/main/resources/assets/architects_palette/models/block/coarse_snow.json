@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/coarse_snow",
-    "particle": "architects_palette:block/coarse_snow"
-  }
-}

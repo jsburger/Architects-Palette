@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/spool_top",
-        "side": "architects_palette:block/spool",
-        "particle": "architects_palette:block/spool"
-    }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "architects_palette:sunmetal_block"
-  },
-  "result": "architects_palette:sunmetal_stairs",
-  "count": 1
-}

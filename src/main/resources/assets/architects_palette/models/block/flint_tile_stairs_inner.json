@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/flint_tiles",
-    "top": "architects_palette:block/flint_tiles",
-    "side": "architects_palette:block/flint_tiles"
-  }
-}

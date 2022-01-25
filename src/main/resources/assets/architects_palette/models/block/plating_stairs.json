@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "architects_palette:block/plating_block",
-    "top": "architects_palette:block/plating_block",
-    "side": "architects_palette:block/plating_block"
-  }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/cod_log_side",
-        "side": "architects_palette:block/cod_log_side",
-        "particle": "architects_palette:block/cod_log_side"
-    }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "architects_palette:block/polished_glowstone",
-    "top": "architects_palette:block/polished_glowstone",
-    "side": "architects_palette:block/polished_glowstone_slab"
-  }
-}

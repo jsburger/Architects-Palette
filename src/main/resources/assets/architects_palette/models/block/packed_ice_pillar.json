@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/packed_ice_pillar_top",
-        "side": "architects_palette:block/packed_ice_pillar_side",
-        "particle": "architects_palette:block/packed_ice_pillar_side"
-    }
-}

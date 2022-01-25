@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "architects_palette:block/overgrown_algal_bricks",
-    "top": "architects_palette:block/overgrown_algal_bricks",
-    "side": "architects_palette:block/overgrown_algal_bricks"
-  }
-}

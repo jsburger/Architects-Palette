@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/abyssaline_lamp_top_lit",
-        "side": "architects_palette:block/abyssaline_lamp_side_lit",
-        "particle": "architects_palette:block/abyssaline_lamp_side_lit"
-    }
-}

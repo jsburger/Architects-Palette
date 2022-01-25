@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/weeping_blackstone_top",
-        "side": "architects_palette:block/weeping_blackstone",
-        "particle": "architects_palette:block/weeping_blackstone"
-    }
-}

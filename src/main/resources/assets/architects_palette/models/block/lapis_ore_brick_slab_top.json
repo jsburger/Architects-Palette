@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "architects_palette:block/lapis_ore_bricks",
-    "top": "architects_palette:block/lapis_ore_bricks",
-    "side": "architects_palette:block/lapis_ore_bricks"
-  }
-}

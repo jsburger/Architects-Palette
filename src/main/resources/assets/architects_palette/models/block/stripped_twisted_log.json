@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/stripped_twisted_log_top",
-        "side": "architects_palette:block/stripped_twisted_log",
-        "particle": "architects_palette:block/stripped_twisted_log"
-    }
-}

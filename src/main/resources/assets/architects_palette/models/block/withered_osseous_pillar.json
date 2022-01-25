@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":  "architects_palette:block/withered_osseous_pillar_top",
-        "side": "architects_palette:block/withered_osseous_pillar_side",
-        "particle": "architects_palette:block/withered_osseous_pillar_side"
-    }
-}

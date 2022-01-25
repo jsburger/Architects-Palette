@@ -1,8 +1,0 @@
-{
-  "parent": "architects_palette:block/vertical_slab",
-  "textures": {
-    "bottom": "architects_palette:block/entrails",
-    "top": "architects_palette:block/entrails",
-    "side": "architects_palette:block/entrails"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/entrails",
-    "top": "architects_palette:block/entrails",
-    "side": "architects_palette:block/entrails"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "architects_palette:block/twisted_sapling"
-  }
-}

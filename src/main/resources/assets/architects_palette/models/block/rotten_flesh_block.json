@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "architects_palette:block/rotten_flesh_block",
-    "particle": "architects_palette:block/rotten_flesh_block"
-  }
-}
