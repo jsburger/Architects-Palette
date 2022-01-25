@@ -1,7 +1,30 @@
 {
     "variants": {
-        "axis=y":    { "model": "architects_palette:block/flint_pillar" },
-        "axis=z":    { "model": "architects_palette:block/flint_pillar", "x": 90 },
-        "axis=x":    { "model": "architects_palette:block/flint_pillar", "x": 90, "y": 90 }
+        "facing=down": {
+            "model": "architects_palette:block/flint_pillar",
+            "x": 180
+        },
+        "facing=east": {
+            "model": "architects_palette:block/flint_pillar",
+            "x": 90,
+            "y": 90
+        },
+        "facing=north": {
+            "model": "architects_palette:block/flint_pillar",
+            "x": 90
+        },
+        "facing=south": {
+            "model": "architects_palette:block/flint_pillar",
+            "x": 90,
+            "y": 180
+        },
+        "facing=up": {
+            "model": "architects_palette:block/flint_pillar"
+        },
+        "facing=west": {
+            "model": "architects_palette:block/flint_pillar",
+            "x": 90,
+            "y": 270
+        }
     }
 }
