@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "charged=false": { "model": "architects_palette:block/abyssaline_bricks" },
-        "charged=true": { "model": "architects_palette:block/abyssaline_bricks_charged" }
-    }
-}

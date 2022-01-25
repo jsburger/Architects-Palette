@@ -1,10 +1,12 @@
-Yo whats up, jsburg here. I put most of the mod together, 95% we'll say.
-As it would happen, this is also my first full mod. If you're reading this you're probably on the repository.
-Feel free to pick apart the code in here. If there's something off, please let me know. I don't know any better.
+ATTENTION CONTRIBUTORS:
+This mod has a separate repository for its resources folder. This is to make developing the Forge and Fabric versions more convenient.
+When cloning this repository, add --recurse-submodules to your clone command, this will fetch the resources.
+If it proves unwieldy, check out https://git-scm.com/book/en/v2/Git-Tools-Submodules as it covers the implementation.
 
-And for any devs that are here because my mod is being weird;
-- Warping recipes are in core/crafting, and is mechanically handled by common/event/ChangeDimensionHandler
-- Access transforming is only for setting flammability and getting access to the block stripping map
-- The mixin is on ItemEntitys and is hooking into them changing dimension
-- Withered bone drop handling is in core/loot, and yes, the item tag is just for mass replacing in recipes
+
+
+For any devs that are here because my mod is being weird;
+- Warping recipes are in core/crafting, and is mechanically handled by common/event/ChangeDimensionHandler and a mixin in core.mixin
+- Access transforming is only for setting flammability
+- Withered bone drop handling is in core/loot, the item tag is just for mass replacing in recipes
 - Trades are listed in APTrades in core/integration, handled in common/event/TradingEventHandler

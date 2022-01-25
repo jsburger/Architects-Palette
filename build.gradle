@@ -84,6 +84,7 @@ minecraft {
 
 sourceSets.main.resources {
     srcDirs += 'src/generated/resources'
+    srcDirs += 'src/ap-assets/resources'
 }
 
 dependencies {

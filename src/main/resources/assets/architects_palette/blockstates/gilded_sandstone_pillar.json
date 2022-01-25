@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "axis=y":    { "model": "architects_palette:block/gilded_sandstone_pillar" },
-        "axis=z":    { "model": "architects_palette:block/gilded_sandstone_pillar", "x": 90 },
-        "axis=x":    { "model": "architects_palette:block/gilded_sandstone_pillar", "x": 90, "y": 90 }
-    }
-}

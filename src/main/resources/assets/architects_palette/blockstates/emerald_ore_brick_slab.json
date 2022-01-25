@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "architects_palette:block/emerald_ore_brick_slab" },
-        "type=top": { "model": "architects_palette:block/emerald_ore_brick_slab_top" },
-        "type=double": { "model": "architects_palette:block/emerald_ore_bricks" }
-    }
-}

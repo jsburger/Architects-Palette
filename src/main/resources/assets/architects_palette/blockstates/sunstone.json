@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "light=0": { "model": "architects_palette:block/sunstone" },
-    "light=1": { "model": "architects_palette:block/sunstone_dim" },
-    "light=2": { "model": "architects_palette:block/sunstone_bright" }
-  }
-}

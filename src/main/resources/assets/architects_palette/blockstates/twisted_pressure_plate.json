@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "powered=false": {"model": "architects_palette:block/twisted_pressure_plate"},
-    "powered=true": {"model": "architects_palette:block/twisted_pressure_plate_down"}
-  }
-}

@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "architects_palette:block/polished_glowstone_slab" },
-        "type=top": { "model": "architects_palette:block/polished_glowstone_slab_top" },
-        "type=double": { "model": "architects_palette:block/double_polished_glowstone_slab" }
-    }
-}

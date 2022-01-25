@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "axis=y":    { "model": "architects_palette:block/spool" },
-        "axis=z":    { "model": "architects_palette:block/spool", "x": 90 },
-        "axis=x":    { "model": "architects_palette:block/spool", "x": 90, "y": 90 }
-    }
-}

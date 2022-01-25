@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "architects_palette:block/flint_tile_slab" },
-        "type=top": { "model": "architects_palette:block/flint_tile_slab_top" },
-        "type=double": { "model": "architects_palette:block/flint_tiles" }
-    }
-}

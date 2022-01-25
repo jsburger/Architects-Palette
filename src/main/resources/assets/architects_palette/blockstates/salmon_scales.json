@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "axis=y":    { "model": "architects_palette:block/salmon_scales" },
-        "axis=z":    { "model": "architects_palette:block/salmon_scales", "x": 90 },
-        "axis=x":    { "model": "architects_palette:block/salmon_scales", "x": 90, "y": 90 }
-    }
-}
