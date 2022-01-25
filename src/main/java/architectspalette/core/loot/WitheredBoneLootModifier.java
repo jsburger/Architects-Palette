@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -34,7 +35,7 @@ public class WitheredBoneLootModifier extends LootModifier {
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         Entity t = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         if (t == null) return generatedLoot;
-        if (t.getType().delegate.name().equals(new ResourceLocation("minecraft:wither_skeleton"))) {
+        if (t instanceof WitherSkeleton) {
             int amountOfBones = 0;
             for (ItemStack i : generatedLoot) {
                 //check if item is the item to replace, take note of how many there are

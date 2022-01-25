@@ -1,4 +1,5 @@
 {
+  "type": "architects_palette:wither_skeleton_bones",
   "conditions": [],
   "bone": "architects_palette:withered_bone",
   "replaces": "minecraft:bone"
