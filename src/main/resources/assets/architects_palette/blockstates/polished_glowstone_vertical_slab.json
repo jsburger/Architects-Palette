@@ -1,0 +1,10 @@
+
+{
+    "variants": {
+        "type=north": { "model": "architects_palette:block/polished_glowstone_vertical_slab", "y": 0, "uvlock": true },
+        "type=south": { "model": "architects_palette:block/polished_glowstone_vertical_slab", "y": 180, "uvlock": true },
+        "type=east": { "model": "architects_palette:block/polished_glowstone_vertical_slab", "y": 90, "uvlock": true },
+        "type=west": { "model": "architects_palette:block/polished_glowstone_vertical_slab", "y": 270, "uvlock": true },
+        "type=double": { "model": "architects_palette:block/double_polished_glowstone_slab" }
+    }
+}
