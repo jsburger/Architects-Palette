@@ -67,10 +67,10 @@ public class APBlocks {
     // Charcoal Block
     public static final RegistryObject<Block> CHARCOAL_BLOCK = createBlockNoItem("charcoal_block", () -> new RotatedPillarBlock(Block.Properties.copy(Blocks.COAL_BLOCK)));
 
-    // Limestone
-    public static final StoneBlockSet LIMESTONE             = new StoneBlockSet(createBlock("limestone",              () -> new Block(APBlockProperties.LIMESTONE)));
-    public static final StoneBlockSet LIMESTONE_BRICK       = new StoneBlockSet(createBlock("limestone_bricks",       () -> new Block(APBlockProperties.LIMESTONE)));
-    public static final StoneBlockSet MUSHY_LIMESTONE_BRICK = new StoneBlockSet(createBlock("mushy_limestone_bricks", () -> new Block(APBlockProperties.LIMESTONE)));
+    // Myonite (previously limestone)
+    public static final StoneBlockSet MYONITE             = new StoneBlockSet(createBlock("myonite",              () -> new Block(APBlockProperties.MYONITE)));
+    public static final StoneBlockSet MYONITE_BRICK       = new StoneBlockSet(createBlock("myonite_bricks",       () -> new Block(APBlockProperties.MYONITE)));
+    public static final StoneBlockSet MUSHY_MYONITE_BRICK = new StoneBlockSet(createBlock("mushy_myonite_bricks", () -> new Block(APBlockProperties.MYONITE)));
 
     // Olivestone
     public static final StoneBlockSet OLIVESTONE_BRICK = new StoneBlockSet(createBlock("olivestone_bricks", () -> new Block(APBlockProperties.OLIVESTONE)));

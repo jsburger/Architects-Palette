@@ -37,7 +37,7 @@ public class APBlockProperties {
 	}
 
 	public static final Block.Properties FLINT = Block.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(3.0F, 16.0F).requiresCorrectToolForDrops();
-	public static final Block.Properties LIMESTONE = Block.Properties.copy(Blocks.STONE);
+	public static final Block.Properties MYONITE = Block.Properties.copy(Blocks.STONE);
 	public static final Block.Properties SUNMETAL = Block.Properties.of(Material.METAL, MaterialColor.COLOR_BROWN).strength(2.0F, 8.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
 	 // Should be less slippery?
 	public static final Block.Properties BUILDING_ICE = Block.Properties.copy(Blocks.PACKED_ICE).friction(0.8F);
