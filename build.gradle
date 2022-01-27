@@ -94,7 +94,12 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
+processResources {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
 jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     manifest {
         attributes([
             "Specification-Title": "Architects Palette",
