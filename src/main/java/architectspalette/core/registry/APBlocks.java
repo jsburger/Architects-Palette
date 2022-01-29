@@ -222,6 +222,19 @@ public class APBlocks {
     // Ender Pearl Block
     public static final RegistryObject<Block> ENDER_PEARL_BLOCK = createBlock("ender_pearl_block", () -> new Block(APBlockProperties.ENDER_PEARL));
 
+    // Boards
+    public static final RegistryObject<Block> OAK_BOARDS = createBlock("oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> BIRCH_BOARDS = createBlock("birch_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final RegistryObject<Block> SPRUCE_BOARDS = createBlock("spruce_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final RegistryObject<Block> JUNGLE_BOARDS = createBlock("jungle_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final RegistryObject<Block> DARK_OAK_BOARDS = createBlock("dark_oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final RegistryObject<Block> ACACIA_BOARDS = createBlock("acacia_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final RegistryObject<Block> CRIMSON_BOARDS = createBlock("crimson_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final RegistryObject<Block> WARPED_BOARDS = createBlock("warped_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final RegistryObject<Block> TWISTED_BOARDS = createBlock("twisted_boards", () -> new BoardBlock(APBlockProperties.TwistedWood()));
+
+
+
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
         Block pot = new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT.delegate.get(), plant, Block.Properties.copy(Blocks.POTTED_AZURE_BLUET));
