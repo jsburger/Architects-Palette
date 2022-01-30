@@ -233,6 +233,17 @@ public class APBlocks {
     public static final RegistryObject<Block> WARPED_BOARDS = createBlock("warped_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
     public static final RegistryObject<Block> TWISTED_BOARDS = createBlock("twisted_boards", () -> new BoardBlock(APBlockProperties.TwistedWood()));
 
+    // Railings
+    public static final RegistryObject<Block> OAK_RAILING = createBlock("oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> BIRCH_RAILING = createBlock("birch_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final RegistryObject<Block> SPRUCE_RAILING = createBlock("spruce_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final RegistryObject<Block> JUNGLE_RAILING = createBlock("jungle_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final RegistryObject<Block> DARK_OAK_RAILING = createBlock("dark_oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final RegistryObject<Block> ACACIA_RAILING = createBlock("acacia_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final RegistryObject<Block> CRIMSON_RAILING = createBlock("crimson_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final RegistryObject<Block> WARPED_RAILING = createBlock("warped_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final RegistryObject<Block> TWISTED_RAILING = createBlock("twisted_railing", () -> new RailingBlock(APBlockProperties.TwistedWood()));
+
 
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
