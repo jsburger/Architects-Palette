@@ -98,7 +98,10 @@ public class BigBrickBlock extends Block {
 
     public enum BrickType {
         STONE,
-        END_STONE
+        END_STONE,
+        DRIPSTONE,
+        CALCITE,
+        TUFF
     }
 }
 

@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "architects_palette:entrails_vertical_slab"
+    "architects_palette:entrails_vertical_slab",
+    "architects_palette:tuff_brick_vertical_slab",
+    "architects_palette:calcite_brick_vertical_slab",
+    "architects_palette:dripstone_brick_vertical_slab"
   ]
 }
