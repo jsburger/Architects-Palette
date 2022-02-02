@@ -13,7 +13,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "architects_palette:textures/block/limestone_bricks.png"
+    "background": "architects_palette:textures/block/myonite_bricks.png"
   },
   "criteria": {
     "craftingtable": {

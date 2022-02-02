@@ -21,6 +21,12 @@ public class MissingMappingsEventHandler {
                         ArchitectsPalette.LOGGER.warn("Remapping {} to {}", e.key.toString(), newresource.toString());
                     }
                 }
+                else {
+                    if (e.key.getPath().contains("heavy_dripstone") && !e.key.getPath().contains("bricks")) {
+                        ArchitectsPalette.LOGGER.warn("Remapping Heavy Dripstone to Heavy Dripstone Bricks");
+                        e.remap(e.registry.getValue(new ResourceLocation(ArchitectsPalette.MOD_ID, "heavy_dripstone_bricks")));
+                    }
+                }
             }
         });
     }

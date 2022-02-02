@@ -93,7 +93,7 @@ public class Advancements extends AdvancementProvider {
                     .display(APBlocks.CHISELED_ABYSSALINE_BRICKS.get().asItem(),
                             getTranslationKey("advancement.root"),
                             getTranslationKey("advancement.root.desc"),
-                            new ResourceLocation("architects_palette:textures/block/limestone_bricks.png"),
+                            new ResourceLocation("architects_palette:textures/block/myonite_bricks.png"),
                             FrameType.TASK, false, false, false)
                     .addCriterion("craftingtable", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[]{}))
                     .save(advancementConsumer, getNameId("main/root"));
