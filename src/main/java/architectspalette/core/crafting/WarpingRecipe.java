@@ -3,6 +3,7 @@ package architectspalette.core.crafting;
 import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -63,6 +64,11 @@ public class WarpingRecipe implements Recipe<Container> {
     @Override
     public ItemStack getResultItem() {
         return this.output;
+    }
+
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.of(this.input);
     }
 
     @Override

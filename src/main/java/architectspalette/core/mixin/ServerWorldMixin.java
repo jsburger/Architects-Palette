@@ -1,6 +1,6 @@
 package architectspalette.core.mixin;
 
-import architectspalette.common.event.ChangeDimensionHandler;
+import architectspalette.core.crafting.WarpingHandler;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -16,7 +16,7 @@ public class ServerWorldMixin {
     public void warpingCheck(Entity entity, CallbackInfo callbackInfo) {
         ServerLevel world = (ServerLevel) (Object) this;
         if (entity instanceof ItemEntity) {
-            ChangeDimensionHandler.warpItem((ItemEntity) entity, world);
+            WarpingHandler.warpItem((ItemEntity) entity, world);
         }
     }
 }

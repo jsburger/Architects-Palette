@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class StoneBlockSet {
@@ -70,12 +72,19 @@ public class StoneBlockSet {
         return this;
     }
 
+
+
+    private Stream<Block> blockStream() {
+        //Puts all blocks in a Stream, filters out null entries, then gets the blocks from their registry object
+        return Stream.of(slab, verticalSlab, stairs, wall, block).filter(Objects::nonNull).map(RegistryObject::get);
+    }
+
+    public void forEach(Consumer<? super Block> action) {
+        this.blockStream().forEach(action);
+    }
+
     public void registerFlammable(int encouragement, int flammability) {
-        Stream.of(slab, verticalSlab, stairs, wall, block).forEach((b) -> {
-                if (b!=null)
-                    DataUtils.registerFlammable(b.get(), encouragement, flammability);
-            }
-        );
+        this.forEach((b) -> DataUtils.registerFlammable(b, encouragement, flammability));
     }
 
 }

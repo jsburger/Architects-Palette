@@ -82,9 +82,29 @@ minecraft {
     }
 }
 
+//Add datagen and asset repo to resources folder when built
 sourceSets.main.resources {
     srcDirs += 'src/generated/resources'
     srcDirs += 'src/ap-assets/resources'
+}
+
+//When duplicate files are found, keep ones from main, exclude copies
+processResources {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+//JEI repositories
+repositories {
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
 }
 
 dependencies {
@@ -92,13 +112,17 @@ dependencies {
 //    implementation fg.deobf("curse.maven:jei:${project.jei}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
-}
 
-processResources {
-    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    //Copied from https://github.com/mezz/JustEnoughItems/wiki/Getting-Started-%5B1.13-and-Up%5D
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}:${jei_version}:api")
+    // at runtime, use the full JEI jar
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraftVersion}:${jei_version}")
+
 }
 
 jar {
+    //Added duplicate strategy here too, not sure if it's required
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     manifest {
         attributes([

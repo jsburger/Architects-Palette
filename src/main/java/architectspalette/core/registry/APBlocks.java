@@ -32,7 +32,7 @@ public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
 
     // Abyssaline
-    public static final RegistryObject<NewAbyssalineBlock> ABYSSALINE                 = createBlock("abyssaline",                 () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<NewAbyssalineBlock>      ABYSSALINE                 = createBlock("abyssaline",                 () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<NewAbyssalineBlock>      ABYSSALINE_BRICKS          = createBlock("abyssaline_bricks",          () -> new NewAbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
     public static final RegistryObject<AbyssalinePillarBlock>   ABYSSALINE_PILLAR          = createBlock("abyssaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
