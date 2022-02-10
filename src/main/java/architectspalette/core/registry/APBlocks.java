@@ -1,15 +1,14 @@
 package architectspalette.core.registry;
 
-import architectspalette.common.APBlockProperties;
-import architectspalette.common.blocks.PipeBlock;
-import architectspalette.common.blocks.*;
-import architectspalette.common.blocks.abyssaline.*;
-import architectspalette.common.blocks.entrails.DrippyBlock;
-import architectspalette.common.blocks.entrails.DrippySlabBlock;
-import architectspalette.common.blocks.entrails.DrippyVerticalSlabBlock;
-import architectspalette.common.blocks.flint.FlintBlock;
-import architectspalette.common.blocks.flint.FlintPillarBlock;
-import architectspalette.common.features.TwistedTree;
+import architectspalette.content.blocks.PipeBlock;
+import architectspalette.content.blocks.*;
+import architectspalette.content.blocks.abyssaline.*;
+import architectspalette.content.blocks.entrails.DrippyBlock;
+import architectspalette.content.blocks.entrails.DrippySlabBlock;
+import architectspalette.content.blocks.entrails.DrippyVerticalSlabBlock;
+import architectspalette.content.blocks.flint.FlintBlock;
+import architectspalette.content.blocks.flint.FlintPillarBlock;
+import architectspalette.content.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.world.item.CreativeModeTab;

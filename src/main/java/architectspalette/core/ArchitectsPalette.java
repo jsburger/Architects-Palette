@@ -2,7 +2,7 @@ package architectspalette.core;
 
 import architectspalette.core.config.APConfig;
 import architectspalette.core.crafting.WarpingRecipe;
-import architectspalette.core.data.GatherData;
+import architectspalette.core.datagen.GatherData;
 import architectspalette.core.integration.APBlockData;
 import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;

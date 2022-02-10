@@ -1,6 +1,6 @@
 package architectspalette.core.integration;
 
-import architectspalette.common.blocks.VerticalSlabBlock;
+import architectspalette.content.blocks.VerticalSlabBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.config.APConfig;
 import com.google.gson.JsonObject;

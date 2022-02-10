@@ -6,7 +6,7 @@ import architectspalette.core.registry.APBlocks;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.BasicItemListing;
 
-import static architectspalette.common.event.TradingEventHandler.add_trade;
+import static architectspalette.core.event.TradingEventHandler.add_trade;
 import static net.minecraft.world.entity.npc.VillagerProfession.*;
 
 public class APTrades {

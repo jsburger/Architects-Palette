@@ -1,6 +1,6 @@
 package architectspalette.core.registry.util;
 
-import architectspalette.common.blocks.VerticalSlabBlock;
+import architectspalette.content.blocks.VerticalSlabBlock;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
