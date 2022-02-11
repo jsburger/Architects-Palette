@@ -8,7 +8,7 @@ import architectspalette.content.blocks.entrails.DrippySlabBlock;
 import architectspalette.content.blocks.entrails.DrippyVerticalSlabBlock;
 import architectspalette.content.blocks.flint.FlintBlock;
 import architectspalette.content.blocks.flint.FlintPillarBlock;
-import architectspalette.content.features.TwistedTree;
+import architectspalette.content.worldgen.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.world.item.CreativeModeTab;
@@ -261,7 +261,8 @@ public class APBlocks {
     public static final RegistryObject<Block> HEAVY_TUFF_BRICKS = createBlock("heavy_tuff_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.TUFF), BigBrickBlock.BrickType.TUFF));
     public static final RegistryObject<Block> TUFF_LAMP = createBlock("tuff_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF).lightLevel((e) -> 8)));
 
-
+    //Radioactive Crystals
+    public static final RegistryObject<Block> HELIODOR_ROD = createBlock("heliodor_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 10)));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

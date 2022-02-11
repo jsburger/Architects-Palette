@@ -1,4 +1,4 @@
-package architectspalette.content.features;
+package architectspalette.content.worldgen.features;
 
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.util.LazyLoadedValue;

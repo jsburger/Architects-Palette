@@ -8,12 +8,11 @@ import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;
 import architectspalette.core.integration.APVerticalSlabsCondition;
 import architectspalette.core.loot.WitheredBoneLootModifier;
-import architectspalette.core.registry.APBlocks;
-import architectspalette.core.registry.APItems;
-import architectspalette.core.registry.APSounds;
+import architectspalette.core.registry.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
@@ -38,12 +37,14 @@ public class ArchitectsPalette {
         instance = this;
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, APConfig.COMMON_CONFIG);
 
         APSounds.SOUNDS.register(modEventBus);
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
+        APFeatures.FEATURES.register(modEventBus);
 //        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
@@ -51,13 +52,17 @@ public class ArchitectsPalette {
         modEventBus.addGenericListener(RecipeSerializer.class, this::registerRecipeSerializers);
         modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
 
-		CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
+        forgeBus.addListener(APConfiguredFeatures::biomeLoadEvent);
+
+        CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
         
         GatherData.load();
 
     }
 
     void setupCommon(final FMLCommonSetupEvent event) {
+        event.enqueueWork(APConfiguredFeatures::registerProcessedFeatures);
+
         APBlockData.registerFlammables();
         APTrades.registerTrades();
 
