@@ -243,26 +243,30 @@ public class APBlocks {
     public static final RegistryObject<Block> WARPED_RAILING = createBlock("warped_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> TWISTED_RAILING = createBlock("twisted_railing", () -> new RailingBlock(APBlockProperties.TwistedWood()), CreativeModeTab.TAB_DECORATIONS);
 
+    // New stone block sets
+    // Dripstone
     public static final StoneBlockSet DRIPSTONE_BRICKS = new StoneBlockSet(createBlock("dripstone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DRIPSTONE_BLOCK))));
     public static final RegistryObject<Block> DRIPSTONE_PILLAR = createBlock("dripstone_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.DRIPSTONE_BLOCK)));
     public static final RegistryObject<Block> CHISELED_DRIPSTONE = createBlock("chiseled_dripstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DRIPSTONE_BLOCK)));
     public static final RegistryObject<Block> HEAVY_DRIPSTONE_BRICKS = createBlock("heavy_dripstone_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.DRIPSTONE_BLOCK), BigBrickBlock.BrickType.DRIPSTONE));
     public static final RegistryObject<Block> DRIPSTONE_LAMP = createBlock("dripstone_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DRIPSTONE_BLOCK).lightLevel((e) -> 8)));
-
+    // Calcite
     public static final StoneBlockSet CALCITE_BRICKS = new StoneBlockSet(createBlock("calcite_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CALCITE))));
     public static final RegistryObject<Block> CALCITE_PILLAR = createBlock("calcite_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CALCITE)));
     public static final RegistryObject<Block> CHISELED_CALCITE = createBlock("chiseled_calcite", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CALCITE)));
     public static final RegistryObject<Block> HEAVY_CALCITE_BRICKS = createBlock("heavy_calcite_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.CALCITE), BigBrickBlock.BrickType.CALCITE));
     public static final RegistryObject<Block> CALCITE_LAMP = createBlock("calcite_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CALCITE).lightLevel((e) -> 8)));
-
+    // Tuff
     public static final StoneBlockSet TUFF_BRICKS = new StoneBlockSet(createBlock("tuff_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF))));
     public static final RegistryObject<Block> TUFF_PILLAR = createBlock("tuff_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.TUFF)));
     public static final RegistryObject<Block> CHISELED_TUFF = createBlock("chiseled_tuff", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF)));
     public static final RegistryObject<Block> HEAVY_TUFF_BRICKS = createBlock("heavy_tuff_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.TUFF), BigBrickBlock.BrickType.TUFF));
     public static final RegistryObject<Block> TUFF_LAMP = createBlock("tuff_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF).lightLevel((e) -> 8)));
 
-    //Radioactive Crystals
-    public static final RegistryObject<Block> HELIODOR_ROD = createBlock("heliodor_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 10)));
+    // Radioactive Crystals
+    public static final RegistryObject<Block> HELIODOR_ROD = createBlock("heliodor_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
+    public static final RegistryObject<Block> EKANITE_ROD = createBlock("ekanite_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
+    public static final RegistryObject<Block> MONAZITE_ROD = createBlock("monazite_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

@@ -40,8 +40,16 @@ public class GlassLikePillarBlock extends AbstractGlassBlock {
         return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
     }
 
+    //Cullface behavior
     public boolean skipRendering(BlockState stateIn, BlockState neighborState, Direction direction) {
         return (neighborState.is(this) && stateIn.getValue(AXIS).test(direction) && stateIn.getValue(AXIS) == neighborState.getValue(AXIS));
     }
 
+    //Doesn't work because of full block collision. Might revisit.
+//    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+//        //Nifty java thing intelliJ taught me. Checks for safe cast, then casts to target in one go.
+//        if (entity instanceof LivingEntity target) {
+//            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 19, 0));
+//        }
+//    }
 }

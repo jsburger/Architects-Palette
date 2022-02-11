@@ -3,7 +3,6 @@ package architectspalette.core;
 import architectspalette.core.config.APConfig;
 import architectspalette.core.crafting.WarpingRecipe;
 import architectspalette.core.datagen.GatherData;
-import architectspalette.core.integration.APBlockData;
 import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;
 import architectspalette.core.integration.APVerticalSlabsCondition;
@@ -63,7 +62,7 @@ public class ArchitectsPalette {
     void setupCommon(final FMLCommonSetupEvent event) {
         event.enqueueWork(APConfiguredFeatures::registerProcessedFeatures);
 
-        APBlockData.registerFlammables();
+        APBlockProperties.registerFlammables();
         APTrades.registerTrades();
 
         // Is this okay to go here?
@@ -82,6 +81,6 @@ public class ArchitectsPalette {
     }
 
     void setupClient(final FMLClientSetupEvent event) {
-        APBlockData.setupRenderLayers();
+        APBlockProperties.setupRenderLayers();
     }
 }
