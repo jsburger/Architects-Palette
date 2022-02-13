@@ -123,11 +123,15 @@ public class APBlocks {
     // Osseous Bricks
     public static final StoneBlockSet OSSEOUS_BRICK = new StoneBlockSet(createBlock("osseous_bricks", () -> new Block(Block.Properties.copy(Blocks.BONE_BLOCK))));
     public static final RegistryObject<Block> OSSEOUS_PILLAR = createBlock("osseous_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(Blocks.BONE_BLOCK)));
+    public static final RegistryObject<Block> OSSEOUS_SKULL = createBlock("osseous_skull", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)));
+    public static final RegistryObject<Block> LIT_OSSEOUS_SKULL = createBlock("lit_osseous_skull", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).lightLevel(e -> 12)));
     // Withered
      // Todo: Replace bone block recipe to one that uses withered bone meal if that gets in
     public static final RegistryObject<Block> WITHERED_BONE_BLOCK = createBlock("withered_bone_block", () -> new RotatedPillarBlock(Block.Properties.copy(Blocks.BONE_BLOCK)));
     public static final StoneBlockSet      WITHERED_OSSEOUS_BRICK = new StoneBlockSet(createBlock("withered_osseous_bricks", () -> new Block(Block.Properties.copy(Blocks.BONE_BLOCK))));
     public static final RegistryObject<Block> WITHERED_OSSEOUS_PILLAR = createBlock("withered_osseous_pillar", () -> new RotatedPillarBlock(Block.Properties.copy(Blocks.BONE_BLOCK)));
+    public static final RegistryObject<Block> WITHERED_OSSEOUS_SKULL = createBlock("withered_osseous_skull", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)));
+    public static final RegistryObject<Block> LIT_WITHERED_OSSEOUS_SKULL = createBlock("lit_withered_osseous_skull", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).lightLevel(e -> 12)));
     // Wither Lamp
     public static final RegistryObject<Block> WITHER_LAMP = createBlock("wither_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SEA_LANTERN)));
 
