@@ -55,6 +55,7 @@ public class APBlockProperties {
 	public static final Block.Properties ENTWINE = Block.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE).requiresCorrectToolForDrops();
 	public static final Block.Properties ENDER_PEARL = Block.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(1.5F).sound(APSounds.APSoundTypes.ENDER_PEARL);
 	public static final BlockBehaviour.Properties PLATING = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.STONE).strength(4.0F, 10.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
+	public static final BlockBehaviour.Properties NETHER_CRYSTAL = BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12).requiresCorrectToolForDrops().strength(1.2f);
 
 	public static final BlockBehaviour.Properties MOLTEN_BRICK = Block.Properties.of(Material.STONE, MaterialColor.NETHER)
 			.requiresCorrectToolForDrops()

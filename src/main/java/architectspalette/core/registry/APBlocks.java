@@ -268,9 +268,9 @@ public class APBlocks {
     public static final RegistryObject<Block> TUFF_LAMP = createBlock("tuff_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF).lightLevel((e) -> 8)));
 
     // Radioactive Crystals
-    public static final RegistryObject<Block> HELIODOR_ROD = createBlock("heliodor_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
-    public static final RegistryObject<Block> EKANITE_ROD = createBlock("ekanite_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
-    public static final RegistryObject<Block> MONAZITE_ROD = createBlock("monazite_rod", () -> new GlassLikePillarBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12)));
+    public static final RegistryObject<Block> HELIODOR_ROD = createBlock("heliodor_rod", () -> new GlassLikePillarBlock(APBlockProperties.NETHER_CRYSTAL));
+    public static final RegistryObject<Block> EKANITE_ROD  = createBlock("ekanite_rod",  () -> new GlassLikePillarBlock(APBlockProperties.NETHER_CRYSTAL));
+    public static final RegistryObject<Block> MONAZITE_ROD = createBlock("monazite_rod", () -> new GlassLikePillarBlock(APBlockProperties.NETHER_CRYSTAL));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
