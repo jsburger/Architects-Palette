@@ -20,7 +20,10 @@ public class CrystalClusterConfig implements FeatureConfiguration {
                                 .forGetter(config -> config.crystalState),
                         Codec.BOOL
                                 .fieldOf("hanging")
-                                .forGetter(config -> config.hanging)
+                                .forGetter(config -> config.hanging),
+                        BlockState.CODEC
+                                .fieldOf("extrusion_state")
+                                .forGetter(config -> config.extrusionState)
                 ).apply(configInstance, CrystalClusterConfig::new)
     );
 
@@ -28,12 +31,14 @@ public class CrystalClusterConfig implements FeatureConfiguration {
     public final int maxLength;
     public final BlockState crystalState;
     public final boolean hanging;
+    public final BlockState extrusionState;
 
-    public CrystalClusterConfig(int minLength, int maxLength, BlockState crystalState, Boolean hanging) {
+    public CrystalClusterConfig(int minLength, int maxLength, BlockState crystalState, Boolean hanging, BlockState extrusion) {
 
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.crystalState = crystalState;
         this.hanging = hanging;
+        this.extrusionState = extrusion;
     }
 }

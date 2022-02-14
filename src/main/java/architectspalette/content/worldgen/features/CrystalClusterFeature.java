@@ -4,12 +4,15 @@ import architectspalette.content.worldgen.features.configs.CrystalClusterConfig;
 import com.mojang.math.Vector3f;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
+import java.util.List;
 import java.util.Random;
 
 public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
@@ -45,25 +48,34 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
 
         Vector3f placePos = new Vector3f(context.origin().getX(), context.origin().getY(), context.origin().getZ());
 
+        List<BlockPos> posList = new java.util.ArrayList<>(List.of());
         //4-7 shelves
         int shelves = iRandomRange(random, 4, 7);
         for (int i = 0; i < shelves; i++) {
+
             float scale = ((float)i+1)/shelves;
             //1-7 pillars each shelf
-            placeShelf(new BlockPos(placePos.x(), placePos.y(), placePos.z()), iRandomRange(random,1, 7), shelfAngle, scale, context.level(), config, random);
+            int pillars = iRandomRange(random,1, 7);
+            placeShelf(new BlockPos(placePos.x(), placePos.y(), placePos.z()), pillars, shelfAngle, scale, context, posList);
 
             //Offset next shelf position
             formationAngle.normalize();
             formationAngle.mul(fRandomRange(random, .5f, 2));
             placePos.add(formationAngle);
         }
+        for (BlockPos pos: posList) {
+            tryPlaceExtrusion(pos, context.level(), config.extrusionState, config.crystalState.getBlock(), config.hanging ? 1 : -1, random);
+        }
 
         return true;
     }
 
-    private static void placeShelf(BlockPos startPos, int crystals, Vector3f shelfAngle, float shelfScale, WorldGenLevel world, CrystalClusterConfig config, Random random) {
-        int flip = config.hanging ? 1 : -1;
+    private static void placeShelf(BlockPos startPos, int crystals, Vector3f shelfAngle, float shelfScale, FeaturePlaceContext<CrystalClusterConfig> context, List<BlockPos> crystalList) {
+        Random random = context.random();
+        CrystalClusterConfig config = context.config();
+        WorldGenLevel world = context.level();
 
+        int flip = config.hanging ? 1 : -1;
         Vector3f placePos = new Vector3f(startPos.getX(), startPos.getY(), startPos.getZ());
         placePos.add(0, -2 * flip, 0);
 
@@ -74,17 +86,20 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
 
             placePos.add(offset);
 
-//            int pillarLength = config.minLength + (int)(Math.floor(random.nextInt((config.maxLength - config.minLength) + 1) * shelfScale));
-            int pillarLength = iRandomRange(random, 0, (int)(Math.floor((config.maxLength - config.minLength) * shelfScale))) + config.minLength;
-            placePillar(new BlockPos.MutableBlockPos(placePos.x(), placePos.y(), placePos.z()), pillarLength, world, config.crystalState, flip);
+            int pillarLength = config.minLength + random.nextInt((int)(Math.floor((config.maxLength - config.minLength) * shelfScale)) + 1);
+            placePillar(new BlockPos.MutableBlockPos(placePos.x(), placePos.y(), placePos.z()), pillarLength, world, context, flip, crystalList);
             if (pillarLength > (config.maxLength - config.minLength)/2 && random.nextBoolean()) {
-//                placePillar(new BlockPos.MutableBlockPos(placePos.x() + random.nextInt(2), placePos.y() + random.nextInt(2), placePos.z() + random.nextInt(2)), pillarLength / 2, world, config.crystalState);
-                placePillar(new BlockPos.MutableBlockPos(placePos.x() + iRandomRange(random, -1, 1), placePos.y() + iRandomRange(random, -1, 1), placePos.z() + iRandomRange(random, -1, 1)), pillarLength / 2, world, config.crystalState, flip);
+                BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(
+                        placePos.x() + iRandomRange(random, -1, 1),
+                        placePos.y() + iRandomRange(random, -1, 1),
+                        placePos.z() + iRandomRange(random, -1, 1));
+                placePillar(pos, pillarLength / 2, world, context, flip, crystalList);
             }
         }
     }
 
-    private static void placePillar(BlockPos.MutableBlockPos placePos, int length, WorldGenLevel world, BlockState crystal, int flip) {
+    private static void placePillar(BlockPos.MutableBlockPos placePos, int length, WorldGenLevel world, FeaturePlaceContext<CrystalClusterConfig> context, int flip, List<BlockPos> crystalList) {
+        CrystalClusterConfig config = context.config();
         // Go up until a ceiling is found, give up if no ceiling found
         int tries = 10;
         while (canReplaceAt(world, placePos)) {
@@ -103,10 +118,39 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
             }
         }
         //Place Pillar
+        boolean doExtrusion = true;
         while (--length >= 0) {
             if (!canReplaceAt(world, placePos)) return;
-            world.setBlock(placePos, crystal, 2);
+            if (doExtrusion) {
+                crystalList.add(placePos.immutable());
+//                tryPlaceExtrusion(placePos.immutable(), world, config.extrusionState, config.crystalState.getBlock(), flip, context.random());
+                doExtrusion = false;
+            }
+            world.setBlock(placePos, config.crystalState, 2);
             placePos.setY(placePos.getY() - flip);
+        }
+    }
+
+    private static void tryPlaceExtrusion(BlockPos startPos, WorldGenLevel level, BlockState placeState, Block avoidBlock, int flip, Random random) {
+        for (Direction dir : Direction.values()) {
+            if (dir.getAxis() != Direction.Axis.Y) {
+                if (random.nextInt(3) != 1) continue;
+                BlockPos pos = startPos.relative(dir, 1);
+                while (level.getBlockState(pos).is(placeState.getBlock()) && Math.abs(startPos.getY() - pos.getY()) <= 4) pos = pos.below(flip);
+                BlockPos above = pos.above();
+                BlockPos below = pos.below();
+                if (canReplaceAt(level, above) ^ canReplaceAt(level, below)) {
+                    if (!level.getBlockState(above).is(avoidBlock) && !level.getBlockState(below).is(avoidBlock)) {
+                        for (int i = iRandomRange(random, 1, 2); i > 0; i--) {
+                            if (canReplaceAt(level, pos)) {
+                                level.setBlock(pos, placeState, 2);
+                                pos = pos.below(flip);
+                            }
+                            else break;
+                        }
+                    }
+                }
+            }
         }
     }
 

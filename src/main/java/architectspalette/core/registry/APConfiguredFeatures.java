@@ -7,6 +7,7 @@ import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
@@ -19,7 +20,7 @@ import java.util.Arrays;
 
 public class APConfiguredFeatures {
 
-    private static final CrystalClusterConfig HELIODOR_CLUSTER_CONFIG = new CrystalClusterConfig(1, 7, APBlocks.HELIODOR_ROD.get().defaultBlockState(), true);
+    private static final CrystalClusterConfig HELIODOR_CLUSTER_CONFIG = new CrystalClusterConfig(1, 7, APBlocks.HELIODOR_ROD.get().defaultBlockState(), true, Blocks.BASALT.defaultBlockState());
     public static ConfiguredFeature<?, ?> HELIODOR_CLUSTER = APFeatures.CRYSTAL_CLUSTER.get().configured(HELIODOR_CLUSTER_CONFIG);
     public static PlacedFeature HELIODOR_CLUSTER_PLACED = HELIODOR_CLUSTER.placed(
             CountPlacement.of(7),
@@ -27,7 +28,7 @@ public class APConfiguredFeatures {
             PlacementUtils.FULL_RANGE,
             BiomeFilter.biome());
 
-    private static final CrystalClusterConfig EKANITE_CLUSTER_CONFIG = new CrystalClusterConfig(1, 6, APBlocks.EKANITE_ROD.get().defaultBlockState(), false);
+    private static final CrystalClusterConfig EKANITE_CLUSTER_CONFIG = new CrystalClusterConfig(1, 6, APBlocks.EKANITE_ROD.get().defaultBlockState(), false, Blocks.BASALT.defaultBlockState());
     public static ConfiguredFeature<?, ?> EKANITE_CLUSTER = APFeatures.CRYSTAL_CLUSTER.get().configured(EKANITE_CLUSTER_CONFIG);
     public static PlacedFeature EKANITE_CLUSTER_PLACED = EKANITE_CLUSTER.placed(
             CountPlacement.of(8),
@@ -35,7 +36,7 @@ public class APConfiguredFeatures {
             PlacementUtils.FULL_RANGE,
             BiomeFilter.biome());
 
-    private static final CrystalClusterConfig HANGING_MONAZITE_CLUSTER_CONFIG = new CrystalClusterConfig(0, 7, APBlocks.MONAZITE_ROD.get().defaultBlockState(), true);
+    private static final CrystalClusterConfig HANGING_MONAZITE_CLUSTER_CONFIG = new CrystalClusterConfig(0, 7, APBlocks.MONAZITE_ROD.get().defaultBlockState(), true, Blocks.BASALT.defaultBlockState());
     public static ConfiguredFeature<?, ?> HANGING_MONAZITE_CLUSTER = APFeatures.CRYSTAL_CLUSTER.get().configured(HANGING_MONAZITE_CLUSTER_CONFIG);
     public static PlacedFeature HANGING_MONAZITE_CLUSTER_PLACED = HANGING_MONAZITE_CLUSTER.placed(
             CountPlacement.of(4),
@@ -43,7 +44,7 @@ public class APConfiguredFeatures {
             PlacementUtils.FULL_RANGE,
             BiomeFilter.biome());
 
-    private static final CrystalClusterConfig GROUNDED_MONAZITE_CLUSTER_CONFIG = new CrystalClusterConfig(0, 6, APBlocks.MONAZITE_ROD.get().defaultBlockState(), false);
+    private static final CrystalClusterConfig GROUNDED_MONAZITE_CLUSTER_CONFIG = new CrystalClusterConfig(0, 6, APBlocks.MONAZITE_ROD.get().defaultBlockState(), false, Blocks.BASALT.defaultBlockState());
     public static ConfiguredFeature<?, ?> GROUNDED_MONAZITE_CLUSTER = APFeatures.CRYSTAL_CLUSTER.get().configured(GROUNDED_MONAZITE_CLUSTER_CONFIG);
     public static PlacedFeature GROUNDED_MONAZITE_CLUSTER_PLACED = GROUNDED_MONAZITE_CLUSTER.placed(
             CountPlacement.of(5),
