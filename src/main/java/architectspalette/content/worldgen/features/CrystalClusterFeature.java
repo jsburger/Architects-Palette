@@ -1,6 +1,7 @@
 package architectspalette.content.worldgen.features;
 
 import architectspalette.content.worldgen.features.configs.CrystalClusterConfig;
+import architectspalette.core.registry.MiscRegistry;
 import com.mojang.math.Vector3f;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -167,6 +168,6 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
     }
 
     private static boolean canReplace(BlockState state) {
-        return state.isAir() || state.getMaterial().isReplaceable();
+        return state.isAir() || state.getMaterial().isReplaceable() || state.is(MiscRegistry.CRYSTAL_REPLACEABLE);
     }
 }
