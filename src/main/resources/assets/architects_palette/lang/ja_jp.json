@@ -4,6 +4,8 @@
   "subtitles.architects_palette.cage_lantern.toggle_on": "ケージランタンを点ける",
   "subtitles.architects_palette.cage_lantern.toggle_off": "ケージランタンを消す",
 
+"architects_palette.misc.no_quark": "Quark Modをインストールする必要があります",
+
   "architects_palette.advancement.root": "建築家のパレット",
   "architects_palette.advancement.root.desc": "なにか新しいものを作ってみよう！",
   "architects_palette.advancement.totem_carving": "その ブキミな かお やめろって！",
@@ -33,10 +35,12 @@
   "block.architects_palette.abyssaline_pillar": "アビサリンの柱",
   "block.architects_palette.abyssaline_brick_stairs": "アビサリンレンガの階段",
   "block.architects_palette.abyssaline_brick_slab": "アビサリンレンガのハーフブロック",
+  "block.architects_palette.abyssaline_brick_vertical_slab": "アビサリンレンガの縦ハーフブロック",
   "block.architects_palette.abyssaline_brick_wall": "アビサリンレンガの塀",
   "block.architects_palette.abyssaline_tiles": "アビサリンタイル",
   "block.architects_palette.abyssaline_tile_stairs": "アビサリンタイルの階段",
   "block.architects_palette.abyssaline_tile_slab": "アビサリンタイルのハーフブロック",
+  "block.architects_palette.abyssaline_tile_vertical_slab": "アビサリンタイルの縦ハーフブロック",
   "block.architects_palette.abyssaline_lamp": "アビサリンランプ",
 
   "block.architects_palette.salmon_log": "切られた鮭",
@@ -49,6 +53,7 @@
   "block.architects_palette.plating_wall": "トタンの塀",
   "block.architects_palette.plating_stairs": "トタンの階段",
   "block.architects_palette.plating_slab": "トタンのハーフブロック",
+  "block.architects_palette.plating_vertical_slab": "トタンの縦ハーフブロック",
   "block.architects_palette.pipe": "パイプ",
   "block.architects_palette.spool": "糸巻",
 
@@ -59,12 +64,15 @@
   "block.architects_palette.mushy_limestone_bricks": "カビの生えた石灰岩レンガ",
   "block.architects_palette.limestone_wall": "石灰岩の塀",
   "block.architects_palette.limestone_slab": "石灰岩のハーフブロック",
+  "block.architects_palette.limestone_vertical_slab": "石灰岩の縦ハーフブロック",
   "block.architects_palette.limestone_stairs": "石灰岩の階段",
   "block.architects_palette.limestone_brick_wall": "石灰岩レンガの塀",
   "block.architects_palette.limestone_brick_slab": "石灰岩レンガのハーフブロック",
+  "block.architects_palette.limestone_brick_vertical_slab": "石灰岩レンガの縦ハーフブロック",
   "block.architects_palette.limestone_brick_stairs": "石灰岩レンガの階段",
   "block.architects_palette.mushy_limestone_brick_wall": "カビの生えた石灰岩レンガの塀",
   "block.architects_palette.mushy_limestone_brick_slab": "カビの生えた石灰岩レンガのハーフブロック",
+  "block.architects_palette.mushy_limestone_brick_vertical_slab": "カビの生えた石灰岩レンガの縦ハーフブロック",
   "block.architects_palette.mushy_limestone_brick_stairs": "カビの生えた石灰岩レンガの階段",
 
   "block.architects_palette.olivestone_bricks": "オリーブストーンレンガ",
@@ -74,10 +82,12 @@
   "block.architects_palette.olivestone_pillar": "オリーブストーンの柱",
   "block.architects_palette.olivestone_brick_wall": "オリーブストーンレンガの塀",
   "block.architects_palette.olivestone_brick_slab": "オリーブストーンレンガのハーフブロック",
+  "block.architects_palette.olivestone_brick_vertical_slab": "オリーブストーンレンガの縦ハーフブロック",
   "block.architects_palette.olivestone_brick_stairs": "オリーブストーンレンガの階段",
-  "block.architects_palette.olivestone_tile_wall": "オリーブストーンタイル塀",
-  "block.architects_palette.olivestone_tile_slab": "オリーブストーンタイルハーフブロック",
-  "block.architects_palette.olivestone_tile_stairs": "オリーブストーンタイル階段",
+  "block.architects_palette.olivestone_tile_wall": "オリーブストーンタイルの塀",
+  "block.architects_palette.olivestone_tile_slab": "オリーブストーンタイルのハーフブロック",
+  "block.architects_palette.olivestone_tile_vertical_slab": "オリーブストーンタイルの縦ハーフブロック",
+  "block.architects_palette.olivestone_tile_stairs": "オリーブストーンタイルの階段",
   "block.architects_palette.illuminated_olivestone": "彩飾オリーブストーン",
   "block.architects_palette.chiseled_olivestone": "模様入りのオリーブストーン",
 
@@ -87,9 +97,11 @@
   "block.architects_palette.chiseled_algal_bricks": "模様入りアルガルレンガ",
   "block.architects_palette.algal_brick_wall": "アルガルレンガの塀",
   "block.architects_palette.algal_brick_slab": "アルガルレンガのハーフブロック",
+  "block.architects_palette.algal_brick_vertical_slab": "アルガルレンガの縦ハーフブロック",
   "block.architects_palette.algal_brick_stairs": "アルガルレンガの階段",
   "block.architects_palette.overgrown_algal_brick_wall": "生い茂ったアルガルレンガの塀",
   "block.architects_palette.overgrown_algal_brick_slab": "生い茂ったアルガルレンガのハーフブロック",
+  "block.architects_palette.overgrown_algal_brick_vertical_slab": "生い茂ったアルガルレンガの縦ハーフブロック",
   "block.architects_palette.overgrown_algal_brick_stairs": "生い茂ったアルガルレンガ階段",
   "__comment__": "Translators; The Algal Lamp is intentionally referred to as a 'lantern' in game for consistency with the sea lantern. Pardon the discrepancy.",
   "block.architects_palette.algal_lamp": "アルガルランタン",
@@ -101,6 +113,7 @@
   "block.architects_palette.chiseled_coal_ore_bricks": "模様入りの石炭鉱石レンガ",
   "block.architects_palette.coal_ore_brick_wall": "石炭鉱石レンガの塀",
   "block.architects_palette.coal_ore_brick_slab": "石炭鉱石レンガのハーフブロック",
+  "block.architects_palette.coal_ore_brick_vertical_slab": "石炭鉱石レンガの縦ハーフブロック",
   "block.architects_palette.coal_ore_brick_stairs": "石炭鉱石レンガの階段",
   
   "block.architects_palette.lapis_ore_bricks": "ラピスラズリ鉱石レンガ",
@@ -108,6 +121,7 @@
   "block.architects_palette.chiseled_lapis_ore_bricks": "模様入りのラピスラズリ鉱石レンガ",
   "block.architects_palette.lapis_ore_brick_wall": "ラピスラズリ鉱石レンガの塀",
   "block.architects_palette.lapis_ore_brick_slab": "ラピスラズリ鉱石レンガのハーフブロック",
+  "block.architects_palette.lapis_ore_brick_vertical_slab": "ラピスラズリ鉱石レンガの縦ハーフブロック",
   "block.architects_palette.lapis_ore_brick_stairs": "ラピスラズリ鉱石レンガの階段",
   
   "block.architects_palette.redstone_ore_bricks": "レッドストーン鉱石レンガ",
@@ -115,6 +129,7 @@
   "block.architects_palette.chiseled_redstone_ore_bricks": "模様入りのレッドストーン鉱石レンガ",
   "block.architects_palette.redstone_ore_brick_wall": "レッドストーン鉱石レンガの塀",
   "block.architects_palette.redstone_ore_brick_slab": "レッドストーン鉱石レンガのハーフブロック",
+  "block.architects_palette.redstone_ore_brick_vertical_slab": "レッドストーン鉱石レンガの縦ハーフブロック",
   "block.architects_palette.redstone_ore_brick_stairs": "レッドストーン鉱石レンガの階段",
   
   "block.architects_palette.iron_ore_bricks": "鉄鉱石レンガ",
@@ -122,6 +137,7 @@
   "block.architects_palette.chiseled_iron_ore_bricks": "模様入りの鉄鉱石レンガ",
   "block.architects_palette.iron_ore_brick_wall": "鉄鉱石レンガの塀",
   "block.architects_palette.iron_ore_brick_slab": "鉄鉱石レンガのハーフブロック",
+  "block.architects_palette.iron_ore_brick_vertical_slab": "鉄鉱石レンガの縦ハーフブロック",
   "block.architects_palette.iron_ore_brick_stairs": "鉄鉱石レンガの階段",
   
   "block.architects_palette.gold_ore_bricks": "金鉱石レンガ",
@@ -129,6 +145,7 @@
   "block.architects_palette.chiseled_gold_ore_bricks": "模様入りの金鉱石レンガ",
   "block.architects_palette.gold_ore_brick_wall": "金鉱石レンガの塀",
   "block.architects_palette.gold_ore_brick_slab": "金鉱石レンガのハーフブロック",
+  "block.architects_palette.gold_ore_brick_vertical_slab": "金鉱石レンガの縦ハーフブロック",
   "block.architects_palette.gold_ore_brick_stairs": "金鉱石レンガの階段",
   
   "block.architects_palette.emerald_ore_bricks": "エメラルド鉱石レンガ",
@@ -136,6 +153,7 @@
   "block.architects_palette.chiseled_emerald_ore_bricks": "模様入りのエメラルド鉱石レンガ",
   "block.architects_palette.emerald_ore_brick_wall": "エメラルド鉱石レンガの塀",
   "block.architects_palette.emerald_ore_brick_slab": "エメラルド鉱石レンガのハーフブロック",
+  "block.architects_palette.emerald_ore_brick_vertical_slab": "エメラルド鉱石レンガの縦ハーフブロック",
   "block.architects_palette.emerald_ore_brick_stairs": "エメラルド鉱石レンガの階段",
   
   "block.architects_palette.diamond_ore_bricks": "ダイヤモンド鉱石レンガ",
@@ -143,12 +161,14 @@
   "block.architects_palette.chiseled_diamond_ore_bricks": "模様入りのダイヤモンド鉱石レンガ",
   "block.architects_palette.diamond_ore_brick_wall": "ダイヤモンド鉱石レンガの塀",
   "block.architects_palette.diamond_ore_brick_slab": "ダイヤモンド鉱石レンガのハーフブロック",
+  "block.architects_palette.diamond_ore_brick_vertical_slab": "ダイヤモンド鉱石レンガの縦ハーフブロック",
   "block.architects_palette.diamond_ore_brick_stairs": "ダイヤモンド鉱石レンガの階段",
 
   "block.architects_palette.flint_block": "火打石ブロック",
   "block.architects_palette.flint_tiles": "火打石タイル",
   "block.architects_palette.flint_tile_wall": "火打石タイルの塀",
   "block.architects_palette.flint_tile_slab": "火打石タイルのハーフブロック",
+  "block.architects_palette.flint_tile_vertical_slab": "火打石タイルの縦ハーフブロック",
   "block.architects_palette.flint_tile_stairs": "火打石タイルの階段",
   "block.architects_palette.flint_pillar": "火打石の柱",
 
@@ -157,12 +177,14 @@
   "block.architects_palette.packed_ice_pillar": "氷塊の柱",
   "block.architects_palette.polished_packed_ice_stairs": "磨かれた氷塊の階段",
   "block.architects_palette.polished_packed_ice_slab": "磨かれた氷塊のハーフブロック",
+  "block.architects_palette.polished_packed_ice_vertical_slab": "磨かれた氷塊の縦ハーフブロック",
   "block.architects_palette.polished_packed_ice_wall": "磨かれた氷塊の塀",
 
   "block.architects_palette.sunmetal_block": "サンメタルブロック",
   "block.architects_palette.chiseled_sunmetal_block": "模様入りのサンメタルブロック",
   "block.architects_palette.sunmetal_pillar": "サンメタルの柱",
   "block.architects_palette.sunmetal_slab": "サンメタルのハーフブロック",
+  "block.architects_palette.sunmetal_vertical_slab": "サンメタルの縦ハーフブロック",
   "block.architects_palette.sunmetal_stairs": "サンメタルの階段",
   "block.architects_palette.sunmetal_bars": "サンメタルの格子",
   "item.architects_palette.sunmetal_brick": "サンメタルレンガ",
@@ -171,8 +193,9 @@
   "block.architects_palette.osseous_bricks": "骨レンガ",
   "block.architects_palette.osseous_pillar": "骨の柱",
   "block.architects_palette.osseous_brick_wall": "骨レンガの塀",
-  "block.architects_palette.osseous_brick_stairs": "骨レンガ階段",
+  "block.architects_palette.osseous_brick_stairs": "骨レンガの階段",
   "block.architects_palette.osseous_brick_slab": "骨レンガのハーフブロック",
+  "block.architects_palette.osseous_brick_vertical_slab": "骨レンガの縦ハーフブロック",
 
   "block.architects_palette.withered_osseous_bricks": "干からびた骨レンガ",
   "block.architects_palette.withered_osseous_pillar": "干からびた骨の柱",
@@ -180,6 +203,7 @@
   "block.architects_palette.withered_osseous_brick_wall": "干からびた骨レンガの塀",
   "block.architects_palette.withered_osseous_brick_stairs": "干からびた骨レンガの階段",
   "block.architects_palette.withered_osseous_brick_slab": "干からびた骨レンガのハーフブロック",
+  "block.architects_palette.withered_osseous_brick_vertical_slab": "干からびた骨レンガの縦ハーフブロック",
   "block.architects_palette.wither_lamp": "ウィザーランプ",
   "item.architects_palette.withered_bone": "干からびた骨",
 
@@ -188,6 +212,7 @@
   "block.architects_palette.entwine_pillar": "エントワインの柱",
   "block.architects_palette.entwine_bars": "エントワインの格子",
   "block.architects_palette.entwine_slab": "エントワインのハーフブロック",
+  "block.architects_palette.entwine_vertical_slab": "エントワインの縦ハーフブロック",
   "block.architects_palette.entwine_stairs": "エントワインの階段",
   "item.architects_palette.entwine_rod": "エントワインロッド",
 
@@ -197,6 +222,7 @@
 
   "block.architects_palette.polished_glowstone": "磨かれたグロウストーン",
   "block.architects_palette.polished_glowstone_slab": "磨かれたグロウストーンのハーフブロック",
+  "block.architects_palette.polished_glowstone_vertical_slab": "磨かれたグロウストーンの縦ハーフブロック",
   "block.architects_palette.runic_glowstone": "ルーン文字入りのグロウストーン",
 
   "block.architects_palette.scute_block": "ウロコブロック",
@@ -205,6 +231,7 @@
   "block.architects_palette.chiseled_gilded_sandstone": "模様入りのきらめく砂岩",
   "block.architects_palette.gilded_sandstone_pillar": "きらめく砂岩の柱",
   "block.architects_palette.gilded_sandstone_slab": "きらめく砂岩のハーフブロック",
+  "block.architects_palette.gilded_sandstone_vertical_slab": "きらめく砂岩の縦ハーフブロック",
   "block.architects_palette.gilded_sandstone_stairs": "きらめく砂岩の階段",
 
   "block.architects_palette.weeping_blackstone": "しだれたブラックストーン",
@@ -218,6 +245,7 @@
   "block.architects_palette.warpstone_wall": "ワープストーンの塀",
   "block.architects_palette.warpstone_stairs": "ワープストーンの階段",
   "block.architects_palette.warpstone_slab": "ワープストーンのハーフブロック",
+  "block.architects_palette.warpstone_vertical_slab": "ワープストーンの縦ハーフブロック",
 
   "block.architects_palette.choral_end_stone_bricks": "コーラスエンドストーンレンガ",
   "block.architects_palette.cracked_end_stone_bricks": "ひび割れたエンドストーンレンガ",
@@ -235,6 +263,7 @@
   "block.architects_palette.twisted_pressure_plate": "ねじれた感圧版",
   "block.architects_palette.twisted_trapdoor": "ねじれたトラップドア",
   "block.architects_palette.twisted_slab": "ねじれたハーフブロック",
+  "block.architects_palette.twisted_vertical_slab": "ねじれた縦ハーフブロック",
   "block.architects_palette.twisted_stairs": "ねじれた階段",
   "block.architects_palette.twisted_leaves": "ねじれた葉",
   "block.architects_palette.twisted_sapling": "ねじれた苗木",
@@ -244,6 +273,7 @@
   "block.architects_palette.basalt_tile_wall": "玄武岩タイルの塀",
   "block.architects_palette.basalt_tile_stairs": "玄武岩タイルの階段",
   "block.architects_palette.basalt_tile_slab": "玄武岩タイルのハーフブロック",
+  "block.architects_palette.basalt_tile_vertical_slab": "玄武岩タイルの縦ハーフブロック",
   "block.architects_palette.chiseled_basalt_tiles": "模様入り玄武岩タイル",
   "block.architects_palette.cracked_basalt_tiles": "ひび割れた玄武岩タイル",
 
@@ -266,5 +296,9 @@
   "block.architects_palette.blank_acacia_totem": "カオナシアカシアのトーテム",
   "block.architects_palette.acacia_totem_wing": "アカシアのトーテムの羽",
 
-  "block.architects_palette.ender_pearl_block": "エンダーパールブロック"
+  "block.architects_palette.ender_pearl_block": "エンダーパールブロック",
+
+  "block.architects_palette.entrails_slab": "内臓のハーフブロック",
+  "block.architects_palette.entrails_vertical_slab": "内臓の縦ハーフブロック",
+  "block.architects_palette.entrails_stairs": "内臓の階段"
 }
