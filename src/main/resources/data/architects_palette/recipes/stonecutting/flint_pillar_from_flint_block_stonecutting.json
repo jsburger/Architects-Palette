@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:flint_block"
+        }
+    ],
+    "result": "architects_palette:flint_pillar",
+    "count": 1
+}

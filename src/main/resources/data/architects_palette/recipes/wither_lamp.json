@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#d#",
+        "d#d",
+        "#d#"
+    ],
+    "key": {
+        "#": {
+            "tag": "architects_palette:withered_bones"
+        },
+        "d": {
+            "item": "minecraft:glowstone_dust"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:wither_lamp"
+    }
+}

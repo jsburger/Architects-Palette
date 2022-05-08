@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "X",
+        "X"
+    ],
+    "key": {
+        "X": {
+            "item": "architects_palette:osseous_brick_slab"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:osseous_skull"
+    }
+}

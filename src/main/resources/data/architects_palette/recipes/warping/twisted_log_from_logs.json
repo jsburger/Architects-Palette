@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "tag": "minecraft:logs"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:twisted_log"
+    },
+    "dimension": "minecraft:the_nether"
+}

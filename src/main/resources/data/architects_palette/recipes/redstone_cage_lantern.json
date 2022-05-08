@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " g ",
+        "blb"
+    ],
+    "key": {
+        "g": {
+            "item": "minecraft:glass_pane"
+        },
+        "l": {
+            "item": "minecraft:redstone"
+        },
+        "b": {
+            "item": "minecraft:iron_nugget"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:redstone_cage_lantern"
+    }
+}

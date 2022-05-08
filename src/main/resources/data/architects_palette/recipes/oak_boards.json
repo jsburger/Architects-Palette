@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "minecraft:oak_planks"
+        }
+    },
+    "result": {
+        "count": 9,
+        "item": "architects_palette:oak_boards"
+    }
+}

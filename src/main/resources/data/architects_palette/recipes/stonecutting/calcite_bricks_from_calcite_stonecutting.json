@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:calcite"
+        }
+    ],
+    "result": "architects_palette:calcite_bricks",
+    "count": 1
+}

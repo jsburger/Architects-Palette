@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:warpstone"
+        }
+    ],
+    "result": "architects_palette:warpstone_slab",
+    "count": 2
+}

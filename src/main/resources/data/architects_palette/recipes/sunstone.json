@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XY",
+        "YX"
+    ],
+    "key": {
+        "X": {
+            "item": "minecraft:basalt"
+        },
+        "Y": {
+            "item": "architects_palette:sunmetal_blend"
+        }
+    },
+    "result": {
+        "count": 4,
+        "item": "architects_palette:sunstone"
+    }
+}

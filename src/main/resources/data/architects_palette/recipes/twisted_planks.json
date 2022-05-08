@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "planks",
+    "ingredients": [
+        {
+            "tag": "architects_palette:twisted_logs"
+        }
+    ],
+    "result": {
+        "count": 4,
+        "item": "architects_palette:twisted_planks"
+    }
+}

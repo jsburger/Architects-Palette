@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:overgrown_algal_bricks"
+        }
+    ],
+    "result": "architects_palette:overgrown_algal_brick_wall",
+    "count": 1
+}

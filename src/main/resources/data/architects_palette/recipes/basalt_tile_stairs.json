@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:basalt_tiles"
+        }
+    },
+    "result": {
+        "count": 4,
+        "item": "architects_palette:basalt_tile_stairs"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "X",
+        "Y"
+    ],
+    "key": {
+        "X": {
+            "item": "architects_palette:osseous_skull"
+        },
+        "Y": {
+            "item": "minecraft:torch"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:lit_osseous_skull"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "fish_scales",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:salmon_log"
+        }
+    },
+    "result": {
+        "count": 3,
+        "item": "architects_palette:salmon_scales"
+    }
+}

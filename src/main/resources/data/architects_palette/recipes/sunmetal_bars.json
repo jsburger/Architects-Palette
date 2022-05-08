@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "bbb",
+        "bbb"
+    ],
+    "key": {
+        "b": {
+            "item": "architects_palette:sunmetal_brick"
+        }
+    },
+    "result": {
+        "count": 16,
+        "item": "architects_palette:sunmetal_bars"
+    }
+}

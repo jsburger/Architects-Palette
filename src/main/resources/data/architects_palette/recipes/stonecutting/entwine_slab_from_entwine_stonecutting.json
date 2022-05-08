@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:entwine_block"
+        }
+    ],
+    "result": "architects_palette:entwine_slab",
+    "count": 2
+}

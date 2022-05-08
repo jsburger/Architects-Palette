@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:myonite"
+        }
+    ],
+    "result": "architects_palette:myonite_bricks",
+    "count": 1
+}

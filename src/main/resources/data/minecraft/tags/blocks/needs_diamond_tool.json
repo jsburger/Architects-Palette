@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:abyssaline",
+    "architects_palette:abyssaline_bricks",
+    "architects_palette:abyssaline_brick_slab",
+    "architects_palette:abyssaline_brick_vertical_slab",
+    "architects_palette:abyssaline_lamp",
+    "architects_palette:abyssaline_pillar",
+    "architects_palette:abyssaline_tiles",
+    "architects_palette:abyssaline_tile_slab",
+    "architects_palette:abyssaline_tile_vertical_slab",
+    "architects_palette:chiseled_abyssaline_bricks"
+  ]
+}

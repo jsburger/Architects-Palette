@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "minecraft:birch_planks"
+        }
+    },
+    "result": {
+        "count": 9,
+        "item": "architects_palette:birch_boards"
+    }
+}

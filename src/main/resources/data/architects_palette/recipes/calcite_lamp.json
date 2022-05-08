@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " X ",
+        "XIX",
+        " X "
+    ],
+    "key": {
+        "X": {
+            "item": "minecraft:calcite"
+        },
+        "I": {
+            "item": "minecraft:glow_ink_sac"
+        }
+    },
+    "result": {
+        "count": 2,
+        "item": "architects_palette:calcite_lamp"
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:pipe",
+    "architects_palette:plating_block",
+    "architects_palette:plating_slab",
+    "architects_palette:plating_stairs",
+    "architects_palette:plating_vertical_slab",
+    "architects_palette:plating_wall"
+  ]
+}

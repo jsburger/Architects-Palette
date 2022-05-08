@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_fence_gate",
+    "pattern": [
+        "I#I",
+        "I#I"
+    ],
+    "key": {
+        "I": {
+            "tag": "forge:rods/wooden"
+        },
+        "#": {
+            "item": "architects_palette:twisted_planks"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:twisted_fence_gate"
+    }
+}

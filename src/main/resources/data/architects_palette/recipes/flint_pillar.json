@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:flint_block"
+        }
+    },
+    "result": {
+        "count": 2,
+        "item": "architects_palette:flint_pillar"
+    }
+}

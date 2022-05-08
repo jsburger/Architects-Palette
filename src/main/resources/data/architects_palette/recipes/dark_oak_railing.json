@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_railing",
+    "pattern": [
+        "#I#"
+    ],
+    "key": {
+        "I": {
+            "tag": "forge:rods/wooden"
+        },
+        "#": {
+            "item": "minecraft:dark_oak_planks"
+        }
+    },
+    "result": {
+        "count": 3,
+        "item": "architects_palette:dark_oak_railing"
+    }
+}

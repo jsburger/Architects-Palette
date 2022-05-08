@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:entwine_block",
+    "architects_palette:entwine_pillar",
+    "architects_palette:chiseled_entwine",
+    "architects_palette:entwine_bars",
+    "architects_palette:heavy_end_stone_bricks",
+    "architects_palette:heavy_cracked_end_stone_bricks",
+    "architects_palette:chiseled_end_stone_bricks",
+    "architects_palette:choral_end_stone_bricks",
+    "architects_palette:cracked_end_stone_bricks",
+    "minecraft:end_stone_bricks"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:tuff_bricks"
+        }
+    },
+    "result": {
+        "count": 4,
+        "item": "architects_palette:tuff_brick_stairs"
+    }
+}

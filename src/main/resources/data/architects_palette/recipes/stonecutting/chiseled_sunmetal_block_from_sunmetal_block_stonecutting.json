@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:sunmetal_block"
+        }
+    ],
+    "result": "architects_palette:chiseled_sunmetal_block",
+    "count": 1
+}

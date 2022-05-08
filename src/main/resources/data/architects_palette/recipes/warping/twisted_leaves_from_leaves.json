@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "tag": "minecraft:leaves"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:twisted_leaves"
+    },
+    "dimension": "minecraft:the_nether"
+}

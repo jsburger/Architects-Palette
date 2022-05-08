@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:dripstone_block"
+        },
+        {
+            "item": "architects_palette:dripstone_bricks"
+        }
+    ],
+    "result": "architects_palette:dripstone_brick_stairs",
+    "count": 1
+}

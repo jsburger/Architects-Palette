@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:myonite_wall",
+    "architects_palette:myonite_brick_wall",
+    "architects_palette:mushy_myonite_brick_wall",
+    "architects_palette:olivestone_brick_wall",
+    "architects_palette:olivestone_tile_wall",
+    "architects_palette:algal_brick_wall",
+    "architects_palette:overgrown_algal_brick_wall",
+    "architects_palette:coal_ore_brick_wall",
+    "architects_palette:lapis_ore_brick_wall",
+    "architects_palette:redstone_ore_brick_wall",
+    "architects_palette:iron_ore_brick_wall",
+    "architects_palette:gold_ore_brick_wall",
+    "architects_palette:emerald_ore_brick_wall",
+    "architects_palette:diamond_ore_brick_wall",
+    "architects_palette:osseous_brick_wall",
+    "architects_palette:withered_osseous_brick_wall",
+    "architects_palette:flint_tile_wall",
+    "architects_palette:polished_packed_ice_wall",
+    "architects_palette:plating_wall",
+    "architects_palette:warpstone_wall",
+    "architects_palette:basalt_tile_wall",
+    "architects_palette:tuff_brick_wall",
+    "architects_palette:calcite_brick_wall",
+    "architects_palette:dripstone_brick_wall"
+  ]
+}
