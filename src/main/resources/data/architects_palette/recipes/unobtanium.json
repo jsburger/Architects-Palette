@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "architects_palette:unobtanium_block"
+        }
+    ],
+    "result": {
+        "count": 5,
+        "item": "architects_palette:unobtanium"
+    }
+}

@@ -22,4 +22,6 @@ public class APItems {
     public static final RegistryObject<Item> SUNMETAL_BLEND = ITEMS.register("sunmetal_blend", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> SUNMETAL_BRICK = ITEMS.register("sunmetal_brick", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 
+    public static final RegistryObject<Item> UNOBTANIUM = ITEMS.register("unobtanium", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+
 }
