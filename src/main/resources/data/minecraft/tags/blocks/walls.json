@@ -24,6 +24,7 @@
     "architects_palette:basalt_tile_wall",
     "architects_palette:tuff_brick_wall",
     "architects_palette:calcite_brick_wall",
-    "architects_palette:dripstone_brick_wall"
+    "architects_palette:dripstone_brick_wall",
+    "architects_palette:polished_glowstone_wall"
   ]
 }
