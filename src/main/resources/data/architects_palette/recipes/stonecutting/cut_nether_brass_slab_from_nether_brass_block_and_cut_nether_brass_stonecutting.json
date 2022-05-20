@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:nether_brass_block"
+        },
+        {
+            "item": "architects_palette:cut_nether_brass"
+        }
+    ],
+    "result": "architects_palette:cut_nether_brass_slab",
+    "count": 2
+}

@@ -56,6 +56,16 @@ public class APBlockProperties {
 	public static final Block.Properties ENDER_PEARL = Block.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(1.5F).sound(APSounds.APSoundTypes.ENDER_PEARL);
 	public static final BlockBehaviour.Properties PLATING = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.STONE).strength(4.0F, 10.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
 	public static final BlockBehaviour.Properties NETHER_CRYSTAL = BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12).requiresCorrectToolForDrops().strength(1.2f);
+	public static final BlockBehaviour.Properties NETHER_BRASS = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(4.0F, 10.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops();
+
+
+	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_BLUE)
+			.noCollission()
+			.instabreak()
+			.lightLevel((p_50884_) -> 13)
+			.sound(SoundType.WOOL)
+			.noDrops();
+
 
 	public static final BlockBehaviour.Properties MOLTEN_BRICK = Block.Properties.of(Material.STONE, MaterialColor.NETHER)
 			.requiresCorrectToolForDrops()
@@ -132,6 +142,8 @@ public class APBlockProperties {
 		ItemBlockRenderTypes.setRenderLayer(HELIODOR_ROD.get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(EKANITE_ROD.get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(MONAZITE_ROD.get(), RenderType.translucent());
+
+		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_FIRE.get(), RenderType.cutout());
 	}
 
 }

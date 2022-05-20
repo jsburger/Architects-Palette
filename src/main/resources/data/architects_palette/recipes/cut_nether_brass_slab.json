@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:cut_nether_brass"
+        }
+    },
+    "result": {
+        "count": 6,
+        "item": "architects_palette:cut_nether_brass_slab"
+    }
+}

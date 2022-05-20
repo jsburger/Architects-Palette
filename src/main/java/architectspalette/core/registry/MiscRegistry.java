@@ -8,5 +8,6 @@ import net.minecraft.world.level.block.Block;
 public class MiscRegistry {
 
     public static final Tag.Named<Block> CRYSTAL_REPLACEABLE = BlockTags.bind(ArchitectsPalette.MOD_ID + ":" + "crystal_formation_replaceable");
+    public static final Tag.Named<Block> GREEN_FIRE_SUPPORTING = BlockTags.bind(ArchitectsPalette.MOD_ID + ":" + "green_fire_supporting");
 
 }

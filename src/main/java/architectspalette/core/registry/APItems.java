@@ -24,4 +24,7 @@ public class APItems {
 
     public static final RegistryObject<Item> UNOBTANIUM = ITEMS.register("unobtanium", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 
+    public static final RegistryObject<Item> BRASS_BLEND = ITEMS.register("nether_brass_blend", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+    public static final RegistryObject<Item> NETHER_BRASS = ITEMS.register("nether_brass_ingot", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+
 }
