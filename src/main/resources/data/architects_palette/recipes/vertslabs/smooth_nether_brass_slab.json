@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "vertical_slab_revert",
+    "ingredients": [
+        {
+            "item": "architects_palette:smooth_nether_brass_vertical_slab"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "item": "architects_palette:smooth_nether_brass_slab"
+    },
+    "conditions": [
+        {
+            "type": "architects_palette:enable_vertical_slabs"
+        }
+    ]
+}

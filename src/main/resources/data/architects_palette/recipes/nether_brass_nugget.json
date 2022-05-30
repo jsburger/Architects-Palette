@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "architects_palette:nether_brass_ingot"
+        }
+    ],
+    "result": {
+        "count": 9,
+        "item": "architects_palette:nether_brass_nugget"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "architects_palette:nether_brass_nugget"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:nether_brass_ingot"
+    }
+}

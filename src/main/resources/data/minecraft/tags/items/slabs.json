@@ -33,6 +33,7 @@
     "architects_palette:calcite_brick_slab",
     "architects_palette:dripstone_brick_slab",
     "architects_palette:nether_brass_slab",
-    "architects_palette:cut_nether_brass_slab"
+    "architects_palette:cut_nether_brass_slab",
+    "architects_palette:smooth_nether_brass_slab"
   ]
 }

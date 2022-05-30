@@ -15,10 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(BaseFireBlock.class)
 public class BaseFireBlockMixin {
 
+    //Idk if this is the best way to implement a new fire, it was just the most straight forward. I did no research.
     @Inject(method = "getState", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     //arguments for target method, callback info, then captured locals
-    private static void architectsPaletteAddGreenFireMixin(BlockGetter p_49246_, BlockPos p_49247_, CallbackInfoReturnable<BlockState> ci, BlockPos below, BlockState belowState) {
-        if (GreenFireBlock.canHeGreen(belowState)) {
+    private static void architectsPaletteAddGreenFireMixin(BlockGetter getter, BlockPos pos, CallbackInfoReturnable<BlockState> ci, BlockPos below, BlockState belowState) {
+        if (GreenFireBlock.canHeGreen(getter, below)) {
             ci.setReturnValue(APBlocks.NETHER_BRASS_FIRE.get().defaultBlockState());
         }
     }

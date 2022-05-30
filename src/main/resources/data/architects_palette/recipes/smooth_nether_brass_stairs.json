@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:smooth_nether_brass"
+        }
+    },
+    "result": {
+        "count": 4,
+        "item": "architects_palette:smooth_nether_brass_stairs"
+    }
+}

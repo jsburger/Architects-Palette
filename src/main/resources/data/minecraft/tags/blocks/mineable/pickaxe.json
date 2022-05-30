@@ -236,6 +236,11 @@
     "architects_palette:cut_nether_brass_slab",
     "architects_palette:cut_nether_brass_vertical_slab",
     "architects_palette:nether_brass_pillar",
-    "architects_palette:smooth_nether_brass"
+    "architects_palette:smooth_nether_brass",
+    "architects_palette:nether_brass_chain",
+    "architects_palette:nether_brass_lantern",
+    "architects_palette:smooth_nether_brass_slab",
+    "architects_palette:smooth_nether_brass_vertical_slab",
+    "architects_palette:smooth_nether_brass_stairs"
   ]
 }

@@ -59,13 +59,18 @@ public class APBlockProperties {
 	public static final BlockBehaviour.Properties NETHER_BRASS = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(4.0F, 10.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops();
 
 
-	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_BLUE)
+	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_GREEN)
 			.noCollission()
 			.instabreak()
 			.lightLevel((p_50884_) -> 13)
 			.sound(SoundType.WOOL)
 			.noDrops();
 
+	public static final BlockBehaviour.Properties BRASS_TORCH = BlockBehaviour.Properties.of(Material.DECORATION)
+			.noCollission()
+			.instabreak()
+			.lightLevel((p_50884_) -> 13)
+			.sound(SoundType.WOOD);
 
 	public static final BlockBehaviour.Properties MOLTEN_BRICK = Block.Properties.of(Material.STONE, MaterialColor.NETHER)
 			.requiresCorrectToolForDrops()
@@ -144,6 +149,10 @@ public class APBlockProperties {
 		ItemBlockRenderTypes.setRenderLayer(MONAZITE_ROD.get(), RenderType.translucent());
 
 		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_FIRE.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_TORCH.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_WALL_TORCH.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_CHAIN.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_LANTERN.get(), RenderType.cutout());
 	}
 
 }

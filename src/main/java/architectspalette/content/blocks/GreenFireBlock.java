@@ -35,11 +35,14 @@ public class GreenFireBlock extends BaseFireBlock {
 
     @Override
     public boolean canSurvive(BlockState stateIn, LevelReader levelReader, BlockPos pos) {
-        return canHeGreen(levelReader.getBlockState(pos.below()));
+        return canHeGreen(levelReader, pos.below());
     }
 
-    public static boolean canHeGreen(BlockState he) {
-        return he.is(MiscRegistry.GREEN_FIRE_SUPPORTING);
+    //Soul Fire doesn't need to check for face being sturdy because the only things it works on are full blocks.
+    //Green fire can go on slabs and stuff.
+    public static boolean canHeGreen(BlockGetter getter, BlockPos pos) {
+        BlockState state = getter.getBlockState(pos);
+        return state.is(MiscRegistry.GREEN_FIRE_SUPPORTING) && state.isFaceSturdy(getter, pos, Direction.UP);
     }
 
     @Override

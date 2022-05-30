@@ -4,6 +4,7 @@ import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.APBlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,5 +27,6 @@ public class APItems {
 
     public static final RegistryObject<Item> BRASS_BLEND = ITEMS.register("nether_brass_blend", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> NETHER_BRASS = ITEMS.register("nether_brass_ingot", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
-
+    public static final RegistryObject<Item> NETHER_BRASS_NUGGET = ITEMS.register("nether_brass_nugget", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+    public static final RegistryObject<Item> NETHER_BRASS_TORCH = ITEMS.register("nether_brass_torch", () -> new StandingAndWallBlockItem(APBlocks.NETHER_BRASS_TORCH.get(), APBlocks.NETHER_BRASS_WALL_TORCH.get(),new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
 }
