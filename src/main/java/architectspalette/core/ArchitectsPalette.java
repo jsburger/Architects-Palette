@@ -40,6 +40,7 @@ public class ArchitectsPalette {
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, APConfig.COMMON_CONFIG);
 
+        MiscRegistry.PARTICLE_TYPES.register(modEventBus);
         APSounds.SOUNDS.register(modEventBus);
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
