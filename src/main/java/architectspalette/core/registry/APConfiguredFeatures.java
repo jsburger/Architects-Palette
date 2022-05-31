@@ -2,6 +2,7 @@ package architectspalette.core.registry;
 
 import architectspalette.content.worldgen.features.configs.CrystalClusterConfig;
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.config.APConfig;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -55,22 +56,25 @@ public class APConfiguredFeatures {
 
     //Adds placed features to biomes
     public static void biomeLoadEvent(final BiomeLoadingEvent event) {
-        Biome.BiomeCategory category = event.getCategory();
-        if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "basalt")) {
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
-                    .add(() -> HELIODOR_CLUSTER_PLACED);
-        }
-        if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "warped")) {
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
-                    .add(() -> EKANITE_CLUSTER_PLACED);
-        }
-        if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "wastes")) {
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
-                    .add(() -> HANGING_MONAZITE_CLUSTER_PLACED);
-        }
-        if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "crimson")) {
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
-                    .add(() -> GROUNDED_MONAZITE_CLUSTER_PLACED);
+        //Add Nether Crystals
+        if (APConfig.worldGenCheck(APConfig.NETHER_CRYSTAL_TOGGLE)) {
+            Biome.BiomeCategory category = event.getCategory();
+            if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "basalt")) {
+                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
+                        .add(() -> HELIODOR_CLUSTER_PLACED);
+            }
+            if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "warped")) {
+                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
+                        .add(() -> EKANITE_CLUSTER_PLACED);
+            }
+            if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "wastes")) {
+                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
+                        .add(() -> HANGING_MONAZITE_CLUSTER_PLACED);
+            }
+            if (category.equals(Biome.BiomeCategory.NETHER) && biomeHasName(event, "crimson")) {
+                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION)
+                        .add(() -> GROUNDED_MONAZITE_CLUSTER_PLACED);
+            }
         }
     }
 
