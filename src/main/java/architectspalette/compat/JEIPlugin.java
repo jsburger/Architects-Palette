@@ -66,7 +66,7 @@ public class JEIPlugin implements IModPlugin {
                 addItemInfo(registration, block, "heavy_bricks");
             }
             else if (block.get() instanceof CageLanternBlock) {
-                addItemInfo(registration, block, "cage_lantern");
+                addItemInfo(registration, block, "cage_lanterns");
             }
         }));
     }
