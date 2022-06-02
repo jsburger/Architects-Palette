@@ -4,10 +4,11 @@ import architectspalette.core.ArchitectsPalette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -22,8 +23,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class MiscRegistry {
 
     // Tags
-    public static final Tag.Named<Block> CRYSTAL_REPLACEABLE = BlockTags.bind(ArchitectsPalette.MOD_ID + ":" + "crystal_formation_replaceable");
-    public static final Tag.Named<Block> GREEN_FIRE_SUPPORTING = BlockTags.bind(ArchitectsPalette.MOD_ID + ":" + "green_fire_supporting");
+    public static final TagKey<Block> CRYSTAL_REPLACEABLE = blockTag("crystal_formation_replaceable");
+    public static final TagKey<Block> GREEN_FIRE_SUPPORTING = blockTag("green_fire_supporting");
+
+    public static TagKey<Block> blockTag(String name) {
+        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ArchitectsPalette.MOD_ID + ":" + name));
+    }
 
     //Particles
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ArchitectsPalette.MOD_ID);
