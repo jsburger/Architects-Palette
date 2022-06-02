@@ -58,6 +58,9 @@ public class JEIPlugin implements IModPlugin {
         addItemInfo(registration, FLINT_TILES, "flint_damage");
         Stream.of(MOONSTONE, SUNSTONE)
                 .forEach((i) -> addItemInfo(registration, i, "celestial_stones"));
+        Stream.of(NETHER_BRASS, CUT_NETHER_BRASS, SMOOTH_NETHER_BRASS)
+                .forEach((i) -> addItemInfo(registration, i, "nether_brass"));
+        addItemInfo(registration, NETHER_BRASS_PILLAR, "nether_brass");
         BLOCKS.getEntries().forEach((block -> {
             if (block.get() instanceof BigBrickBlock) {
                 addItemInfo(registration, block, "heavy_bricks");
