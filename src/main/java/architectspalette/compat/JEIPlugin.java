@@ -1,7 +1,10 @@
 package architectspalette.compat;
 
+import architectspalette.content.blocks.BigBrickBlock;
+import architectspalette.content.blocks.CageLanternBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.crafting.WarpingRecipe;
+import architectspalette.core.registry.util.StoneBlockSet;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -50,10 +53,27 @@ public class JEIPlugin implements IModPlugin {
                 forEach((i) -> addItemInfo(registration, i, "chargeable"));
         Stream.of(PLACID_ACACIA_TOTEM, GRINNING_ACACIA_TOTEM, SHOCKED_ACACIA_TOTEM, BLANK_ACACIA_TOTEM)
                 .forEach((i) -> addItemInfo(registration, i, "totem_carving"));
+        Stream.of(FLINT_BLOCK, FLINT_PILLAR)
+                .forEach((i) -> addItemInfo(registration, i, "flint_damage"));
+        addItemInfo(registration, FLINT_TILES, "flint_damage");
+        Stream.of(MOONSTONE, SUNSTONE)
+                .forEach((i) -> addItemInfo(registration, i, "celestial_stones"));
+        BLOCKS.getEntries().forEach((block -> {
+            if (block.get() instanceof BigBrickBlock) {
+                addItemInfo(registration, block, "heavy_bricks");
+            }
+            else if (block.get() instanceof CageLanternBlock) {
+                addItemInfo(registration, block, "cage_lantern");
+            }
+        }));
     }
 
     private static void addItemInfo(IRecipeRegistration register, RegistryObject<? extends ItemLike> item, String infoString) {
         addItemInfo(register, item.get(), infoString);
+    }
+
+    private static void addItemInfo(IRecipeRegistration register, StoneBlockSet stoneSet, String infoString) {
+        stoneSet.forEach((block -> addItemInfo(register, block, infoString)));
     }
 
     private static void addItemInfo(IRecipeRegistration register, ItemLike item, String infoString) {
