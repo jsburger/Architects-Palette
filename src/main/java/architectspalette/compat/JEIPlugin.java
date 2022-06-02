@@ -8,6 +8,7 @@ import architectspalette.core.registry.util.StoneBlockSet;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -26,6 +27,7 @@ import static architectspalette.core.registry.APBlocks.*;
 public class JEIPlugin implements IModPlugin {
 
     private static final ResourceLocation PLUGIN_ID = new ResourceLocation(ArchitectsPalette.MOD_ID, "jei_plugin");
+    public static final RecipeType<WarpingRecipe> WARPING = RecipeType.create(ArchitectsPalette.MOD_ID, "warping", WarpingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -45,7 +47,7 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         //Register recipes
-        registration.addRecipes(Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WarpingRecipe.TYPE), WarpingRecipeCategory.UID);
+        registration.addRecipes(WARPING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WarpingRecipe.TYPE));
 
         //Register item info
         addItemInfo(registration, CHISELED_ABYSSALINE_BRICKS, "chiseled_chargeable");

@@ -4,11 +4,13 @@ import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.crafting.WarpingRecipe;
 import architectspalette.core.registry.APBlocks;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -32,14 +34,21 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(APBlocks.WARPSTONE.get()));
     }
 
+    @SuppressWarnings("removal")
     @Override
     public ResourceLocation getUid() {
-        return UID;
+        return getRecipeType().getUid();
     }
 
     @Override
+    public RecipeType<WarpingRecipe> getRecipeType() {
+        return JEIPlugin.WARPING;
+    }
+
+    @SuppressWarnings("removal")
+    @Override
     public Class<? extends WarpingRecipe> getRecipeClass() {
-        return WarpingRecipe.class;
+        return getRecipeType().getRecipeClass();
     }
 
     @Override
@@ -58,26 +67,16 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
     }
 
     @Override
-    public void setIngredients(WarpingRecipe recipe, IIngredients ingredients) {
-        ingredients.setInputLists(VanillaTypes.ITEM, Arrays.asList(Arrays.asList(recipe.getInput().getItems())));
-        ingredients.setOutput(VanillaTypes.ITEM, recipe.getResultItem());
+    public void setRecipe(IRecipeLayoutBuilder builder, WarpingRecipe recipe, IFocusGroup focuses) {
+        builder.addSlot(RecipeIngredientRole.INPUT, 16, 22)
+                .addItemStacks(Arrays.asList(recipe.getInput().getItems()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 87, 22)
+                .addItemStack(recipe.getResultItem());
     }
 
-    @Override
-    public void setRecipe(IRecipeLayout recipeLayout, WarpingRecipe recipe, IIngredients ingredients) {
-        IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
-
-        //Set up input item
-        itemStacks.init(0, true, 15, 21);
-        itemStacks.set(0, List.of(recipe.getInput().getItems()));
-
-        //Output item
-        itemStacks.init(1, false, 86, 21);
-        itemStacks.set(1, recipe.getResultItem());
-    }
 
     @Override
-    public List<Component> getTooltipStrings(WarpingRecipe recipe, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(WarpingRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         List<Component> strings = new java.util.ArrayList<>();
         if (pointInBox(mouseX, mouseY, 49, 12, 18, 35)) {
             ResourceLocation targetDimension = recipe.getDimension();

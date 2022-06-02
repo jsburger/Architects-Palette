@@ -24,16 +24,22 @@ public class APVerticalSlabsCondition implements ICondition {
 	 * https://github.com/team-abnormals/abnormals-core/blob/264b7ca6df505743f1c969547dbf2bc8e71b04d5/src/main/java/com/minecraftabnormals/abnormals_core/core/api/conditions/QuarkFlagRecipeCondition.java
 	 */
 	@Override
-	public boolean test() {
+	public boolean test(IContext context) {
 		if(ModList.get().isLoaded(VerticalSlabBlock.QUARK_ID)) {
 			JsonObject dummyObject = new JsonObject();
 			dummyObject.addProperty("type", "quark:flag");
 			dummyObject.addProperty("flag", "vertical_slabs");
-			return CraftingHelper.getCondition(dummyObject).test();
+			return CraftingHelper.getCondition(dummyObject).test(context);
 		}
 		return APConfig.VERTICAL_SLABS_FORCED.get();
 	}
-	
+
+	@SuppressWarnings("removal")
+	@Override
+	public boolean test() {
+		return test(IContext.EMPTY);
+	}
+
 	public static class Serializer implements IConditionSerializer<APVerticalSlabsCondition> {
 
 		@Override
