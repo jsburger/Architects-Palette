@@ -289,9 +289,11 @@ public class APBlocks {
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
-        Block pot = new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT.delegate.get(), plant, Block.Properties.copy(Blocks.POTTED_AZURE_BLUET));
-        ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(plant.getId(), () -> pot);
-        return BLOCKS.register("potted_" + name, () -> pot);
+        RegistryObject<Block> pot = BLOCKS.register("potted_" + name, () ->
+                new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT.delegate.get(), plant, Block.Properties.copy(Blocks.POTTED_AZURE_BLUET))
+        );
+        ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(plant.getId(), pot);
+        return pot;
     }
 
 }

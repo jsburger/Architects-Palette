@@ -45,6 +45,8 @@ public class ArchitectsPalette {
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
         APFeatures.FEATURES.register(modEventBus);
+        APConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
+        APConfiguredFeatures.PLACED_FEATURES.register(modEventBus);
 //        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
@@ -61,7 +63,6 @@ public class ArchitectsPalette {
     }
 
     void setupCommon(final FMLCommonSetupEvent event) {
-        event.enqueueWork(APConfiguredFeatures::registerProcessedFeatures);
 
         APBlockProperties.registerFlammables();
         APTrades.registerTrades();
