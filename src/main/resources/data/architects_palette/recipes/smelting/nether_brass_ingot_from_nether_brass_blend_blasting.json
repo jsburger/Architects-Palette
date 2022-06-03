@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": [
+        {
+            "item": "architects_palette:nether_brass_blend"
+        }
+    ],
+    "result": "architects_palette:nether_brass_ingot",
+    "experience": 0.05,
+    "cookingtime": 100
+}
