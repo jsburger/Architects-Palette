@@ -1,5 +1,6 @@
 package architectspalette.core.registry;
 
+import architectspalette.content.particles.WizardParticle;
 import architectspalette.core.ArchitectsPalette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
@@ -25,6 +26,7 @@ public class MiscRegistry {
     // Tags
     public static final TagKey<Block> CRYSTAL_REPLACEABLE = blockTag("crystal_formation_replaceable");
     public static final TagKey<Block> GREEN_FIRE_SUPPORTING = blockTag("green_fire_supporting");
+    public static final TagKey<Block> WIZARD_BLOCKS = blockTag("wizard_blocks");
 
     public static TagKey<Block> blockTag(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ArchitectsPalette.MOD_ID + ":" + name));
@@ -33,10 +35,12 @@ public class MiscRegistry {
     //Particles
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ArchitectsPalette.MOD_ID);
     public static final RegistryObject<SimpleParticleType> GREEN_FLAME = PARTICLE_TYPES.register("green_flame", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> WIZARDLY_DEFENSE_BLAST = PARTICLE_TYPES.register("bounce", () -> new SimpleParticleType(false));
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
         ParticleEngine engine = Minecraft.getInstance().particleEngine;
         engine.register(GREEN_FLAME.get(), FlameParticle.Provider::new);
+        engine.register(WIZARDLY_DEFENSE_BLAST.get(), WizardParticle.Provider::new);
     }
 }
