@@ -17,10 +17,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import static architectspalette.core.util.ShapeRotator.cutout;
 
 public class PipeBlock extends RotatedPillarBlock implements SimpleWaterloggedBlock {
 
@@ -109,15 +110,6 @@ public class PipeBlock extends RotatedPillarBlock implements SimpleWaterloggedBl
         return checking.getBlock() instanceof PipeBlock && checking.getValue(AXIS) == base.getValue(AXIS);
     }
 
-    // referenced (copied) from Farmer's Delight by .vectorwing
-    // cuts out voxel regions from a cube
-    private static VoxelShape cutout(VoxelShape... cutouts) {
-        VoxelShape shape = Shapes.block();
-        for (VoxelShape cutout : cutouts) {
-            shape = Shapes.joinUnoptimized(shape, cutout, BooleanOp.ONLY_FIRST);
-        }
-        return shape.optimize();
-    }
 
     public enum PipeBlockPart implements StringRepresentable {
         TOP,
