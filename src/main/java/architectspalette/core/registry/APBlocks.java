@@ -26,6 +26,8 @@ import java.util.List;
 
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
+import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NO_STAIRS;
+import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NO_WALLS;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
@@ -115,7 +117,7 @@ public class APBlocks {
     public static final RegistryObject<Block> PACKED_ICE_PILLAR   = createBlock("packed_ice_pillar",   () -> new RotatedPillarBlock(APBlockProperties.BUILDING_ICE));
 
     // Sunmetal
-    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), false).addSlabs().addStairs();
+    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), NO_WALLS);
     public static final RegistryObject<Block> CHISELED_SUNMETAL_BLOCK = createBlock("chiseled_sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL));
     public static final RegistryObject<Block> SUNMETAL_PILLAR         = createBlock("sunmetal_pillar", () -> new RotatedPillarBlock(APBlockProperties.SUNMETAL));
     public static final RegistryObject<Block> SUNMETAL_BARS           = createBlock("sunmetal_bars", () -> new IronBarsBlock(APBlockProperties.SUNMETAL.noOcclusion()));
@@ -136,7 +138,7 @@ public class APBlocks {
     public static final RegistryObject<Block> WITHER_LAMP = createBlock("wither_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SEA_LANTERN)));
 
     // Entwine
-    public static final StoneBlockSet ENTWINE = new StoneBlockSet(createBlock("entwine_block", () -> new Block(APBlockProperties.ENTWINE)), false).addSlabs().addStairs();
+    public static final StoneBlockSet ENTWINE = new StoneBlockSet(createBlock("entwine_block", () -> new Block(APBlockProperties.ENTWINE)), NO_WALLS);
     public static final RegistryObject<Block> ENTWINE_PILLAR = createBlock("entwine_pillar", () -> new RotatedPillarBlock(APBlockProperties.ENTWINE));
     public static final RegistryObject<Block> CHISELED_ENTWINE = createBlock("chiseled_entwine", () -> new Block(APBlockProperties.ENTWINE));
     public static final RegistryObject<Block> ENTWINE_BARS = createBlock("entwine_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(ENTWINE.get()).noOcclusion()));
@@ -147,7 +149,7 @@ public class APBlocks {
     public static final RegistryObject<Block> HEAVY_CRACKED_STONE_BRICKS = createBlock("heavy_cracked_stone_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS)));
 
     // Polished Glowstone
-    public static final StoneBlockSet POLISHED_GLOWSTONE = new StoneBlockSet(createBlock("polished_glowstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE))), false).addSlabs().addWalls();
+    public static final StoneBlockSet POLISHED_GLOWSTONE = new StoneBlockSet(createBlock("polished_glowstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE))), NO_STAIRS);
     public static final RegistryObject<Block> RUNIC_GLOWSTONE = createBlock("runic_glowstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE)));
 
     // Scute Block
@@ -156,7 +158,7 @@ public class APBlocks {
     public static final RegistryObject<Block> ROTTEN_FLESH_BLOCK = createBlock("rotten_flesh_block", () -> new Block(APBlockProperties.Meat(MaterialColor.COLOR_ORANGE)));
 
     // Gilded Sandstone
-    public static final StoneBlockSet GILDED_SANDSTONE = new StoneBlockSet(createBlock("gilded_sandstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE))), false).addSlabs().addStairs();
+    public static final StoneBlockSet GILDED_SANDSTONE = new StoneBlockSet(createBlock("gilded_sandstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE))), NO_WALLS);
     public static final RegistryObject<Block> GILDED_SANDSTONE_PILLAR = createBlock("gilded_sandstone_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> CHISELED_GILDED_SANDSTONE = createBlock("chiseled_gilded_sandstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
 
@@ -176,7 +178,7 @@ public class APBlocks {
 
     // Twisted Wood
      // Todo: Bookshelf, sign(?), boat(?)
-    public static final StoneBlockSet TWISTED_PLANKS = new StoneBlockSet(createBlock("twisted_planks", () -> new Block(APBlockProperties.TwistedWood())), false).addSlabs().addStairs();
+    public static final StoneBlockSet TWISTED_PLANKS = new StoneBlockSet(createBlock("twisted_planks", () -> new Block(APBlockProperties.TwistedWood())), NO_WALLS);
 
     public static final RegistryObject<Block>  STRIPPED_TWISTED_LOG = createBlock("stripped_twisted_log", () -> new RotatedPillarBlock(APBlockProperties.TwistedWood()));
     public static final RegistryObject<Block> STRIPPED_TWISTED_WOOD = createBlock("stripped_twisted_wood",() -> new RotatedPillarBlock(APBlockProperties.TwistedWood()));
@@ -279,10 +281,10 @@ public class APBlocks {
     public static final StoneBlockSet NETHER_BRASS = new StoneBlockSet(createBlock("nether_brass_block", () -> new Block(APBlockProperties.NETHER_BRASS)));
     public static final StoneBlockSet CUT_NETHER_BRASS = new StoneBlockSet(createBlock("cut_nether_brass", () -> new Block(APBlockProperties.NETHER_BRASS)));
     public static final RegistryObject<Block> NETHER_BRASS_PILLAR = createBlock("nether_brass_pillar", () -> new RotatedPillarBlock(APBlockProperties.NETHER_BRASS));
-    public static final StoneBlockSet SMOOTH_NETHER_BRASS = new StoneBlockSet(createBlock("smooth_nether_brass", () -> new Block(APBlockProperties.NETHER_BRASS)), false).addSlabs().addStairs();
+    public static final StoneBlockSet SMOOTH_NETHER_BRASS = new StoneBlockSet(createBlock("smooth_nether_brass", () -> new Block(APBlockProperties.NETHER_BRASS)), NO_WALLS);
     public static final RegistryObject<Block> NETHER_BRASS_FIRE = createBlockNoItem("nether_brass_fire", () -> new GreenFireBlock(APBlockProperties.GREEN_FIRE));
-    public static final RegistryObject<Block> NETHER_BRASS_CHAIN = createBlock("nether_brass_chain", () -> new ChainBlock(APBlockProperties.NETHER_BRASS.sound(SoundType.CHAIN)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> NETHER_BRASS_LANTERN = createBlock("nether_brass_lantern", () -> new LanternBlock(APBlockProperties.NETHER_BRASS.sound(SoundType.LANTERN).lightLevel((a)->13)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> NETHER_BRASS_CHAIN = createBlock("nether_brass_chain", () -> new ChainBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.CHAIN)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> NETHER_BRASS_LANTERN = createBlock("nether_brass_lantern", () -> new LanternBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.LANTERN).lightLevel((a)->13)), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> NETHER_BRASS_TORCH = createBlockNoItem("nether_brass_torch", () -> new CustomTorchBlock(APBlockProperties.BRASS_TORCH, MiscRegistry.GREEN_FLAME));
     public static final RegistryObject<Block> NETHER_BRASS_WALL_TORCH = createBlockNoItem("nether_brass_wall_torch", () -> new CustomWallTorchBlock(APBlockProperties.BRASS_TORCH.dropsLike(NETHER_BRASS_TORCH.get()), MiscRegistry.GREEN_FLAME));
 

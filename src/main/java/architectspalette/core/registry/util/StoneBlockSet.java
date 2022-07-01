@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -21,19 +22,17 @@ public class StoneBlockSet {
     private final String material_name;
 
     public StoneBlockSet(RegistryObject<Block> base_block) {
-        this(base_block, true);
+        this(base_block, SetComponent.ALL);
     }
 
-    public StoneBlockSet(RegistryObject<Block> base_block, Boolean auto_fill){
+    public StoneBlockSet(RegistryObject<Block> base_block, SetComponent... parts){
         this.block = base_block;
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
-        if (auto_fill) {
-            this.addAll();
-        }
+        Arrays.stream(parts).forEachOrdered(this::addPart);
     }
 
     // Stone Bricks Slab -> Stone Brick Slab. Oak Planks Stairs -> Oak Stairs
-    private String getMaterialFromBlock(String block) {
+    private static String getMaterialFromBlock(String block) {
         return block
                 .replace("bricks", "brick")
                 .replace("_planks", "")
@@ -49,27 +48,34 @@ public class StoneBlockSet {
         return this.block.get();
     }
 
-    public StoneBlockSet addSlabs() {
+    private void addPart(SetComponent part) {
+        switch (part) {
+            case ALL -> addAll();
+            case WALL -> addWalls();
+            case SLABS -> addSlabs();
+            case STAIRS -> addStairs();
+            case NO_WALLS -> {addSlabs(); addStairs();}
+            case NO_STAIRS -> {addSlabs(); addWalls();}
+        }
+    }
+
+    public void addSlabs() {
         slab = RegistryUtils.createBlock(material_name + "_slab", () -> new SlabBlock(properties()));
         verticalSlab = RegistryUtils.createBlock(material_name + "_vertical_slab", () -> new VerticalSlabBlock(properties()));
-        return this;
     }
 
-    public StoneBlockSet addStairs() {
+    public void addStairs() {
         stairs = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairBlock(() -> block.get().defaultBlockState(), properties()));
-        return this;
     }
 
-    public StoneBlockSet addWalls() {
+    public void addWalls() {
         wall = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), CreativeModeTab.TAB_DECORATIONS);
-        return this;
     }
 
-    public StoneBlockSet addAll() {
+    public void addAll() {
         this.addSlabs();
         this.addStairs();
         this.addWalls();
-        return this;
     }
 
 
@@ -85,6 +91,15 @@ public class StoneBlockSet {
 
     public void registerFlammable(int encouragement, int flammability) {
         this.forEach((b) -> DataUtils.registerFlammable(b, encouragement, flammability));
+    }
+
+    public enum SetComponent {
+        SLABS,
+        STAIRS,
+        WALL,
+        ALL,
+        NO_WALLS,
+        NO_STAIRS;
     }
 
 }
