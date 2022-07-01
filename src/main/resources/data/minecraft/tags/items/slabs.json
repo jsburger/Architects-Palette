@@ -34,6 +34,10 @@
     "architects_palette:dripstone_brick_slab",
     "architects_palette:nether_brass_slab",
     "architects_palette:cut_nether_brass_slab",
-    "architects_palette:smooth_nether_brass_slab"
+    "architects_palette:smooth_nether_brass_slab",
+    "architects_palette:esoterrack_slab",
+    "architects_palette:esoterrack_brick_slab",
+    "architects_palette:onyx_slab",
+    "architects_palette:onyx_brick_slab"
   ]
 }

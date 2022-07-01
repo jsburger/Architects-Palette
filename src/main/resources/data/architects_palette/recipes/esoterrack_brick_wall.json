@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "architects_palette:esoterrack_bricks"
+        }
+    },
+    "result": {
+        "count": 6,
+        "item": "architects_palette:esoterrack_brick_wall"
+    }
+}

@@ -27,6 +27,10 @@
     "architects_palette:dripstone_brick_wall",
     "architects_palette:polished_glowstone_wall",
     "architects_palette:nether_brass_wall",
-    "architects_palette:cut_nether_brass_wall"
+    "architects_palette:cut_nether_brass_wall",
+    "architects_palette:esoterrack_wall",
+    "architects_palette:esoterrack_brick_wall",
+    "architects_palette:onyx_wall",
+    "architects_palette:onyx_brick_wall"
   ]
 }

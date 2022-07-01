@@ -31,6 +31,10 @@
     "architects_palette:dripstone_brick_stairs",
     "architects_palette:nether_brass_stairs",
     "architects_palette:cut_nether_brass_stairs",
-    "architects_palette:smooth_nether_brass_stairs"
+    "architects_palette:smooth_nether_brass_stairs",
+    "architects_palette:esoterrack_stairs",
+    "architects_palette:esoterrack_brick_stairs",
+    "architects_palette:onyx_stairs",
+    "architects_palette:onyx_brick_stairs"
   ]
 }
