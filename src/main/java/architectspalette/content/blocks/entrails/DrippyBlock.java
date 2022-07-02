@@ -1,10 +1,13 @@
 package architectspalette.content.blocks.entrails;
 
+import architectspalette.core.registry.util.IBlockSetBase;
+import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -14,10 +17,20 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class DrippyBlock extends Block {
+public class DrippyBlock extends Block implements IBlockSetBase {
     public DrippyBlock(Properties properties) {
         super(properties);
     }
+
+    //IBlockSetBase method
+    public Block getBlockForPart(StoneBlockSet.SetComponent part, BlockBehaviour.Properties properties, Block base) {
+        return switch (part) {
+            case SLAB -> new DrippySlabBlock(properties);
+            case VERTICAL_SLAB -> new DrippyVerticalSlabBlock(properties);
+            default -> IBlockSetBase.super.getBlockForPart(part, properties, base);
+        };
+    }
+
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
