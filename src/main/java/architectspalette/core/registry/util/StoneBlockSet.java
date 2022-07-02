@@ -6,29 +6,39 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
+import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.*;
+
 public class StoneBlockSet {
-    public RegistryObject<Block> slab;
-    public RegistryObject<Block> verticalSlab;
-    public RegistryObject<Block> stairs;
-    public RegistryObject<Block> wall;
-    public RegistryObject<Block> block;
     private final String material_name;
+    private final List<RegistryObject<Block>> parts;
 
     public StoneBlockSet(RegistryObject<Block> base_block) {
-        this(base_block, SetComponent.ALL);
+        this(base_block, SetGroup.TYPICAL);
+    }
+
+    public StoneBlockSet(RegistryObject<Block> base_block, SetGroup group) {
+        this(base_block, group.components);
     }
 
     public StoneBlockSet(RegistryObject<Block> base_block, SetComponent... parts){
-        this.block = base_block;
+        this.parts = new ArrayList<>();
+        //Piece of crap array list doesn't let me preallocate indices ((if it can, you should let me know))
+        for (int i = 0; i < values().length; i++) {
+            this.parts.add(null);
+        }
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
-        Arrays.stream(parts).forEachOrdered(this::addPart);
+        setPart(BLOCK, base_block);
+        Arrays.stream(parts).forEachOrdered(this::createPart);
     }
 
     // Stone Bricks Slab -> Stone Brick Slab. Oak Planks Stairs -> Oak Stairs
@@ -41,48 +51,17 @@ public class StoneBlockSet {
     }
 
     private Block.Properties properties() {
-        return Block.Properties.copy(block.get());
+        return Block.Properties.copy(getPart(BLOCK));
     }
 
+    //Convenience function so it matches RegistryObjects
     public Block get() {
-        return this.block.get();
+        return getPart(BLOCK);
     }
-
-    private void addPart(SetComponent part) {
-        switch (part) {
-            case ALL -> addAll();
-            case WALL -> addWalls();
-            case SLABS -> addSlabs();
-            case STAIRS -> addStairs();
-            case NO_WALLS -> {addSlabs(); addStairs();}
-            case NO_STAIRS -> {addSlabs(); addWalls();}
-        }
-    }
-
-    public void addSlabs() {
-        slab = RegistryUtils.createBlock(material_name + "_slab", () -> new SlabBlock(properties()));
-        verticalSlab = RegistryUtils.createBlock(material_name + "_vertical_slab", () -> new VerticalSlabBlock(properties()));
-    }
-
-    public void addStairs() {
-        stairs = RegistryUtils.createBlock(material_name + "_stairs", () -> new StairBlock(() -> block.get().defaultBlockState(), properties()));
-    }
-
-    public void addWalls() {
-        wall = RegistryUtils.createBlock(material_name + "_wall", () -> new WallBlock(properties()), CreativeModeTab.TAB_DECORATIONS);
-    }
-
-    public void addAll() {
-        this.addSlabs();
-        this.addStairs();
-        this.addWalls();
-    }
-
-
 
     private Stream<Block> blockStream() {
         //Puts all blocks in a Stream, filters out null entries, then gets the blocks from their registry object
-        return Stream.of(slab, verticalSlab, stairs, wall, block).filter(Objects::nonNull).map(RegistryObject::get);
+        return parts.stream().filter(Objects::nonNull).map(RegistryObject::get);
     }
 
     public void forEach(Consumer<? super Block> action) {
@@ -94,12 +73,68 @@ public class StoneBlockSet {
     }
 
     public enum SetComponent {
-        SLABS,
-        STAIRS,
-        WALL,
-        ALL,
-        NO_WALLS,
-        NO_STAIRS;
+        BLOCK("", CreativeModeTab.TAB_BUILDING_BLOCKS),
+        SLAB("_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
+        VERTICAL_SLAB("_vertical_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
+        STAIRS("_stairs", CreativeModeTab.TAB_BUILDING_BLOCKS),
+        WALL("_wall", CreativeModeTab.TAB_DECORATIONS);
+
+        public final String suffix;
+        public final CreativeModeTab tab;
+        SetComponent(String suffix, CreativeModeTab tab) {
+            this.suffix = suffix;
+            this.tab = tab;
+        }
     }
 
+    public enum SetGroup {
+        SLABS(SLAB, VERTICAL_SLAB),
+        NO_WALLS(SLAB, VERTICAL_SLAB, STAIRS),
+        NO_STAIRS(SLAB, VERTICAL_SLAB, WALL),
+        TYPICAL(SLAB, VERTICAL_SLAB, STAIRS, WALL);
+
+        public final SetComponent[] components;
+        SetGroup(SetComponent... components) {
+            this.components = components;
+        }
+        public void forEach(Consumer<SetComponent> action) {
+            Arrays.stream(components).forEachOrdered(action);
+        }
+    }
+
+    public Block getPart(SetComponent part) {
+        return parts.get(part.ordinal()).get();
+    }
+    private void setPart(SetComponent part, RegistryObject<Block> block) {
+        parts.add(part.ordinal(), block);
+    }
+    private void createPart(SetComponent part) {
+        setPart(part, makePart(part));
+    }
+
+    private RegistryObject<Block> makePart(SetComponent part) {
+        return RegistryUtils.createBlock(material_name + part.suffix, () -> {
+            Block block = getPart(BLOCK);
+            if (block instanceof IBlockSetBase base) {
+                return base.getBlockForPart(part, properties(), block);
+            }
+            return getBlockForPart(part, properties(), block);
+        });
+    }
+
+    private static Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
+        return switch (part) {
+            case WALL -> new WallBlock(properties);
+            case SLAB -> new SlabBlock(properties);
+            case VERTICAL_SLAB -> new VerticalSlabBlock(properties);
+            case STAIRS -> new StairBlock(base::defaultBlockState, properties);
+            case BLOCK -> throw new IllegalStateException("Should not call createPart on BLOCK. Use setPart instead.");
+        };
+    }
+
+    public interface IBlockSetBase {
+        default Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
+            return StoneBlockSet.getBlockForPart(part, properties, base);
+        }
+    }
 }

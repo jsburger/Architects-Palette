@@ -26,8 +26,8 @@ import java.util.List;
 
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
-import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NO_STAIRS;
-import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NO_WALLS;
+import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.NO_STAIRS;
+import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.NO_WALLS;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
