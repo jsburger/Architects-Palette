@@ -1,11 +1,14 @@
 package architectspalette.content.blocks.abyssaline;
 
+import architectspalette.core.registry.util.IBlockSetBase;
+import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -13,7 +16,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 import java.util.Random;
 
-public class AbyssalineBlock extends Block implements IAbyssalineChargeable {
+public class AbyssalineBlock extends Block implements IAbyssalineChargeable, IBlockSetBase {
     public static final BooleanProperty CHARGED = BooleanProperty.create("charged");
     public static final DirectionProperty CHARGE_SOURCE = DirectionProperty.create("charge_source",
             Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
@@ -22,6 +25,16 @@ public class AbyssalineBlock extends Block implements IAbyssalineChargeable {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(CHARGED, false).setValue(CHARGE_SOURCE, Direction.NORTH));
     }
+
+    //IBlockSetBase method
+    public Block getBlockForPart(StoneBlockSet.SetComponent part, BlockBehaviour.Properties properties, Block base) {
+        return switch (part) {
+            case SLAB -> new AbyssalineSlabBlock(properties);
+            case VERTICAL_SLAB -> new AbyssalineVerticalSlabBlock(properties);
+            default -> IBlockSetBase.super.getBlockForPart(part, properties, base);
+        };
+    }
+    
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(CHARGED, CHARGE_SOURCE);

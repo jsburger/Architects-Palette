@@ -2,10 +2,11 @@ package architectspalette.core.registry;
 
 import architectspalette.content.blocks.PipeBlock;
 import architectspalette.content.blocks.*;
-import architectspalette.content.blocks.abyssaline.*;
+import architectspalette.content.blocks.abyssaline.AbyssalineBlock;
+import architectspalette.content.blocks.abyssaline.AbyssalineLampBlock;
+import architectspalette.content.blocks.abyssaline.AbyssalinePillarBlock;
+import architectspalette.content.blocks.abyssaline.ChiseledAbyssalineBlock;
 import architectspalette.content.blocks.entrails.DrippyBlock;
-import architectspalette.content.blocks.entrails.DrippySlabBlock;
-import architectspalette.content.blocks.entrails.DrippyVerticalSlabBlock;
 import architectspalette.content.blocks.flint.FlintBlock;
 import architectspalette.content.blocks.flint.FlintPillarBlock;
 import architectspalette.content.worldgen.features.TwistedTree;
@@ -26,28 +27,19 @@ import java.util.List;
 
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
-import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.NO_STAIRS;
-import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.NO_WALLS;
+import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.*;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
 
     // Abyssaline
-    public static final RegistryObject<AbyssalineBlock>      ABYSSALINE                 = createBlock("abyssaline",                 () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineBlock>      ABYSSALINE_BRICKS          = createBlock("abyssaline_bricks",          () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<Block> ABYSSALINE = createBlock("abyssaline", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
+    public static final StoneBlockSet ABYSSALINE_BRICKS = new StoneBlockSet(createBlock("abyssaline_bricks", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
+    public static final StoneBlockSet ABYSSALINE_TILES = new StoneBlockSet(createBlock("abyssaline_tiles", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
     public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
     public static final RegistryObject<AbyssalinePillarBlock>   ABYSSALINE_PILLAR          = createBlock("abyssaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_BRICK_SLAB      = createBlock("abyssaline_brick_slab",      () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineBlock>      ABYSSALINE_TILES           = createBlock("abyssaline_tiles",           () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineSlabBlock>     ABYSSALINE_TILE_SLAB       = createBlock("abyssaline_tile_slab",       () -> new AbyssalineSlabBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<AbyssalineLampBlock>     ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE_LAMP.sound(SoundType.GLASS)));
-//    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_BRICK_STAIRS    = createBlock("abyssaline_brick_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_BRICKS.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);
-//    public static final RegistryObject<AbyssalineBrickWallBlock>   ABYSSALINE_BRICK_WALL      = createBlock("abyssaline_brick_wall",      () -> new AbyssalineBrickWallBlock(APBlockProperties.ABYSSALINE), ItemGroup.DECORATIONS);
-//    public static final RegistryObject<AbyssalineBrickStairsBlock> ABYSSALINE_TILE_STAIRS    = createBlock("abyssaline_tile_stairs",    () -> new AbyssalineBrickStairsBlock(() -> ABYSSALINE_TILES.get().getDefaultState(), APBlockProperties.ABYSSALINE), ItemGroup.BUILDING_BLOCKS);
 
-    public static final RegistryObject<AbyssalineVerticalSlabBlock>     ABYSSALINE_BRICK_VERTICAL_SLAB      = createBlock("abyssaline_brick_vertical_slab",      () -> new AbyssalineVerticalSlabBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineVerticalSlabBlock>     ABYSSALINE_TILE_VERTICAL_SLAB       = createBlock("abyssaline_tile_vertical_slab",       () -> new AbyssalineVerticalSlabBlock(APBlockProperties.ABYSSALINE));
-    
     // Villager Trade blocks
      // Funny fish blocks
     public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)), CreativeModeTab.TAB_BUILDING_BLOCKS);
@@ -55,10 +47,7 @@ public class APBlocks {
     public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)), CreativeModeTab.TAB_BUILDING_BLOCKS);
      // Entrails
-    public static final RegistryObject<Block> ENTRAILS               = createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK)));
-    public static final RegistryObject<Block> ENTRAILS_SLAB          = createBlock("entrails_slab", () -> new DrippySlabBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK)));
-    public static final RegistryObject<Block> ENTRAILS_VERTICAL_SLAB = createBlock("entrails_vertical_slab", () -> new DrippyVerticalSlabBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK)));
-    public static final RegistryObject<Block> ENTRAILS_STAIRS =        createBlock("entrails_stairs", () -> new StairBlock(() -> ENTRAILS.get().defaultBlockState(), APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK)));
+    public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS);
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)));
     public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING.noOcclusion()));

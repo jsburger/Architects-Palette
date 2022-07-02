@@ -20,17 +20,17 @@ import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.*;
 
 public class StoneBlockSet {
     private final String material_name;
-    private final List<RegistryObject<Block>> parts;
+    private final List<RegistryObject<? extends Block>> parts;
 
-    public StoneBlockSet(RegistryObject<Block> base_block) {
+    public StoneBlockSet(RegistryObject<? extends Block> base_block) {
         this(base_block, SetGroup.TYPICAL);
     }
 
-    public StoneBlockSet(RegistryObject<Block> base_block, SetGroup group) {
+    public StoneBlockSet(RegistryObject<? extends Block> base_block, SetGroup group) {
         this(base_block, group.components);
     }
 
-    public StoneBlockSet(RegistryObject<Block> base_block, SetComponent... parts){
+    public StoneBlockSet(RegistryObject<? extends Block> base_block, SetComponent... parts){
         this.parts = new ArrayList<>();
         //Piece of crap array list doesn't let me preallocate indices ((if it can, you should let me know))
         for (int i = 0; i < values().length; i++) {
@@ -59,7 +59,7 @@ public class StoneBlockSet {
         return getPart(BLOCK);
     }
 
-    private Stream<Block> blockStream() {
+    private Stream<? extends Block> blockStream() {
         //Puts all blocks in a Stream, filters out null entries, then gets the blocks from their registry object
         return parts.stream().filter(Objects::nonNull).map(RegistryObject::get);
     }
@@ -105,7 +105,7 @@ public class StoneBlockSet {
     public Block getPart(SetComponent part) {
         return parts.get(part.ordinal()).get();
     }
-    private void setPart(SetComponent part, RegistryObject<Block> block) {
+    private void setPart(SetComponent part, RegistryObject<? extends Block> block) {
         parts.add(part.ordinal(), block);
     }
     private void createPart(SetComponent part) {
@@ -122,7 +122,7 @@ public class StoneBlockSet {
         }, part.tab);
     }
 
-    private static Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
+    public static Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
         return switch (part) {
             case WALL -> new WallBlock(properties);
             case SLAB -> new SlabBlock(properties);
@@ -132,9 +132,4 @@ public class StoneBlockSet {
         };
     }
 
-    public interface IBlockSetBase {
-        default Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
-            return StoneBlockSet.getBlockForPart(part, properties, base);
-        }
-    }
 }
