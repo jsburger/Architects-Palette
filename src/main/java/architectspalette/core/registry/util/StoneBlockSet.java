@@ -119,7 +119,7 @@ public class StoneBlockSet {
                 return base.getBlockForPart(part, properties(), block);
             }
             return getBlockForPart(part, properties(), block);
-        });
+        }, part.tab);
     }
 
     private static Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {
