@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 
 import java.util.Random;
 
-import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
-import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGE_SOURCE;
+import static architectspalette.content.blocks.abyssaline.AbyssalineBlock.CHARGED;
+import static architectspalette.content.blocks.abyssaline.AbyssalineBlock.CHARGE_SOURCE;
 
 public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssalineChargeable {
 //	public static final EnumProperty<PillarSide> CHARGE_SIDE = EnumProperty.create("charge_side", PillarSide.class);

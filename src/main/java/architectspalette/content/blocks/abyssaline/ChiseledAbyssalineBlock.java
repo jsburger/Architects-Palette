@@ -19,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Random;
 
-import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
+import static architectspalette.content.blocks.abyssaline.AbyssalineBlock.CHARGED;
 
 public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargeable {
 	public final static Item KEY = Items.HEART_OF_THE_SEA;

@@ -2,10 +2,10 @@ package architectspalette.core.registry;
 
 import architectspalette.content.blocks.CageLanternBlock;
 import architectspalette.content.blocks.SunstoneBlock;
+import architectspalette.content.blocks.abyssaline.AbyssalineBlock;
 import architectspalette.content.blocks.abyssaline.AbyssalineHelper;
 import architectspalette.content.blocks.abyssaline.AbyssalineLampBlock;
 import architectspalette.content.blocks.abyssaline.ChiseledAbyssalineBlock;
-import architectspalette.content.blocks.abyssaline.NewAbyssalineBlock;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +26,7 @@ public class APBlockProperties {
 			.emissiveRendering(AbyssalineHelper::needsPostProcessing)
 			.hasPostProcess(AbyssalineHelper::needsPostProcessing)
 			.isValidSpawn(AbyssalineHelper::allowsMobSpawning)
-			.lightLevel(NewAbyssalineBlock::getLightValue);
+			.lightLevel(AbyssalineBlock::getLightValue);
 	}
 
 	public static final Block.Properties ABYSSALINE = AbyssalineBase();

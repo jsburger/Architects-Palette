@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 
 import java.util.Random;
 
-import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
-import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGE_SOURCE;
+import static architectspalette.content.blocks.abyssaline.AbyssalineBlock.CHARGED;
+import static architectspalette.content.blocks.abyssaline.AbyssalineBlock.CHARGE_SOURCE;
 
 public class AbyssalineLampBlock extends RotatedPillarBlock implements IAbyssalineChargeable {
 

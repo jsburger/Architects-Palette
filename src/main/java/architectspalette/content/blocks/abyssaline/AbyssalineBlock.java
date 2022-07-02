@@ -1,97 +1,51 @@
 package architectspalette.content.blocks.abyssaline;
 
-import architectspalette.core.registry.APBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-public class AbyssalineBlock extends Block {
-	public static final BooleanProperty CHARGED = BooleanProperty.create("charged");
+import java.util.Random;
 
-	public AbyssalineBlock(Properties properties) {
-		super(properties);
-		this.registerDefaultState(this.stateDefinition.any().setValue(AbyssalineBlock.CHARGED, false));
-	}
-	
-//	@Override
-//	public int getLightValue(BlockState state, BlockGetter world, BlockPos pos) {
-//		return state.getValue(CHARGED) ? 7 : 0;
-//	}
-	
-	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-		return this.defaultBlockState().setValue(CHARGED, checkForNearbyChargedBlocks(worldIn, currentPos));
-	}
-	
-	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return this.defaultBlockState().setValue(CHARGED, checkForNearbyChargedBlocks(context.getLevel(), context.getClickedPos()));
-	}
-	
-	public static boolean checkForNearbyChargedBlocks(LevelAccessor world, BlockPos pos) {
-		boolean powered = false;
-		
-		for(Direction sides : Direction.values()) {
-			BlockPos offset = pos.relative(sides);
-			BlockState state = world.getBlockState(offset);
-			if(state.getBlock() == APBlocks.CHISELED_ABYSSALINE_BRICKS.get() && state.getValue(CHARGED)) {
-				powered = true;
-				break;
-			}
-		}
-		
-		if(!powered) {
-			for(Direction sides : Direction.values()) {
-				BlockPos offset = pos.relative(sides);
-				BlockState state = world.getBlockState(offset);
-				if(isChargedBlock(state)) {
-					return checkForNearbySource(world, offset, sides.getOpposite(), 1);
-				}
-			}
-		}
-		
-		return powered;
-	}
-	
-	private static boolean checkForNearbySource(LevelAccessor world, BlockPos pos, Direction blacklistedDirection, int cycles) {
-		if(cycles == 2) return false;
-		boolean powered = false;
-		
-		for(Direction sides : Direction.values()) {
-			if(sides != blacklistedDirection) {
-				BlockPos offset = pos.relative(sides);
-				BlockState state = world.getBlockState(offset);
-				if(state.getBlock() == APBlocks.CHISELED_ABYSSALINE_BRICKS.get() && state.getValue(CHARGED)) {
-					powered = true;
-					break;
-				}
-			}
-		}
-		
-		if(!powered) {
-			for(Direction sides : Direction.values()) {
-				BlockPos offset = pos.relative(sides);
-				BlockState state = world.getBlockState(offset);
-				if(isChargedBlock(state)) {
-					return checkForNearbySource(world, offset, sides.getOpposite(), cycles + 1);
-				}
-			}
-		}
-		
-		return powered;
-	}
-	
-	public static boolean isChargedBlock(BlockState state) {
-		return state.getBlock() != APBlocks.CHISELED_ABYSSALINE_BRICKS.get() && state.hasProperty(CHARGED) && state.getValue(CHARGED);
-	}
-	
-	@Override
-	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-		builder.add(CHARGED);
-	}
+public class AbyssalineBlock extends Block implements IAbyssalineChargeable {
+    public static final BooleanProperty CHARGED = BooleanProperty.create("charged");
+    public static final DirectionProperty CHARGE_SOURCE = DirectionProperty.create("charge_source",
+            Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
+
+    public AbyssalineBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(CHARGED, false).setValue(CHARGE_SOURCE, Direction.NORTH));
+    }
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(CHARGED, CHARGE_SOURCE);
+    }
+
+    public static int getLightValue(BlockState state) {
+        return state.getValue(CHARGED) ? AbyssalineHelper.CHARGE_LIGHT : 0;
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+        AbyssalineHelper.abyssalineNeighborUpdate(this, state, worldIn, pos, blockIn, fromPos);
+    }
+
+    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+        AbyssalineHelper.abyssalineTick(state, worldIn, pos);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
+        return this.defaultBlockState();
+//        return getStateWithNeighborCharge(this.getDefaultState(), context.getWorld(), context.getPos());
+    }
+
+
 }

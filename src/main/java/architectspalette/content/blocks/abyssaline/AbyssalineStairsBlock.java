@@ -19,12 +19,12 @@ public class AbyssalineStairsBlock extends StairBlock implements IAbyssalineChar
 
 	public AbyssalineStairsBlock(Supplier<BlockState> state, Properties properties) {
 		super(state, properties);
-		this.registerDefaultState(this.getStateDefinition().any().setValue(NewAbyssalineBlock.CHARGED, false));
+		this.registerDefaultState(this.getStateDefinition().any().setValue(AbyssalineBlock.CHARGED, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-		builder.add(NewAbyssalineBlock.CHARGED, StairBlock.SHAPE, StairBlock.FACING, StairBlock.HALF, StairBlock.WATERLOGGED);
+		builder.add(AbyssalineBlock.CHARGED, StairBlock.SHAPE, StairBlock.FACING, StairBlock.HALF, StairBlock.WATERLOGGED);
 	}
 
 	@Override
