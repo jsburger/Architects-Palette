@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:esoterrack"
+        }
+    ],
+    "result": "architects_palette:esoterrack_pillar",
+    "count": 1
+}

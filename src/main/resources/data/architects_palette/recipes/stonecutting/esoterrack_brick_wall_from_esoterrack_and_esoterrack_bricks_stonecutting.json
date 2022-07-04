@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:esoterrack"
+        },
+        {
+            "item": "architects_palette:esoterrack_bricks"
+        }
+    ],
+    "result": "architects_palette:esoterrack_brick_wall",
+    "count": 1
+}

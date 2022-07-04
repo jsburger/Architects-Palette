@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:onyx"
+        },
+        {
+            "item": "architects_palette:onyx_bricks"
+        }
+    ],
+    "result": "architects_palette:onyx_brick_wall",
+    "count": 1
+}
