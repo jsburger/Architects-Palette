@@ -24,6 +24,12 @@
     "architects_palette:nether_brass_lantern",
     "architects_palette:smooth_nether_brass_slab",
     "architects_palette:smooth_nether_brass_vertical_slab",
-    "architects_palette:smooth_nether_brass_stairs"
+    "architects_palette:smooth_nether_brass_stairs",
+    "architects_palette:ancient_plating",
+    "architects_palette:ancient_plating_wall",
+    "architects_palette:ancient_plating_stairs",
+    "architects_palette:ancient_plating_slab",
+    "architects_palette:ancient_plating_vertical_slab",
+    "architects_palette:ancient_plating_fence"
   ]
 }

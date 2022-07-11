@@ -33,6 +33,7 @@
     "architects_palette:onyx_wall",
     "architects_palette:onyx_brick_wall",
     "architects_palette:wardstone_wall",
-    "architects_palette:wardstone_brick_wall"
+    "architects_palette:wardstone_brick_wall",
+    "architects_palette:ancient_plating_wall"
   ]
 }

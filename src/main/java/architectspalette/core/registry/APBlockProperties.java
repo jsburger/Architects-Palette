@@ -62,6 +62,8 @@ public class APBlockProperties {
 	public static final BlockBehaviour.Properties ONYX = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.5F, 6).sound(SoundType.BASALT);
 	public static final BlockBehaviour.Properties WARDSTONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(2F, 6).sound(SoundType.NETHER_BRICKS);
 
+	public static final BlockBehaviour.Properties ANCIENT_PLATING = Block.Properties.of(Material.HEAVY_METAL, MaterialColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(4.0F, 12.0F).sound(SoundType.NETHERITE_BLOCK);
+
 	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_GREEN)
 			.noCollission()
 			.instabreak()

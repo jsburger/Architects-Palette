@@ -2,10 +2,7 @@ package architectspalette.core.registry.util;
 
 import architectspalette.content.blocks.VerticalSlabBlock;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -28,6 +25,10 @@ public class StoneBlockSet {
 
     public StoneBlockSet(RegistryObject<? extends Block> base_block, SetGroup group) {
         this(base_block, group.components);
+    }
+
+    public StoneBlockSet(RegistryObject<? extends Block> base_block, SetGroup group, SetComponent... additionalParts) {
+        this(base_block, concatArray(group.components, additionalParts));
     }
 
     public StoneBlockSet(RegistryObject<? extends Block> base_block, SetComponent... parts){
@@ -77,7 +78,8 @@ public class StoneBlockSet {
         SLAB("_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
         VERTICAL_SLAB("_vertical_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
         STAIRS("_stairs", CreativeModeTab.TAB_BUILDING_BLOCKS),
-        WALL("_wall", CreativeModeTab.TAB_DECORATIONS);
+        WALL("_wall", CreativeModeTab.TAB_DECORATIONS),
+        FENCE("_fence", CreativeModeTab.TAB_DECORATIONS);
 
         public final String suffix;
         public final CreativeModeTab tab;
@@ -128,8 +130,15 @@ public class StoneBlockSet {
             case SLAB -> new SlabBlock(properties);
             case VERTICAL_SLAB -> new VerticalSlabBlock(properties);
             case STAIRS -> new StairBlock(base::defaultBlockState, properties);
+            case FENCE -> new FenceBlock(properties);
             case BLOCK -> throw new IllegalStateException("Should not call createPart on BLOCK. Use setPart instead.");
         };
+    }
+
+    private static <T> T[] concatArray(T[] array1, T[] array2) {
+        T[] result = Arrays.copyOf(array1, array1.length + array2.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
     }
 
 }

@@ -27,6 +27,7 @@ import java.util.List;
 
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
+import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.*;
 
 public class APBlocks {
@@ -290,6 +291,8 @@ public class APBlocks {
     public static final StoneBlockSet WARDSTONE_BRICKS = new StoneBlockSet(createBlock("wardstone_bricks", () -> new Block(APBlockProperties.WARDSTONE)));
     public static final RegistryObject<Block> WARDSTONE_PILLAR = createBlock("wardstone_pillar", () -> new RotatedPillarBlock(APBlockProperties.WARDSTONE));
     public static final RegistryObject<Block> WARDSTONE_LAMP = createBlock("wardstone_lamp", () -> new Block(BlockBehaviour.Properties.copy(WARDSTONE.get()).lightLevel((state) -> 14)));
+
+    public static final StoneBlockSet ANCIENT_PLATING = new StoneBlockSet(createBlock("ancient_plating", () -> new Block(APBlockProperties.ANCIENT_PLATING)), TYPICAL, FENCE);
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
