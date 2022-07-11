@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:lapis_lazuli"
+        },
+        {
+            "item": "minecraft:nether_wart"
+        },
+        {
+            "item": "minecraft:nether_wart"
+        }
+    ],
+    "result": {
+        "count": 4,
+        "item": "architects_palette:wardstone_blend"
+    }
+}

@@ -38,6 +38,8 @@
     "architects_palette:esoterrack_slab",
     "architects_palette:esoterrack_brick_slab",
     "architects_palette:onyx_slab",
-    "architects_palette:onyx_brick_slab"
+    "architects_palette:onyx_brick_slab",
+    "architects_palette:wardstone_slab",
+    "architects_palette:wardstone_brick_slab"
   ]
 }

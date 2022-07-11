@@ -263,6 +263,19 @@
     "architects_palette:onyx_brick_wall",
     "architects_palette:onyx_brick_stairs",
     "architects_palette:onyx_brick_slab",
-    "architects_palette:onyx_brick_vertical_slab"
+    "architects_palette:onyx_brick_vertical_slab",
+    "architects_palette:wardstone",
+    "architects_palette:wardstone_wall",
+    "architects_palette:wardstone_stairs",
+    "architects_palette:wardstone_slab",
+    "architects_palette:wardstone_vertical_slab",
+    "architects_palette:wardstone_pillar",
+    "architects_palette:chiseled_wardstone",
+    "architects_palette:wardstone_bricks",
+    "architects_palette:wardstone_brick_wall",
+    "architects_palette:wardstone_brick_stairs",
+    "architects_palette:wardstone_brick_slab",
+    "architects_palette:wardstone_brick_vertical_slab",
+    "architects_palette:wardstone_lamp"
   ]
 }

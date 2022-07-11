@@ -285,6 +285,11 @@ public class APBlocks {
     public static final StoneBlockSet ONYX_BRICKS = new StoneBlockSet(createBlock("onyx_bricks", () -> new Block(APBlockProperties.ONYX)));
     public static final RegistryObject<Block> ONYX_PILLAR = createBlock("onyx_pillar", () -> new RotatedPillarBlock(APBlockProperties.ONYX));
 
+    public static final StoneBlockSet WARDSTONE = new StoneBlockSet(createBlock("wardstone", () -> new Block(APBlockProperties.WARDSTONE)));
+    public static final RegistryObject<Block> CHISELED_WARDSTONE = createBlock("chiseled_wardstone", () -> new Block(APBlockProperties.WARDSTONE));
+    public static final StoneBlockSet WARDSTONE_BRICKS = new StoneBlockSet(createBlock("wardstone_bricks", () -> new Block(APBlockProperties.WARDSTONE)));
+    public static final RegistryObject<Block> WARDSTONE_PILLAR = createBlock("wardstone_pillar", () -> new RotatedPillarBlock(APBlockProperties.WARDSTONE));
+    public static final RegistryObject<Block> WARDSTONE_LAMP = createBlock("wardstone_lamp", () -> new Block(BlockBehaviour.Properties.copy(WARDSTONE.get()).lightLevel((state) -> 14)));
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

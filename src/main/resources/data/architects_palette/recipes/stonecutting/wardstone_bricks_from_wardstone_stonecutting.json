@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:wardstone"
+        }
+    ],
+    "result": "architects_palette:wardstone_bricks",
+    "count": 1
+}

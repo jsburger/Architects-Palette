@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xxx",
+        "x x",
+        "xxx"
+    ],
+    "key": {
+        "x": {
+            "item": "architects_palette:wardstone_brick"
+        }
+    },
+    "result": {
+        "count": 1,
+        "item": "architects_palette:wardstone_lamp"
+    }
+}
