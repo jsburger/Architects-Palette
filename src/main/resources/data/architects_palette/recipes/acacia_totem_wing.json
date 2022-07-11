@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "sl"
+    ],
+    "key": {
+        "s": {
+            "tag": "forge:rods/wooden"
+        },
+        "l": {
+            "item": "minecraft:acacia_leaves"
+        }
+    },
+    "result": {
+        "count": 2,
+        "item": "architects_palette:acacia_totem_wing"
+    }
+}
