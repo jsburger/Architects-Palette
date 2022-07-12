@@ -42,11 +42,7 @@ public class BigBrickBlock extends Block {
         Direction face = context.getClickedFace();
         BlockPos targetPos = context.getClickedPos().relative(face.getOpposite());
         BlockState targetState = context.getLevel().getBlockState(targetPos);
-        boolean pairing = false;
-
-        if (context.getPlayer() != null && !context.getPlayer().isShiftKeyDown() && BrickMatches(this, targetState) && !targetState.getValue(PAIRED)) {
-            pairing = true;
-        }
+        boolean pairing = context.getPlayer() != null && !context.getPlayer().isShiftKeyDown() && BrickMatches(this, targetState) && !targetState.getValue(PAIRED);
 
         return this.defaultBlockState().setValue(FACING, context.getClickedFace().getOpposite()).setValue(PAIRED, pairing);
     }
@@ -68,9 +64,8 @@ public class BigBrickBlock extends Block {
     }
 
     private boolean BrickMatches(BigBrickBlock thisBlock, BlockState suspect) {
-        if (suspect.getBlock() instanceof BigBrickBlock) {
-            BigBrickBlock b = (BigBrickBlock)suspect.getBlock();
-            return b.TYPE == thisBlock.TYPE;
+        if (suspect.getBlock() instanceof BigBrickBlock block) {
+            return block.TYPE == thisBlock.TYPE;
         }
         return false;
     }

@@ -52,7 +52,8 @@ public class StoneBlockSet {
                 .replace("tiles", "tile");
     }
 
-    // Go all the way. Stone Bricks -> Stone. Meant for pillars and such
+    // Go all the way. Stone Bricks -> Stone. Meant for pillars and such.
+    // Written with the assumption that nobody will ever want a pillar and a brick pillar.
     private static String getMaterialAggressive(String block) {
         return getMaterialFromBlock(block)
                 .replace("_brick", "")
