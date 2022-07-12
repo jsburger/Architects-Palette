@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.*;
@@ -51,6 +52,14 @@ public class StoneBlockSet {
                 .replace("tiles", "tile");
     }
 
+    // Go all the way. Stone Bricks -> Stone. Meant for pillars and such
+    private static String getMaterialAggressive(String block) {
+        return getMaterialFromBlock(block)
+                .replace("_brick", "")
+                .replace("_tile", "")
+                .replace("chiseled_", "");
+    }
+
     private Block.Properties properties() {
         return Block.Properties.copy(getPart(BLOCK));
     }
@@ -79,13 +88,27 @@ public class StoneBlockSet {
         VERTICAL_SLAB("_vertical_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
         STAIRS("_stairs", CreativeModeTab.TAB_BUILDING_BLOCKS),
         WALL("_wall", CreativeModeTab.TAB_DECORATIONS),
-        FENCE("_fence", CreativeModeTab.TAB_DECORATIONS);
+        FENCE("_fence", CreativeModeTab.TAB_DECORATIONS),
+        PILLAR(SetComponent::pillarName, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
-        public final String suffix;
         public final CreativeModeTab tab;
+        public final Function<String, String> nameGenerator;
         SetComponent(String suffix, CreativeModeTab tab) {
-            this.suffix = suffix;
+            this((material) -> addSuffix(material, suffix), tab);
+        }
+        SetComponent(Function<String, String> nameGen, CreativeModeTab tab) {
+            this.nameGenerator = nameGen;
             this.tab = tab;
+        }
+        public String getName(String material) {
+            return nameGenerator.apply(material);
+        }
+
+        private static String addSuffix(String material, String suffix) {
+            return material + suffix;
+        }
+        private static String pillarName(String material) {
+            return getMaterialAggressive(material) + "_pillar";
         }
     }
 
@@ -115,7 +138,7 @@ public class StoneBlockSet {
     }
 
     private RegistryObject<Block> makePart(SetComponent part) {
-        return RegistryUtils.createBlock(material_name + part.suffix, () -> {
+        return RegistryUtils.createBlock(part.getName(material_name), () -> {
             Block block = getPart(BLOCK);
             if (block instanceof IBlockSetBase base) {
                 return base.getBlockForPart(part, properties(), block);
@@ -131,6 +154,7 @@ public class StoneBlockSet {
             case VERTICAL_SLAB -> new VerticalSlabBlock(properties);
             case STAIRS -> new StairBlock(base::defaultBlockState, properties);
             case FENCE -> new FenceBlock(properties);
+            case PILLAR -> new RotatedPillarBlock(properties);
             case BLOCK -> throw new IllegalStateException("Should not call createPart on BLOCK. Use setPart instead.");
         };
     }
