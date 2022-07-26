@@ -30,6 +30,8 @@ public class ShapeRotator {
     //Crazy, right? I was going to make the points into vectors and rotate them with quaternions, but this seems way better.
     //Don't tell anyone, though. I'm not sure Max will appreciate this.
     public static VoxelShape rotateShapeHorizontal(VoxelShape shape, Direction from, Direction to) {
+        if (from == to) return shape;
+
         VoxelShape[] buffer = new VoxelShape[]{shape, Shapes.empty()};
 
         int times = (to.get2DDataValue() - from.get2DDataValue() + 4) % 4;
