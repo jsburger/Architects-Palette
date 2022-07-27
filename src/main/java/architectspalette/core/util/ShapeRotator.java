@@ -43,6 +43,12 @@ public class ShapeRotator {
         return buffer[0];
     }
 
+    public static VoxelShape flipShapeVertical(VoxelShape shape) {
+        VoxelShape[] newShape = {Shapes.empty()};
+        shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> newShape[0] = Shapes.or(newShape[0], Shapes.box(minX, 1 - maxY, minZ, maxX, 1 - minY, maxZ)));
+
+        return newShape[0];
+    }
 
 
 }
