@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:plating_nub",
+    "architects_palette:nether_brass_nub",
+    "architects_palette:nub_of_ender",
+    "architects_palette:smooth_stone_nub",
+    "architects_palette:sandstone_nub",
+    "architects_palette:bone_nub",
+    "architects_palette:polished_glowstone_nub"
+  ]
+}

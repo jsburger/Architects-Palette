@@ -283,6 +283,7 @@
     "architects_palette:ancient_plating_slab",
     "architects_palette:ancient_plating_vertical_slab",
     "architects_palette:ancient_plating_fence",
-    "architects_palette:hazard_sign"
+    "architects_palette:hazard_sign",
+    "#architects_palette:nubs"
   ]
 }

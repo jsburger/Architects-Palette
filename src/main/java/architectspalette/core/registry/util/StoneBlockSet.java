@@ -1,5 +1,6 @@
 package architectspalette.core.registry.util;
 
+import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
@@ -90,7 +91,8 @@ public class StoneBlockSet {
         STAIRS("_stairs", CreativeModeTab.TAB_BUILDING_BLOCKS),
         WALL("_wall", CreativeModeTab.TAB_DECORATIONS),
         FENCE("_fence", CreativeModeTab.TAB_DECORATIONS),
-        PILLAR(SetComponent::pillarName, CreativeModeTab.TAB_BUILDING_BLOCKS);
+        PILLAR(SetComponent::pillarName, CreativeModeTab.TAB_BUILDING_BLOCKS),
+        NUB("_nub", CreativeModeTab.TAB_DECORATIONS);
 
         public final CreativeModeTab tab;
         public final Function<String, String> nameGenerator;
@@ -156,6 +158,7 @@ public class StoneBlockSet {
             case STAIRS -> new StairBlock(base::defaultBlockState, properties);
             case FENCE -> new FenceBlock(properties);
             case PILLAR -> new RotatedPillarBlock(properties);
+            case NUB -> new NubBlock(properties);
             case BLOCK -> throw new IllegalStateException("Should not call createPart on BLOCK. Use setPart instead.");
         };
     }
