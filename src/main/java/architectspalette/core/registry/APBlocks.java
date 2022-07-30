@@ -24,6 +24,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
@@ -108,7 +109,7 @@ public class APBlocks {
     public static final RegistryObject<Block> PACKED_ICE_PILLAR   = createBlock("packed_ice_pillar",   () -> new RotatedPillarBlock(APBlockProperties.BUILDING_ICE));
 
     // Sunmetal
-    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), NO_WALLS);
+    public static final StoneBlockSet SUNMETAL = new StoneBlockSet(createBlock("sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL)), NO_WALLS, NUB);
     public static final RegistryObject<Block> CHISELED_SUNMETAL_BLOCK = createBlock("chiseled_sunmetal_block", () -> new Block(APBlockProperties.SUNMETAL));
     public static final RegistryObject<Block> SUNMETAL_PILLAR         = createBlock("sunmetal_pillar", () -> new RotatedPillarBlock(APBlockProperties.SUNMETAL));
     public static final RegistryObject<Block> SUNMETAL_BARS           = createBlock("sunmetal_bars", () -> new IronBarsBlock(APBlockProperties.SUNMETAL.noOcclusion()));
@@ -295,10 +296,21 @@ public class APBlocks {
 
     public static final StoneBlockSet ANCIENT_PLATING = new StoneBlockSet(createBlock("ancient_plating", () -> new Block(APBlockProperties.ANCIENT_PLATING)), TYPICAL, FENCE);
 
-    public static final RegistryObject<Block> SMOOTH_STONE_NUB = createBlock("smooth_stone_nub", () -> new NubBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> SANDSTONE_NUB = createBlock("sandstone_nub", () -> new NubBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> BONE_NUB = createBlock("bone_nub", () -> new NubBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> NUB_OF_ENDER = createBlock("nub_of_ender", () -> new NubBlock(BlockBehaviour.Properties.copy(ENDER_PEARL_BLOCK.get())), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> STONE_NUB = makeNub("stone_nub", Blocks.STONE);
+    public static final RegistryObject<Block> SMOOTH_STONE_NUB = makeNub("smooth_stone_nub", Blocks.SMOOTH_STONE);
+    public static final RegistryObject<Block> SANDSTONE_NUB = makeNub("sandstone_nub", Blocks.SANDSTONE);
+    public static final RegistryObject<Block> ANDESITE_NUB = makeNub("andesite_nub", Blocks.ANDESITE);
+    public static final RegistryObject<Block> GRANITE_NUB = makeNub("granite_nub", Blocks.GRANITE);
+    public static final RegistryObject<Block> DIORITE_NUB = makeNub("diorite_nub", Blocks.DIORITE);
+    public static final RegistryObject<Block> BLACKSTONE_NUB = makeNub("blackstone_nub", Blocks.BLACKSTONE);
+    public static final RegistryObject<Block> DEEPSLATE_NUB = makeNub("deepslate_nub", Blocks.POLISHED_DEEPSLATE);
+    public static final RegistryObject<Block> BONE_NUB = makeNub("bone_nub", Blocks.BONE_BLOCK);
+    public static final RegistryObject<Block> NUB_OF_ENDER = makeNub("nub_of_ender", ENDER_PEARL_BLOCK);
+    public static final RegistryObject<Block> IRON_NUB = makeNub("iron_nub", Blocks.IRON_BLOCK);
+    public static final RegistryObject<Block> GOLD_NUB = makeNub("gold_nub", Blocks.GOLD_BLOCK);
+    public static final RegistryObject<Block> DIAMOND_NUB = makeNub("diamond_nub", Blocks.DIAMOND_BLOCK);
+    public static final RegistryObject<Block> EMERALD_NUB = makeNub("emerald_nub", Blocks.EMERALD_BLOCK);
+    public static final RegistryObject<Block> NETHERITE_NUB = makeNub("netherite_nub", Blocks.NETHERITE_BLOCK);
 
     public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
 
@@ -310,6 +322,13 @@ public class APBlocks {
         );
         ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(plant.getId(), pot);
         return pot;
+    }
+
+    private static RegistryObject<Block> makeNub(String name, Block block_to_copy) {
+        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy)), CreativeModeTab.TAB_DECORATIONS);
+    }
+    private static RegistryObject<Block> makeNub(String name, Supplier<Block> block_to_copy) {
+        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy.get())), CreativeModeTab.TAB_DECORATIONS);
     }
 
 }

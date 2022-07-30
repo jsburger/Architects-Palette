@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:andesite"
+        },
+        {
+            "item": "minecraft:polished_andesite"
+        }
+    ],
+    "result": "architects_palette:andesite_nub",
+    "count": 2
+}

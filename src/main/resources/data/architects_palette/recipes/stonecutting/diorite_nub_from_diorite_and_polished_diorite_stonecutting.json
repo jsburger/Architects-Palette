@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:diorite"
+        },
+        {
+            "item": "minecraft:polished_diorite"
+        }
+    ],
+    "result": "architects_palette:diorite_nub",
+    "count": 2
+}

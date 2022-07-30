@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:gold_ingot"
+        }
+    ],
+    "result": "architects_palette:gold_nub",
+    "count": 2
+}

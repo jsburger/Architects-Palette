@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:blackstone"
+        },
+        {
+            "item": "minecraft:polished_blackstone"
+        }
+    ],
+    "result": "architects_palette:blackstone_nub",
+    "count": 2
+}

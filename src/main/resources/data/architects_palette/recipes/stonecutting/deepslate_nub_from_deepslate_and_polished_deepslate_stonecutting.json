@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:deepslate"
+        },
+        {
+            "item": "minecraft:polished_deepslate"
+        }
+    ],
+    "result": "architects_palette:deepslate_nub",
+    "count": 2
+}

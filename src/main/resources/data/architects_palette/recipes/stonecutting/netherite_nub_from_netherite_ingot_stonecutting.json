@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:netherite_ingot"
+        }
+    ],
+    "result": "architects_palette:netherite_nub",
+    "count": 2
+}

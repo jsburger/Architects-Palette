@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:emerald"
+        }
+    ],
+    "result": "architects_palette:emerald_nub",
+    "count": 2
+}

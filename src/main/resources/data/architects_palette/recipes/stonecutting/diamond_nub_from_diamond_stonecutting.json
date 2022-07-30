@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:diamond"
+        }
+    ],
+    "result": "architects_palette:diamond_nub",
+    "count": 2
+}

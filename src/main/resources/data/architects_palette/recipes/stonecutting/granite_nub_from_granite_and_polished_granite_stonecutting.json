@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:granite"
+        },
+        {
+            "item": "minecraft:polished_granite"
+        }
+    ],
+    "result": "architects_palette:granite_nub",
+    "count": 2
+}
