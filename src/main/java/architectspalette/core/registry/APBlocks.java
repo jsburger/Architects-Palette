@@ -31,6 +31,7 @@ import static architectspalette.core.registry.util.RegistryUtils.createBlockNoIt
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NUB;
 import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.*;
+import static net.minecraft.world.level.block.WeatheringCopper.WeatherState.*;
 
 public class APBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
@@ -312,6 +313,15 @@ public class APBlocks {
     public static final RegistryObject<Block> EMERALD_NUB = makeNub("emerald_nub", Blocks.EMERALD_BLOCK);
     public static final RegistryObject<Block> NETHERITE_NUB = makeNub("netherite_nub", Blocks.NETHERITE_BLOCK);
 
+    public static final RegistryObject<Block> COPPER_NUB = makeCopperNub("copper_nub", Blocks.COPPER_BLOCK, UNAFFECTED);
+    public static final RegistryObject<Block> WAXED_COPPER_NUB = makeCopperNub("waxed_copper_nub", Blocks.COPPER_BLOCK, UNAFFECTED);
+    public static final RegistryObject<Block> EXPOSED_COPPER_NUB = makeCopperNub("exposed_copper_nub", Blocks.EXPOSED_COPPER, EXPOSED);
+    public static final RegistryObject<Block> WAXED_EXPOSED_COPPER_NUB = makeCopperNub("waxed_exposed_copper_nub", Blocks.EXPOSED_COPPER, EXPOSED);
+    public static final RegistryObject<Block> WEATHERED_COPPER_NUB = makeCopperNub("weathered_copper_nub", Blocks.WEATHERED_COPPER, WEATHERED);
+    public static final RegistryObject<Block> WAXED_WEATHERED_COPPER_NUB = makeCopperNub("waxed_weathered_copper_nub", Blocks.WEATHERED_COPPER, WEATHERED);
+    public static final RegistryObject<Block> OXIDIZED_COPPER_NUB = makeCopperNub("oxidized_copper_nub", Blocks.OXIDIZED_COPPER, OXIDIZED);
+    public static final RegistryObject<Block> WAXED_OXIDIZED_COPPER_NUB = makeCopperNub("waxed_oxidized_copper_nub", Blocks.OXIDIZED_COPPER, OXIDIZED);
+
     public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
 
 
@@ -329,6 +339,9 @@ public class APBlocks {
     }
     private static RegistryObject<Block> makeNub(String name, Supplier<Block> block_to_copy) {
         return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy.get())), CreativeModeTab.TAB_DECORATIONS);
+    }
+    private static RegistryObject<Block> makeCopperNub(String name, Block block_to_copy, WeatheringCopper.WeatherState weatheringstate) {
+        return createBlock(name, () -> new NubBlock.CopperNubBlock(BlockBehaviour.Properties.copy(block_to_copy), weatheringstate), CreativeModeTab.TAB_DECORATIONS);
     }
 
 }

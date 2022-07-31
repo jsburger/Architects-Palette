@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "minecraft:copper_block"
+        },
+        {
+            "item": "minecraft:cut_copper"
+        }
+    ],
+    "result": "architects_palette:copper_nub",
+    "count": 2
+}

@@ -19,6 +19,14 @@
     "architects_palette:iron_nub",
     "architects_palette:netherite_nub",
     "architects_palette:stone_nub",
-    "architects_palette:sunmetal_nub"
+    "architects_palette:sunmetal_nub",
+    "architects_palette:copper_nub",
+    "architects_palette:waxed_copper_nub",
+    "architects_palette:exposed_copper_nub",
+    "architects_palette:waxed_exposed_copper_nub",
+    "architects_palette:weathered_copper_nub",
+    "architects_palette:waxed_weathered_copper_nub",
+    "architects_palette:oxidized_copper_nub",
+    "architects_palette:waxed_oxidized_copper_nub"
   ]
 }

@@ -1,6 +1,7 @@
 package architectspalette.core.registry;
 
 import architectspalette.content.blocks.CageLanternBlock;
+import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.SunstoneBlock;
 import architectspalette.content.blocks.abyssaline.AbyssalineBlock;
 import architectspalette.content.blocks.abyssaline.AbyssalineHelper;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.stream.Stream;
 
@@ -158,6 +160,13 @@ public class APBlockProperties {
 		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_WALL_TORCH.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_CHAIN.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(NETHER_BRASS_LANTERN.get(), RenderType.cutout());
+
+		//I'm lazy
+		for (RegistryObject<Block> obj : BLOCKS.getEntries()) {
+			if (obj.get() instanceof NubBlock block) {
+				ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutout());
+			}
+		}
 	}
 
 }

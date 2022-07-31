@@ -66,7 +66,7 @@ public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargea
 				stack.shrink(1);
 			world.setBlockAndUpdate(pos, this.getStateWithCharge(state, true));
 			world.playSound(null, pos, SoundEvents.CONDUIT_ACTIVATE, SoundSource.BLOCKS, 0.5F, new Random().nextFloat() * 0.2F + 0.8F);
-			return InteractionResult.CONSUME;
+			return InteractionResult.SUCCESS;
 		}
 		else if (this.isCharged(state) && stack.isEmpty()) {
 			world.setBlockAndUpdate(pos, this.getStateWithCharge(state, false));
