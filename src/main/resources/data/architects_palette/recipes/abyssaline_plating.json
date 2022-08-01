@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xxx",
+        "x x",
+        "xxx"
+    ],
+    "key": {
+        "x": {
+            "item": "architects_palette:abyssaline"
+        }
+    },
+    "result": {
+        "count": 8,
+        "item": "architects_palette:abyssaline_plating"
+    }
+}
