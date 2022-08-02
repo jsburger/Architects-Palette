@@ -299,6 +299,8 @@ public class APBlocks {
 
     public static final StoneBlockSet ANCIENT_PLATING = new StoneBlockSet(createBlock("ancient_plating", () -> new Block(APBlockProperties.ANCIENT_PLATING)), TYPICAL, FENCE);
 
+    //    public static final RegistryObject<Block> ABYSSALINE_NUB = createBlock("abyssaline_nub", () -> new AbyssalineNubBlock(APBlockProperties.ABYSSALINE_NUB), CreativeModeTab.TAB_DECORATIONS);
+
     public static final RegistryObject<Block> STONE_NUB = makeNub("stone_nub", Blocks.STONE);
     public static final RegistryObject<Block> SMOOTH_STONE_NUB = makeNub("smooth_stone_nub", Blocks.SMOOTH_STONE);
     public static final RegistryObject<Block> SANDSTONE_NUB = makeNub("sandstone_nub", Blocks.SANDSTONE);

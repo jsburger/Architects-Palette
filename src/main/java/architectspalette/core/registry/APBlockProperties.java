@@ -3,10 +3,7 @@ package architectspalette.core.registry;
 import architectspalette.content.blocks.CageLanternBlock;
 import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.SunstoneBlock;
-import architectspalette.content.blocks.abyssaline.AbyssalineBlock;
-import architectspalette.content.blocks.abyssaline.AbyssalineHelper;
-import architectspalette.content.blocks.abyssaline.AbyssalineLampBlock;
-import architectspalette.content.blocks.abyssaline.ChiseledAbyssalineBlock;
+import architectspalette.content.blocks.abyssaline.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +35,9 @@ public class APBlockProperties {
 
 	public static final Block.Properties CHISELED_ABYSSALINE = AbyssalineBase()
 			.lightLevel(ChiseledAbyssalineBlock::getLightValue);
+
+	public static final Block.Properties ABYSSALINE_NUB = AbyssalineBase()
+			.lightLevel(AbyssalineNubBlock::getLightValue);
 
 
 	public static Block.Properties Meat(MaterialColor color) {
