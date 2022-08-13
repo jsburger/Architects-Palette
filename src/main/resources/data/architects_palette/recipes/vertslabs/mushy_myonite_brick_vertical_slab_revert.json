@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "architects_palette:mushy_limestone_brick_vertical_slab"
+      "item": "architects_palette:mushy_myonite_brick_vertical_slab"
     }
   ],
   "result": {
-    "item": "architects_palette:mushy_limestone_brick_slab",
+    "item": "architects_palette:mushy_myonite_brick_slab",
     "count": 1
   },
   "conditions": [
