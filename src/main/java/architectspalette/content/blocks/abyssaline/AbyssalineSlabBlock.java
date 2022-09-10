@@ -27,11 +27,10 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(CHARGED, CHARGE_SOURCE, TYPE, WATERLOGGED);
 	}
-	
+
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-		return super.getStateForPlacement(context);
+		return AbyssalineHelper.getStateWithNeighborCharge(super.getStateForPlacement(context), context.getLevel(), context.getClickedPos());
 	}
 
 	@Override
@@ -55,17 +54,17 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	}
 
 	@Override
-	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
-		return IAbyssalineChargeable.super.outputsChargeFrom(stateIn, faceIn) && this.acceptsChargeFrom(stateIn, faceIn);
+	public boolean outputsChargeTo(BlockState stateIn, Direction faceIn) {
+		return IAbyssalineChargeable.super.outputsChargeTo(stateIn, faceIn) && this.acceptsChargeFrom(stateIn, faceIn);
 	}
 
 	// Slabs should never transfer power through the faces that don't collide, so don't provide a state here that can.
 	@Override
-	public BlockState getStateWithChargeDirection(BlockState stateIn, Direction faceOut) {
+	public BlockState getStateWithChargeDirection(BlockState stateIn, Direction directionToSource) {
 		SlabType type = stateIn.getValue(TYPE);
-		if (type == SlabType.TOP && faceOut == Direction.DOWN) return stateIn;
-		if (type == SlabType.BOTTOM && faceOut == Direction.UP) return stateIn;
-		return stateIn.setValue(CHARGE_SOURCE, faceOut);
+		if (type == SlabType.TOP && directionToSource == Direction.DOWN) return stateIn;
+		if (type == SlabType.BOTTOM && directionToSource == Direction.UP) return stateIn;
+		return stateIn.setValue(CHARGE_SOURCE, directionToSource);
 	}
 
 }

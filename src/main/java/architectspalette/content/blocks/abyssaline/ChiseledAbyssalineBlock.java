@@ -26,7 +26,7 @@ public class ChiseledAbyssalineBlock extends Block implements IAbyssalineChargea
 	private final static BlockPos OFFSET = new BlockPos(0, 0, 0);
 
 	//Abyssaline stuff
-	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
+	public boolean outputsChargeTo(BlockState stateIn, Direction faceIn) {
 		return stateIn.getValue(CHARGED);
 	}
 

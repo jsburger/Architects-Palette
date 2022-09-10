@@ -26,8 +26,7 @@ public class AbyssalineNubBlock extends NubBlock implements IAbyssalineChargeabl
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-        return super.getStateForPlacement(context);
+        return AbyssalineHelper.getStateWithNeighborCharge(super.getStateForPlacement(context), context.getLevel(), context.getClickedPos());
     }
 
     @Override
@@ -53,7 +52,7 @@ public class AbyssalineNubBlock extends NubBlock implements IAbyssalineChargeabl
     }
 
     @Override
-    public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
+    public boolean outputsChargeTo(BlockState stateIn, Direction faceIn) {
         //The nub in theory should never output power since it only accepts it from one side, and charge isn't bidirectional.
         return false;
     }
@@ -65,7 +64,7 @@ public class AbyssalineNubBlock extends NubBlock implements IAbyssalineChargeabl
     }
 
     @Override
-    public BlockState getStateWithChargeDirection(BlockState stateIn, Direction faceOut) {
+    public BlockState getStateWithChargeDirection(BlockState stateIn, Direction directionToSource) {
         //Can't get power from anywhere other than a single spot, so it should never change when receiving power.
         return stateIn;
     }

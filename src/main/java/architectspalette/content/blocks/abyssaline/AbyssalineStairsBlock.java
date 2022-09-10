@@ -44,13 +44,12 @@ public class AbyssalineStairsBlock extends StairBlock implements IAbyssalineChar
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-		return super.getStateForPlacement(context);
+		return AbyssalineHelper.getStateWithNeighborCharge(super.getStateForPlacement(context), context.getLevel(), context.getClickedPos());
 	}
 
 	//Interface things
 	@Override
-	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
+	public boolean outputsChargeTo(BlockState stateIn, Direction faceIn) {
 		boolean topface = (stateIn.getValue(StairBlock.HALF) == Half.TOP);
 		boolean directionmatches = (topface && faceIn == Direction.UP) || (!topface && faceIn == Direction.DOWN);
 		return this.isCharged(stateIn) && directionmatches;
@@ -68,7 +67,7 @@ public class AbyssalineStairsBlock extends StairBlock implements IAbyssalineChar
 
 	@Override
 	// The stairs shouldn't rotate just to recieve charge.
-	public BlockState getStateWithChargeDirection(BlockState stateIn, Direction faceOut) {
+	public BlockState getStateWithChargeDirection(BlockState stateIn, Direction directionToSource) {
 		return stateIn;
 	}
 }

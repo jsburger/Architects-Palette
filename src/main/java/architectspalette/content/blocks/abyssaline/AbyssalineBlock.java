@@ -55,9 +55,9 @@ public class AbyssalineBlock extends Block implements IAbyssalineChargeable, IBl
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-        return this.defaultBlockState();
-//        return getStateWithNeighborCharge(this.getDefaultState(), context.getWorld(), context.getPos());
+//        context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
+//        return this.defaultBlockState();
+        return AbyssalineHelper.getStateWithNeighborCharge(this.defaultBlockState(), context.getLevel(), context.getClickedPos());
     }
 
 

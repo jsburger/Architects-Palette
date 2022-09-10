@@ -31,8 +31,7 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-		return super.getStateForPlacement(context);
+		return AbyssalineHelper.getStateWithNeighborCharge(super.getStateForPlacement(context), context.getLevel(), context.getClickedPos());
 	}
 
 	@Override
@@ -52,7 +51,7 @@ public class AbyssalinePillarBlock extends RotatedPillarBlock implements IAbyssa
 	}
 
 	@Override
-	public boolean outputsChargeFrom(BlockState stateIn, Direction faceIn) {
+	public boolean outputsChargeTo(BlockState stateIn, Direction faceIn) {
 		return this.isCharged(stateIn) &&
 				!(faceIn == this.getSourceDirection(stateIn)) &&
 				faceIn.getAxis() == stateIn.getValue(AXIS);

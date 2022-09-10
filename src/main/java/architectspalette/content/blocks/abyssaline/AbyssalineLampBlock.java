@@ -33,8 +33,7 @@ public class AbyssalineLampBlock extends RotatedPillarBlock implements IAbyssali
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        context.getLevel().scheduleTick(context.getClickedPos(), this, 1);
-        return super.getStateForPlacement(context);
+        return AbyssalineHelper.getStateWithNeighborCharge(super.getStateForPlacement(context), context.getLevel(), context.getClickedPos());
     }
 
     @Override
