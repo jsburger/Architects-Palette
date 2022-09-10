@@ -23,12 +23,6 @@ public class ShapeRotator {
 //    }
 
 
-    //You'll never believe where I found this.
-    //I was searching the MMD for if Minecraft cached block shapes or not.
-    //Turns out that some guy (goes by Max) already wrote this function and was trying to mixin it directly to the VoxelShape class.
-    //Someone told him to make sure to cache the results after using this, that's why it came up in my search.
-    //Crazy, right? I was going to make the points into vectors and rotate them with quaternions, but this seems way better.
-    //Don't tell anyone, though. I'm not sure Max will appreciate this.
     public static VoxelShape rotateShapeHorizontal(VoxelShape shape, Direction from, Direction to) {
         if (from == to) return shape;
 

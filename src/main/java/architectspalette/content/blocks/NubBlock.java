@@ -51,6 +51,8 @@ public class NubBlock extends WaterloggableDirectionalBlock {
         return SHAPES.get(state.getValue(FACING));
     }
 
+
+    //Copper nubs
     public static class CopperNubBlock extends NubBlock implements APWeatheringCopper {
         private final WeatheringCopper.WeatherState weatherState;
 

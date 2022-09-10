@@ -159,7 +159,7 @@ public class StoneBlockSet {
             case FENCE -> new FenceBlock(properties);
             case PILLAR -> new RotatedPillarBlock(properties);
             case NUB -> new NubBlock(properties);
-            case BLOCK -> throw new IllegalStateException("Should not call createPart on BLOCK. Use setPart instead.");
+            case BLOCK -> throw new IllegalStateException("Should not call makePart on BLOCK. Use setPart instead.");
         };
     }
 
