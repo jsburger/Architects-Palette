@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "vertical_slab_revert",
+    "ingredients": [
+        {
+            "item": "architects_palette:hadaline_brick_vertical_slab"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "item": "architects_palette:hadaline_brick_slab"
+    },
+    "conditions": [
+        {
+            "type": "architects_palette:enable_vertical_slabs"
+        }
+    ]
+}

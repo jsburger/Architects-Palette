@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:hadaline"
+        }
+    ],
+    "result": "architects_palette:hadaline_tiles",
+    "count": 1
+}

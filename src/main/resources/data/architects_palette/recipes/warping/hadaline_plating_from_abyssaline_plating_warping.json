@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "item": "architects_palette:abyssaline_plating"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:hadaline_plating"
+    },
+    "dimension": "minecraft:the_nether"
+}

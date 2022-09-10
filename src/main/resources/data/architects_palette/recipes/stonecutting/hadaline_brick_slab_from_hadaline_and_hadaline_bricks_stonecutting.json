@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": [
+        {
+            "item": "architects_palette:hadaline"
+        },
+        {
+            "item": "architects_palette:hadaline_bricks"
+        }
+    ],
+    "result": "architects_palette:hadaline_brick_slab",
+    "count": 2
+}

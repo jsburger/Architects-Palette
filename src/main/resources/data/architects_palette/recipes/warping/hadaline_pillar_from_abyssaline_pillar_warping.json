@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "item": "architects_palette:abyssaline_pillar"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:hadaline_pillar"
+    },
+    "dimension": "minecraft:the_nether"
+}

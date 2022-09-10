@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xxx",
+        "x x",
+        "xxx"
+    ],
+    "key": {
+        "x": {
+            "item": "architects_palette:hadaline"
+        }
+    },
+    "result": {
+        "count": 8,
+        "item": "architects_palette:hadaline_plating"
+    }
+}

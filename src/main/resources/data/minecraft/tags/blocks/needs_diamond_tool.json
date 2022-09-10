@@ -11,6 +11,16 @@
     "architects_palette:abyssaline_tile_slab",
     "architects_palette:abyssaline_tile_vertical_slab",
     "architects_palette:chiseled_abyssaline_bricks",
-    "architects_palette:abyssaline_plating"
+    "architects_palette:abyssaline_plating",
+    "architects_palette:hadaline_bricks",
+    "architects_palette:hadaline_tiles",
+    "architects_palette:hadaline_tile_slab",
+    "architects_palette:hadaline_tile_vertical_slab",
+    "architects_palette:hadaline_brick_slab",
+    "architects_palette:hadaline_brick_vertical_slab",
+    "architects_palette:hadaline_pillar",
+    "architects_palette:hadaline",
+    "architects_palette:hadaline_plating",
+    "architects_palette:hadaline_lamp"
   ]
 }

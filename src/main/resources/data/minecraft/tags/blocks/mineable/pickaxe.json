@@ -285,6 +285,16 @@
     "architects_palette:ancient_plating_vertical_slab",
     "architects_palette:ancient_plating_fence",
     "architects_palette:hazard_sign",
-    "#architects_palette:nubs"
+    "#architects_palette:nubs",
+    "architects_palette:hadaline_bricks",
+    "architects_palette:hadaline_tiles",
+    "architects_palette:hadaline_tile_slab",
+    "architects_palette:hadaline_tile_vertical_slab",
+    "architects_palette:hadaline_brick_slab",
+    "architects_palette:hadaline_brick_vertical_slab",
+    "architects_palette:hadaline_pillar",
+    "architects_palette:hadaline",
+    "architects_palette:hadaline_plating",
+    "architects_palette:hadaline_lamp"
   ]
 }
