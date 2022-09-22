@@ -13,11 +13,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.*;
 
-public class StoneBlockSet {
+public class StoneBlockSet implements Supplier<Block> {
     private final String material_name;
     private final List<RegistryObject<? extends Block>> parts;
 
@@ -76,8 +77,16 @@ public class StoneBlockSet {
         return parts.stream().filter(Objects::nonNull).map(RegistryObject::get);
     }
 
+    private Stream<RegistryObject<? extends Block>> registryObjectStream() {
+        //Returns a stream of all the present registry objects in this set.
+        return parts.stream().filter(Objects::nonNull);
+    }
+
     public void forEach(Consumer<? super Block> action) {
         this.blockStream().forEach(action);
+    }
+    public void forEachRegistryObject(Consumer<RegistryObject<? extends Block>> action) {
+        this.registryObjectStream().forEach(action);
     }
 
     public void registerFlammable(int encouragement, int flammability) {

@@ -1,5 +1,7 @@
 package architectspalette.core.registry.util;
 
+import architectspalette.core.event.ModelBakeEventHandler;
+import architectspalette.core.model.BoardModel;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import net.minecraft.world.item.BlockItem;
@@ -14,8 +16,7 @@ import java.util.function.Supplier;
 public class RegistryUtils {
 	
 	public static <I extends Item> RegistryObject<I> createItem(String name, Supplier<? extends I> supplier) {
-		RegistryObject<I> item = APItems.ITEMS.register(name, supplier);
-		return item;
+		return APItems.ITEMS.register(name, supplier);
 	}
 
 	public static <B extends Block> RegistryObject<B> createBlock(String name, Supplier<? extends B> supplier) {
@@ -29,8 +30,14 @@ public class RegistryUtils {
 	}
 	
 	public static <B extends Block> RegistryObject<B> createBlockNoItem(String name, Supplier<? extends B> supplier) {
-		RegistryObject<B> block = APBlocks.BLOCKS.register(name, supplier);
-		return block;
+		return APBlocks.BLOCKS.register(name, supplier);
 	}
-	
+
+	public static <B extends Block> StoneBlockSet createBoardSet(String name, Supplier<? extends B> supplier) {
+		StoneBlockSet boardSet = new StoneBlockSet(createBlock(name, supplier), StoneBlockSet.SetGroup.NO_WALLS);
+		boardSet.forEachRegistryObject((obj) -> {
+			ModelBakeEventHandler.register(obj, BoardModel::new);
+		});
+		return boardSet;
+	}
 }
