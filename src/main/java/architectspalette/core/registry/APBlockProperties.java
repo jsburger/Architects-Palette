@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -17,7 +18,6 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.stream.Stream;
 
 import static architectspalette.core.registry.APBlocks.*;
-import static architectspalette.core.registry.util.DataUtils.registerFlammable;
 
 public class APBlockProperties {
 	private static Block.Properties AbyssalineBase() {
@@ -169,4 +169,9 @@ public class APBlockProperties {
 		}
 	}
 
+
+	final static FireBlock fire = (FireBlock) Blocks.FIRE;
+    public static void registerFlammable(Block block, Integer encouragement, Integer flammability) {
+        fire.setFlammable(block, encouragement, flammability);
+    }
 }

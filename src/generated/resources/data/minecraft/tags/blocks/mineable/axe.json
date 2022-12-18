@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "architects_palette:twisted_planks",
+    "architects_palette:twisted_slab",
+    "architects_palette:twisted_vertical_slab",
+    "architects_palette:twisted_stairs",
+    "architects_palette:birch_boards",
+    "architects_palette:birch_board_slab",
+    "architects_palette:birch_board_vertical_slab",
+    "architects_palette:birch_board_stairs",
+    "architects_palette:spruce_boards",
+    "architects_palette:spruce_board_slab",
+    "architects_palette:spruce_board_vertical_slab",
+    "architects_palette:spruce_board_stairs"
+  ]
+}

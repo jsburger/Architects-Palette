@@ -16,6 +16,11 @@ public class GatherData {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
             generator.addProvider(new Advancements(generator));
+            generator.addProvider(new APBlockTags(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
+            generator.addProvider(new APLootTables(generator));
+        }
+        if (event.includeClient()) {
+            generator.addProvider(new Blockstates(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
         }
     }
 }

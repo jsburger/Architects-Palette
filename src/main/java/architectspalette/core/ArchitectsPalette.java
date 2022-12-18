@@ -57,8 +57,16 @@ public class ArchitectsPalette {
         forgeBus.addListener(APConfiguredFeatures::biomeLoadEvent);
 
         CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
-        
+
         GatherData.load();
+//        AtomicInteger size = new AtomicInteger(APBlocks.BLOCKS.getEntries().size());
+//        StoneBlockSet.forAllSets((set -> {
+//            set.forEachRegistryObject(a ->
+//                    size.addAndGet(-1)
+//            );
+//            size.addAndGet(1);
+//        }));
+//        LOGGER.debug("Block Count: " + size.get());
 
     }
 

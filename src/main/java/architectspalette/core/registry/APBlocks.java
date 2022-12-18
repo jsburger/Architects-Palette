@@ -27,8 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static architectspalette.core.registry.util.RegistryUtils.createBlock;
-import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
+import static architectspalette.core.registry.util.RegistryUtils.*;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NUB;
 import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.*;
@@ -41,9 +40,9 @@ public class APBlocks {
     public static final RegistryObject<Block> ABYSSALINE = createBlock("abyssaline", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final StoneBlockSet ABYSSALINE_BRICKS = new StoneBlockSet(createBlock("abyssaline_bricks", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
     public static final StoneBlockSet ABYSSALINE_TILES = new StoneBlockSet(createBlock("abyssaline_tiles", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
-    public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
-    public static final RegistryObject<AbyssalinePillarBlock>   ABYSSALINE_PILLAR          = createBlock("abyssaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
-    public static final RegistryObject<AbyssalineLampBlock>     ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE_LAMP.sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> CHISELED_ABYSSALINE_BRICKS = createBlock("chiseled_abyssaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
+    public static final RegistryObject<Block> ABYSSALINE_PILLAR          = createBlock("abyssaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
+    public static final RegistryObject<Block> ABYSSALINE_LAMP_BLOCK      = createBlock("abyssaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE_LAMP.sound(SoundType.GLASS)));
     public static final RegistryObject<AbyssalineBlock> ABYSSALINE_PLATING = createBlock("abyssaline_plating", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
 
     // Hadaline
@@ -182,7 +181,7 @@ public class APBlocks {
 
     // Twisted Wood
      // Todo: Bookshelf, sign(?), boat(?)
-    public static final StoneBlockSet TWISTED_PLANKS = new StoneBlockSet(createBlock("twisted_planks", () -> new Block(APBlockProperties.TwistedWood())), NO_WALLS);
+    public static final StoneBlockSet TWISTED_PLANKS = new StoneBlockSet(createBlock("twisted_planks", () -> new Block(APBlockProperties.TwistedWood())), NO_WALLS).woodify();
 
     public static final RegistryObject<Block>  STRIPPED_TWISTED_LOG = createBlock("stripped_twisted_log", () -> new RotatedPillarBlock(APBlockProperties.TwistedWood()));
     public static final RegistryObject<Block> STRIPPED_TWISTED_WOOD = createBlock("stripped_twisted_wood",() -> new RotatedPillarBlock(APBlockProperties.TwistedWood()));
@@ -233,8 +232,10 @@ public class APBlocks {
 
     // Boards
     public static final RegistryObject<Block> OAK_BOARDS = createBlock("oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<Block> BIRCH_BOARDS = createBlock("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-    public static final RegistryObject<Block> SPRUCE_BOARDS = createBlock("spruce_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+//    public static final RegistryObject<Block> BIRCH_BOARDS = createBlock("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final StoneBlockSet BIRCH_BOARDS = createBoardSet("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+//    public static final RegistryObject<Block> SPRUCE_BOARDS = createBlock("spruce_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final StoneBlockSet SPRUCE_BOARDS = createBoardSet("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
     public static final RegistryObject<Block> JUNGLE_BOARDS = createBlock("jungle_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
     public static final RegistryObject<Block> DARK_OAK_BOARDS = createBlock("dark_oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
     public static final RegistryObject<Block> ACACIA_BOARDS = createBlock("acacia_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));

@@ -1,9 +1,6 @@
 package architectspalette.core.event;
 
 import architectspalette.core.ArchitectsPalette;
-import architectspalette.core.model.BoardModel;
-import architectspalette.core.model.util.SpriteShift;
-import architectspalette.core.registry.APBlocks;
 import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -29,9 +26,9 @@ public class ModelBakeEventHandler {
     @SubscribeEvent
     public static void onModelBake(ModelBakeEvent event) {
         Map<ResourceLocation, BakedModel> modelRegistry = event.getModelRegistry();
-
-        SpriteShift birchShift = new SpriteShift(new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards"), new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards_odd"));
-        register(APBlocks.BIRCH_BOARDS, model -> new BoardModel(model, birchShift));
+//
+//        SpriteShift birchShift = new SpriteShift(new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards"), new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards_odd"));
+//        register(APBlocks.BIRCH_BOARDS, model -> new BoardModel(model, birchShift));
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
 

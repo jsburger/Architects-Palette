@@ -33,6 +33,13 @@ mixin {
     add sourceSets.main, "${project.modId}.refmap.json"
 }
 
+
+//Add datagen and asset repo to resources folder when built
+sourceSets.main.resources {
+    srcDirs += 'src/ap-assets/resources'
+    srcDirs += 'src/generated/resources'
+}
+
 minecraft {
     mappings channel: "${project.mappingsChannel}", version: project.mappings
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -69,7 +76,7 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', project.modId, '--all', '--output', file('src/generated/resources/'), '--existing', file("src/main/resources")
+            args '--mod', project.modId, '--all', '--output', file('src/generated/resources/'), '--existing', file("src/main/resources"), '--existing', file("src/ap-assets/resources")
 
             environment 'target', 'fmluserdevdata'
 
@@ -82,11 +89,6 @@ minecraft {
     }
 }
 
-//Add datagen and asset repo to resources folder when built
-sourceSets.main.resources {
-    srcDirs += 'src/generated/resources'
-    srcDirs += 'src/ap-assets/resources'
-}
 
 //When duplicate files are found, keep ones from main, exclude copies
 processResources {

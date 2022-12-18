@@ -2,15 +2,16 @@ package architectspalette.core.registry.util;
 
 import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
+import architectspalette.core.registry.APBlockProperties;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -21,6 +22,15 @@ import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.*;
 public class StoneBlockSet implements Supplier<Block> {
     private final String material_name;
     private final List<RegistryObject<? extends Block>> parts;
+
+    public TagKey<Block> miningTag = BlockTags.MINEABLE_WITH_PICKAXE;
+    public TagKey<Block> miningLevel = null;
+    public boolean hasStoneCuttingRecipes = true;
+
+    private static final List<StoneBlockSet> instances = new LinkedList<>();
+    public static void forAllSets(Consumer<StoneBlockSet> consumer) {
+        instances.forEach(consumer);
+    }
 
     public StoneBlockSet(RegistryObject<? extends Block> base_block) {
         this(base_block, SetGroup.TYPICAL);
@@ -43,6 +53,9 @@ public class StoneBlockSet implements Supplier<Block> {
         this.material_name = getMaterialFromBlock(base_block.getId().getPath());
         setPart(BLOCK, base_block);
         Arrays.stream(parts).forEachOrdered(this::createPart);
+
+        //Real Java developers in the crowd seething right now
+        instances.add(this);
     }
 
     // Stone Bricks Slab -> Stone Brick Slab. Oak Planks Stairs -> Oak Stairs
@@ -51,7 +64,8 @@ public class StoneBlockSet implements Supplier<Block> {
                 .replace("bricks", "brick")
                 .replace("_planks", "")
                 .replace("_block", "")
-                .replace("tiles", "tile");
+                .replace("tiles", "tile")
+                .replace("boards", "board");
     }
 
     // Go all the way. Stone Bricks -> Stone. Meant for pillars and such.
@@ -88,9 +102,38 @@ public class StoneBlockSet implements Supplier<Block> {
     public void forEachRegistryObject(Consumer<RegistryObject<? extends Block>> action) {
         this.registryObjectStream().forEach(action);
     }
+    public void forEachPart(BiConsumer<SetComponent, ? super Block> consumer) {
+        for (int i = 0; i < parts.size(); i++) {
+            if (parts.get(i) != null) {
+                consumer.accept(SetComponent.get(i), parts.get(i).get());
+            }
+        }
+    }
 
     public void registerFlammable(int encouragement, int flammability) {
-        this.forEach((b) -> DataUtils.registerFlammable(b, encouragement, flammability));
+        this.forEach((b) -> APBlockProperties.registerFlammable(b, encouragement, flammability));
+    }
+
+    public StoneBlockSet woodify() {
+        this.usesAxe();
+        hasStoneCuttingRecipes = false;
+        return this;
+    }
+    public StoneBlockSet usesAxe() {
+        this.miningTag = BlockTags.MINEABLE_WITH_AXE;
+        return this;
+    }
+    public StoneBlockSet needsStone() {
+        this.miningLevel = BlockTags.NEEDS_STONE_TOOL;
+        return this;
+    }
+    public StoneBlockSet needsIron() {
+        this.miningLevel = BlockTags.NEEDS_IRON_TOOL;
+        return this;
+    }
+    public StoneBlockSet needsDiamond() {
+        this.miningLevel = BlockTags.NEEDS_DIAMOND_TOOL;
+        return this;
     }
 
     public enum SetComponent {
@@ -122,6 +165,9 @@ public class StoneBlockSet implements Supplier<Block> {
         private static String pillarName(String material) {
             return getMaterialAggressive(material) + "_pillar";
         }
+
+        private static final SetComponent[] values = values();
+        public static SetComponent get(int ordinal) { return values[ordinal]; }
     }
 
     public enum SetGroup {
@@ -142,11 +188,20 @@ public class StoneBlockSet implements Supplier<Block> {
     public Block getPart(SetComponent part) {
         return parts.get(part.ordinal()).get();
     }
+    public RegistryObject<? extends Block> getRegistryPart(SetComponent part) {
+        return parts.get(part.ordinal());
+    }
     private void setPart(SetComponent part, RegistryObject<? extends Block> block) {
         parts.add(part.ordinal(), block);
     }
     private void createPart(SetComponent part) {
         setPart(part, makePart(part));
+    }
+    public void withPart(SetComponent part, Consumer<Block> action) {
+        Block block = getPart(part);
+        if (block != null) {
+            action.accept(block);
+        }
     }
 
     private RegistryObject<Block> makePart(SetComponent part) {

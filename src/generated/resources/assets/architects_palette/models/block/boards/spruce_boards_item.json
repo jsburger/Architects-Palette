@@ -1,0 +1,7 @@
+{
+  "parent": "architects_palette:block/boards/parent",
+  "textures": {
+    "even": "architects_palette:block/spruce_boards",
+    "odd": "architects_palette:block/spruce_boards_odd"
+  }
+}
