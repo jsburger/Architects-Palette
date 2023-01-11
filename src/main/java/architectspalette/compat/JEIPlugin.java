@@ -13,7 +13,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -84,6 +84,6 @@ public class JEIPlugin implements IModPlugin {
     }
 
     private static void addItemInfo(IRecipeRegistration register, ItemLike item, String infoString) {
-        register.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, new TranslatableComponent(ArchitectsPalette.MOD_ID + ".info." + infoString));
+        register.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, Component.translatable(ArchitectsPalette.MOD_ID + ".info." + infoString));
     }
 }

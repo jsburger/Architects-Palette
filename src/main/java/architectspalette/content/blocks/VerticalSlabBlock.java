@@ -8,7 +8,6 @@ import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.CreativeModeTab;
@@ -78,7 +77,7 @@ public class VerticalSlabBlock extends Block implements SimpleWaterloggedBlock {
 	public void appendHoverText(ItemStack stack, BlockGetter worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		if(!isQuarkEnabled())
-			tooltip.add(new TranslatableComponent("architects_palette.misc.no_quark").withStyle(ChatFormatting.RED));
+			tooltip.add(Component.translatable("architects_palette.misc.no_quark").withStyle(ChatFormatting.RED));
 	}
 	
 	@Override
