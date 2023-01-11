@@ -14,8 +14,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
 import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 
@@ -66,7 +66,7 @@ public class Advancements extends AdvancementProvider {
     public static class APAdvancements implements Consumer<Consumer<Advancement>> {
 
         private static MutableComponent getTranslationKey(String key, Object... args) {
-            return new TranslatableComponent(ArchitectsPalette.MOD_ID + "." + key, args);
+            return Component.translatable(ArchitectsPalette.MOD_ID + "." + key, args);
         }
 
         private String getNameId(String id) {

@@ -13,7 +13,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -29,7 +28,7 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
     private final IDrawable icon;
 
     public WarpingRecipeCategory(IGuiHelper helper) {
-        title = new TranslatableComponent(ArchitectsPalette.MOD_ID + ".info.warping_recipe_title");
+        title = Component.translatable(ArchitectsPalette.MOD_ID + ".info.warping_recipe_title");
         background = helper.createDrawable(new ResourceLocation(ArchitectsPalette.MOD_ID, "textures/gui/warping_recipe.png"), 0, 0, 117, 57);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(APBlocks.WARPSTONE.get()));
     }
@@ -80,8 +79,8 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
         List<Component> strings = new java.util.ArrayList<>();
         if (pointInBox(mouseX, mouseY, 49, 12, 18, 35)) {
             ResourceLocation targetDimension = recipe.getDimension();
-            TranslatableComponent dimensionName = new TranslatableComponent(ArchitectsPalette.MOD_ID + ".info.dimension." + targetDimension.toString().replace(":", "."));
-            TranslatableComponent tossPrompt = new TranslatableComponent(ArchitectsPalette.MOD_ID + ".info.warping_toss_description", dimensionName);
+            Component dimensionName = Component.translatable(ArchitectsPalette.MOD_ID + ".info.dimension." + targetDimension.toString().replace(":", "."));
+            Component tossPrompt = Component.translatable(ArchitectsPalette.MOD_ID + ".info.warping_toss_description", dimensionName);
 
             strings.add(tossPrompt);
 
