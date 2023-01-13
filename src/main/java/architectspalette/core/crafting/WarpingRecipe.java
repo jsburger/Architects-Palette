@@ -11,7 +11,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -86,12 +85,7 @@ public class WarpingRecipe implements Recipe<Container> {
         return WarpingRecipe.TYPE;
     }
 
-    private static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<WarpingRecipe> {
-
-        Serializer() {
-            this.setRegistryName(new ResourceLocation(ArchitectsPalette.MOD_ID, "warping"));
-        }
-
+    public static class Serializer implements RecipeSerializer<WarpingRecipe> {
         @Override
         public WarpingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 
@@ -127,7 +121,7 @@ public class WarpingRecipe implements Recipe<Container> {
 
         @Override
         public String toString() {
-            return ArchitectsPalette.MOD_ID.concat(":warping");
+            return "warping";
         }
 
         public <C extends Container> Optional<WarpingRecipe> find(C inv, Level world) {
