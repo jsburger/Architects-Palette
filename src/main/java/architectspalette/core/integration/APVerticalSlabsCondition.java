@@ -34,12 +34,6 @@ public class APVerticalSlabsCondition implements ICondition {
 		return APConfig.VERTICAL_SLABS_FORCED.get();
 	}
 
-	@SuppressWarnings("removal")
-	@Override
-	public boolean test() {
-		return test(IContext.EMPTY);
-	}
-
 	public static class Serializer implements IConditionSerializer<APVerticalSlabsCondition> {
 
 		@Override
