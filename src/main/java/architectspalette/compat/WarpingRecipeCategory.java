@@ -30,24 +30,12 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
     public WarpingRecipeCategory(IGuiHelper helper) {
         title = Component.translatable(ArchitectsPalette.MOD_ID + ".info.warping_recipe_title");
         background = helper.createDrawable(new ResourceLocation(ArchitectsPalette.MOD_ID, "textures/gui/warping_recipe.png"), 0, 0, 117, 57);
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(APBlocks.WARPSTONE.get()));
-    }
-
-    @SuppressWarnings("removal")
-    @Override
-    public ResourceLocation getUid() {
-        return getRecipeType().getUid();
+        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(APBlocks.WARPSTONE.get()));
     }
 
     @Override
     public RecipeType<WarpingRecipe> getRecipeType() {
         return JEIPlugin.WARPING;
-    }
-
-    @SuppressWarnings("removal")
-    @Override
-    public Class<? extends WarpingRecipe> getRecipeClass() {
-        return getRecipeType().getRecipeClass();
     }
 
     @Override

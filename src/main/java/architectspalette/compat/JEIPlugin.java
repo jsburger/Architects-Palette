@@ -84,6 +84,6 @@ public class JEIPlugin implements IModPlugin {
     }
 
     private static void addItemInfo(IRecipeRegistration register, ItemLike item, String infoString) {
-        register.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, Component.translatable(ArchitectsPalette.MOD_ID + ".info." + infoString));
+        register.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, Component.translatable(ArchitectsPalette.MOD_ID + ".info." + infoString));
     }
 }
