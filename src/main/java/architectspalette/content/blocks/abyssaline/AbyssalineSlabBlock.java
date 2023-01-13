@@ -3,6 +3,7 @@ package architectspalette.content.blocks.abyssaline;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -10,8 +11,6 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.SlabType;
-
-import java.util.Random;
 
 import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGED;
 import static architectspalette.content.blocks.abyssaline.NewAbyssalineBlock.CHARGE_SOURCE;
@@ -40,7 +39,7 @@ public class AbyssalineSlabBlock extends SlabBlock implements IAbyssalineChargea
 	}
 	
 	@Override
-	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
 		AbyssalineHelper.abyssalineTick(state, worldIn, pos);
 	}
 

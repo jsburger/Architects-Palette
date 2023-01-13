@@ -3,6 +3,7 @@ package architectspalette.content.blocks;
 import architectspalette.core.config.APConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -14,7 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-import java.util.Random;
 import java.util.function.Function;
 
 @SuppressWarnings("deprecation")
@@ -51,7 +51,7 @@ public class SunstoneBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         if (!worldIn.isClientSide) {
             Integer lightstate = this.lightSupplier.apply(worldIn);
             if (!lightstate.equals(state.getValue(LIGHT))) {
@@ -66,7 +66,7 @@ public class SunstoneBlock extends Block {
             //Default 35%
             Double chance = APConfig.SUNSTONE_SPREAD_CHANCE.get();
             if (chance > 0) {
-                Random rand = worldIn.getRandom();
+                RandomSource rand = worldIn.getRandom();
                 if (rand.nextDouble() <= chance) {
                     worldIn.scheduleTick(currentPos, this, (int) (2 + Math.floor(rand.nextDouble() * 6)));
                 }

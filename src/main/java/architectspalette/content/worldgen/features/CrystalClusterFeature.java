@@ -6,6 +6,7 @@ import com.mojang.math.Vector3f;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -14,7 +15,6 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 import java.util.List;
-import java.util.Random;
 
 public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
 
@@ -37,11 +37,11 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
         }
 
         CrystalClusterConfig config = context.config();
-        Random random = context.random();
+        RandomSource random = context.random();
 
         //Set horizontal angle used to skew the shelves of crystals
         Vector3f shelfAngle = Vector3f.XN.copy();
-        shelfAngle.transform(Vector3f.YP.rotationDegrees(random.nextFloat(360)));
+        shelfAngle.transform(Vector3f.YP.rotationDegrees(random.nextFloat() * 360.0F));
 
         //Set horizontal angle that determines the spaces between shelves
         Vector3f formationAngle = shelfAngle.copy();
@@ -72,7 +72,7 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
     }
 
     private static void placeShelf(BlockPos startPos, int crystals, Vector3f shelfAngle, float shelfScale, FeaturePlaceContext<CrystalClusterConfig> context, List<BlockPos> crystalList) {
-        Random random = context.random();
+        RandomSource random = context.random();
         CrystalClusterConfig config = context.config();
         WorldGenLevel world = context.level();
 
@@ -132,7 +132,7 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
         }
     }
 
-    private static void tryPlaceExtrusion(BlockPos startPos, WorldGenLevel level, BlockState placeState, Block avoidBlock, int flip, Random random) {
+    private static void tryPlaceExtrusion(BlockPos startPos, WorldGenLevel level, BlockState placeState, Block avoidBlock, int flip, RandomSource random) {
         for (Direction dir : Direction.values()) {
             if (dir.getAxis() != Direction.Axis.Y) {
                 if (random.nextInt(3) != 1) continue;
@@ -155,12 +155,12 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
         }
     }
 
-    private static int iRandomRange(Random random, int min, int max) {
+    private static int iRandomRange(RandomSource random, int min, int max) {
         return min + (random.nextInt((max - min) + 1));
     }
 
-    private static float fRandomRange(Random random, float min, float max) {
-        return min + (random.nextFloat((max - min)));
+    private static float fRandomRange(RandomSource random, float min, float max) {
+        return min + (random.nextFloat() * (max - min));
     }
 
     private static boolean canReplaceAt(WorldGenLevel level, BlockPos pos) {
