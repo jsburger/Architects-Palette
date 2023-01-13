@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -29,7 +30,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Map;
-import java.util.Random;
 import java.util.function.ToIntFunction;
 
 public class CageLanternBlock extends Block implements SimpleWaterloggedBlock {
@@ -135,7 +135,7 @@ public class CageLanternBlock extends Block implements SimpleWaterloggedBlock {
         return SHAPES.get(state.getValue(FACING));
     }
 
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         boolean shouldBeLit = getLitState(state, worldIn, pos);
         if (shouldBeLit != state.getValue(LIT)) {
             worldIn.setBlock(pos, state.setValue(LIT, shouldBeLit), 2);

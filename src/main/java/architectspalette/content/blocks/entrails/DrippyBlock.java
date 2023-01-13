@@ -5,6 +5,7 @@ import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -15,7 +16,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Random;
 
 public class DrippyBlock extends Block implements IBlockSetBase {
     public DrippyBlock(Properties properties) {
@@ -33,12 +33,12 @@ public class DrippyBlock extends Block implements IBlockSetBase {
 
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         doParticleEffect(stateIn, worldIn, pos, rand);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void doParticleEffect(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+    public static void doParticleEffect(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         if (rand.nextInt(6) == 0) {
             Direction direction = Direction.getRandom(rand);
             if (direction != Direction.UP && direction != Direction.DOWN) {

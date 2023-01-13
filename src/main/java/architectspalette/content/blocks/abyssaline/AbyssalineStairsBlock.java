@@ -3,6 +3,7 @@ package architectspalette.content.blocks.abyssaline;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -12,7 +13,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.Half;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class AbyssalineStairsBlock extends StairBlock implements IAbyssalineChargeable {
@@ -38,7 +38,7 @@ public class AbyssalineStairsBlock extends StairBlock implements IAbyssalineChar
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
 		AbyssalineHelper.abyssalineTick(state, worldIn, pos);
 	}
 

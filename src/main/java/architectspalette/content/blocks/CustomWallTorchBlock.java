@@ -4,11 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 //This class is only required because registry order is static, and particles come after blocks. The normal torch constructor cannot take a modded particle.
@@ -22,7 +22,7 @@ public class CustomWallTorchBlock extends WallTorchBlock {
     }
 
     @Override
-    public void animateTick(BlockState p_58128_, Level p_58129_, BlockPos p_58130_, Random p_58131_) {
+    public void animateTick(BlockState p_58128_, Level p_58129_, BlockPos p_58130_, RandomSource p_58131_) {
         Direction direction = p_58128_.getValue(FACING);
         double d0 = (double)p_58130_.getX() + 0.5D;
         double d1 = (double)p_58130_.getY() + 0.7D;
