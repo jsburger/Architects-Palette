@@ -15,7 +15,7 @@ public class GatherData {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
-            generator.addProvider(new Advancements(generator));
+            generator.addProvider(true, new Advancements(generator));
         }
     }
 }
