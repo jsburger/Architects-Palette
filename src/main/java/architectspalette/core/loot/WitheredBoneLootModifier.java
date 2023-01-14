@@ -1,9 +1,10 @@
 package architectspalette.core.loot;
 
 import architectspalette.core.ArchitectsPalette;
-import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.item.Item;
@@ -11,18 +12,25 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
-import java.util.List;
+import java.util.function.Supplier;
 
 public class WitheredBoneLootModifier extends LootModifier {
     private final Item replacedItem;
     private final Item boneItem;
 
-    public static final Serializer SERIALIZER = new Serializer();
+    public static final Supplier<Codec<WitheredBoneLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst)
+        .and(
+            inst.group(
+                ForgeRegistries.ITEMS.getCodec().fieldOf("replaces").forGetter((m) -> m.replacedItem),
+                ForgeRegistries.ITEMS.getCodec().fieldOf("bone").forGetter((m) -> m.boneItem)
+            )
+        )
+        .apply(inst, WitheredBoneLootModifier::new)));
 
     protected WitheredBoneLootModifier(LootItemCondition[] conditionsIn, Item replacedItem, Item boneItem) {
         super(conditionsIn);
@@ -32,7 +40,7 @@ public class WitheredBoneLootModifier extends LootModifier {
 
     @Nonnull
     @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         Entity t = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         if (t == null) return generatedLoot;
         if (t instanceof WitherSkeleton) {
@@ -49,35 +57,9 @@ public class WitheredBoneLootModifier extends LootModifier {
         return generatedLoot;
     }
 
-    private static class Serializer extends GlobalLootModifierSerializer<WitheredBoneLootModifier> {
-
-        Serializer(){
-            this.setRegistryName(new ResourceLocation(ArchitectsPalette.MOD_ID, "wither_skeleton_bones"));
-        }
-
-        @Override
-        public WitheredBoneLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
-            String boneItem = GsonHelper.getAsString(object, "bone");
-            String replacedItem = GsonHelper.getAsString(object, "replaces");
-
-            Item witheredBone = ForgeRegistries.ITEMS.getValue(new ResourceLocation(boneItem));
-            Item bone         = ForgeRegistries.ITEMS.getValue(new ResourceLocation(replacedItem));
-
-            return new WitheredBoneLootModifier(ailootcondition, bone, witheredBone);
-        }
-
-        @Override
-        public JsonObject write(WitheredBoneLootModifier instance) {
-            JsonObject obj;
-            if (instance.conditions.length > 0) {
-                obj = makeConditions(instance.conditions);
-            }
-            else {
-                obj = new JsonObject();
-            }
-            obj.addProperty("bone", instance.boneItem.getRegistryName().toString());
-            obj.addProperty("replaces", instance.replacedItem.getRegistryName().toString());
-            return obj;
-        }
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec()
+    {
+        return CODEC.get();
     }
 }

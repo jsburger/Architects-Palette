@@ -8,13 +8,13 @@ import architectspalette.core.integration.APTrades;
 import architectspalette.core.integration.APVerticalSlabsCondition;
 import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.*;
+import com.mojang.serialization.Codec;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -23,6 +23,9 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -51,8 +54,8 @@ public class ArchitectsPalette {
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
-        modEventBus.addGenericListener(RecipeSerializer.class, this::registerRecipeSerializers);
-        modEventBus.addGenericListener(GlobalLootModifierSerializer.class, this::registerLootSerializers);
+        registerRecipeSerializers(modEventBus);
+        registerLootSerializers(modEventBus);
 
         forgeBus.addListener(APConfiguredFeatures::biomeLoadEvent);
 
@@ -79,15 +82,24 @@ public class ArchitectsPalette {
         APCriterion.register();
     }
 
-    void registerRecipeSerializers(final RegistryEvent.Register<RecipeSerializer<?>> event) {
+    void registerRecipeSerializers(IEventBus bus) {
         //Register the recipe type
-        Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(WarpingRecipe.TYPE.toString()), WarpingRecipe.TYPE);
+        DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registry.RECIPE_TYPE_REGISTRY, ArchitectsPalette.MOD_ID);
+        RegistryObject<RecipeType<WarpingRecipe>> WARPING = RECIPE_TYPES.register(WarpingRecipe.TYPE.toString(), () -> new RecipeType<WarpingRecipe>() {});
+
         //Register the serializer
-        event.getRegistry().register(WarpingRecipe.SERIALIZER);
+        DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ArchitectsPalette.MOD_ID);
+        RegistryObject<WarpingRecipe.Serializer> WARPING_S = RECIPE_SERIALIZERS.register(WarpingRecipe.TYPE.toString(), () -> WarpingRecipe.SERIALIZER);
+
+        RECIPE_TYPES.register(bus);
+        RECIPE_SERIALIZERS.register(bus);
     }
 
-    void registerLootSerializers(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
-        event.getRegistry().register(WitheredBoneLootModifier.SERIALIZER);
+    void registerLootSerializers(IEventBus bus) {
+        DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ArchitectsPalette.MOD_ID);
+        RegistryObject<Codec<WitheredBoneLootModifier>> WITHER_SKELETON_DROPS = LOOT.register("wither_skeleton_bones", WitheredBoneLootModifier.CODEC);
+
+        LOOT.register(bus);
     }
 
     void setupClient(final FMLClientSetupEvent event) {
