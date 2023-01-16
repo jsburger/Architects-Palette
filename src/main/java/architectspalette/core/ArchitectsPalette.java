@@ -48,21 +48,21 @@ public class ArchitectsPalette {
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
         APFeatures.FEATURES.register(modEventBus);
-        APConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
-        APConfiguredFeatures.PLACED_FEATURES.register(modEventBus);
 //        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
         registerRecipeSerializers(modEventBus);
         registerLootSerializers(modEventBus);
-
-        forgeBus.addListener(APConfiguredFeatures::biomeLoadEvent);
+        // Biomes need to be registered before features.
+        registerBiomeSerializers(modEventBus);
+        registerPlacedFeatures(modEventBus);
 
         CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
 
         GatherData.load();
 
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     void setupCommon(final FMLCommonSetupEvent event) {
@@ -92,6 +92,14 @@ public class ArchitectsPalette {
         RegistryObject<Codec<WitheredBoneLootModifier>> WITHER_SKELETON_DROPS = LOOT.register("wither_skeleton_bones", WitheredBoneLootModifier.CODEC);
 
         LOOT.register(bus);
+    }
+
+    void registerBiomeSerializers(IEventBus bus) {
+        APBiomeModifiers.BIOME_MODIFIER_SERIALIZER.register(bus);
+    }
+
+    void registerPlacedFeatures(IEventBus bus) {
+        APPlacedFeatures.PLACED_FEATURES.register(bus);
     }
 
     void setupClient(final FMLClientSetupEvent event) {
