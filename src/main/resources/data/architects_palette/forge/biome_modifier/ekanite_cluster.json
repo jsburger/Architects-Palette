@@ -1,0 +1,6 @@
+{
+    "type": "architects_palette:underground_decoration",
+    "biomes": "minecraft:warped_forest",
+    "feature": "architects_palette:ekanite_cluster_placed",
+    "step": "underground_decoration"
+}

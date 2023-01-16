@@ -13,7 +13,7 @@ public class TwistedTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource randomIn, boolean largeHive) {
-        return APConfiguredFeatures.TWISTED_TREE.getHolder().get();
+        return APConfiguredFeatures.TWISTED_TREE;
     }
 
 }
