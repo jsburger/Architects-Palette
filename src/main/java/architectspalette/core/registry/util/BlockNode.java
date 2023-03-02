@@ -1,10 +1,16 @@
 package architectspalette.core.registry.util;
 
+import architectspalette.content.blocks.NubBlock;
+import architectspalette.content.blocks.VerticalSlabBlock;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -30,7 +36,7 @@ public class BlockNode {
         this.children = children;
     }
 
-    public RegistryObject<Block> get() {
+    public RegistryObject<Block> getBlock() {
         return block;
     }
 
@@ -42,7 +48,7 @@ public class BlockNode {
             if (node.type == types[0]) {
                 //If length is one, then this is the last "part" to get.
                 if (types.length == 1) {
-                    return node.get();
+                    return node.getBlock();
                 }
                 //Otherwise, pop the first part off and check those in the child.
                 return node.get(Arrays.copyOfRange(types, 1, types.length));
@@ -51,18 +57,32 @@ public class BlockNode {
         return null;
     }
 
+    public ResourceLocation getId() {
+        return block.getId();
+    }
+    public String getName() {
+        return getId().getPath();
+    }
 
+    public void ForEach(Consumer<BlockNode> consumer) {
+        consumer.accept(this);
+        for (BlockNode node : children) {
+            node.ForEach(consumer);
+        }
+    }
 
 
     public static class Builder {
         protected Builder parent;
         private final ArrayList<Builder> children = new ArrayList<>();
-        private RegistryObject<Block> base;
+        private RegistryObject<Block> block;
 
         private Style style;
         private final BlockType type;
         private Tool tool;
         private ArrayList<DataFlags> flags = new ArrayList<>();
+        private String name;
+        //TODO: Tags (?)
 
         protected Builder(Builder parent, BlockType type) {
             this.parent = parent;
@@ -77,6 +97,7 @@ public class BlockNode {
         }
 
         private void inherit() {
+            //TODO: Flags & Tags
             if (parent != null) {
                 this.style = style == null ? parent.style : style;
                 this.tool = tool == null ? parent.tool : tool;
@@ -92,7 +113,12 @@ public class BlockNode {
         }
         private BlockNode build(BlockNode parent) {
             inherit();
-            BlockNode built = new BlockNode(parent, base, type, tool, style);
+
+            if (block == null) {
+                name = modifyBlockNameForType(type, this.parent.name);
+                block = makeBlock();
+            }
+            BlockNode built = new BlockNode(parent, block, type, tool, style);
             ArrayList<BlockNode> nodeChildren = new ArrayList<>();
             for (Builder builder : children) {
                 nodeChildren.add(builder.build(built));
@@ -124,7 +150,8 @@ public class BlockNode {
         }
 
         public Builder base(RegistryObject<Block> block) {
-            this.base = block;
+            this.block = block;
+            if (this.name == null) this.name = block.getId().getPath();
             return this;
         }
 
@@ -161,6 +188,28 @@ public class BlockNode {
             return this;
         }
 
+        private Builder getBaseParent() {
+            Builder p = parent;
+            if (parent == null) {
+                return this;
+            }
+            return p.getBaseParent();
+        }
+
+        private BlockBehaviour.Properties getProperties() {
+            //TODO: Add property modifiers (Property Consumer)
+            return BlockBehaviour.Properties.copy(parent.block.get());
+        }
+
+        private RegistryObject<Block> makeBlock() {
+            return RegistryUtils.createBlock(name, () -> {
+                Block block = parent.block.get();
+                if (block instanceof IBlockSetBase base) {
+                    return base.getBlockForType(type, getProperties(), block);
+                }
+                return getBlockForType(type, getProperties(), block);
+            }, getTabForType(type));
+        }
 
     }
 
@@ -216,4 +265,72 @@ public class BlockNode {
     public enum DataFlags {
         ABYSSALINE
     }
+
+    public static Block getBlockForType(BlockType part, BlockBehaviour.Properties properties, Block base) {
+        return switch (part) {
+            case WALL -> new WallBlock(properties);
+            case SLAB -> new SlabBlock(properties);
+            case VERTICAL_SLAB -> new VerticalSlabBlock(properties);
+            case STAIRS -> new StairBlock(base::defaultBlockState, properties);
+            case FENCE -> new FenceBlock(properties);
+            case PILLAR -> new RotatedPillarBlock(properties);
+            case NUB -> new NubBlock(properties);
+            case BASE -> throw new IllegalStateException("Should not call makeBlock on BASE");
+            //erm.... idk if this works LOL
+            default -> {
+                try {
+                    yield base.getClass().getConstructor().newInstance(properties);
+                } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                         NoSuchMethodException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+    }
+
+    private static String modifyBlockNameForType(BlockType type, String baseName) {
+        var material = getMaterialFromBlock(baseName);
+        return switch (type) {
+
+            case BASE -> baseName;
+            case BRICKS -> material + "_bricks";
+            case CRACKED -> "cracked_" + baseName;
+            case MOSSY -> "mossy_" + baseName;
+            case TILES -> material + "_tiles";
+            case CHISELED -> "chiseled_" + baseName;
+            case PILLAR -> getMaterialAggressive(baseName) + "_pillar";
+            case NUB -> material + "_nub";
+            case SLAB -> material + "_slab";
+            case VERTICAL_SLAB -> material + "_vertical_slab";
+            case STAIRS -> material + "_stairs";
+            case WALL -> material + "_wall";
+            case FENCE -> material + "_fence";
+            case LAMP -> material + "_lamp";
+            case PLATING -> material + "_plating";
+        };
+    }
+
+    private static CreativeModeTab getTabForType(BlockType type) {
+        return switch(type) {
+            case NUB, WALL, FENCE -> CreativeModeTab.TAB_DECORATIONS;
+            default -> CreativeModeTab.TAB_BUILDING_BLOCKS;
+        };
+    }
+
+    private static String getMaterialFromBlock(String block) {
+        return block
+                .replace("bricks", "brick")
+                .replace("_planks", "")
+                .replace("_block", "")
+                .replace("tiles", "tile")
+                .replace("boards", "board");
+    }
+
+    private static String getMaterialAggressive(String block) {
+        return getMaterialFromBlock(block)
+                .replace("_brick", "")
+                .replace("_tile", "")
+                .replace("chiseled_", "");
+    }
+
 }

@@ -12,6 +12,7 @@ import architectspalette.content.blocks.flint.FlintPillarBlock;
 import architectspalette.content.blocks.util.DirectionalFacingBlock;
 import architectspalette.content.worldgen.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
@@ -27,6 +28,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static architectspalette.core.registry.util.BlockNode.BlockType.STAIRS;
+import static architectspalette.core.registry.util.BlockNode.BlockType.WALL;
 import static architectspalette.core.registry.util.RegistryUtils.*;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NUB;
@@ -337,6 +340,15 @@ public class APBlocks {
     public static final RegistryObject<Block> WAXED_OXIDIZED_COPPER_NUB = makeCopperNub("waxed_oxidized_copper_nub", Blocks.OXIDIZED_COPPER, OXIDIZED);
 
     public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
+
+
+    public static BlockNode TREAD_PLATE = new BlockNode.Builder()
+            .tool(BlockNode.Tool.IRON_PICK)
+            .style(BlockNode.Style.CUBE)
+            .base(createBlock("tread_plate", () -> new Block(APBlockProperties.PLATING)))
+            .slabs()
+            .variants(STAIRS, WALL)
+            .build();
 
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {

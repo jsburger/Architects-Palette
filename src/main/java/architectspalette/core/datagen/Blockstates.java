@@ -3,6 +3,7 @@ package architectspalette.core.datagen;
 import architectspalette.content.blocks.VerticalSlabBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
@@ -30,6 +31,8 @@ public class Blockstates extends BlockStateProvider {
         Stream<StoneBlockSet> boards = Stream.of(APBlocks.BIRCH_BOARDS, APBlocks.SPRUCE_BOARDS);
         boards.forEach(this::processBoardBlockSet);
 
+
+
     }
 
 
@@ -45,17 +48,13 @@ public class Blockstates extends BlockStateProvider {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, name);
     }
 
-
-    //Generates the funny item model for boards which loads the odd texture.
-    private void boardModel(String boardname, Block board) {
-        //Model File used by the item
-        final ResourceLocation boardParent = inAPBlockFolder("boards/parent");
-        ModelFile model = models().withExistingParent("block/boards/" + boardname + "_item", boardParent)
-                .texture("even", inAPBlockFolder(boardname))
-                .texture("odd", inAPBlockFolder(boardname + "_odd"));
-        itemModels().getBuilder(boardname).parent(model);
-        //Model file used by the block + blockstate
-        simpleBlock(board);
+    private int getYRotation(Direction direction) {
+        return switch(direction) {
+            case EAST -> 90;
+            case SOUTH -> 180;
+            case WEST -> 270;
+            default -> 0;
+        };
     }
 
     private void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation baseBlock) {
@@ -104,12 +103,21 @@ public class Blockstates extends BlockStateProvider {
         });
     }
 
-    private int getYRotation(Direction direction) {
-        return switch(direction) {
-            case EAST -> 90;
-            case SOUTH -> 180;
-            case WEST -> 270;
-            default -> 0;
-        };
+    //Generates the funny item model for boards which loads the odd texture.
+    private void boardModel(String boardname, Block board) {
+        //Model File used by the item
+        final ResourceLocation boardParent = inAPBlockFolder("boards/parent");
+        ModelFile model = models().withExistingParent("block/boards/" + boardname + "_item", boardParent)
+                .texture("even", inAPBlockFolder(boardname))
+                .texture("odd", inAPBlockFolder(boardname + "_odd"));
+        itemModels().getBuilder(boardname).parent(model);
+        //Model file used by the block + blockstate
+        simpleBlock(board);
     }
+
+    private void processBlockNode(BlockNode node) {
+
+    }
+
+
 }
