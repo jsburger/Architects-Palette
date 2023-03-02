@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:hazard_block"
+    }
+  },
+  "result": {
+    "item": "architects_palette:hazard_wall",
+    "count": 6
+  }
+}

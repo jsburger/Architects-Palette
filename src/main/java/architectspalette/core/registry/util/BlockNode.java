@@ -30,7 +30,7 @@ public class BlockNode {
         this.block = block;
         this.type = type;
         this.tool = tool;
-        this.style = style;
+        this.style = style == null ? Style.CUBE : style;
     }
     private void setChildren(ArrayList<BlockNode> children) {
         this.children = children;

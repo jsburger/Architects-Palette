@@ -350,6 +350,12 @@ public class APBlocks {
             .variants(STAIRS, WALL)
             .build();
 
+    public static BlockNode HAZARD_BLOCK = new BlockNode.Builder()
+            .tool(BlockNode.Tool.PICK)
+            .base(createBlock("hazard_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE))))
+            .slabs()
+            .variants(WALL)
+            .build();
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

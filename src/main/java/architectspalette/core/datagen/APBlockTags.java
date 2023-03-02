@@ -44,7 +44,7 @@ public class APBlockTags extends BlockTagsProvider {
         });
 
         //TODO: Get all parent nodes
-        Stream.of(TREAD_PLATE).forEach((node) -> {
+        Stream.of(TREAD_PLATE, HAZARD_BLOCK).forEach((node) -> {
             node.forEach((n) -> {
                 TagAppender<Block> tag = tag(n.getTool().getToolTag());
                 tag.add(n.getBlock());

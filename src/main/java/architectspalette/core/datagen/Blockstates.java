@@ -30,6 +30,7 @@ public class Blockstates extends BlockStateProvider {
         boards.forEach(this::processBoardBlockSet);
 
         processBlockNode(APBlocks.TREAD_PLATE);
+        processBlockNode(APBlocks.HAZARD_BLOCK);
 
     }
 

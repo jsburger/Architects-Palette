@@ -23,6 +23,7 @@ public class APRecipes extends RecipeProvider {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         processBlockNode(consumer, APBlocks.TREAD_PLATE);
+        processBlockNode(consumer, APBlocks.HAZARD_BLOCK);
     }
 
     private static void processBlockNode(Consumer<FinishedRecipe> consumer, BlockNode node) {

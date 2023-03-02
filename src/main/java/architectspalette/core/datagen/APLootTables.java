@@ -47,6 +47,7 @@ public class APLootTables extends LootTableProvider {
             APBlocks.BIRCH_BOARDS.forEach(blocks::add);
             APBlocks.SPRUCE_BOARDS.forEach(blocks::add);
             APBlocks.TREAD_PLATE.forEach((node) -> blocks.add(node.get().get()));
+            APBlocks.HAZARD_BLOCK.forEach((node) -> blocks.add(node.get().get()));
             return blocks;
             //return APBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).toList();
         }
@@ -56,6 +57,7 @@ public class APLootTables extends LootTableProvider {
             processStoneBlockSet(APBlocks.BIRCH_BOARDS);
             processStoneBlockSet(APBlocks.SPRUCE_BOARDS);
             processBlockNode(APBlocks.TREAD_PLATE);
+            processBlockNode(APBlocks.HAZARD_BLOCK);
         }
 
         private void slab(Block block) {
