@@ -187,7 +187,9 @@ public class Blockstates extends BlockStateProvider {
             case WALL -> {
                 //TODO: Fancy walls
                 wallBlock((WallBlock) block, parentTexture);
-                simpleBlockItem(block, blockModel(name));
+                var inventory = models().withExistingParent(fileName(node.getId()), inMinecraftBlock("wall_inventory"))
+                        .texture("wall", parentTexture);
+                simpleBlockItem(block, inventory);
             }
             case FENCE -> {
                 //TODO: Fancy fences
