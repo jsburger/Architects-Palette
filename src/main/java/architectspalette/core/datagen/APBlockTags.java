@@ -11,9 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static architectspalette.core.registry.APBlocks.*;
-import static architectspalette.core.registry.APBlocks.HADALINE_PLATING;
 
 public class APBlockTags extends BlockTagsProvider {
     public APBlockTags(DataGenerator generator, String modId, @Nullable ExistingFileHelper existingFileHelper) {
@@ -41,6 +41,15 @@ public class APBlockTags extends BlockTagsProvider {
 //                TagAppender<Block> levelTag = tag(set.miningLevel);
 //                set.forEach(levelTag::add);
 //            }
+        });
+
+        //TODO: Get all parent nodes
+        Stream.of(TREAD_PLATE).forEach((node) -> {
+            node.forEach((n) -> {
+                TagAppender<Block> tag = tag(n.getTool().getMiningTag());
+                tag.add(n.getBlock().get());
+                //TODO: Mining level, other tags
+            });
         });
 
         tagBlocks(BlockTags.MINEABLE_WITH_PICKAXE,
