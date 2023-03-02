@@ -71,6 +71,25 @@ public class BlockNode {
         }
     }
 
+    public Style getStyle() {
+        return style;
+    }
+
+    public BlockType getType() {
+        return type;
+    }
+
+    public Tool getTool() {
+        return tool;
+    }
+
+    public BlockNode getParent() {
+        return parent;
+    }
+
+    public ArrayList<BlockNode> getChildren() {
+        return children;
+    }
 
     public static class Builder {
         protected Builder parent;
