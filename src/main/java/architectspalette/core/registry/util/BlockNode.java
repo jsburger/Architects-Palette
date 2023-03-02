@@ -36,8 +36,12 @@ public class BlockNode {
         this.children = children;
     }
 
-    public RegistryObject<Block> getBlock() {
+    public RegistryObject<Block> get() {
         return block;
+    }
+
+    public Block getBlock() {
+        return block.get();
     }
 
     /**
@@ -48,7 +52,7 @@ public class BlockNode {
             if (node.type == types[0]) {
                 //If length is one, then this is the last "part" to get.
                 if (types.length == 1) {
-                    return node.getBlock();
+                    return node.get();
                 }
                 //Otherwise, pop the first part off and check those in the child.
                 return node.get(Arrays.copyOfRange(types, 1, types.length));
@@ -89,6 +93,23 @@ public class BlockNode {
 
     public ArrayList<BlockNode> getChildren() {
         return children;
+    }
+
+    public ArrayList<BlockNode> getParents() {
+        var list = new ArrayList<BlockNode>();
+        var last = this;
+        while (last.parent != null) {
+            list.add(last.parent);
+            last = last.parent;
+        }
+        return list;
+    }
+
+    public RegistryObject<Block> getSibling(BlockType type) {
+        if (parent != null) {
+            return parent.get(type);
+        }
+        return null;
     }
 
     public static class Builder {

@@ -157,9 +157,15 @@ public class Blockstates extends BlockStateProvider {
             }
         };
 
-        Block block = node.getBlock().get();
+        Block block = node.getBlock();
         String name = block.getRegistryName().getPath();
-        var parentTexture = inBlockFolder(node.getParent().getId());
+        ResourceLocation parentTexture;
+        if (node.getParent() != null) {
+            parentTexture = inBlockFolder(node.getParent().getId());
+        }
+        else {
+            parentTexture = inBlockFolder(node.getId());
+        }
         //TODO: Abyssaline support, will require a complete rewrite :)
         switch(node.getType()) {
             case NUB -> {

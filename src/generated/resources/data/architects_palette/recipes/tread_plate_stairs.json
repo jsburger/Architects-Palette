@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:tread_plate"
+    }
+  },
+  "result": {
+    "item": "architects_palette:tread_plate_stairs",
+    "count": 4
+  }
+}

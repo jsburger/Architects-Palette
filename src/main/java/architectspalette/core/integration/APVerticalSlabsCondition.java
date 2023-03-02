@@ -12,6 +12,7 @@ import net.minecraftforge.fml.ModList;
 
 public class APVerticalSlabsCondition implements ICondition {
 
+	public static APVerticalSlabsCondition instance = new APVerticalSlabsCondition();
 	private static final ResourceLocation ID = new ResourceLocation(ArchitectsPalette.MOD_ID, "enable_vertical_slabs");
 	
 	@Override

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:tread_plate"
+    }
+  },
+  "result": {
+    "item": "architects_palette:tread_plate_wall",
+    "count": 6
+  }
+}

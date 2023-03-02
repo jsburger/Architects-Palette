@@ -46,8 +46,8 @@ public class APBlockTags extends BlockTagsProvider {
         //TODO: Get all parent nodes
         Stream.of(TREAD_PLATE).forEach((node) -> {
             node.forEach((n) -> {
-                TagAppender<Block> tag = tag(n.getTool().getMiningTag());
-                tag.add(n.getBlock().get());
+                TagAppender<Block> tag = tag(n.getTool().getToolTag());
+                tag.add(n.getBlock());
                 //TODO: Mining level, other tags
             });
         });

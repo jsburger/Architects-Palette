@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "architects_palette:tread_plate"
+  },
+  "result": "architects_palette:tread_plate_stairs",
+  "count": 1
+}

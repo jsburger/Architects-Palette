@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:stonecutting/tread_plate_slab"
+    ]
+  },
+  "criteria": {
+    "has_tread_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:tread_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:stonecutting/tread_plate_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tread_plate",
+      "has_the_recipe"
+    ]
+  ]
+}
