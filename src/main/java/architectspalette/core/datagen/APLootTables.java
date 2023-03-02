@@ -1,6 +1,7 @@
 package architectspalette.core.datagen;
 
 import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import architectspalette.core.registry.util.StoneBlockSet.SetComponent;
 import com.mojang.datafixers.util.Pair;
@@ -45,6 +46,7 @@ public class APLootTables extends LootTableProvider {
             List<Block> blocks = new LinkedList<>();
             APBlocks.BIRCH_BOARDS.forEach(blocks::add);
             APBlocks.SPRUCE_BOARDS.forEach(blocks::add);
+            APBlocks.TREAD_PLATE.forEach((node) -> blocks.add(node.getBlock().get()));
             return blocks;
             //return APBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).toList();
         }
@@ -69,6 +71,17 @@ public class APLootTables extends LootTableProvider {
                 }
                 else {
                     this.dropSelf(block);
+                }
+            });
+        }
+
+        private void processBlockNode(BlockNode node) {
+            node.forEach((n) -> {
+                //Todo: Silk Touch Flag
+                var block = n.getBlock().get();
+                switch(n.getType()) {
+                    case SLAB, VERTICAL_SLAB -> slab(block);
+                    default -> this.dropSelf(block);
                 }
             });
         }

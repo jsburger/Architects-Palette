@@ -64,10 +64,10 @@ public class BlockNode {
         return getId().getPath();
     }
 
-    public void ForEach(Consumer<BlockNode> consumer) {
+    public void forEach(Consumer<BlockNode> consumer) {
         consumer.accept(this);
         for (BlockNode node : children) {
-            node.ForEach(consumer);
+            node.forEach(consumer);
         }
     }
 
