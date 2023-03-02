@@ -55,6 +55,7 @@ public class APLootTables extends LootTableProvider {
         protected void addTables() {
             processStoneBlockSet(APBlocks.BIRCH_BOARDS);
             processStoneBlockSet(APBlocks.SPRUCE_BOARDS);
+            processBlockNode(APBlocks.TREAD_PLATE);
         }
 
         private void slab(Block block) {
