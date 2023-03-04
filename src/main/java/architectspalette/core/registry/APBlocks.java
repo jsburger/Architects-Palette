@@ -67,7 +67,7 @@ public class APBlocks {
     public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS);
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)), TYPICAL, NUB);
-    public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(APBlockProperties.PLATING.noOcclusion()));
+    public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(BlockBehaviour.Properties.copy(APBlocks.PLATING_BLOCK.get()).noOcclusion()));
      //Spools
     public static final RegistryObject<Block> SPOOL = createBlock("spool", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
 
@@ -342,7 +342,7 @@ public class APBlocks {
     public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
 
 
-    public static BlockNode TREAD_PLATE = new BlockNode.Builder()
+    public static final BlockNode TREAD_PLATE = new BlockNode.Builder()
             .tool(BlockNode.Tool.IRON_PICK)
             .style(BlockNode.Style.CUBE)
             .base(createBlock("tread_plate", () -> new Block(APBlockProperties.PLATING)))
@@ -350,11 +350,16 @@ public class APBlocks {
             .variants(STAIRS, WALL)
             .build();
 
-    public static BlockNode HAZARD_BLOCK = new BlockNode.Builder()
+    public static final BlockNode HAZARD_BLOCK = new BlockNode.Builder()
             .tool(BlockNode.Tool.PICK)
             .base(createBlock("hazard_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE))))
             .slabs()
             .variants(WALL)
+            .build();
+
+    public static final BlockNode SHEET_METAL = new BlockNode.Builder()
+            .tool(BlockNode.Tool.PICK)
+            .base(createBlock("sheet_metal_block", () -> new Block(APBlockProperties.PLATING)))
             .build();
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {

@@ -2,13 +2,16 @@ package architectspalette.core.event;
 
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.model.HazardModel;
+import architectspalette.core.model.SheetMetalModel;
 import architectspalette.core.model.TileModel;
+import architectspalette.core.model.util.SpriteShift;
 import architectspalette.core.registry.APBlocks;
 import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +24,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModelBakeEventHandler {
 
     private static final Map<Entry, Function<BakedModel, ? extends BakedModel>> customBlockModels = new HashMap<>();
@@ -36,6 +39,7 @@ public class ModelBakeEventHandler {
         //Note; Not all model swaps are registered here.
         register(APBlocks.UNOBTANIUM_BLOCK, TileModel::new);
         register(APBlocks.HAZARD_BLOCK.get(), HazardModel::new);
+        register(APBlocks.SHEET_METAL.get(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
 

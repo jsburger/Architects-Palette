@@ -46,4 +46,8 @@ public class SpriteShift {
         return to.getV0() - from.getV0();
     }
 
+    public float getVHeight() {
+        return from.getV1() - from.getV0();
+    }
+
 }

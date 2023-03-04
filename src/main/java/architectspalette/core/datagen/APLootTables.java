@@ -46,8 +46,7 @@ public class APLootTables extends LootTableProvider {
             List<Block> blocks = new LinkedList<>();
             APBlocks.BIRCH_BOARDS.forEach(blocks::add);
             APBlocks.SPRUCE_BOARDS.forEach(blocks::add);
-            APBlocks.TREAD_PLATE.forEach((node) -> blocks.add(node.get().get()));
-            APBlocks.HAZARD_BLOCK.forEach((node) -> blocks.add(node.get().get()));
+            BlockNode.forAllBaseNodes((node -> node.forEach(n -> blocks.add(n.getBlock()))));
             return blocks;
             //return APBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).toList();
         }
