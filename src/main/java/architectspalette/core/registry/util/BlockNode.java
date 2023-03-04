@@ -13,24 +13,31 @@ import net.minecraftforge.registries.RegistryObject;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class BlockNode {
 
-    private final BlockNode parent;
-    private ArrayList<BlockNode> children;
-    private final RegistryObject<Block> block;
+    public final BlockNode parent;
+    public ArrayList<BlockNode> children;
+    public final RegistryObject<Block> block;
 
-    private final Style style;
-    private final BlockType type;
-    private final Tool tool;
+    public final Style style;
+    public final BlockType type;
+    public final Tool tool;
+
+    private static final List<BlockNode> instances = new LinkedList<>();
+    public static void forAllBaseNodes(Consumer<BlockNode> consumer) {
+        instances.forEach(consumer);
+    }
 
     protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style) {
         this.parent = parent;
-        this.block = block;
-        this.type = type;
+        this.type = type == null ? BlockType.BASE : type;
         this.tool = tool;
         this.style = style == null ? Style.CUBE : style;
+        this.block = block == null ? makeBlock() : block;
     }
     private void setChildren(ArrayList<BlockNode> children) {
         this.children = children;
@@ -75,22 +82,6 @@ public class BlockNode {
         }
     }
 
-    public Style getStyle() {
-        return style;
-    }
-
-    public BlockType getType() {
-        return type;
-    }
-
-    public Tool getTool() {
-        return tool;
-    }
-
-    public BlockNode getParent() {
-        return parent;
-    }
-
     public ArrayList<BlockNode> getChildren() {
         return children;
     }
@@ -111,6 +102,24 @@ public class BlockNode {
         }
         return null;
     }
+
+    //This needs to be in the final node because otherwise it would keep the builders in memory.
+    private BlockBehaviour.Properties getProperties() {
+        //TODO: Add property modifiers (Property Consumer)
+        return BlockBehaviour.Properties.copy(parent.block.get());
+    }
+
+    //This too
+    private RegistryObject<Block> makeBlock() {
+        return RegistryUtils.createBlock(modifyBlockNameForType(type, this.parent.getName()), () -> {
+            Block block = parent.block.get();
+            if (block instanceof IBlockSetBase base) {
+                return base.getBlockForType(type, getProperties(), block);
+            }
+            return getBlockForType(type, getProperties(), block);
+        }, getTabForType(type));
+    }
+
 
     public static class Builder {
         protected Builder parent;
@@ -147,17 +156,15 @@ public class BlockNode {
         //Public version won't let you build child builders.
         public BlockNode build() {
             if (parent == null) {
-                return build(null);
+                var built =  build(null);
+                instances.add(built);
+                return built;
             }
             throw new IllegalStateException("#build() was called on a child builder. Don't do that.");
         }
         private BlockNode build(BlockNode parent) {
             inherit();
 
-            if (block == null) {
-                name = modifyBlockNameForType(type, this.parent.name);
-                block = makeBlock();
-            }
             BlockNode built = new BlockNode(parent, block, type, tool, style);
             ArrayList<BlockNode> nodeChildren = new ArrayList<>();
             for (Builder builder : children) {
@@ -235,22 +242,6 @@ public class BlockNode {
             }
             return p.getBaseParent();
         }
-
-        private BlockBehaviour.Properties getProperties() {
-            //TODO: Add property modifiers (Property Consumer)
-            return BlockBehaviour.Properties.copy(parent.block.get());
-        }
-
-        private RegistryObject<Block> makeBlock() {
-            return RegistryUtils.createBlock(name, () -> {
-                Block block = parent.block.get();
-                if (block instanceof IBlockSetBase base) {
-                    return base.getBlockForType(type, getProperties(), block);
-                }
-                return getBlockForType(type, getProperties(), block);
-            }, getTabForType(type));
-        }
-
     }
 
     public enum Style {

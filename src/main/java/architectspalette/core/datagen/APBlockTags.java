@@ -1,17 +1,18 @@
 package architectspalette.core.datagen;
 
+import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 import static architectspalette.core.registry.APBlocks.*;
 
@@ -23,12 +24,22 @@ public class APBlockTags extends BlockTagsProvider {
     @Override
     protected void addTags() {
         registerMiningTags();
+        tagWalls();
     }
 
     @SafeVarargs
     private void tagBlocks(TagKey<Block> tagKey, RegistryObject<? extends Block>... registryObjects) {
         TagAppender<Block> tag = tag(tagKey);
         Arrays.stream(registryObjects).map(RegistryObject::get).forEach(tag::add);
+    }
+
+    private void tagWalls() {
+        var tag = tag(BlockTags.WALLS);
+        BLOCKS.getEntries().forEach((reg) -> {
+            if (reg.get() instanceof WallBlock wall) {
+                tag.add(wall);
+            }
+        });
     }
 
     private void registerMiningTags() {
@@ -43,10 +54,9 @@ public class APBlockTags extends BlockTagsProvider {
 //            }
         });
 
-        //TODO: Get all parent nodes
-        Stream.of(TREAD_PLATE, HAZARD_BLOCK).forEach((node) -> {
+        BlockNode.forAllBaseNodes((node) -> {
             node.forEach((n) -> {
-                TagAppender<Block> tag = tag(n.getTool().getToolTag());
+                TagAppender<Block> tag = tag(n.tool.getToolTag());
                 tag.add(n.getBlock());
                 //TODO: Mining level, other tags
             });

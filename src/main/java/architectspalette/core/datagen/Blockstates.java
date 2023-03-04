@@ -29,8 +29,9 @@ public class Blockstates extends BlockStateProvider {
         Stream<StoneBlockSet> boards = Stream.of(APBlocks.BIRCH_BOARDS, APBlocks.SPRUCE_BOARDS);
         boards.forEach(this::processBoardBlockSet);
 
-        processBlockNode(APBlocks.TREAD_PLATE);
-        processBlockNode(APBlocks.HAZARD_BLOCK);
+        BlockNode.forAllBaseNodes(this::processBlockNode);
+//        processBlockNode(APBlocks.TREAD_PLATE);
+//        processBlockNode(APBlocks.HAZARD_BLOCK);
 
     }
 
@@ -140,7 +141,7 @@ public class Blockstates extends BlockStateProvider {
     private void processBlockNode(BlockNode node) {
         //Set up textures
         ResourceLocation top, mid, bot;
-        switch (node.getStyle()) {
+        switch (node.style) {
             default -> {
                 top = inBlockFolder(node.getId());
                 mid = inBlockFolder(node.getId());
@@ -161,25 +162,25 @@ public class Blockstates extends BlockStateProvider {
         Block block = node.getBlock();
         String name = block.getRegistryName().getPath();
         ResourceLocation parentTexture;
-        if (node.getParent() != null) {
-            parentTexture = inBlockFolder(node.getParent().getId());
+        if (node.parent != null) {
+            parentTexture = inBlockFolder(node.parent.getId());
         }
         else {
             parentTexture = inBlockFolder(node.getId());
         }
         //TODO: Abyssaline support, will require a complete rewrite :)
-        switch(node.getType()) {
+        switch(node.type) {
             case NUB -> {
                 //TODO: Nub Models
 //                nubModel()
             }
             case SLAB -> {
                 //TODO: Fancy Slabs
-                slabBlock((SlabBlock) block, node.getParent().getId(), parentTexture);
+                slabBlock((SlabBlock) block, node.parent.getId(), parentTexture);
                 simpleBlockItem(block, blockModel(name));
             }
             case VERTICAL_SLAB -> {
-                verticalSlabBlock((VerticalSlabBlock) block, node.getParent().getId());
+                verticalSlabBlock((VerticalSlabBlock) block, node.parent.getId());
             }
             case STAIRS -> {
                 stairsBlock((StairBlock) block, parentTexture);
@@ -207,7 +208,7 @@ public class Blockstates extends BlockStateProvider {
 
                 //Create basic model
                 String filename = fileName(node.getId());
-                ModelFile model = switch(node.getStyle()) {
+                ModelFile model = switch(node.style) {
                     case CUBE ->
                         models().withExistingParent(filename, inMinecraftBlock("cube_all"))
                                 .texture("all", mid);

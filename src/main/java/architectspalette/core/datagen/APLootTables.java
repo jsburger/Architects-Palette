@@ -56,8 +56,9 @@ public class APLootTables extends LootTableProvider {
         protected void addTables() {
             processStoneBlockSet(APBlocks.BIRCH_BOARDS);
             processStoneBlockSet(APBlocks.SPRUCE_BOARDS);
-            processBlockNode(APBlocks.TREAD_PLATE);
-            processBlockNode(APBlocks.HAZARD_BLOCK);
+            BlockNode.forAllBaseNodes(this::processBlockNode);
+//            processBlockNode(APBlocks.TREAD_PLATE);
+//            processBlockNode(APBlocks.HAZARD_BLOCK);
         }
 
         private void slab(Block block) {
@@ -82,7 +83,7 @@ public class APLootTables extends LootTableProvider {
             node.forEach((n) -> {
                 //Todo: Silk Touch Flag
                 var block = n.getBlock();
-                switch(n.getType()) {
+                switch(n.type) {
                     case SLAB, VERTICAL_SLAB -> slab(block);
                     default -> this.dropSelf(block);
                 }

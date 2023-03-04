@@ -2,7 +2,6 @@ package architectspalette.core.datagen;
 
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.integration.APVerticalSlabsCondition;
-import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.util.BlockNode;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
@@ -22,26 +21,26 @@ public class APRecipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-        processBlockNode(consumer, APBlocks.TREAD_PLATE);
-        processBlockNode(consumer, APBlocks.HAZARD_BLOCK);
+        BlockNode.forAllBaseNodes((node) -> processBlockNode(consumer, node));
+//        processBlockNode(consumer, APBlocks.TREAD_PLATE);
+//        processBlockNode(consumer, APBlocks.HAZARD_BLOCK);
     }
 
     private static void processBlockNode(Consumer<FinishedRecipe> consumer, BlockNode node) {
         String hasBase = "has_" + node.getName();
-        var trigger = InventoryChangeTrigger.TriggerInstance.hasItems(node.get().get());
         node.forEach((n -> {
-            if (n.getParent() != null) {
+            if (n.parent != null) {
                 Block block = n.getBlock();
-                Block parent = n.getParent().getBlock();
+                Block parent = n.parent.getBlock();
 
                 int stoneCuttingCount = 1;
-                switch(n.getType()) {
+                switch(n.type) {
                     case BRICKS -> {
                         ShapedRecipeBuilder.shaped(block, 4)
                                 .pattern("xx")
                                 .pattern("xx")
                                 .define('x', parent)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer);
                         //Tile conversion recipe
                         var tiles = n.getSibling(BlockNode.BlockType.TILES);
@@ -50,14 +49,14 @@ public class APRecipes extends RecipeProvider {
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', tiles.get())
-                                    .unlockedBy(hasBase, trigger)
+                                    .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                     .save(consumer, modId(n.getName() + "_from_" + tiles.getId().getPath()));
                         }
                     }
                     case CRACKED -> {
                         stoneCuttingCount = 0;
                         SimpleCookingRecipeBuilder.smelting(Ingredient.of(parent), block, .1f, 200)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer, smeltingName(block, parent));
                     }
                     case MOSSY -> {
@@ -71,7 +70,7 @@ public class APRecipes extends RecipeProvider {
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', bricks.get())
-                                    .unlockedBy(hasBase, trigger)
+                                    .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                     .save(consumer, modId(n.getName() + "_from_" + bricks.getId().getPath()));
                         }
                         //Default recipe if there are no bricks
@@ -80,7 +79,7 @@ public class APRecipes extends RecipeProvider {
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', parent)
-                                    .unlockedBy(hasBase, trigger)
+                                    .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                     .save(consumer);
                         }
                     }
@@ -96,7 +95,7 @@ public class APRecipes extends RecipeProvider {
                         ShapedRecipeBuilder.shaped(block, 6)
                                 .pattern("xxx")
                                 .define('x', parent)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer);
                     }
                     case VERTICAL_SLAB -> {
@@ -112,7 +111,7 @@ public class APRecipes extends RecipeProvider {
                                             .pattern("x")
                                             .group("vertical_slab")
                                             .define('x', slab)
-                                            .unlockedBy(hasBase, trigger)
+                                            .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                             .save(c);
                                 })
                                 .build(consumer, modId("vslabs/" + n.getName()));
@@ -122,7 +121,7 @@ public class APRecipes extends RecipeProvider {
                                     ShapelessRecipeBuilder.shapeless(slab, 1)
                                             .group("vertical_slab_revert")
                                             .requires(block)
-                                            .unlockedBy(hasBase, trigger)
+                                            .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                             .save(c);
                                 })
                                 .build(consumer, modId("vslabs/" + n.getName() + "_revert"));
@@ -130,7 +129,7 @@ public class APRecipes extends RecipeProvider {
                         ConditionalRecipe.builder().addCondition(APVerticalSlabsCondition.instance)
                                 .addRecipe((c) -> {
                                     SingleItemRecipeBuilder.stonecutting(getParentIngredients(n), block, 2)
-                                            .unlockedBy(hasBase, trigger)
+                                            .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                             .save(c);
                                 })
                                 .build(consumer, modId("vslabs/stonecutting/" + n.getName()));
@@ -143,7 +142,7 @@ public class APRecipes extends RecipeProvider {
                                 .pattern("xx ")
                                 .pattern("xxx")
                                 .define('x', parent)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer);
                     }
                     case WALL -> {
@@ -151,7 +150,7 @@ public class APRecipes extends RecipeProvider {
                                 .pattern("xxx")
                                 .pattern("xxx")
                                 .define('x', parent)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer);
                     }
                     case FENCE -> {
@@ -163,13 +162,13 @@ public class APRecipes extends RecipeProvider {
                                 .pattern("x x")
                                 .pattern("xxx")
                                 .define('x', parent)
-                                .unlockedBy(hasBase, trigger)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                                 .save(consumer);
                     }
                 }
                 if (stoneCuttingCount > 0) {
                     SingleItemRecipeBuilder.stonecutting(getParentIngredients(n), block, stoneCuttingCount)
-                            .unlockedBy(hasBase, trigger)
+                            .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.getBlock()))
                             .save(consumer, cuttingName(block, parent));
                 }
 
