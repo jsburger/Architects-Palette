@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "architects_palette:block/bread_block_bottom_right",
+    "up": "architects_palette:block/bread_block_top_right",
+    "north": "architects_palette:block/bread_block_end",
+    "south": "architects_palette:block/bread_block_inside",
+    "east": "architects_palette:block/bread_block_side_right",
+    "west": "architects_palette:block/bread_block_side_left",
+    "particle": "architects_palette:block/bread_block_inside"
+  }
+}

@@ -28,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static architectspalette.core.registry.util.BlockNode.*;
 import static architectspalette.core.registry.util.BlockNode.BlockType.STAIRS;
 import static architectspalette.core.registry.util.BlockNode.BlockType.WALL;
 import static architectspalette.core.registry.util.RegistryUtils.*;
@@ -342,24 +343,30 @@ public class APBlocks {
     public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
 
 
-    public static final BlockNode TREAD_PLATE = new BlockNode.Builder()
-            .tool(BlockNode.Tool.IRON_PICK)
-            .style(BlockNode.Style.CUBE)
+    public static final BlockNode TREAD_PLATE = new Builder()
+            .tool(Tool.IRON_PICK)
+            .style(Style.CUBE)
             .base(createBlock("tread_plate", () -> new Block(APBlockProperties.PLATING)))
             .slabs()
             .variants(STAIRS, WALL)
             .build();
 
-    public static final BlockNode HAZARD_BLOCK = new BlockNode.Builder()
-            .tool(BlockNode.Tool.PICK)
+    public static final BlockNode HAZARD_BLOCK = new Builder()
+            .tool(Tool.PICK)
             .base(createBlock("hazard_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE))))
             .slabs()
             .variants(WALL)
             .build();
 
-    public static final BlockNode SHEET_METAL = new BlockNode.Builder()
-            .tool(BlockNode.Tool.PICK)
+    public static final BlockNode SHEET_METAL = new Builder()
+            .tool(Tool.PICK)
             .base(createBlock("sheet_metal_block", () -> new Block(APBlockProperties.PLATING)))
+            .build();
+
+    public static final BlockNode BREAD_BLOCK = new Builder()
+            .tool(Tool.AXE)
+            .exclude(ExcludeFlag.MODELS)
+            .base(createBlock("bread_block", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL))))
             .build();
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {

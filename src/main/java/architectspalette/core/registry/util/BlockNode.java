@@ -26,18 +26,20 @@ public class BlockNode {
     public final Style style;
     public final BlockType type;
     public final Tool tool;
+    private final int flags;
 
     private static final List<BlockNode> instances = new LinkedList<>();
     public static void forAllBaseNodes(Consumer<BlockNode> consumer) {
         instances.forEach(consumer);
     }
 
-    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style) {
+    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style, int flags) {
         this.parent = parent;
         this.type = type == null ? BlockType.BASE : type;
         this.tool = tool;
         this.style = style == null ? Style.CUBE : style;
         this.block = block == null ? makeBlock() : block;
+        this.flags = flags;
     }
     private void setChildren(ArrayList<BlockNode> children) {
         this.children = children;
@@ -120,6 +122,9 @@ public class BlockNode {
         }, getTabForType(type));
     }
 
+    public boolean getFlag(ExcludeFlag flag) {
+        return (flags & flag.value) != 0;
+    }
 
     public static class Builder {
         protected Builder parent;
@@ -130,6 +135,7 @@ public class BlockNode {
         private final BlockType type;
         private Tool tool;
         private ArrayList<DataFlags> flags = new ArrayList<>();
+        private int excludedFrom = 0;
         private String name;
         //TODO: Tags (?)
 
@@ -165,7 +171,7 @@ public class BlockNode {
         private BlockNode build(BlockNode parent) {
             inherit();
 
-            BlockNode built = new BlockNode(parent, block, type, tool, style);
+            BlockNode built = new BlockNode(parent, block, type, tool, style, excludedFrom);
             ArrayList<BlockNode> nodeChildren = new ArrayList<>();
             for (Builder builder : children) {
                 nodeChildren.add(builder.build(built));
@@ -214,7 +220,12 @@ public class BlockNode {
             flags.add(flag);
             return this;
         }
-
+        public Builder exclude(ExcludeFlag... flags) {
+            for (var f : flags) {
+                excludedFrom = excludedFrom | f.value;
+            }
+            return this;
+        }
 
         public Builder slabs() {
             addChild(BlockType.SLAB);
@@ -290,6 +301,19 @@ public class BlockNode {
         }
         public TagKey<Block> getMiningTag() {
             return miningTag;
+        }
+    }
+
+    public enum ExcludeFlag {
+        MODELS(1),
+        LOOT(2),
+        RECIPES(4),
+        TAGS(8),
+        LANG(16);
+
+        final int value;
+        ExcludeFlag(int value) {
+            this.value = value;
         }
     }
 
