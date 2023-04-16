@@ -29,8 +29,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static architectspalette.core.registry.util.BlockNode.*;
-import static architectspalette.core.registry.util.BlockNode.BlockType.STAIRS;
-import static architectspalette.core.registry.util.BlockNode.BlockType.WALL;
+import static architectspalette.core.registry.util.BlockNode.BlockType.*;
 import static architectspalette.core.registry.util.RegistryUtils.*;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NUB;
@@ -367,7 +366,38 @@ public class APBlocks {
             .tool(Tool.AXE)
             .exclude(ExcludeFlag.MODELS)
             .base(createBlock("bread_block", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL))))
+            .addPart(SLAB, b -> b.exclude(ExcludeFlag.MODELS))
             .build();
+
+    public static final BlockNode ORACLE_BLOCK = new Builder()
+            .tool(Tool.PICK)
+            .base(createBlock("oracle_block", () -> new Block(APBlockProperties.ORACLE)))
+            .slabs()
+            .variants(STAIRS, PILLAR)
+            .bricks(b -> {
+                b.commonVariants();
+                b.addPart(DARK, Builder::commonVariants);
+            })
+            .tiles(b -> {
+                b.slabs();
+                b.variants(STAIRS, WALL);
+            })
+            .addPart(SPECIAL, b -> {
+                b.setName("framed_oracle_block");
+            })
+            .addPart(LAMP, b -> b.base(createBlock("oracle_lamp", () -> new Block(APBlockProperties.ORACLE_LAMP))))
+            .build();
+
+//    public static final BlockNode CEREBRAL_BLOCK = new Builder()
+//            .tool(Tool.PICK)
+//            .base(createBlock("cerebral_block", () -> new Block(APBlockProperties.CEREBRAL)))
+//            .slabs()
+//            .variants(STAIRS, PILLAR)
+//            .tiles(b -> {
+//                b.exclude(ExcludeFlag.MODELS);
+//                b.commonVariants();
+//            })
+//            .build();
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();

@@ -38,8 +38,8 @@ public class ModelBakeEventHandler {
 
         //Note; Not all model swaps are registered here.
         register(APBlocks.UNOBTANIUM_BLOCK, TileModel::new);
-        register(APBlocks.HAZARD_BLOCK.get(), HazardModel::new);
-        register(APBlocks.SHEET_METAL.get(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
+        register(APBlocks.HAZARD_BLOCK.getObject(), HazardModel::new);
+        register(APBlocks.SHEET_METAL.getObject(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
 

@@ -57,7 +57,7 @@ public class APBlockTags extends BlockTagsProvider {
         BlockNode.forAllBaseNodes((node) -> {
             node.forEach((n) -> {
                 TagAppender<Block> tag = tag(n.tool.getToolTag());
-                tag.add(n.getBlock());
+                tag.add(n.get());
                 //TODO: Mining level, other tags
             });
         });

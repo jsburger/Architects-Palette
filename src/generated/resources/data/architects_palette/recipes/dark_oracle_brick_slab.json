@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:dark_oracle_bricks"
+    }
+  },
+  "result": {
+    "item": "architects_palette:dark_oracle_brick_slab",
+    "count": 6
+  }
+}

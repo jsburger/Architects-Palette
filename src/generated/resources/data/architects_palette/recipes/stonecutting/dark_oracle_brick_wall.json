@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "architects_palette:dark_oracle_bricks"
+  },
+  "result": "architects_palette:dark_oracle_brick_wall",
+  "count": 1
+}

@@ -22,6 +22,7 @@ public class GatherData {
         }
         if (event.includeClient()) {
             generator.addProvider(new Blockstates(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
+            generator.addProvider(new APLang(generator));
         }
     }
 }

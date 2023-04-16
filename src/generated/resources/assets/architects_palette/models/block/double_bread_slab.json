@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "architects_palette:block/bread_block_side",
+    "end": "architects_palette:block/bread_block_inside"
+  }
+}

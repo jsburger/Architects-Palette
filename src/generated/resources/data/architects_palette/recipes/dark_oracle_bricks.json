@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xdx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:oracle_bricks"
+    },
+    "d": {
+      "item": "minecraft:black_dye"
+    }
+  },
+  "result": {
+    "item": "architects_palette:dark_oracle_bricks",
+    "count": 8
+  }
+}

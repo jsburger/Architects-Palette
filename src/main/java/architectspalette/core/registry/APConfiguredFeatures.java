@@ -67,7 +67,7 @@ public class APConfiguredFeatures {
     );
 
     private static final Supplier<CrystalClusterConfig> EKANITE_CLUSTER_CONFIG = () ->
-            new CrystalClusterConfig(1, 6, APBlocks.EKANITE_ROD.get().defaultBlockState(), false, Blocks.BASALT.defaultBlockState());
+            new CrystalClusterConfig(1, 6, APBlocks.EKANITE_ROD.get().defaultBlockState(), true, Blocks.BASALT.defaultBlockState());
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EKANITE_CLUSTER =
             registerConfigured("ekanite_cluster", APFeatures.CRYSTAL_CLUSTER, EKANITE_CLUSTER_CONFIG);

@@ -36,6 +36,9 @@
     "architects_palette:wardstone_brick_wall",
     "architects_palette:ancient_plating_wall",
     "architects_palette:tread_plate_wall",
-    "architects_palette:hazard_wall"
+    "architects_palette:hazard_wall",
+    "architects_palette:oracle_brick_wall",
+    "architects_palette:dark_oracle_brick_wall",
+    "architects_palette:oracle_tile_wall"
   ]
 }

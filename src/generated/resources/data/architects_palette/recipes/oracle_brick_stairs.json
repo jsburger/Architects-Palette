@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:oracle_bricks"
+    }
+  },
+  "result": {
+    "item": "architects_palette:oracle_brick_stairs",
+    "count": 4
+  }
+}

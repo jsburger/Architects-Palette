@@ -98,6 +98,16 @@ public class APBlockProperties {
 			.strength(2.0F)
 			.sound(SoundType.WOOD);
 
+	public static final BlockBehaviour.Properties ORACLE = BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)
+			.sound(SoundType.DEEPSLATE_TILES);
+
+	public static final BlockBehaviour.Properties ORACLE_LAMP = BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)
+			.sound(SoundType.DEEPSLATE_TILES)
+			.lightLevel((state) -> 16);
+
+	public static final BlockBehaviour.Properties CEREBRAL = BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)
+			.sound(SoundType.DEEPSLATE_TILES);
+
 	// This makes a new property each time so that setting the door to not solid doesn't interfere.
 	// That might not be a thing but I don't care to come up with a way of checking.
 	public static BlockBehaviour.Properties TwistedWood() {

@@ -19,6 +19,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import static architectspalette.core.registry.util.BlockNode.BlockType.SLAB;
 import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 
 public class Blockstates extends BlockStateProvider {
@@ -26,16 +27,21 @@ public class Blockstates extends BlockStateProvider {
         super(gen, modid, exFileHelper);
     }
 
+//    private static BlockModelProvider models = null;
+//    private static Blockstates instance = null;
+
     @Override
     protected void registerStatesAndModels() {
+        //Set up like this so model providers can be static
+//        models = models();
+//        instance = this;
 
         Stream<StoneBlockSet> boards = Stream.of(APBlocks.BIRCH_BOARDS, APBlocks.SPRUCE_BOARDS);
         boards.forEach(this::processBoardBlockSet);
 
         BlockNode.forAllBaseNodes(this::processBlockNode);
-        breadBlock(APBlocks.BREAD_BLOCK.getBlock());
-//        processBlockNode(APBlocks.TREAD_PLATE);
-//        processBlockNode(APBlocks.HAZARD_BLOCK);
+        breadBlock(APBlocks.BREAD_BLOCK.get());
+        breadSlab(APBlocks.BREAD_BLOCK.getChild(SLAB).get());
 
     }
 
@@ -140,70 +146,13 @@ public class Blockstates extends BlockStateProvider {
         simpleBlock(board);
     }
 
-    //Lotta textures here. How about that.
-    private void breadBlock(Block block) {
-        var heel = inAPBlockFolder("bread_block_end");
-        var inside = inAPBlockFolder("bread_block_inside");
-        var whole_bottom = inAPBlockFolder("bread_block_bottom");
-        var middle_bottom = inAPBlockFolder("bread_block_bottom_middle");
-        var left_bottom = inAPBlockFolder("bread_block_bottom_left");
-        var right_bottom = inAPBlockFolder("bread_block_bottom_right");
-        var whole_top = inAPBlockFolder("bread_block_top");
-        var middle_top = inAPBlockFolder("bread_block_top_middle");
-        var left_top = inAPBlockFolder("bread_block_top_left");
-        var right_top = inAPBlockFolder("bread_block_top_right");
-        var whole_side = inAPBlockFolder("bread_block_side");
-        var middle_side = inAPBlockFolder("bread_block_side_middle");
-        var left_side = inAPBlockFolder("bread_block_side_left");
-        var right_side = inAPBlockFolder("bread_block_side_right");
-
-        ModelFile wholeModel = models().cube("block/bread_block_whole", whole_bottom, whole_top, whole_side, whole_side, whole_side, whole_side).texture("particle", inside);
-        ModelFile rightModel = models().cube("block/bread_block_right", right_bottom, right_top, heel, inside, right_side, left_side).texture("particle", inside);
-        ModelFile leftModel = models().cube("block/bread_block_left", left_bottom, left_top, inside, heel, left_side, right_side).texture("particle", inside);
-        ModelFile middleModel = models().cube("block/bread_block_middle", middle_bottom, middle_top, inside, inside, middle_side, middle_side).texture("particle", inside);
-
-        getVariantBuilder(block)
-                .forAllStates(state -> {
-                    var part = state.getValue(BreadBlock.PART);
-                    var axis = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-                    if (part == BreadBlock.BreadPart.WHOLE) {
-                        return ConfiguredModel.builder().modelFile(wholeModel).build();
-                    }
-                    var yRotation = axis == Direction.Axis.X ? 270 : 0;
-                    var model = part == BreadBlock.BreadPart.LEFT ? leftModel : part == BreadBlock.BreadPart.RIGHT ? rightModel : middleModel;
-                    return ConfiguredModel.builder().modelFile(model).rotationY(yRotation).build();
-
-                });
-
-        itemModels().getBuilder("bread_block").parent(rightModel);
-    }
 
 //    private void nubModel(String name, )
 
     private void processBlockNode(BlockNode node) {
         if (!node.getFlag(MODELS)) {
-            //Set up textures
-            ResourceLocation top, mid, bot;
-            switch (node.style) {
-                default -> {
-                    top = inBlockFolder(node.getId());
-                    mid = inBlockFolder(node.getId());
-                    bot = inBlockFolder(node.getId());
-                }
-                case TOP_SIDES -> {
-                    top = inBlockFolder(node.getId(), "_top");
-                    mid = inBlockFolder(node.getId());
-                    bot = inBlockFolder(node.getId(), "_top");
-                }
-                case TOP_SIDE_BOTTOM -> {
-                    top = inBlockFolder(node.getId(), "_top");
-                    mid = inBlockFolder(node.getId());
-                    bot = inBlockFolder(node.getId(), "_bottom");
-                }
-            }
-            ;
 
-            Block block = node.getBlock();
+            Block block = node.get();
             String name = block.getRegistryName().getPath();
             ResourceLocation parentTexture;
             if (node.parent != null) {
@@ -248,7 +197,25 @@ public class Blockstates extends BlockStateProvider {
                 }
                 //All Cubes are handled the same way.
                 default -> {
-
+                    //Set up textures
+                    ResourceLocation top, mid, bot;
+                    switch (node.style) {
+                        default -> {
+                            top = inBlockFolder(node.getId());
+                            mid = inBlockFolder(node.getId());
+                            bot = inBlockFolder(node.getId());
+                        }
+                        case TOP_SIDES -> {
+                            top = inBlockFolder(node.getId(), "_top");
+                            mid = inBlockFolder(node.getId());
+                            bot = inBlockFolder(node.getId(), "_top");
+                        }
+                        case TOP_SIDE_BOTTOM -> {
+                            top = inBlockFolder(node.getId(), "_top");
+                            mid = inBlockFolder(node.getId());
+                            bot = inBlockFolder(node.getId(), "_bottom");
+                        }
+                    }
                     //Create basic model
                     String filename = fileName(node.getId());
                     ModelFile model = switch (node.style) {
@@ -269,10 +236,61 @@ public class Blockstates extends BlockStateProvider {
                 }
             }
         }
-        for (var child : node.getChildren()) {
+        for (var child : node.children) {
             processBlockNode(child);
         }
     }
 
+
+    //Lotta textures here. How about that.
+    private void breadBlock(Block block) {
+        var heel = inAPBlockFolder("bread_block_end");
+        var inside = inAPBlockFolder("bread_block_inside");
+        var whole_bottom = inAPBlockFolder("bread_block_bottom");
+        var middle_bottom = inAPBlockFolder("bread_block_bottom_middle");
+        var left_bottom = inAPBlockFolder("bread_block_bottom_left");
+        var right_bottom = inAPBlockFolder("bread_block_bottom_right");
+        var whole_top = inAPBlockFolder("bread_block_top");
+        var middle_top = inAPBlockFolder("bread_block_top_middle");
+        var left_top = inAPBlockFolder("bread_block_top_left");
+        var right_top = inAPBlockFolder("bread_block_top_right");
+        var whole_side = inAPBlockFolder("bread_block_side");
+        var middle_side = inAPBlockFolder("bread_block_side_middle");
+        var left_side = inAPBlockFolder("bread_block_side_left");
+        var right_side = inAPBlockFolder("bread_block_side_right");
+
+        ModelFile wholeModel = models().cube("block/bread_block_whole", whole_bottom, whole_top, whole_side, whole_side, whole_side, whole_side).texture("particle", inside);
+        ModelFile rightModel = models().cube("block/bread_block_right", right_bottom, right_top, heel, inside, right_side, left_side).texture("particle", inside);
+        ModelFile leftModel = models().cube("block/bread_block_left", left_bottom, left_top, inside, heel, left_side, right_side).texture("particle", inside);
+        ModelFile middleModel = models().cube("block/bread_block_middle", middle_bottom, middle_top, inside, inside, middle_side, middle_side).texture("particle", inside);
+
+        getVariantBuilder(block)
+                .forAllStates(state -> {
+                    var part = state.getValue(BreadBlock.PART);
+                    var axis = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+                    if (part == BreadBlock.BreadPart.WHOLE) {
+                        return ConfiguredModel.builder().modelFile(wholeModel).build();
+                    }
+                    var yRotation = axis == Direction.Axis.X ? 270 : 0;
+                    var model = part == BreadBlock.BreadPart.LEFT ? leftModel : part == BreadBlock.BreadPart.RIGHT ? rightModel : middleModel;
+                    return ConfiguredModel.builder().modelFile(model).rotationY(yRotation).build();
+
+                });
+
+        itemModels().getBuilder("bread_block").parent(rightModel);
+    }
+
+
+    private void breadSlab(Block block) {
+        var top = inAPBlockFolder("bread_block_inside");
+        var sides = inAPBlockFolder("bread_block_side");
+
+        ModelFile doubleModel = models().cubeColumn("double_bread_slab", sides, top);
+        ModelFile upper = models().slabTop("bread_slab_top", sides, top, top);
+        ModelFile lower = models().slab("bread_slab", sides, top, top);
+
+        slabBlock((SlabBlock) block, lower, upper, doubleModel);
+        simpleBlockItem(block, lower);
+    }
 
 }

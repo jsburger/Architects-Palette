@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:oracle_tiles"
+    }
+  },
+  "result": {
+    "item": "architects_palette:oracle_tile_slab",
+    "count": 6
+  }
+}

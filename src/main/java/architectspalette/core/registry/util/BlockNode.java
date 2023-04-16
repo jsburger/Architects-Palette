@@ -10,14 +10,14 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
-public class BlockNode {
+public class BlockNode implements Supplier<Block> {
 
     public final BlockNode parent;
     public ArrayList<BlockNode> children;
@@ -33,38 +33,38 @@ public class BlockNode {
         instances.forEach(consumer);
     }
 
-    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style, int flags) {
+    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style, int flags, String blockName) {
         this.parent = parent;
         this.type = type == null ? BlockType.BASE : type;
         this.tool = tool;
         this.style = style == null ? Style.CUBE : style;
-        this.block = block == null ? makeBlock() : block;
+        this.block = block == null ? makeBlock(blockName) : block;
         this.flags = flags;
     }
     private void setChildren(ArrayList<BlockNode> children) {
         this.children = children;
     }
 
-    public RegistryObject<Block> get() {
+    public RegistryObject<Block> getObject() {
         return block;
     }
 
-    public Block getBlock() {
+    public Block get() {
         return block.get();
     }
 
     /**
      * Abyssaline.get(BRICKS, SLAB) -> Abyssaline Brick Slab
      */
-    public RegistryObject<Block> get(BlockType... types) {
+    public RegistryObject<Block> getChild(BlockType... types) {
         for (BlockNode node : children) {
             if (node.type == types[0]) {
                 //If length is one, then this is the last "part" to get.
                 if (types.length == 1) {
-                    return node.get();
+                    return node.getObject();
                 }
                 //Otherwise, pop the first part off and check those in the child.
-                return node.get(Arrays.copyOfRange(types, 1, types.length));
+                return node.getChild(Arrays.copyOfRange(types, 1, types.length));
             }
         }
         return null;
@@ -84,10 +84,6 @@ public class BlockNode {
         }
     }
 
-    public ArrayList<BlockNode> getChildren() {
-        return children;
-    }
-
     public ArrayList<BlockNode> getParents() {
         var list = new ArrayList<BlockNode>();
         var last = this;
@@ -100,7 +96,7 @@ public class BlockNode {
 
     public RegistryObject<Block> getSibling(BlockType type) {
         if (parent != null) {
-            return parent.get(type);
+            return parent.getChild(type);
         }
         return null;
     }
@@ -112,8 +108,9 @@ public class BlockNode {
     }
 
     //This too
-    private RegistryObject<Block> makeBlock() {
-        return RegistryUtils.createBlock(modifyBlockNameForType(type, this.parent.getName()), () -> {
+    private RegistryObject<Block> makeBlock(String blockName) {
+        String name = blockName == null ? modifyBlockNameForType(type, this.parent.getName()) : blockName;
+        return RegistryUtils.createBlock(name, () -> {
             Block block = parent.block.get();
             if (block instanceof IBlockSetBase base) {
                 return base.getBlockForType(type, getProperties(), block);
@@ -171,7 +168,7 @@ public class BlockNode {
         private BlockNode build(BlockNode parent) {
             inherit();
 
-            BlockNode built = new BlockNode(parent, block, type, tool, style, excludedFrom);
+            BlockNode built = new BlockNode(parent, block, type, tool, style, excludedFrom, name);
             ArrayList<BlockNode> nodeChildren = new ArrayList<>();
             for (Builder builder : children) {
                 nodeChildren.add(builder.build(built));
@@ -202,9 +199,19 @@ public class BlockNode {
             return this;
         }
 
+        public Builder commonVariants() {
+            this.slabs();
+            return this.variants(BlockType.STAIRS, BlockType.WALL);
+        }
+
         public Builder base(RegistryObject<Block> block) {
             this.block = block;
             if (this.name == null) this.name = block.getId().getPath();
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
             return this;
         }
 
@@ -276,7 +283,9 @@ public class BlockNode {
         WALL,
         FENCE,
         LAMP,
-        PLATING
+        PLATING,
+        DARK,
+        SPECIAL
     }
 
     public enum Tool {
@@ -331,15 +340,7 @@ public class BlockNode {
             case PILLAR -> new RotatedPillarBlock(properties);
             case NUB -> new NubBlock(properties);
             case BASE -> throw new IllegalStateException("Should not call makeBlock on BASE");
-            //erm.... idk if this works LOL
-            default -> {
-                try {
-                    yield base.getClass().getConstructor().newInstance(properties);
-                } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                         NoSuchMethodException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            default -> new Block(properties);
         };
     }
 
@@ -362,6 +363,8 @@ public class BlockNode {
             case FENCE -> material + "_fence";
             case LAMP -> material + "_lamp";
             case PLATING -> material + "_plating";
+            case DARK -> "dark_" + baseName;
+            case SPECIAL -> throw new IllegalStateException("SPECIAL block did not have name specified");
         };
     }
 

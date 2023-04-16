@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "architects_palette:block/bread_slab_top"
+    },
+    "type=bottom": {
+      "model": "architects_palette:block/double_bread_slab"
+    },
+    "type=double": {
+      "model": "architects_palette:block/bread_slab"
+    }
+  }
+}
