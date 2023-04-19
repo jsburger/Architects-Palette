@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "architects_palette:entrails",
     "architects_palette:entrails_slab",
@@ -49,6 +48,11 @@
     "architects_palette:warped_board_vertical_slab",
     "architects_palette:warped_board_stairs",
     "architects_palette:warped_board_wall",
+    "architects_palette:mangrove_boards",
+    "architects_palette:mangrove_board_slab",
+    "architects_palette:mangrove_board_vertical_slab",
+    "architects_palette:mangrove_board_stairs",
+    "architects_palette:mangrove_board_wall",
     "architects_palette:twisted_boards",
     "architects_palette:twisted_board_slab",
     "architects_palette:twisted_board_vertical_slab",
@@ -86,6 +90,7 @@
     "architects_palette:acacia_railing",
     "architects_palette:warped_railing",
     "architects_palette:crimson_railing",
-    "architects_palette:jungle_railing"
+    "architects_palette:jungle_railing",
+    "architects_palette:mangrove_railing"
   ]
 }

@@ -9,6 +9,7 @@
       ],
       "recipe": {
         "type": "minecraft:stonecutting",
+        "count": 2,
         "ingredient": [
           {
             "item": "architects_palette:oracle_bricks"
@@ -17,8 +18,7 @@
             "item": "architects_palette:oracle_block"
           }
         ],
-        "result": "architects_palette:oracle_brick_vertical_slab",
-        "count": 2
+        "result": "architects_palette:oracle_brick_vertical_slab"
       }
     }
   ]

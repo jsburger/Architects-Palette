@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "architects_palette:block/mangrove_boards"
+    },
+    "type=east": {
+      "model": "architects_palette:block/mangrove_board_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "architects_palette:block/mangrove_board_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "architects_palette:block/mangrove_board_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "architects_palette:block/mangrove_board_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

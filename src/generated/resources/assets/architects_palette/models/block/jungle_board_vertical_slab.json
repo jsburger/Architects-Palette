@@ -2,7 +2,7 @@
   "parent": "architects_palette:block/vertical_slab",
   "textures": {
     "bottom": "architects_palette:block/jungle_boards",
-    "top": "architects_palette:block/jungle_boards",
-    "side": "architects_palette:block/jungle_boards"
+    "side": "architects_palette:block/jungle_boards",
+    "top": "architects_palette:block/jungle_boards"
   }
 }

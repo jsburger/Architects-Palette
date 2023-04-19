@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": [
     {
       "item": "architects_palette:oracle_tiles"
@@ -8,6 +9,5 @@
       "item": "architects_palette:oracle_block"
     }
   ],
-  "result": "architects_palette:oracle_tile_slab",
-  "count": 2
+  "result": "architects_palette:oracle_tile_slab"
 }

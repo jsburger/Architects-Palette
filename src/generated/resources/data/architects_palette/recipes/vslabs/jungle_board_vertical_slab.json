@@ -10,19 +10,19 @@
       "recipe": {
         "type": "minecraft:crafting_shaped",
         "group": "vertical_slab",
-        "pattern": [
-          "x",
-          "x",
-          "x"
-        ],
         "key": {
           "x": {
             "item": "architects_palette:jungle_board_slab"
           }
         },
+        "pattern": [
+          "x",
+          "x",
+          "x"
+        ],
         "result": {
-          "item": "architects_palette:jungle_board_vertical_slab",
-          "count": 3
+          "count": 3,
+          "item": "architects_palette:jungle_board_vertical_slab"
         }
       }
     }

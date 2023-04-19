@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 2,
   "ingredient": {
     "item": "architects_palette:cerebral_block"
   },
-  "result": "architects_palette:cerebral_slab",
-  "count": 2
+  "result": "architects_palette:cerebral_slab"
 }

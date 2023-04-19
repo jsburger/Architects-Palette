@@ -1,5 +1,6 @@
 {
   "type": "architects_palette:warping",
+  "dimension": "minecraft:the_nether",
   "ingredient": [
     {
       "item": "minecraft:granite"
@@ -7,6 +8,5 @@
   ],
   "result": {
     "item": "architects_palette:onyx"
-  },
-  "dimension": "minecraft:the_nether"
+  }
 }

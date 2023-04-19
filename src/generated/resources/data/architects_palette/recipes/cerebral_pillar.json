@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "x",
-    "x"
-  ],
   "key": {
     "x": {
       "item": "architects_palette:cerebral_block"
     }
   },
+  "pattern": [
+    "x",
+    "x"
+  ],
   "result": {
-    "item": "architects_palette:cerebral_pillar",
-    "count": 2
+    "count": 2,
+    "item": "architects_palette:cerebral_pillar"
   }
 }

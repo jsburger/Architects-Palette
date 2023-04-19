@@ -1,24 +1,24 @@
 {
+  "criteria": {
+    "craftingtable": {
+      "conditions": {},
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "architects_palette:chiseled_abyssaline_bricks"
-    },
-    "title": {
-      "translate": "architects_palette.advancement.root"
-    },
+    "announce_to_chat": false,
+    "background": "architects_palette:textures/block/myonite_bricks.png",
     "description": {
       "translate": "architects_palette.advancement.root.desc"
     },
     "frame": "task",
-    "show_toast": false,
-    "announce_to_chat": false,
     "hidden": false,
-    "background": "architects_palette:textures/block/myonite_bricks.png"
-  },
-  "criteria": {
-    "craftingtable": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {}
+    "icon": {
+      "item": "architects_palette:chiseled_abyssaline_bricks"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "architects_palette.advancement.root"
     }
   },
   "requirements": [

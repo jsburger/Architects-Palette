@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "architects_palette:block/cerebral_slab_top"
-    },
     "type=bottom": {
       "model": "architects_palette:block/cerebral_slab"
     },
     "type=double": {
       "model": "architects_palette:block/cerebral_block"
+    },
+    "type=top": {
+      "model": "architects_palette:block/cerebral_slab_top"
     }
   }
 }

@@ -1,26 +1,26 @@
 {
   "parent": "architects_palette:main/buy_entrails",
+  "criteria": {
+    "entrails": {
+      "conditions": {
+        "block": "architects_palette:entrails"
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "architects_palette:entrails"
-    },
-    "title": {
-      "translate": "architects_palette.advancement.place_entrails"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "architects_palette.advancement.place_entrails.desc"
     },
     "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "architects_palette:entrails"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": true
-  },
-  "criteria": {
-    "entrails": {
-      "trigger": "minecraft:placed_block",
-      "conditions": {
-        "block": "architects_palette:entrails"
-      }
+    "title": {
+      "translate": "architects_palette.advancement.place_entrails"
     }
   },
   "requirements": [

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xx",
-    "xx"
-  ],
   "key": {
     "x": {
       "item": "minecraft:iron_ingot"
     }
   },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
   "result": {
-    "item": "architects_palette:sheet_metal_block",
-    "count": 16
+    "count": 16,
+    "item": "architects_palette:sheet_metal_block"
   }
 }

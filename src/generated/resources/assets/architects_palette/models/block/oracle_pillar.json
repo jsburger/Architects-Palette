@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "architects_palette:block/oracle_pillar",
-    "end": "architects_palette:block/oracle_pillar_top"
+    "end": "architects_palette:block/oracle_pillar_top",
+    "side": "architects_palette:block/oracle_pillar"
   }
 }

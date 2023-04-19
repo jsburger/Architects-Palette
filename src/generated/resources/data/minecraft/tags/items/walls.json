@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "architects_palette:plating_wall",
     "architects_palette:myonite_wall",
@@ -31,6 +30,7 @@
     "architects_palette:acacia_board_wall",
     "architects_palette:crimson_board_wall",
     "architects_palette:warped_board_wall",
+    "architects_palette:mangrove_board_wall",
     "architects_palette:twisted_board_wall",
     "architects_palette:dripstone_brick_wall",
     "architects_palette:calcite_brick_wall",

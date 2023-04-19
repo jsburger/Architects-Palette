@@ -1,5 +1,6 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": [
     {
       "item": "architects_palette:oracle_bricks"
@@ -8,6 +9,5 @@
       "item": "architects_palette:oracle_block"
     }
   ],
-  "result": "architects_palette:oracle_brick_wall",
-  "count": 1
+  "result": "architects_palette:oracle_brick_wall"
 }

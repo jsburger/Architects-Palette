@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "architects_palette:dark_oak_boards"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "architects_palette:dark_oak_board_wall",
-    "count": 6
+    "count": 6,
+    "item": "architects_palette:dark_oak_board_wall"
   }
 }

@@ -9,11 +9,11 @@
       ],
       "recipe": {
         "type": "minecraft:stonecutting",
+        "count": 2,
         "ingredient": {
           "item": "architects_palette:hazard_block"
         },
-        "result": "architects_palette:hazard_vertical_slab",
-        "count": 2
+        "result": "architects_palette:hazard_vertical_slab"
       }
     }
   ]

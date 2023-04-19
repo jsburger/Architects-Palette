@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "architects_palette:block/oracle_slab_top"
-    },
     "type=bottom": {
       "model": "architects_palette:block/oracle_slab"
     },
     "type=double": {
       "model": "architects_palette:block/oracle_block"
+    },
+    "type=top": {
+      "model": "architects_palette:block/oracle_slab_top"
     }
   }
 }

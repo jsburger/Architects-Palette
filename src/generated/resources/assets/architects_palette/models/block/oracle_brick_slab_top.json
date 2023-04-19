@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "side": "architects_palette:block/oracle_bricks",
     "bottom": "architects_palette:block/oracle_bricks",
+    "side": "architects_palette:block/oracle_bricks",
     "top": "architects_palette:block/oracle_bricks"
   }
 }

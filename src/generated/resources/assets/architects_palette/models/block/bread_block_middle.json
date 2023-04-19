@@ -2,11 +2,11 @@
   "parent": "minecraft:block/cube",
   "textures": {
     "down": "architects_palette:block/bread_block_bottom_middle",
-    "up": "architects_palette:block/bread_block_top_middle",
-    "north": "architects_palette:block/bread_block_inside",
-    "south": "architects_palette:block/bread_block_inside",
     "east": "architects_palette:block/bread_block_side_middle",
-    "west": "architects_palette:block/bread_block_side_middle",
-    "particle": "architects_palette:block/bread_block_inside"
+    "north": "architects_palette:block/bread_block_inside",
+    "particle": "architects_palette:block/bread_block_inside",
+    "south": "architects_palette:block/bread_block_inside",
+    "up": "architects_palette:block/bread_block_top_middle",
+    "west": "architects_palette:block/bread_block_side_middle"
   }
 }

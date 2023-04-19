@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "side": "architects_palette:block/acacia_boards",
     "bottom": "architects_palette:block/acacia_boards",
+    "side": "architects_palette:block/acacia_boards",
     "top": "architects_palette:block/acacia_boards"
   }
 }

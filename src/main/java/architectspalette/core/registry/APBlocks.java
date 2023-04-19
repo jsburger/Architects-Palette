@@ -243,15 +243,16 @@ public class APBlocks {
     public static final RegistryObject<Block> ENDER_PEARL_BLOCK = createBlock("ender_pearl_block", () -> new Block(APBlockProperties.ENDER_PEARL));
 
     // Boards
-    public static final BlockNode OAK_BOARDS = createBoardNode("oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final BlockNode OAK_BOARDS = createBoardNode("oak_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final BlockNode BIRCH_BOARDS = createBoardNode("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
     public static final BlockNode SPRUCE_BOARDS = createBoardNode("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final BlockNode JUNGLE_BOARDS = createBoardNode("jungle_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
-    public static final BlockNode DARK_OAK_BOARDS = createBoardNode("dark_oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final BlockNode ACACIA_BOARDS = createBoardNode("acacia_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
-    public static final BlockNode CRIMSON_BOARDS = createBoardNode("crimson_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final BlockNode WARPED_BOARDS = createBoardNode("warped_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
-    public static final BlockNode TWISTED_BOARDS = createBoardNode("twisted_boards", () -> new BoardBlock(APBlockProperties.TwistedWood()));
+    public static final BlockNode JUNGLE_BOARDS = createBoardNode("jungle_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final BlockNode DARK_OAK_BOARDS = createBoardNode("dark_oak_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final BlockNode ACACIA_BOARDS = createBoardNode("acacia_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final BlockNode CRIMSON_BOARDS = createBoardNode("crimson_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final BlockNode WARPED_BOARDS = createBoardNode("warped_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final BlockNode MANGROVE_BOARDS = createBoardNode("mangrove_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)));
+    public static final BlockNode TWISTED_BOARDS = createBoardNode("twisted_boards", () -> new Block(APBlockProperties.TwistedWood()));
 
     // Railings
     public static final RegistryObject<Block> OAK_RAILING = createBlock("oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
@@ -262,6 +263,7 @@ public class APBlocks {
     public static final RegistryObject<Block> ACACIA_RAILING = createBlock("acacia_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> CRIMSON_RAILING = createBlock("crimson_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> WARPED_RAILING = createBlock("warped_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> MANGROVE_RAILING = createBlock("mangrove_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> TWISTED_RAILING = createBlock("twisted_railing", () -> new RailingBlock(APBlockProperties.TwistedWood()), CreativeModeTab.TAB_DECORATIONS);
 
     // New stone block sets

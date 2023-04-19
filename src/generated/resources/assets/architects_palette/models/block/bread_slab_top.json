@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "side": "architects_palette:block/bread_block_side",
     "bottom": "architects_palette:block/bread_block_inside",
+    "side": "architects_palette:block/bread_block_side",
     "top": "architects_palette:block/bread_block_inside"
   }
 }

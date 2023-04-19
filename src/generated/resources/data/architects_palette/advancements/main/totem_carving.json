@@ -1,24 +1,24 @@
 {
   "parent": "architects_palette:main/root",
+  "criteria": {
+    "carve_totem": {
+      "conditions": {},
+      "trigger": "architects_palette:carve_totem"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "architects_palette:placid_acacia_totem"
-    },
-    "title": {
-      "translate": "architects_palette.advancement.totem_carving"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "architects_palette.advancement.totem_carving.desc"
     },
     "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "architects_palette:placid_acacia_totem"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "carve_totem": {
-      "trigger": "architects_palette:carve_totem",
-      "conditions": {}
+    "title": {
+      "translate": "architects_palette.advancement.totem_carving"
     }
   },
   "requirements": [

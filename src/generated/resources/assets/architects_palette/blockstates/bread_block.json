@@ -4,25 +4,25 @@
       "model": "architects_palette:block/bread_block_left",
       "y": 270
     },
-    "axis=z,part=left": {
-      "model": "architects_palette:block/bread_block_left"
-    },
     "axis=x,part=middle": {
       "model": "architects_palette:block/bread_block_middle",
       "y": 270
-    },
-    "axis=z,part=middle": {
-      "model": "architects_palette:block/bread_block_middle"
     },
     "axis=x,part=right": {
       "model": "architects_palette:block/bread_block_right",
       "y": 270
     },
-    "axis=z,part=right": {
-      "model": "architects_palette:block/bread_block_right"
-    },
     "axis=x,part=whole": {
       "model": "architects_palette:block/bread_block_whole"
+    },
+    "axis=z,part=left": {
+      "model": "architects_palette:block/bread_block_left"
+    },
+    "axis=z,part=middle": {
+      "model": "architects_palette:block/bread_block_middle"
+    },
+    "axis=z,part=right": {
+      "model": "architects_palette:block/bread_block_right"
     },
     "axis=z,part=whole": {
       "model": "architects_palette:block/bread_block_whole"

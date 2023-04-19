@@ -2,7 +2,7 @@
   "parent": "architects_palette:block/vertical_slab",
   "textures": {
     "bottom": "architects_palette:block/tread_plate",
-    "top": "architects_palette:block/tread_plate",
-    "side": "architects_palette:block/tread_plate"
+    "side": "architects_palette:block/tread_plate",
+    "top": "architects_palette:block/tread_plate"
   }
 }

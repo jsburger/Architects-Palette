@@ -9,11 +9,11 @@
       ],
       "recipe": {
         "type": "minecraft:stonecutting",
+        "count": 2,
         "ingredient": {
           "item": "architects_palette:birch_boards"
         },
-        "result": "architects_palette:birch_board_vertical_slab",
-        "count": 2
+        "result": "architects_palette:birch_board_vertical_slab"
       }
     }
   ]

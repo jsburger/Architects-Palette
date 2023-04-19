@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "architects_palette:entrails_stairs",
     "architects_palette:plating_stairs",
@@ -35,6 +34,7 @@
     "architects_palette:acacia_board_stairs",
     "architects_palette:crimson_board_stairs",
     "architects_palette:warped_board_stairs",
+    "architects_palette:mangrove_board_stairs",
     "architects_palette:twisted_board_stairs",
     "architects_palette:dripstone_brick_stairs",
     "architects_palette:calcite_brick_stairs",

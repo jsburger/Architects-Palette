@@ -211,7 +211,8 @@ public class APBlockTags extends BlockTagsProvider {
                 ACACIA_RAILING,
                 WARPED_RAILING,
                 CRIMSON_RAILING,
-                JUNGLE_RAILING
+                JUNGLE_RAILING,
+                MANGROVE_RAILING
             );
     }
 

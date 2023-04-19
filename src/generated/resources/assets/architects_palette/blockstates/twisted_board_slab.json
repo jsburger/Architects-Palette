@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "architects_palette:block/twisted_board_slab_top"
-    },
     "type=bottom": {
       "model": "architects_palette:block/twisted_board_slab"
     },
     "type=double": {
       "model": "architects_palette:block/twisted_boards"
+    },
+    "type=top": {
+      "model": "architects_palette:block/twisted_board_slab_top"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "architects_palette:oracle_block"
   },
-  "result": "architects_palette:oracle_stairs",
-  "count": 1
+  "result": "architects_palette:oracle_stairs"
 }

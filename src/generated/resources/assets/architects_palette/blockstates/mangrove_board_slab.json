@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "architects_palette:block/mangrove_board_slab"
+    },
+    "type=double": {
+      "model": "architects_palette:block/mangrove_boards"
+    },
+    "type=top": {
+      "model": "architects_palette:block/mangrove_board_slab_top"
+    }
+  }
+}

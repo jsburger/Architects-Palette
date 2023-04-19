@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/inner_stairs",
   "textures": {
-    "side": "architects_palette:block/oracle_tiles",
     "bottom": "architects_palette:block/oracle_tiles",
+    "side": "architects_palette:block/oracle_tiles",
     "top": "architects_palette:block/oracle_tiles"
   }
 }

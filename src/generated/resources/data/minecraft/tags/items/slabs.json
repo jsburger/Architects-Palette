@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "architects_palette:abyssaline_brick_slab",
     "architects_palette:abyssaline_tile_slab",
@@ -40,6 +39,7 @@
     "architects_palette:acacia_board_slab",
     "architects_palette:crimson_board_slab",
     "architects_palette:warped_board_slab",
+    "architects_palette:mangrove_board_slab",
     "architects_palette:twisted_board_slab",
     "architects_palette:dripstone_brick_slab",
     "architects_palette:calcite_brick_slab",

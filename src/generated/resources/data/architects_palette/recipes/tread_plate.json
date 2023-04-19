@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " x ",
-    "xyx",
-    " x "
-  ],
   "key": {
     "x": {
       "item": "minecraft:iron_nugget"
@@ -13,8 +8,13 @@
       "item": "architects_palette:plating_block"
     }
   },
+  "pattern": [
+    " x ",
+    "xyx",
+    " x "
+  ],
   "result": {
-    "item": "architects_palette:tread_plate",
-    "count": 4
+    "count": 4,
+    "item": "architects_palette:tread_plate"
   }
 }

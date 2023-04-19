@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " x ",
-    "xyx",
-    " x "
-  ],
   "key": {
     "x": {
       "item": "architects_palette:oracle_jelly"
@@ -13,8 +8,13 @@
       "item": "minecraft:end_rod"
     }
   },
+  "pattern": [
+    " x ",
+    "xyx",
+    " x "
+  ],
   "result": {
-    "item": "architects_palette:oracle_lamp",
-    "count": 2
+    "count": 2,
+    "item": "architects_palette:oracle_lamp"
   }
 }

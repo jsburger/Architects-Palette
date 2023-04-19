@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "xxx",
-    "xxx"
-  ],
   "key": {
     "x": {
       "item": "architects_palette:oracle_tiles"
     }
   },
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
   "result": {
-    "item": "architects_palette:oracle_tile_wall",
-    "count": 6
+    "count": 6,
+    "item": "architects_palette:oracle_tile_wall"
   }
 }

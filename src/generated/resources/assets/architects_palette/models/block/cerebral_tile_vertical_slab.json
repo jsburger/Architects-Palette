@@ -2,7 +2,7 @@
   "parent": "architects_palette:block/vertical_slab",
   "textures": {
     "bottom": "architects_palette:block/cerebral_tiles",
-    "top": "architects_palette:block/cerebral_tiles",
-    "side": "architects_palette:block/cerebral_tiles"
+    "side": "architects_palette:block/cerebral_tiles",
+    "top": "architects_palette:block/cerebral_tiles"
   }
 }
