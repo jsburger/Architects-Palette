@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "architects_palette:limestone_slab"
+      "item": "architects_palette:mushy_myonite_bricks_brick_slab"
     }
   },
   "result": {
-    "item": "architects_palette:limestone_vertical_slab",
+    "item": "architects_palette:mushy_myonite_bricks_brick_vertical_slab",
     "count": 3
   },
   "conditions": [
