@@ -88,12 +88,12 @@ public class WarpingRecipeBuilder implements RecipeBuilder {
             for(Ingredient ingredient : this.ingredients) {
                 jsonarray.add(ingredient.toJson());
             }
-            json.add("ingredients", jsonarray);
+            json.add("ingredient", jsonarray);
 
             JsonObject item = new JsonObject();
             item.addProperty("item", Registry.ITEM.getKey(result).toString());
             json.add("result", item);
-            json.addProperty("dimension", dimension.getRegistryName().toString());
+            json.addProperty("dimension", dimension.location().toString());
         }
 
         @Override
