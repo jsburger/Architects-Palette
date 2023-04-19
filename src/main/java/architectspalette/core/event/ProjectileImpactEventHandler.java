@@ -1,8 +1,10 @@
 package architectspalette.core.event;
 
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.registry.APSounds;
 import architectspalette.core.registry.MiscRegistry;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.ClipContext;
@@ -69,6 +71,7 @@ public class ProjectileImpactEventHandler {
                 hit = event.getRayTraceResult().getLocation().add(normal.scale(.02));
                 if (projectile.level.isClientSide) {
                     projectile.level.addParticle(MiscRegistry.WIZARDLY_DEFENSE_BLAST.get(), hit.x, hit.y, hit.z, normal.x, normal.y, normal.z);
+                    projectile.level.playLocalSound(hit.x, hit.y, hit.z, APSounds.WIZARD_BLAST.get(), SoundSource.BLOCKS, .5f, projectile.level.random.nextFloat() * .4f + .8f, false);
                 }
 
                 //Check if projectile will hit another block, if so, line it up so that it doesn't end up inside

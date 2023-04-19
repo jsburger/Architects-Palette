@@ -24,10 +24,14 @@ public class APSounds {
     public static final RegistryObject<SoundEvent> CAGE_LANTERN_TOGGLE_ON = register("block.cage_lantern.toggle_on");
     public static final RegistryObject<SoundEvent> CAGE_LANTERN_TOGGLE_OFF = register("block.cage_lantern.toggle_off");
 
+    public static final RegistryObject<SoundEvent> WIZARD_BLAST = register("block.wizard_deflect");
+
+    public static final RegistryObject<SoundEvent> HADALINE_ACTIVATE = register("block.chiseled_hadaline.activate");
+
     public static class APSoundTypes {
         public static final SoundType ENTWINE = new LazySoundType(
                 1.0F, 1.0F,
-                new LazyLoadedValue<>(() -> SoundEvents.STONE_BREAK),
+                new LazyLoadedValue<>(() -> SoundEvents.DEEPSLATE_TILES_BREAK),
                 new LazyLoadedValue<>(() -> SoundEvents.GLASS_STEP),
                 new LazyLoadedValue<>(BLOCK_ENTWINE_PLACE),
                 new LazyLoadedValue<>(BLOCK_ENTWINE_HIT),

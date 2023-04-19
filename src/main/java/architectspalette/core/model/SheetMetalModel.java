@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
@@ -43,7 +44,7 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
     private static void initializeData(BlockAndTintGetter world, BlockPos pos, BlockState state, Data data) {
         var checkPos = new BlockPos.MutableBlockPos();
         for (var face : Direction.values()) {
-            if (Block.shouldRenderFace(state, world, pos, face, checkPos.setWithOffset(pos, face))) {
+            if (Block.shouldRenderFace(state, world, pos, face, checkPos.setWithOffset(pos, face)) || state.getBlock() instanceof WallBlock) {
                 int index = 1;
                 boolean doShift = false;
                 if (world.getBlockState(checkPos.setWithOffset(pos, getUpDirection(face))).is(state.getBlock())) {
