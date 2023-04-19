@@ -51,6 +51,7 @@ public class JEIPlugin implements IModPlugin {
 
         //Register item info
         addItemInfo(registration, CHISELED_ABYSSALINE_BRICKS, "chiseled_chargeable");
+        addItemInfo(registration, CHISELED_HADALINE_BRICKS, "chiseled_chargeable");
         Stream.of(ABYSSALINE, ABYSSALINE_PILLAR, ABYSSALINE_LAMP_BLOCK).
                 forEach((i) -> addItemInfo(registration, i, "chargeable"));
         Stream.of(ABYSSALINE_BRICKS, ABYSSALINE_TILES).forEach((i) ->
