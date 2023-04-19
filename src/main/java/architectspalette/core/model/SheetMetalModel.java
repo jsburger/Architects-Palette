@@ -3,23 +3,23 @@ package architectspalette.core.model;
 import architectspalette.core.model.util.BakedModelWrapperWithData;
 import architectspalette.core.model.util.QuadHelper;
 import architectspalette.core.model.util.SpriteShift;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class SheetMetalModel extends BakedModelWrapperWithData {
 
@@ -35,10 +35,10 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
 
     //Add model property to the model data builder.
     @Override
-    protected ModelDataMap.Builder gatherModelData(ModelDataMap.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state) {
+    protected ModelData.Builder gatherModelData(ModelData.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state) {
         var data = new Data();
         initializeData(world, pos, state, data);
-        return builder.withInitial(CT_PROPERTY, data);
+        return builder.with(CT_PROPERTY, data);
     }
 
     private static void initializeData(BlockAndTintGetter world, BlockPos pos, BlockState state, Data data) {
@@ -70,13 +70,13 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
     }
 
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand, IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, RandomSource rand, ModelData extraData, RenderType renderType) {
         List<BakedQuad> quads =  super.getQuads(state, side, rand);
 
-        if (!extraData.hasProperty(CT_PROPERTY))
+        if (!extraData.has(CT_PROPERTY))
             return quads;
 
-        Data data = extraData.getData(CT_PROPERTY);
+        Data data = extraData.get(CT_PROPERTY);
         if (data == null) return quads;
 
         quads = new ArrayList<>(quads);

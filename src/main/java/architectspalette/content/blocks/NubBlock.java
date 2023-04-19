@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +24,6 @@ import net.minecraftforge.common.ToolAction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.Random;
 
 public class NubBlock extends WaterloggableDirectionalBlock {
 
@@ -61,7 +61,7 @@ public class NubBlock extends WaterloggableDirectionalBlock {
             this.weatherState = weatherState;
         }
 
-        public void randomTick(BlockState stateIn, ServerLevel worldIn, BlockPos pos, Random random) {
+        public void randomTick(BlockState stateIn, ServerLevel worldIn, BlockPos pos, RandomSource random) {
             this.onRandomTick(stateIn, worldIn, pos, random);
         }
 

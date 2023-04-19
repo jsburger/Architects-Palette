@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -26,12 +26,12 @@ import java.util.function.Consumer;
 
 public class WarpingRecipeBuilder implements RecipeBuilder {
 
-    private final ResourceKey<DimensionType> dimension;
+    private final ResourceKey<Level> dimension;
     private final Item result;
     private final List<Ingredient> ingredients = Lists.newArrayList();;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public WarpingRecipeBuilder(Item result, ResourceKey<DimensionType> dimension, Ingredient... ingredients) {
+    public WarpingRecipeBuilder(Item result, ResourceKey<Level> dimension, Ingredient... ingredients) {
         this.dimension = dimension;
         this.result = result;
         this.ingredients.addAll(Arrays.asList(ingredients));
@@ -70,9 +70,9 @@ public class WarpingRecipeBuilder implements RecipeBuilder {
         private final List<Ingredient> ingredients;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementName;
-        private final ResourceKey<DimensionType> dimension;
+        private final ResourceKey<Level> dimension;
 
-        public Result(ResourceLocation name, Item result, List<Ingredient> ingredients, ResourceKey<DimensionType> dimension, Advancement.Builder advancement, ResourceLocation advancementName) {
+        public Result(ResourceLocation name, Item result, List<Ingredient> ingredients, ResourceKey<Level> dimension, Advancement.Builder advancement, ResourceLocation advancementName) {
             this.name = name;
             this.result = result;
             this.ingredients = ingredients;

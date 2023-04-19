@@ -3,20 +3,20 @@ package architectspalette.core.model;
 import architectspalette.core.model.util.BakedModelWrapperWithData;
 import architectspalette.core.model.util.QuadHelper;
 import architectspalette.core.model.util.SpriteShift;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class BoardModel extends BakedModelWrapperWithData {
 
@@ -32,18 +32,18 @@ public class BoardModel extends BakedModelWrapperWithData {
 
     //Add model property to the model data builder.
     @Override
-    protected ModelDataMap.Builder gatherModelData(ModelDataMap.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state) {
-        return builder.withInitial(BOARD_PROPERTY, new BoardData(pos));
+    protected ModelData.Builder gatherModelData(ModelData.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state) {
+        return builder.with(BOARD_PROPERTY, new BoardData(pos));
     }
 
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand, IModelData extraData) {
-        List<BakedQuad> quads =  super.getQuads(state, side, rand);
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, RandomSource rand, ModelData extraData, RenderType renderType) {
+        List<BakedQuad> quads =  super.getQuads(state, side, rand, extraData, renderType);
 
-        if (!extraData.hasProperty(BOARD_PROPERTY))
+        if (!extraData.has(BOARD_PROPERTY))
             return quads;
 
-        BoardData data = extraData.getData(BOARD_PROPERTY);
+        BoardData data = extraData.get(BOARD_PROPERTY);
         if (data == null) return quads;
 
         quads = new ArrayList<>(quads);

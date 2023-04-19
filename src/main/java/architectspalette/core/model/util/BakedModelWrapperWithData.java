@@ -6,8 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.BakedModelWrapper;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 
 //Copyright (c) simibubi
 //Sourced from Create once again.
@@ -20,14 +19,14 @@ public abstract class BakedModelWrapperWithData extends BakedModelWrapper<BakedM
     }
 
     @Override
-    public IModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state, IModelData modelData) {
-        ModelDataMap.Builder builder = new ModelDataMap.Builder();
+    public ModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state, ModelData modelData) {
+        ModelData.Builder builder = ModelData.builder();
         if (originalModel instanceof BakedModelWrapperWithData wrappedModel) {
             wrappedModel.gatherModelData(builder, level, pos, state);
         }
         return gatherModelData(builder, level, pos, state).build();
     }
 
-    protected abstract ModelDataMap.Builder gatherModelData(ModelDataMap.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state);
+    protected abstract ModelData.Builder gatherModelData(ModelData.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state);
 
 }

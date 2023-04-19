@@ -14,7 +14,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
@@ -32,8 +32,8 @@ public class ModelBakeEventHandler {
     private static final Map<Entry, Function<BakedModel, ? extends BakedModel>> customBlockModels = new HashMap<>();
 
     @SubscribeEvent
-    public static void onModelBake(ModelBakeEvent event) {
-        Map<ResourceLocation, BakedModel> modelRegistry = event.getModelRegistry();
+    public static void onModelBake(ModelEvent.BakingCompleted event) {
+        Map<ResourceLocation, BakedModel> modelRegistry = event.getModels();
 //
 //        SpriteShift birchShift = new SpriteShift(new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards"), new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards_odd"));
 //        register(APBlocks.BIRCH_BOARDS, model -> new BoardModel(model, birchShift));

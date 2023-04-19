@@ -34,6 +34,7 @@ public class RegistryUtils {
 		return APBlocks.BLOCKS.register(name, supplier);
 	}
 
+
 	public static <B extends Block> StoneBlockSet createBoardSet(String name, Supplier<? extends B> supplier) {
 		StoneBlockSet boardSet = new StoneBlockSet(createBlock(name, supplier), StoneBlockSet.SetGroup.NO_WALLS).woodify();
 		boardSet.forEachRegistryObject((obj) -> ModelBakeEventHandler.register(obj, model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));

@@ -152,6 +152,7 @@ public class APBlockProperties {
 		}
 	}
 
+	@SuppressWarnings("removal")
 	public static void setupRenderLayers() {
 		ItemBlockRenderTypes.setRenderLayer(APBlocks.ENTWINE_BARS.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(APBlocks.SUNMETAL_BARS.get(), RenderType.cutout());

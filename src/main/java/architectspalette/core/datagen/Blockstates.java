@@ -8,6 +8,7 @@ import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -90,10 +91,14 @@ public class Blockstates extends BlockStateProvider {
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(model));
     }
 
+    private static String getBlockName(Block block) {
+        return Registry.BLOCK.getKey(block).getPath();
+    }
+
     private void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation baseBlock) {
         //Model Generation
         ResourceLocation texture = inBlockFolder(baseBlock);
-        ModelFile slab = models().withExistingParent(block.getRegistryName().getPath(), inAPBlockFolder("vertical_slab"))
+        ModelFile slab = models().withExistingParent(getBlockName(block), inAPBlockFolder("vertical_slab"))
                 .texture("bottom", texture)
                 .texture("top", texture)
                 .texture("side", texture);
@@ -121,7 +126,7 @@ public class Blockstates extends BlockStateProvider {
     private void processBoardBlockSet(StoneBlockSet set) {
         ResourceLocation base = set.getRegistryPart(StoneBlockSet.SetComponent.BLOCK).getId();
         set.forEachPart((part, block) -> {
-            String name = Objects.requireNonNull(block.getRegistryName()).getPath();
+            String name = getBlockName(block);
             switch (part) {
                 case BLOCK -> boardModel(base.getPath(), set.get());
                 case SLAB -> {
@@ -157,7 +162,7 @@ public class Blockstates extends BlockStateProvider {
         if (!node.getFlag(MODELS)) {
 
             Block block = node.get();
-            String name = block.getRegistryName().getPath();
+            String name = getBlockName(block);
             ResourceLocation parentTexture;
             if (node.parent != null) {
                 parentTexture = inBlockFolder(node.parent.getId());

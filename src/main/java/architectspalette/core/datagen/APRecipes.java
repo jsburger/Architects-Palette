@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -34,8 +35,8 @@ public class APRecipes extends RecipeProvider {
         BlockNode.forAllBaseNodes((node) -> processBlockNode(consumer, node));
 
         //Warping recipes
-        quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, DimensionType.NETHER_LOCATION);
-        quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, DimensionType.NETHER_LOCATION);
+        quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, Level.NETHER);
+        quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, Level.NETHER);
 
         //Base recipes for blocks
         ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 16)
@@ -279,20 +280,20 @@ public class APRecipes extends RecipeProvider {
     }
 
     private static ResourceLocation smeltingName(Block item, Block from) {
-        return new ResourceLocation(ArchitectsPalette.MOD_ID, "smelting/" + item.getRegistryName().getPath());
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "smelting/" + getItemName(item));
     }
 
     private static ResourceLocation cuttingName(Block item, Block from) {
-        return new ResourceLocation(ArchitectsPalette.MOD_ID, "stonecutting/" + item.getRegistryName().getPath());
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "stonecutting/" + getItemName(item));
     }
     private static ResourceLocation warpingName(Block item, Block from) {
-        return new ResourceLocation(ArchitectsPalette.MOD_ID, "warping/" + item.getRegistryName().getPath() + "_from_" + from.getRegistryName().getPath() + "_warping");
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "warping/" + getItemName(item) + "_from_" + getItemName(from) + "_warping");
     }
     private static ResourceLocation blastingName(ItemLike item, ItemLike from) {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, "blasting/" + getItemName(item) + "_from_" + getItemName(from) + "_blasting");
     }
 
-    private static void quickWarpingRecipe(Consumer<FinishedRecipe> consumer, Block result, Block from, ResourceKey<DimensionType> dimension) {
+    private static void quickWarpingRecipe(Consumer<FinishedRecipe> consumer, Block result, Block from, ResourceKey<Level> dimension) {
         new WarpingRecipeBuilder(result.asItem(), dimension, Ingredient.of(from))
                 .unlockedBy(getHasName(from), has(from))
                 .save(consumer, warpingName(result, from));

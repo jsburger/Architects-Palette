@@ -15,16 +15,16 @@ public class GatherData {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
-            generator.addProvider(new Advancements(generator));
+            generator.addProvider(true, new Advancements(generator));
             var blocktagger = new APBlockTags(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper());
-            generator.addProvider(blocktagger);
-            generator.addProvider(new APItemTags(generator, blocktagger, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
-            generator.addProvider(new APLootTables(generator));
-            generator.addProvider(new APRecipes(generator));
+            generator.addProvider(true, blocktagger);
+            generator.addProvider(true, new APItemTags(generator, blocktagger, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
+            generator.addProvider(true, new APLootTables(generator));
+            generator.addProvider(true, new APRecipes(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new Blockstates(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
-            generator.addProvider(new APLang(generator));
+            generator.addProvider(true, new Blockstates(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
+            generator.addProvider(true, new APLang(generator));
         }
     }
 }
