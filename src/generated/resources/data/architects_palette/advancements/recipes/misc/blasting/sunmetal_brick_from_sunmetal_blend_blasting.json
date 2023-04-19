@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:blasting/sunmetal_brick_from_sunmetal_blend_blasting"
+    ]
+  },
+  "criteria": {
+    "has_sunmetal_blend": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:sunmetal_blend"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:blasting/sunmetal_brick_from_sunmetal_blend_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sunmetal_blend",
+      "has_the_recipe"
+    ]
+  ]
+}

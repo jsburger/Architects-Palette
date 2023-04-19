@@ -12,6 +12,9 @@ import architectspalette.content.blocks.flint.FlintPillarBlock;
 import architectspalette.content.blocks.util.DirectionalFacingBlock;
 import architectspalette.content.worldgen.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.event.ModelBakeEventHandler;
+import architectspalette.core.model.BoardModel;
+import architectspalette.core.model.util.SpriteShift;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.world.item.CreativeModeTab;
@@ -23,20 +26,24 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static architectspalette.core.registry.util.BlockNode.*;
 import static architectspalette.core.registry.util.BlockNode.BlockType.*;
-import static architectspalette.core.registry.util.RegistryUtils.*;
+import static architectspalette.core.registry.util.BlockNode.*;
+import static architectspalette.core.registry.util.RegistryUtils.createBlock;
+import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.NUB;
 import static architectspalette.core.registry.util.StoneBlockSet.SetGroup.*;
 import static net.minecraft.world.level.block.WeatheringCopper.WeatherState.*;
 
 public class APBlocks {
+    public static final ArrayList<BlockNode> boards = new ArrayList<>();
+
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ArchitectsPalette.MOD_ID);
 
     // Abyssaline
@@ -52,7 +59,7 @@ public class APBlocks {
     public static final RegistryObject<Block> HADALINE = createBlock("hadaline", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
     public static final StoneBlockSet HADALINE_BRICKS = new StoneBlockSet(createBlock("hadaline_bricks", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
     public static final StoneBlockSet HADALINE_TILES = new StoneBlockSet(createBlock("hadaline_tiles", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE)), SLABS);
-//    public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_HADALINE_BRICKS = createBlock("chiseled_hadaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
+    public static final RegistryObject<ChiseledAbyssalineBlock> CHISELED_HADALINE_BRICKS = createBlock("chiseled_hadaline_bricks", () -> new ChiseledAbyssalineBlock(APBlockProperties.CHISELED_ABYSSALINE));
     public static final RegistryObject<AbyssalinePillarBlock>   HADALINE_PILLAR          = createBlock("hadaline_pillar",          () -> new AbyssalinePillarBlock(APBlockProperties.ABYSSALINE));
     public static final RegistryObject<AbyssalineLampBlock>     HADALINE_LAMP_BLOCK      = createBlock("hadaline_lamp",            () -> new AbyssalineLampBlock(APBlockProperties.ABYSSALINE_LAMP.sound(SoundType.GLASS)));
     public static final RegistryObject<AbyssalineBlock> HADALINE_PLATING = createBlock("hadaline_plating", () -> new AbyssalineBlock(APBlockProperties.ABYSSALINE));
@@ -64,7 +71,7 @@ public class APBlocks {
     public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)), CreativeModeTab.TAB_BUILDING_BLOCKS);
      // Entrails
-    public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS);
+    public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS).usesAxe();
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)), TYPICAL, NUB);
     public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(BlockBehaviour.Properties.copy(APBlocks.PLATING_BLOCK.get()).noOcclusion()));
@@ -234,17 +241,15 @@ public class APBlocks {
     public static final RegistryObject<Block> ENDER_PEARL_BLOCK = createBlock("ender_pearl_block", () -> new Block(APBlockProperties.ENDER_PEARL));
 
     // Boards
-    public static final RegistryObject<Block> OAK_BOARDS = createBlock("oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-//    public static final RegistryObject<Block> BIRCH_BOARDS = createBlock("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-    public static final StoneBlockSet BIRCH_BOARDS = createBoardSet("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-//    public static final RegistryObject<Block> SPRUCE_BOARDS = createBlock("spruce_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final StoneBlockSet SPRUCE_BOARDS = createBoardSet("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final RegistryObject<Block> JUNGLE_BOARDS = createBlock("jungle_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
-    public static final RegistryObject<Block> DARK_OAK_BOARDS = createBlock("dark_oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final RegistryObject<Block> ACACIA_BOARDS = createBlock("acacia_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
-    public static final RegistryObject<Block> CRIMSON_BOARDS = createBlock("crimson_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final RegistryObject<Block> WARPED_BOARDS = createBlock("warped_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
-    public static final RegistryObject<Block> TWISTED_BOARDS = createBlock("twisted_boards", () -> new BoardBlock(APBlockProperties.TwistedWood()));
+    public static final BlockNode OAK_BOARDS = createBoardNode("oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final BlockNode BIRCH_BOARDS = createBoardNode("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final BlockNode SPRUCE_BOARDS = createBoardNode("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final BlockNode JUNGLE_BOARDS = createBoardNode("jungle_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final BlockNode DARK_OAK_BOARDS = createBoardNode("dark_oak_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final BlockNode ACACIA_BOARDS = createBoardNode("acacia_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final BlockNode CRIMSON_BOARDS = createBoardNode("crimson_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final BlockNode WARPED_BOARDS = createBoardNode("warped_boards", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final BlockNode TWISTED_BOARDS = createBoardNode("twisted_boards", () -> new BoardBlock(APBlockProperties.TwistedWood()));
 
     // Railings
     public static final RegistryObject<Block> OAK_RAILING = createBlock("oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
@@ -360,6 +365,7 @@ public class APBlocks {
     public static final BlockNode SHEET_METAL = new Builder()
             .tool(Tool.PICK)
             .base(createBlock("sheet_metal_block", () -> new Block(APBlockProperties.PLATING)))
+            .variants(WALL)
             .build();
 
     public static final BlockNode BREAD_BLOCK = new Builder()
@@ -388,16 +394,16 @@ public class APBlocks {
             .addPart(LAMP, b -> b.base(createBlock("oracle_lamp", () -> new Block(APBlockProperties.ORACLE_LAMP))))
             .build();
 
-//    public static final BlockNode CEREBRAL_BLOCK = new Builder()
-//            .tool(Tool.PICK)
-//            .base(createBlock("cerebral_block", () -> new Block(APBlockProperties.CEREBRAL)))
-//            .slabs()
-//            .variants(STAIRS, PILLAR)
-//            .tiles(b -> {
-//                b.exclude(ExcludeFlag.MODELS);
-//                b.commonVariants();
-//            })
-//            .build();
+    public static final BlockNode CEREBRAL_BLOCK = new Builder()
+            .tool(Tool.PICK)
+            .base(createBlock("cerebral_block", () -> new Block(APBlockProperties.CEREBRAL)))
+            .slabs()
+            .variants(STAIRS, WALL, PILLAR)
+            .tiles(b -> {
+                b.exclude(ExcludeFlag.MODELS);
+                b.commonVariants();
+            })
+            .build();
 
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
@@ -416,6 +422,18 @@ public class APBlocks {
     }
     private static RegistryObject<Block> makeCopperNub(String name, Block block_to_copy, WeatheringCopper.WeatherState weatheringstate) {
         return createBlock(name, () -> new NubBlock.CopperNubBlock(BlockBehaviour.Properties.copy(block_to_copy), weatheringstate), CreativeModeTab.TAB_DECORATIONS);
+    }
+
+    public static BlockNode createBoardNode(String name, Supplier<? extends Block> supplier) {
+        BlockNode node = new Builder()
+                .tool(Tool.AXE)
+                .exclude(ExcludeFlag.MODELS)
+                .base(createBlock(name, supplier))
+                .commonVariants()
+                .build();
+        boards.add(node);
+        node.forEach((n) -> ModelBakeEventHandler.register(n.getObject(), model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));
+        return node;
     }
 
 }

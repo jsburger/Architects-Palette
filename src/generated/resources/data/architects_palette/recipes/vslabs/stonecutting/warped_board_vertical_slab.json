@@ -1,0 +1,20 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "ingredient": {
+          "item": "architects_palette:warped_boards"
+        },
+        "result": "architects_palette:warped_board_vertical_slab",
+        "count": 2
+      }
+    }
+  ]
+}

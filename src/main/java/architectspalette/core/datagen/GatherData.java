@@ -16,7 +16,9 @@ public class GatherData {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
             generator.addProvider(new Advancements(generator));
-            generator.addProvider(new APBlockTags(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
+            var blocktagger = new APBlockTags(generator, ArchitectsPalette.MOD_ID, event.getExistingFileHelper());
+            generator.addProvider(blocktagger);
+            generator.addProvider(new APItemTags(generator, blocktagger, ArchitectsPalette.MOD_ID, event.getExistingFileHelper()));
             generator.addProvider(new APLootTables(generator));
             generator.addProvider(new APRecipes(generator));
         }

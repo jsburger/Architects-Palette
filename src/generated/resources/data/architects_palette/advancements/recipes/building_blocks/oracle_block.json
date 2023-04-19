@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:oracle_block"
+    ]
+  },
+  "criteria": {
+    "has_oracle_jelly": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:oracle_jelly"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:oracle_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_oracle_jelly",
+      "has_the_recipe"
+    ]
+  ]
+}

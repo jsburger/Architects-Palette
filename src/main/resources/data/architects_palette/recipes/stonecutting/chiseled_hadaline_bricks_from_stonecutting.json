@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": [
+    {
+      "item": "architects_palette:hadaline_bricks"
+    },
+    {
+      "item": "architects_palette:hadaline"
+    }
+  ],
+  "result": "architects_palette:chiseled_hadaline_bricks",
+  "count": 1
+}

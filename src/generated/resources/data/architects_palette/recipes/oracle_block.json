@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:oracle_jelly"
+    }
+  },
+  "result": {
+    "item": "architects_palette:oracle_block",
+    "count": 8
+  }
+}

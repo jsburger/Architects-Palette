@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:dark_oak_board_slab"
+    ]
+  },
+  "criteria": {
+    "has_dark_oak_boards": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:dark_oak_boards"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:dark_oak_board_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_oak_boards",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "type": "architects_palette:warping",
+    "ingredient": [
+        {
+            "item": "architects_palette:chiseled_abyssaline_bricks"
+        }
+    ],
+    "result": {
+        "item": "architects_palette:chiseled_hadaline_bricks"
+    },
+    "dimension": "minecraft:the_nether"
+}

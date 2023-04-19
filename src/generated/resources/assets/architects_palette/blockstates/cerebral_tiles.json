@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "architects_palette:block/cerebral_tiles"
+      },
+      {
+        "model": "architects_palette:block/cerebral_tiles_1"
+      },
+      {
+        "model": "architects_palette:block/cerebral_tiles_2"
+      }
+    ]
+  }
+}

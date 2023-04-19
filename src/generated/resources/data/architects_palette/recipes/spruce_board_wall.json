@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:spruce_boards"
+    }
+  },
+  "result": {
+    "item": "architects_palette:spruce_board_wall",
+    "count": 6
+  }
+}

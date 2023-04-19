@@ -4,6 +4,7 @@ import architectspalette.content.blocks.CageLanternBlock;
 import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.SunstoneBlock;
 import architectspalette.content.blocks.abyssaline.*;
+import architectspalette.core.registry.util.BlockNode;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -61,7 +62,7 @@ public class APBlockProperties {
 	public static final BlockBehaviour.Properties NETHER_BRASS = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(4.0F, 10.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops();
 
 	public static final BlockBehaviour.Properties ESOTERRACK = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.RAW_IRON).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK);
-	public static final BlockBehaviour.Properties ONYX = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.5F, 6).sound(SoundType.BASALT);
+	public static final BlockBehaviour.Properties ONYX = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.5F, 6).sound(SoundType.STONE);
 	public static final BlockBehaviour.Properties WARDSTONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(2F, 6).sound(SoundType.NETHER_BRICKS);
 
 	public static final BlockBehaviour.Properties ANCIENT_PLATING = Block.Properties.of(Material.HEAVY_METAL, MaterialColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(4.0F, 12.0F).sound(SoundType.NETHERITE_BLOCK);
@@ -99,10 +100,10 @@ public class APBlockProperties {
 			.sound(SoundType.WOOD);
 
 	public static final BlockBehaviour.Properties ORACLE = BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)
-			.sound(SoundType.DEEPSLATE_TILES);
+			.sound(SoundType.STONE);
 
 	public static final BlockBehaviour.Properties ORACLE_LAMP = BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)
-			.sound(SoundType.DEEPSLATE_TILES)
+			.sound(SoundType.STONE)
 			.lightLevel((state) -> 16);
 
 	public static final BlockBehaviour.Properties CEREBRAL = BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS)
@@ -138,12 +139,17 @@ public class APBlockProperties {
 		Stream.of(GRINNING_ACACIA_TOTEM, PLACID_ACACIA_TOTEM, SHOCKED_ACACIA_TOTEM, BLANK_ACACIA_TOTEM,
 				TWISTED_LOG, STRIPPED_TWISTED_LOG, TWISTED_WOOD, STRIPPED_TWISTED_WOOD,
 				SPOOL, CHARCOAL_BLOCK,
-				OAK_RAILING, OAK_BOARDS, BIRCH_BOARDS, BIRCH_RAILING, SPRUCE_BOARDS, SPRUCE_RAILING,
-				ACACIA_BOARDS, ACACIA_RAILING, DARK_OAK_BOARDS, DARK_OAK_RAILING, JUNGLE_BOARDS, JUNGLE_RAILING,
-				TWISTED_RAILING, TWISTED_BOARDS
+				OAK_RAILING, BIRCH_RAILING, SPRUCE_RAILING,
+				ACACIA_RAILING, DARK_OAK_RAILING, JUNGLE_RAILING,
+				TWISTED_RAILING
 		).forEach((t) -> {
 			registerFlammable(t.get(), 5, 5);
 		});
+		for (BlockNode node : boards) {
+			node.forEach((n) -> {
+				registerFlammable(n.get(), 5, 20);
+			});
+		}
 	}
 
 	public static void setupRenderLayers() {

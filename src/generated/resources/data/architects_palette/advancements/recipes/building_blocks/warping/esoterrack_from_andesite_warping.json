@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:warping/esoterrack_from_andesite_warping"
+    ]
+  },
+  "criteria": {
+    "has_andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:andesite"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:warping/esoterrack_from_andesite_warping"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_andesite",
+      "has_the_recipe"
+    ]
+  ]
+}

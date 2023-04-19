@@ -1,0 +1,12 @@
+{
+  "type": "architects_palette:warping",
+  "ingredients": [
+    {
+      "item": "minecraft:granite"
+    }
+  ],
+  "result": {
+    "item": "architects_palette:onyx"
+  },
+  "dimension": "minecraft:dimension_type"
+}

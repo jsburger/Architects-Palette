@@ -4,6 +4,7 @@ import architectspalette.content.blocks.BreadBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.core.Direction;
@@ -17,9 +18,10 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Objects;
-import java.util.stream.Stream;
 
+import static architectspalette.core.registry.APBlocks.boards;
 import static architectspalette.core.registry.util.BlockNode.BlockType.SLAB;
+import static architectspalette.core.registry.util.BlockNode.BlockType.TILES;
 import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 
 public class Blockstates extends BlockStateProvider {
@@ -27,21 +29,23 @@ public class Blockstates extends BlockStateProvider {
         super(gen, modid, exFileHelper);
     }
 
-//    private static BlockModelProvider models = null;
-//    private static Blockstates instance = null;
 
     @Override
     protected void registerStatesAndModels() {
-        //Set up like this so model providers can be static
-//        models = models();
-//        instance = this;
 
-        Stream<StoneBlockSet> boards = Stream.of(APBlocks.BIRCH_BOARDS, APBlocks.SPRUCE_BOARDS);
-        boards.forEach(this::processBoardBlockSet);
+        for (BlockNode n : boards) {
+            boardModel(n.getName(), n.get());
+        }
+
+        cerebralTiles(APBlocks.CEREBRAL_BLOCK.getChild(TILES).get());
 
         BlockNode.forAllBaseNodes(this::processBlockNode);
         breadBlock(APBlocks.BREAD_BLOCK.get());
         breadSlab(APBlocks.BREAD_BLOCK.getChild(SLAB).get());
+
+        itemModels().basicItem(APItems.ORACLE_JELLY.getId());
+        itemModels().basicItem(APItems.CEREBRAL_PLATE.getId());
+
 
     }
 
@@ -293,4 +297,12 @@ public class Blockstates extends BlockStateProvider {
         simpleBlockItem(block, lower);
     }
 
+    private void cerebralTiles(Block block) {
+        ModelFile tex0 = models().cubeAll("cerebral_tiles", inAPBlockFolder("cerebral_tiles"));
+        ModelFile tex1 = models().cubeAll("cerebral_tiles_1", inAPBlockFolder("cerebral_tiles_1"));
+        ModelFile tex2 = models().cubeAll("cerebral_tiles_2", inAPBlockFolder("cerebral_tiles_2"));
+
+        getVariantBuilder(block).partialState().setModels(new ConfiguredModel(tex0), new ConfiguredModel(tex1), new ConfiguredModel(tex2));
+        simpleBlockItem(block, tex0);
+    }
 }

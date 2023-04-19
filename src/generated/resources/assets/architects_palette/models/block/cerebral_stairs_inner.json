@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "architects_palette:block/cerebral_block",
+    "bottom": "architects_palette:block/cerebral_block",
+    "top": "architects_palette:block/cerebral_block"
+  }
+}

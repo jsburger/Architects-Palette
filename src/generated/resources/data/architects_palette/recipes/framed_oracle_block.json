@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:cerebral_plate"
+    },
+    "y": {
+      "item": "architects_palette:oracle_block"
+    }
+  },
+  "result": {
+    "item": "architects_palette:framed_oracle_block",
+    "count": 2
+  }
+}

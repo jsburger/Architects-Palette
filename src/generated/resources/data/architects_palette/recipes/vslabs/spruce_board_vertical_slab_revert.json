@@ -1,0 +1,24 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "group": "vertical_slab_revert",
+        "ingredients": [
+          {
+            "item": "architects_palette:spruce_board_vertical_slab"
+          }
+        ],
+        "result": {
+          "item": "architects_palette:spruce_board_slab"
+        }
+      }
+    }
+  ]
+}

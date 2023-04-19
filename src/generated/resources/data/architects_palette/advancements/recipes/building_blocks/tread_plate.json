@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:tread_plate"
+    ]
+  },
+  "criteria": {
+    "has_plating_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:plating_block"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:tread_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_plating_block",
+      "has_the_recipe"
+    ]
+  ]
+}

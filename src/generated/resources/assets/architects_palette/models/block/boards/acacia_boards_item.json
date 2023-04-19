@@ -1,0 +1,7 @@
+{
+  "parent": "architects_palette:block/boards/parent",
+  "textures": {
+    "even": "architects_palette:block/acacia_boards",
+    "odd": "architects_palette:block/acacia_boards_odd"
+  }
+}

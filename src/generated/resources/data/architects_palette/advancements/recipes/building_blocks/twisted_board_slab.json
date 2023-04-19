@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:twisted_board_slab"
+    ]
+  },
+  "criteria": {
+    "has_twisted_boards": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:twisted_boards"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:twisted_board_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_twisted_boards",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:cerebral_block"
+    }
+  },
+  "result": {
+    "item": "architects_palette:cerebral_tiles",
+    "count": 4
+  }
+}

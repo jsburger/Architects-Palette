@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:cerebral_tiles"
+    }
+  },
+  "result": {
+    "item": "architects_palette:cerebral_tile_slab",
+    "count": 6
+  }
+}

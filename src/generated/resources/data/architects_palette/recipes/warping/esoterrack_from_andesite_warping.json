@@ -1,0 +1,12 @@
+{
+  "type": "architects_palette:warping",
+  "ingredients": [
+    {
+      "item": "minecraft:andesite"
+    }
+  ],
+  "result": {
+    "item": "architects_palette:esoterrack"
+  },
+  "dimension": "minecraft:dimension_type"
+}

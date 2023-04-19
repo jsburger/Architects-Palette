@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:blasting/nether_brass_ingot_from_nether_brass_blend_blasting"
+    ]
+  },
+  "criteria": {
+    "has_nether_brass_blend": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:nether_brass_blend"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:blasting/nether_brass_ingot_from_nether_brass_blend_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_nether_brass_blend",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,11 +1,13 @@
 package architectspalette.core.event;
 
 import architectspalette.core.ArchitectsPalette;
+import architectspalette.core.model.BoardModel;
 import architectspalette.core.model.HazardModel;
 import architectspalette.core.model.SheetMetalModel;
 import architectspalette.core.model.TileModel;
 import architectspalette.core.model.util.SpriteShift;
 import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.util.BlockNode;
 import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -40,9 +42,18 @@ public class ModelBakeEventHandler {
         register(APBlocks.UNOBTANIUM_BLOCK, TileModel::new);
         register(APBlocks.HAZARD_BLOCK.getObject(), HazardModel::new);
         register(APBlocks.SHEET_METAL.getObject(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
+        register(APBlocks.SHEET_METAL.getChild(BlockNode.BlockType.WALL), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
 
+    }
+
+    // Convenience function for EveryCompat. Sets up the board model and the Sprite Shift
+    @SuppressWarnings("unused")
+    public static void registerBoardModel(Supplier<Block> supplier, ResourceLocation blockToRegister, ResourceLocation baseBoardBlock) {
+        var inBlockFolder = new ResourceLocation(baseBoardBlock.getNamespace(),"block/" + baseBoardBlock.getPath());
+        var odd = new ResourceLocation(inBlockFolder.getNamespace(), inBlockFolder.getPath() + "_odd");
+        register(supplier, blockToRegister, model -> new BoardModel(model, SpriteShift.getShift(inBlockFolder, odd)));
     }
 
     private static <T extends BakedModel> void swapModels(Map<ResourceLocation, BakedModel> modelRegistry, List<ModelResourceLocation> locations, Function<BakedModel, T> modelFactory) {

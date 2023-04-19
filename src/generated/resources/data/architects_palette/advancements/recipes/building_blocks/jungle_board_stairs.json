@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:jungle_board_stairs"
+    ]
+  },
+  "criteria": {
+    "has_jungle_boards": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:jungle_boards"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:jungle_board_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_jungle_boards",
+      "has_the_recipe"
+    ]
+  ]
+}

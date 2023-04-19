@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:hazard_block"
+    ]
+  },
+  "criteria": {
+    "has_yellow_concrete": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:yellow_concrete"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:hazard_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_yellow_concrete",
+      "has_the_recipe"
+    ]
+  ]
+}

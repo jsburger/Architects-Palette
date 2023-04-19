@@ -1,0 +1,7 @@
+{
+  "parent": "architects_palette:block/boards/parent",
+  "textures": {
+    "even": "architects_palette:block/twisted_boards",
+    "odd": "architects_palette:block/twisted_boards_odd"
+  }
+}

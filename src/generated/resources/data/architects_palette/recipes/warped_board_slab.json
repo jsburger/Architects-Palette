@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:warped_boards"
+    }
+  },
+  "result": {
+    "item": "architects_palette:warped_board_slab",
+    "count": 6
+  }
+}

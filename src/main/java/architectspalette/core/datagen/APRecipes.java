@@ -2,19 +2,27 @@ package architectspalette.core.datagen;
 
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.integration.APVerticalSlabsCondition;
+import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
+
+import static architectspalette.core.registry.APBlocks.*;
+import static architectspalette.core.registry.APItems.*;
 
 public class APRecipes extends RecipeProvider {
     public APRecipes(DataGenerator generator) {
@@ -24,8 +32,78 @@ public class APRecipes extends RecipeProvider {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         BlockNode.forAllBaseNodes((node) -> processBlockNode(consumer, node));
-//        processBlockNode(consumer, APBlocks.TREAD_PLATE);
-//        processBlockNode(consumer, APBlocks.HAZARD_BLOCK);
+
+        //Warping recipes
+        quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, DimensionType.NETHER_LOCATION);
+        quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, DimensionType.NETHER_LOCATION);
+
+        //Base recipes for blocks
+        ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 16)
+                .pattern("xx")
+                .pattern("xx")
+                .define('x', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(TREAD_PLATE.get(), 4)
+                .pattern(" x ")
+                .pattern("xyx")
+                .pattern(" x ")
+                .define('x', Items.IRON_NUGGET)
+                .define('y', PLATING_BLOCK.get())
+                .unlockedBy(getHasName(PLATING_BLOCK.get()), has(PLATING_BLOCK.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(HAZARD_BLOCK.get(), 4)
+                .pattern("xy")
+                .pattern("yx")
+                .define('x', Blocks.YELLOW_CONCRETE)
+                .define('y', Blocks.BLACK_CONCRETE)
+                .unlockedBy(getHasName(Blocks.YELLOW_CONCRETE), has(Blocks.YELLOW_CONCRETE))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(BREAD_BLOCK.get(), 9)
+                .pattern("xxx")
+                .define('x', Blocks.HAY_BLOCK)
+                .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT))
+                .save(consumer);
+
+        brickRecipe(ORACLE_BLOCK.get(), ORACLE_JELLY.get(), 8, consumer);
+        brickRecipe(CEREBRAL_BLOCK.get(), CEREBRAL_PLATE.get(), 8, consumer);
+
+        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(BlockNode.BlockType.SPECIAL).get(), 2)
+                .pattern("xyx")
+                .define('x', CEREBRAL_PLATE.get())
+                .define('y', ORACLE_BLOCK.get())
+                .unlockedBy(getHasName(ORACLE_BLOCK.get()), has(ORACLE_BLOCK.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(BlockNode.BlockType.LAMP).get(), 2)
+                .pattern(" x ")
+                .pattern("xyx")
+                .pattern(" x ")
+                .define('x', ORACLE_JELLY.get())
+                .define('y', Items.END_ROD)
+                .unlockedBy(getHasName(ORACLE_BLOCK.get()), has(ORACLE_BLOCK.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(ORACLE_JELLY.get(), 4)
+                .requires(Items.CHORUS_FRUIT)
+                .requires(Items.AMETHYST_SHARD)
+                .requires(Items.SUGAR)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(CEREBRAL_PLATE.get(), 4)
+                .requires(Blocks.TUFF)
+                .requires(Items.QUARTZ)
+                .requires(Items.CHARCOAL)
+                .unlockedBy(getHasName(Items.TUFF), has(Items.TUFF))
+                .save(consumer);
+
+        quickBlastingRecipe(consumer, SUNMETAL_BRICK.get(), SUNMETAL_BLEND.get());
+        quickBlastingRecipe(consumer, APItems.NETHER_BRASS.get(), BRASS_BLEND.get());
+
     }
 
     private static void processBlockNode(Consumer<FinishedRecipe> consumer, BlockNode node) {
@@ -84,8 +162,23 @@ public class APRecipes extends RecipeProvider {
                         }
                     }
                     case CHISELED -> {
+                        var slab = n.getSibling(BlockNode.BlockType.SLAB);
+                        if (slab != null) {
+                            ShapedRecipeBuilder.shaped(block, 1)
+                                    .pattern("x")
+                                    .pattern("x")
+                                    .define('x', slab.get())
+                                    .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
+                                    .save(consumer);
+                        }
                     }
                     case PILLAR -> {
+                        ShapedRecipeBuilder.shaped(block, 2)
+                                .pattern("x")
+                                .pattern("x")
+                                .define('x', parent)
+                                .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
+                                .save(consumer);
                     }
                     case NUB -> {
                     }
@@ -174,7 +267,7 @@ public class APRecipes extends RecipeProvider {
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                 .save(consumer);
                 }
-                if (stoneCuttingCount > 0) {
+                if (stoneCuttingCount > 0 && node.tool != BlockNode.Tool.AXE) {
                     SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), block, stoneCuttingCount)
                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                             .save(consumer, cuttingName(block, parent));
@@ -192,6 +285,25 @@ public class APRecipes extends RecipeProvider {
     private static ResourceLocation cuttingName(Block item, Block from) {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, "stonecutting/" + item.getRegistryName().getPath());
     }
+    private static ResourceLocation warpingName(Block item, Block from) {
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "warping/" + item.getRegistryName().getPath() + "_from_" + from.getRegistryName().getPath() + "_warping");
+    }
+    private static ResourceLocation blastingName(ItemLike item, ItemLike from) {
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "blasting/" + getItemName(item) + "_from_" + getItemName(from) + "_blasting");
+    }
+
+    private static void quickWarpingRecipe(Consumer<FinishedRecipe> consumer, Block result, Block from, ResourceKey<DimensionType> dimension) {
+        new WarpingRecipeBuilder(result.asItem(), dimension, Ingredient.of(from))
+                .unlockedBy(getHasName(from), has(from))
+                .save(consumer, warpingName(result, from));
+    }
+
+    private static void quickBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike from) {
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(from), result, .1f, 100)
+                .unlockedBy(getHasName(from), has(from))
+                .save(consumer, blastingName(result, from));
+    }
+
 
     private static Ingredient getStonecuttingIngredients(BlockNode node) {
         //Traverse the tree in reverse until we hit a step that doesn't use stonecutting.
@@ -222,4 +334,13 @@ public class APRecipes extends RecipeProvider {
         };
     }
 
+
+    private static void brickRecipe(ItemLike result, ItemLike ingredient, int count, Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(result, count)
+                .pattern("xx")
+                .pattern("xx")
+                .define('x', ingredient)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(consumer);
+    }
 }

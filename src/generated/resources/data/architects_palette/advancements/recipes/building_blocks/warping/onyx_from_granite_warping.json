@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:warping/onyx_from_granite_warping"
+    ]
+  },
+  "criteria": {
+    "has_granite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:granite"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:warping/onyx_from_granite_warping"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_granite",
+      "has_the_recipe"
+    ]
+  ]
+}

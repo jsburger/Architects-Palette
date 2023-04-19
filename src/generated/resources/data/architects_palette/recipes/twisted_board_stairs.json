@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x  ",
+    "xx ",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:twisted_boards"
+    }
+  },
+  "result": {
+    "item": "architects_palette:twisted_board_stairs",
+    "count": 4
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "architects_palette:bread_block"
-  },
-  "result": "architects_palette:bread_slab",
-  "count": 2
-}

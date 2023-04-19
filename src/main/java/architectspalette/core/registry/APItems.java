@@ -32,4 +32,7 @@ public class APItems {
 
     public static final RegistryObject<Item> WARDSTONE_BLEND = ITEMS.register("wardstone_blend", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> WARDSTONE_BRICK = ITEMS.register("wardstone_brick", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+
+    public static final RegistryObject<Item> ORACLE_JELLY = ITEMS.register("oracle_jelly", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+    public static final RegistryObject<Item> CEREBRAL_PLATE = ITEMS.register("cerebral_plate", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 }

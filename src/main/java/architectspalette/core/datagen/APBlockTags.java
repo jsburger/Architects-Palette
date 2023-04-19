@@ -1,5 +1,6 @@
 package architectspalette.core.datagen;
 
+import architectspalette.core.registry.MiscRegistry;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.data.DataGenerator;
@@ -7,6 +8,8 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -34,10 +37,19 @@ public class APBlockTags extends BlockTagsProvider {
     }
 
     private void tagWalls() {
-        var tag = tag(BlockTags.WALLS);
+        var walls = tag(BlockTags.WALLS);
+        var slabs = tag(BlockTags.SLABS);
+        var stairs = tag(BlockTags.STAIRS);
+
         BLOCKS.getEntries().forEach((reg) -> {
             if (reg.get() instanceof WallBlock wall) {
-                tag.add(wall);
+                walls.add(wall);
+            }
+            else if (reg.get() instanceof SlabBlock slab) {
+                slabs.add(slab);
+            }
+            else if (reg.get() instanceof StairBlock stair) {
+                stairs.add(stair);
             }
         });
     }
@@ -68,7 +80,7 @@ public class APBlockTags extends BlockTagsProvider {
                 ABYSSALINE_PILLAR,
                 ABYSSALINE_LAMP_BLOCK,
                 HADALINE,
-//TODO          CHISELED_HADALINE_BRICKS,
+                CHISELED_HADALINE_BRICKS,
                 HADALINE_PILLAR,
                 HADALINE_LAMP_BLOCK,
                 HADALINE_PLATING,
@@ -166,6 +178,41 @@ public class APBlockTags extends BlockTagsProvider {
                 NETHERITE_NUB,
                 HAZARD_SIGN
         );
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(MiscRegistry.NUBS);
+
+        tagBlocks(BlockTags.MINEABLE_WITH_AXE,
+                ACACIA_TOTEM_WING,
+                BLANK_ACACIA_TOTEM,
+                CHARCOAL_BLOCK,
+                GRINNING_ACACIA_TOTEM,
+                PLACID_ACACIA_TOTEM,
+                COD_LOG,
+                COD_SCALES,
+                ROTTEN_FLESH_BLOCK,
+                SALMON_LOG,
+                SALMON_SCALES,
+                SHOCKED_ACACIA_TOTEM,
+                SPOOL,
+                STRIPPED_TWISTED_LOG,
+                STRIPPED_TWISTED_WOOD,
+                TWISTED_BUTTON,
+                TWISTED_DOOR,
+                TWISTED_FENCE,
+                TWISTED_FENCE_GATE,
+                TWISTED_LOG,
+                TWISTED_PRESSURE_PLATE,
+                TWISTED_TRAPDOOR,
+                TWISTED_WOOD,
+                OAK_RAILING,
+                DARK_OAK_RAILING,
+                SPRUCE_RAILING,
+                TWISTED_RAILING,
+                BIRCH_RAILING,
+                ACACIA_RAILING,
+                WARPED_RAILING,
+                CRIMSON_RAILING,
+                JUNGLE_RAILING
+            );
     }
 
 
