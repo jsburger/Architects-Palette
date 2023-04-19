@@ -2,10 +2,10 @@
     "type": "minecraft:stonecutting",
     "ingredient": [
         {
-            "item": "architects_palette:limestone"
+            "item": "architects_palette:myonite_bricks"
         }
     ],
-    "result": "architects_palette:limestone_vertical_slab",
+    "result": "architects_palette:myonite_bricks_vertical_slab",
     "count": 2,
     "conditions": [
       {
