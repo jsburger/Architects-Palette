@@ -22,6 +22,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -432,7 +434,9 @@ public class APBlocks {
                 .commonVariants()
                 .build();
         boards.add(node);
-        node.forEach((n) -> ModelBakeEventHandler.register(n.getObject(), model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            node.forEach((n) -> ModelBakeEventHandler.register(n.getObject(), model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));
+        });
         return node;
     }
 
