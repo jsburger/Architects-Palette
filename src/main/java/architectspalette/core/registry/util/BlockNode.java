@@ -27,19 +27,21 @@ public class BlockNode implements Supplier<Block> {
     public final BlockType type;
     public final Tool tool;
     private final int flags;
+    public final int dataFlags;
 
     private static final List<BlockNode> instances = new LinkedList<>();
     public static void forAllBaseNodes(Consumer<BlockNode> consumer) {
         instances.forEach(consumer);
     }
 
-    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style, int flags, String blockName) {
+    protected BlockNode(BlockNode parent, RegistryObject<Block> block, BlockType type, Tool tool, Style style, int flags, String blockName, int dataFlags) {
         this.parent = parent;
         this.type = type == null ? BlockType.BASE : type;
         this.tool = tool;
         this.style = style == null ? Style.CUBE : style;
         this.block = block == null ? makeBlock(blockName) : block;
         this.flags = flags;
+        this.dataFlags = dataFlags;
     }
     private void setChildren(ArrayList<BlockNode> children) {
         this.children = children;
@@ -122,6 +124,9 @@ public class BlockNode implements Supplier<Block> {
     public boolean getFlag(ExcludeFlag flag) {
         return (flags & flag.value) != 0;
     }
+    public boolean getDataFlag(DataFlag flag) {
+        return (dataFlags & flag.value()) != 0;
+    }
 
     public static class Builder {
         protected Builder parent;
@@ -131,18 +136,25 @@ public class BlockNode implements Supplier<Block> {
         private Style style;
         private final BlockType type;
         private Tool tool;
-        private ArrayList<DataFlags> flags = new ArrayList<>();
+        private final DataFlagBuilder flags;
         private int excludedFrom = 0;
         private String name;
         //TODO: Tags (?)
 
         protected Builder(Builder parent, BlockType type) {
             this.parent = parent;
+            if (parent != null) {
+                flags = parent.flags;
+            }
+            else {
+                flags = new DataFlagBuilder();
+            }
             this.type = type;
 
         }
         public Builder() {
             this(null, BlockType.BASE);
+
         }
         public Builder(BlockType type) {
             this(null, type);
@@ -168,7 +180,7 @@ public class BlockNode implements Supplier<Block> {
         private BlockNode build(BlockNode parent) {
             inherit();
 
-            BlockNode built = new BlockNode(parent, block, type, tool, style, excludedFrom, name);
+            BlockNode built = new BlockNode(parent, block, type, tool, style, excludedFrom, name, flags.getFlags());
             ArrayList<BlockNode> nodeChildren = new ArrayList<>();
             for (Builder builder : children) {
                 nodeChildren.add(builder.build(built));
@@ -223,7 +235,7 @@ public class BlockNode implements Supplier<Block> {
             this.style = style;
             return this;
         }
-        public Builder flag(DataFlags flag) {
+        public Builder flag(DataFlag flag) {
             flags.add(flag);
             return this;
         }
@@ -259,6 +271,17 @@ public class BlockNode implements Supplier<Block> {
                 return this;
             }
             return p.getBaseParent();
+        }
+
+        // This is an instance so that builders share a pointer.
+        private static class DataFlagBuilder {
+            private int flags = 0;
+            private void add(DataFlag flag) {
+                flags = flags | flag.value();
+            }
+            public int getFlags() {
+                return flags;
+            }
         }
     }
 
@@ -326,8 +349,12 @@ public class BlockNode implements Supplier<Block> {
         }
     }
 
-    public enum DataFlags {
-        ABYSSALINE
+    public enum DataFlag {
+        BOARDS,
+        SWAG;
+        public int value() {
+            return (int) Math.pow(2, ordinal());
+        }
     }
 
     public static Block getBlockForType(BlockType part, BlockBehaviour.Properties properties, Block base) {

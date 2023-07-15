@@ -13,7 +13,7 @@ import java.util.function.Function;
 public class SpriteShift {
 
     private static final Map<String, SpriteShift> entries = new HashMap<>();
-
+    private static Boolean areTexturesReady = false;
     //I wasn't going to copy this part from Create, but I now know why they needed it.
     public static SpriteShift getShift(ResourceLocation from_block, ResourceLocation to_block) {
         String key = from_block.toString() + "->" + to_block.toString();
@@ -28,13 +28,29 @@ public class SpriteShift {
         return getShift(new ResourceLocation(ArchitectsPalette.MOD_ID, from_block), new ResourceLocation(ArchitectsPalette.MOD_ID, to_block));
     }
 
+    public static void onTexturesDoneStitching() {
+        areTexturesReady = true;
+        for (SpriteShift entry : entries.values()) {
+            entry.init();
+        }
+    }
+
     protected TextureAtlasSprite from;
     protected TextureAtlasSprite to;
+    protected ResourceLocation fromLocation;
+    protected ResourceLocation toLocation;
 
     private SpriteShift(ResourceLocation from_block, ResourceLocation to_block) {
+        fromLocation = from_block;
+        toLocation = to_block;
+        if (areTexturesReady) {
+            init();
+        }
+    }
+    private void init() {
         Function<ResourceLocation, TextureAtlasSprite> atlas = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS);
-        from = atlas.apply(from_block);
-        to = atlas.apply(to_block);
+        from = atlas.apply(fromLocation);
+        to = atlas.apply(toLocation);
     }
 
     //Could optimize by saving this value. Hell, should probably just not save the sprites.

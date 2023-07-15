@@ -18,4 +18,8 @@ public class TextureStitchEventHandler {
         }
 
     }
+    @SubscribeEvent
+    public static void onTextureStitchPost(TextureStitchEvent.Post event) {
+        //SpriteShift.onTexturesDoneStitching();
+    }
 }

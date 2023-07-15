@@ -12,9 +12,6 @@ import architectspalette.content.blocks.flint.FlintPillarBlock;
 import architectspalette.content.blocks.util.DirectionalFacingBlock;
 import architectspalette.content.worldgen.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
-import architectspalette.core.event.ModelBakeEventHandler;
-import architectspalette.core.model.BoardModel;
-import architectspalette.core.model.util.SpriteShift;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,8 +19,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -434,11 +429,12 @@ public class APBlocks {
                 .exclude(ExcludeFlag.MODELS)
                 .base(createBlock(name, supplier))
                 .commonVariants()
+                .flag(DataFlag.BOARDS)
                 .build();
         boards.add(node);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            node.forEach((n) -> ModelBakeEventHandler.register(n.getObject(), model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));
-        });
+//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+//            node.forEach((n) -> ModelBakeEventHandler.register(n.getObject(), model -> new BoardModel(model, SpriteShift.getShift("block/" + name, "block/" + name + "_odd"))));
+//        });
         return node;
     }
 

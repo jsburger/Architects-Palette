@@ -6,36 +6,104 @@ import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
-import architectspalette.core.registry.util.StoneBlockSet;
+import com.google.common.base.Preconditions;
+import com.google.gson.JsonObject;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
+import java.io.IOException;
 
+import static architectspalette.core.event.RegisterModelLoadersEventHandler.MODELTYPE_BOARDS;
 import static architectspalette.core.registry.APBlocks.boards;
 import static architectspalette.core.registry.util.BlockNode.BlockType.SLAB;
 import static architectspalette.core.registry.util.BlockNode.BlockType.TILES;
+import static architectspalette.core.registry.util.BlockNode.DataFlag.BOARDS;
 import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 
 public class Blockstates extends BlockStateProvider {
+    private final BlockModelProvider awesomeBlockModels;
+    private static BlockNode currentNode;
+
+    private static final ResourceLocation dummy = new ResourceLocation("dummy:dummy");
+    private static ResourceLocation currentModelName = dummy;
+
     public Blockstates(DataGenerator gen, String modid, ExistingFileHelper exFileHelper) {
         super(gen, modid, exFileHelper);
+
+        this.awesomeBlockModels = new BlockModelProvider (gen, modid, exFileHelper) {
+            @Override public void run(CachedOutput p_236071_) throws IOException {}
+            @Override protected void registerModels() {}
+
+            @Override
+            //This seems like a bad idea, but it could be a really good idea.
+            public BlockModelBuilder getBuilder(String path) {
+                Preconditions.checkNotNull(path, "Path must not be null");
+                ResourceLocation outputLoc = extendWithFolder(path.contains(":") ? new ResourceLocation(path) : new ResourceLocation(modid, path));
+                this.existingFileHelper.trackGenerated(outputLoc, MODEL);
+                var present = generatedModels.get(outputLoc);
+                if (present == null) {
+                    var builder = factory.apply(outputLoc);
+                    generatedModels.put(outputLoc, builder);
+                    var replacement = onNewModel(builder);
+                    if (replacement != null) return replacement;
+                    return builder;
+                }
+                return present;
+            }
+
+            @Override
+            public BlockModelBuilder nested() {
+                return factory.apply(currentModelName);
+            }
+
+            // weh weh weh lets make the function private so that jsburg has to copy paste it into his anonymous class
+            // make THIS private �
+            // thats the middle finger emoji
+            private ResourceLocation extendWithFolder(ResourceLocation rl) {
+                if (rl.getPath().contains("/")) {
+                    return rl;
+                }
+                return new ResourceLocation(rl.getNamespace(), folder + "/" + rl.getPath());
+            }
+        };
     }
 
+    @Override
+    public BlockModelProvider models() {
+        return awesomeBlockModels;
+    }
+
+    @Nullable
+    private BlockModelBuilder onNewModel(BlockModelBuilder builder) {
+        BlockModelBuilder returnvalue = null;
+        if (currentNode != null) {
+            currentModelName = builder.getUncheckedLocation();
+            if (currentNode.getDataFlag(BOARDS)) {
+                returnvalue = builder.customLoader(WrappedModelLoaderBuilder::new).setWrapper(MODELTYPE_BOARDS, models().nested());
+            }
+
+            currentModelName = dummy;
+        }
+        return returnvalue;
+    }
 
     @Override
     protected void registerStatesAndModels() {
 
         for (BlockNode n : boards) {
+            if (n.dataFlags != 0) {
+                currentNode = n;
+            }
             boardModel(n.getName(), n.get());
+            currentNode = null;
         }
 
         cerebralTiles(APBlocks.CEREBRAL_BLOCK.getChild(TILES).get());
@@ -123,36 +191,18 @@ public class Blockstates extends BlockStateProvider {
     }
 
 
-    private void processBoardBlockSet(StoneBlockSet set) {
-        ResourceLocation base = set.getRegistryPart(StoneBlockSet.SetComponent.BLOCK).getId();
-        set.forEachPart((part, block) -> {
-            String name = getBlockName(block);
-            switch (part) {
-                case BLOCK -> boardModel(base.getPath(), set.get());
-                case SLAB -> {
-                    slabBlock((SlabBlock) block, base, inBlockFolder(base));
-                    simpleBlockItem(block, blockModel(name));
-                }
-                case VERTICAL_SLAB -> verticalSlabBlock((VerticalSlabBlock) block, base);
-                case STAIRS -> {
-                    stairsBlock((StairBlock) block, inBlockFolder(base));
-                    simpleBlockItem(block, blockModel(name));
-                }
-            }
-
-        });
-    }
-
     //Generates the funny item model for boards which loads the odd texture.
     private void boardModel(String boardname, Block board) {
+        //Model file used by the block + blockstate
+        simpleBlock(board);
+        //Don't need to mess with nodes anymore
+        currentNode = null;
         //Model File used by the item
         final ResourceLocation boardParent = inAPBlockFolder("boards/parent");
         ModelFile model = models().withExistingParent("block/boards/" + boardname + "_item", boardParent)
                 .texture("even", inAPBlockFolder(boardname))
                 .texture("odd", inAPBlockFolder(boardname + "_odd"));
         itemModels().getBuilder(boardname).parent(model);
-        //Model file used by the block + blockstate
-        simpleBlock(board);
     }
 
 
@@ -168,6 +218,9 @@ public class Blockstates extends BlockStateProvider {
                 parentTexture = inBlockFolder(node.parent.getId());
             } else {
                 parentTexture = inBlockFolder(node.getId());
+            }
+            if (node.dataFlags != 0) {
+                currentNode = node;
             }
             //TODO: Abyssaline support, will require a complete rewrite :)
             switch (node.type) {
@@ -244,12 +297,14 @@ public class Blockstates extends BlockStateProvider {
 
                 }
             }
+            if (currentNode != null) {
+                currentNode = null;
+            }
         }
         for (var child : node.children) {
             processBlockNode(child);
         }
     }
-
 
     //Lotta textures here. How about that.
     private void breadBlock(Block block) {
@@ -310,4 +365,41 @@ public class Blockstates extends BlockStateProvider {
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(tex0), new ConfiguredModel(tex1), new ConfiguredModel(tex2));
         simpleBlockItem(block, tex0);
     }
+//
+//    //This class used to do a lot more but then I figured out how the model builder stuff worked
+//    private static class AwesomeModelBuilder extends BlockModelBuilder {
+//
+//
+//        public AwesomeModelBuilder(ResourceLocation outputLocation, ExistingFileHelper existingFileHelper) {
+//            super(outputLocation, existingFileHelper);
+//        }
+//
+//    }
+
+    private static class WrappedModelLoaderBuilder <T extends ModelBuilder<T>> extends CustomLoaderBuilder<T> {
+
+        private String wrapper_type;
+        private BlockModelBuilder wrapped_model;
+        public WrappedModelLoaderBuilder(T parent, ExistingFileHelper existingFileHelper) {
+            super(ArchitectsPalette.rl("wrapped"), parent, existingFileHelper);
+        }
+
+        public BlockModelBuilder setWrapper(String type, BlockModelBuilder builder) {
+            this.wrapper_type = type;
+            this.wrapped_model = builder;
+            return builder;
+        }
+
+        @Override
+        public JsonObject toJson(JsonObject json) {
+            var s = super.toJson(json);
+            if (wrapper_type != null) {
+                s.addProperty("wrapper_type", wrapper_type);
+                s.add("wrapped_model", wrapped_model.toJson());
+            }
+
+            return s;
+        }
+    }
+
 }
