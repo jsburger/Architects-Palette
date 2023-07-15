@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "vertical_slab",
+        "key": {
+          "x": {
+            "item": "architects_palette:emerald_ore_brick_slab"
+          }
+        },
+        "pattern": [
+          "x",
+          "x",
+          "x"
+        ],
+        "result": {
+          "count": 3,
+          "item": "architects_palette:emerald_ore_brick_vertical_slab"
+        }
+      }
+    }
+  ]
+}
