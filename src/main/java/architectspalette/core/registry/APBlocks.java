@@ -24,9 +24,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.function.Supplier;
 
 import static architectspalette.core.registry.util.BlockNode.BlockType.*;
@@ -101,19 +98,22 @@ public class APBlocks {
     public static final RegistryObject<Block> ALGAL_LAMP = createBlock("algal_lamp", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SEA_LANTERN)));
 
     // Ore Bricks
-    public static final List<StoneBlockSet> ORE_BRICKS = addOreBricks();
+    public static final BlockNode COAL_BRICKS = oreBrickSet("coal");
+    public static final BlockNode LAPIS_BRICKS = oreBrickSet("lapis");
+    public static final BlockNode REDSTONE_BRICKS = oreBrickSet("redstone");
+    public static final BlockNode IRON_BRICKS = oreBrickSet("iron");
+    public static final BlockNode GOLD_BRICKS = oreBrickSet("gold");
+    public static final BlockNode EMERALD_BRICKS = oreBrickSet("emerald");
+    public static final BlockNode DIAMOND_BRICKS = oreBrickSet("diamond");
 
-    private static List<StoneBlockSet> addOreBricks() {
-        List<String> ores = Arrays.asList("coal", "lapis", "redstone", "iron", "gold", "emerald", "diamond");
-        List<StoneBlockSet> l = new LinkedList<>();
-        ores.forEach((ore) -> {
-                StoneBlockSet set = new StoneBlockSet(createBlock(ore + "_ore_bricks", () -> new Block(Block.Properties.copy(Blocks.STONE_BRICKS))));
-                createBlock("cracked_" + ore + "_ore_bricks", () -> new Block(Block.Properties.copy(Blocks.CRACKED_STONE_BRICKS)));
-                createBlock("chiseled_" + ore + "_ore_bricks", () -> new Block(Block.Properties.copy(Blocks.CHISELED_STONE_BRICKS)));
-                l.add(set);
-            }
-        );
-        return l;
+    private static BlockNode oreBrickSet(String ore) {
+        return new Builder()
+                .tool(Tool.PICK)
+                .base(createBlock(ore + "_ore_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS))))
+                .addPart(CRACKED)
+                .addPart(CHISELED)
+                .commonVariants()
+                .build();
     }
 
     // Flint Blocks
