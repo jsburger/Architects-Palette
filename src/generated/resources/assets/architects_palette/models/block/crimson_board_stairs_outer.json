@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/crimson_boards",
-    "side": "architects_palette:block/crimson_boards",
-    "top": "architects_palette:block/crimson_boards"
-  }
+  "loader": "architects_palette:wrapped",
+  "wrapped_model": {
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+      "bottom": "architects_palette:block/crimson_boards",
+      "side": "architects_palette:block/crimson_boards",
+      "top": "architects_palette:block/crimson_boards"
+    }
+  },
+  "wrapper_type": "boards"
 }

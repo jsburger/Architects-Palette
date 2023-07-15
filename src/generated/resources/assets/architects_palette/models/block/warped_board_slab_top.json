@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "architects_palette:block/warped_boards",
-    "side": "architects_palette:block/warped_boards",
-    "top": "architects_palette:block/warped_boards"
-  }
+  "loader": "architects_palette:wrapped",
+  "wrapped_model": {
+    "parent": "minecraft:block/slab_top",
+    "textures": {
+      "bottom": "architects_palette:block/warped_boards",
+      "side": "architects_palette:block/warped_boards",
+      "top": "architects_palette:block/warped_boards"
+    }
+  },
+  "wrapper_type": "boards"
 }

@@ -1,8 +1,12 @@
 {
-  "parent": "architects_palette:block/vertical_slab",
-  "textures": {
-    "bottom": "architects_palette:block/birch_boards",
-    "side": "architects_palette:block/birch_boards",
-    "top": "architects_palette:block/birch_boards"
-  }
+  "loader": "architects_palette:wrapped",
+  "wrapped_model": {
+    "parent": "architects_palette:block/vertical_slab",
+    "textures": {
+      "bottom": "architects_palette:block/birch_boards",
+      "side": "architects_palette:block/birch_boards",
+      "top": "architects_palette:block/birch_boards"
+    }
+  },
+  "wrapper_type": "boards"
 }

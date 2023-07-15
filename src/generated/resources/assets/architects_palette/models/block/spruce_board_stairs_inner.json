@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/spruce_boards",
-    "side": "architects_palette:block/spruce_boards",
-    "top": "architects_palette:block/spruce_boards"
-  }
+  "loader": "architects_palette:wrapped",
+  "wrapped_model": {
+    "parent": "minecraft:block/inner_stairs",
+    "textures": {
+      "bottom": "architects_palette:block/spruce_boards",
+      "side": "architects_palette:block/spruce_boards",
+      "top": "architects_palette:block/spruce_boards"
+    }
+  },
+  "wrapper_type": "boards"
 }
