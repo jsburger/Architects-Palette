@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "architects_palette:block/lunstone",
+    "side": "architects_palette:block/lunstone",
+    "top": "architects_palette:block/lunstone"
+  }
+}

@@ -298,6 +298,7 @@ public class BlockNode implements Supplier<Block> {
         MOSSY,
         TILES,
         CHISELED,
+        POLISHED,
         PILLAR,
         NUB,
         SLAB,
@@ -391,6 +392,7 @@ public class BlockNode implements Supplier<Block> {
             case LAMP -> material + "_lamp";
             case PLATING -> material + "_plating";
             case DARK -> "dark_" + baseName;
+            case POLISHED -> "polished_" + baseName;
             case SPECIAL -> throw new IllegalStateException("SPECIAL block did not have name specified");
         };
     }

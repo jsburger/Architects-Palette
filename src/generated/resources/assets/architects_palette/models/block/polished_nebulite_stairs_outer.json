@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "architects_palette:block/polished_nebulite",
+    "side": "architects_palette:block/polished_nebulite",
+    "top": "architects_palette:block/polished_nebulite"
+  }
+}

@@ -38,6 +38,11 @@ public class APRecipes extends RecipeProvider {
         //Warping recipes
         quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, Level.NETHER);
         quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, Level.NETHER);
+        quickWarpingRecipe(consumer, NEBULITE.get(), Blocks.DIORITE, Level.NETHER);
+        quickWarpingRecipe(consumer, LUNSTONE.get(), Blocks.STONE, Level.NETHER);
+        quickWarpingRecipe(consumer, LUNSTONE.getChild(BlockNode.BlockType.BRICKS).get(), Blocks.STONE_BRICKS, Level.NETHER);
+        quickWarpingRecipe(consumer, CRATERSTONE.get(), Blocks.COBBLESTONE, Level.NETHER);
+        quickSmeltingRecipe(consumer, LUNSTONE.get(), CRATERSTONE.get());
 
         //Base recipes for blocks
         ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 64)
@@ -120,7 +125,7 @@ public class APRecipes extends RecipeProvider {
 
                 int stoneCuttingCount = getStoneCuttingCount(n.type);
                 switch(n.type) {
-                    case BRICKS -> {
+                    case BRICKS, POLISHED -> {
                         ShapedRecipeBuilder.shaped(block, 4)
                                 .pattern("xx")
                                 .pattern("xx")
@@ -283,7 +288,7 @@ public class APRecipes extends RecipeProvider {
         }));
     }
 
-    private static ResourceLocation smeltingName(Block item, Block from) {
+    private static ResourceLocation smeltingName(ItemLike item, ItemLike from) {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, "smelting/" + getItemName(item));
     }
 
@@ -312,6 +317,11 @@ public class APRecipes extends RecipeProvider {
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(from), result, .1f, 100)
                 .unlockedBy(getHasName(from), has(from))
                 .save(consumer, blastingName(result, from));
+    }
+    private static void quickSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike from) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(from), result, .1f, 200)
+                .unlockedBy(getHasName(from), has(from))
+                .save(consumer, smeltingName(result, from));
     }
 
     private static void quickStonecuttingRecipe(Consumer<FinishedRecipe> consumer, ItemLike from, ItemLike result) {
@@ -347,7 +357,7 @@ public class APRecipes extends RecipeProvider {
     private static int getStoneCuttingCount(BlockNode.BlockType type) {
         return switch (type) {
             case BASE, CRACKED, MOSSY, LAMP, DARK, SPECIAL -> 0;
-            case BRICKS, FENCE, TILES, CHISELED, PILLAR, STAIRS, WALL, PLATING -> 1;
+            case BRICKS, FENCE, TILES, CHISELED, PILLAR, STAIRS, WALL, PLATING, POLISHED -> 1;
             case NUB, SLAB, VERTICAL_SLAB -> 2;
         };
     }

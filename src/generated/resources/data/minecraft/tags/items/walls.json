@@ -51,6 +51,10 @@
     "architects_palette:dark_oracle_brick_wall",
     "architects_palette:oracle_tile_wall",
     "architects_palette:cerebral_wall",
-    "architects_palette:cerebral_tile_wall"
+    "architects_palette:cerebral_tile_wall",
+    "architects_palette:lunstone_wall",
+    "architects_palette:lunstone_brick_wall",
+    "architects_palette:craterstone_wall",
+    "architects_palette:nebulite_wall"
   ]
 }

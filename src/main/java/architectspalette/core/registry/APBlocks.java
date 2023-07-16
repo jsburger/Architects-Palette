@@ -407,6 +407,35 @@ public class APBlocks {
             })
             .build();
 
+    public static final BlockNode LUNSTONE = new Builder()
+            .tool(Tool.PICK)
+            .base(createBlock("lunstone", () -> new Block(APBlockProperties.LUNSTONE)))
+            .commonVariants()
+            .variants(CHISELED)
+            .bricks(b -> {
+                b.commonVariants();
+                b.addPart(CRACKED);
+            })
+            .addPart(SPECIAL, builder -> {
+                builder.setName("bordered_lunstone");
+            })
+            .build();
+    public static final BlockNode CRATERSTONE = new Builder()
+            .tool(Tool.PICK)
+            .base(createBlock("craterstone", () -> new Block(APBlockProperties.LUNSTONE)))
+            .commonVariants()
+            .build();
+    public static final BlockNode NEBULITE = new Builder()
+            .tool(Tool.PICK)
+            .base(createBlock("nebulite", () -> new Block(APBlockProperties.NEBULITE)))
+            .commonVariants()
+            .addPart(POLISHED, b -> {
+                b.slabs();
+                b.addPart(STAIRS);
+            })
+            .build();
+
+
     private static RegistryObject<Block> createPottedPlant(RegistryObject<Block> plant) {
         String name = plant.getId().getPath();
         RegistryObject<Block> pot = BLOCKS.register("potted_" + name, () ->

@@ -1,0 +1,20 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "count": 2,
+        "ingredient": {
+          "item": "architects_palette:lunstone"
+        },
+        "result": "architects_palette:lunstone_vertical_slab"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "architects_palette:warping",
+  "dimension": "minecraft:the_nether",
+  "ingredient": [
+    {
+      "item": "minecraft:cobblestone"
+    }
+  ],
+  "result": {
+    "item": "architects_palette:craterstone"
+  }
+}

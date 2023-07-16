@@ -62,6 +62,11 @@
     "architects_palette:dark_oracle_brick_slab",
     "architects_palette:oracle_tile_slab",
     "architects_palette:cerebral_slab",
-    "architects_palette:cerebral_tile_slab"
+    "architects_palette:cerebral_tile_slab",
+    "architects_palette:lunstone_slab",
+    "architects_palette:lunstone_brick_slab",
+    "architects_palette:craterstone_slab",
+    "architects_palette:nebulite_slab",
+    "architects_palette:polished_nebulite_slab"
   ]
 }

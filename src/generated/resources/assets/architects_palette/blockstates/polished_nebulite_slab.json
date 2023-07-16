@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "architects_palette:block/polished_nebulite_slab"
+    },
+    "type=double": {
+      "model": "architects_palette:block/polished_nebulite"
+    },
+    "type=top": {
+      "model": "architects_palette:block/polished_nebulite_slab_top"
+    }
+  }
+}

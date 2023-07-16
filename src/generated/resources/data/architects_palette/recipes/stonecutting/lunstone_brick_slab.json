@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": [
+    {
+      "item": "architects_palette:lunstone_bricks"
+    },
+    {
+      "item": "architects_palette:lunstone"
+    }
+  ],
+  "result": "architects_palette:lunstone_brick_slab"
+}

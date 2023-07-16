@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "count": 2,
+        "ingredient": [
+          {
+            "item": "architects_palette:polished_nebulite"
+          },
+          {
+            "item": "architects_palette:nebulite"
+          }
+        ],
+        "result": "architects_palette:polished_nebulite_vertical_slab"
+      }
+    }
+  ]
+}

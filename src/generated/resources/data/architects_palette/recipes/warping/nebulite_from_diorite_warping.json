@@ -1,0 +1,12 @@
+{
+  "type": "architects_palette:warping",
+  "dimension": "minecraft:the_nether",
+  "ingredient": [
+    {
+      "item": "minecraft:diorite"
+    }
+  ],
+  "result": {
+    "item": "architects_palette:nebulite"
+  }
+}
