@@ -16,10 +16,11 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import static architectspalette.core.registry.APBlocks.*;
@@ -39,12 +40,15 @@ public class APRecipes extends RecipeProvider {
         quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, Level.NETHER);
 
         //Base recipes for blocks
-        ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 16)
-                .pattern("xx")
-                .pattern("xx")
-                .define('x', Items.IRON_INGOT)
+        ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 64)
+                .pattern("x")
+                .pattern("x")
+                .define('x', Items.IRON_BLOCK)
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
+
+        quickStonecuttingRecipe(consumer, Items.IRON_INGOT, SHEET_METAL.get(), 4);
+        quickStonecuttingRecipe(consumer, Items.IRON_BLOCK, SHEET_METAL.get(), 36);
 
         ShapedRecipeBuilder.shaped(TREAD_PLATE.get(), 4)
                 .pattern(" x ")
@@ -283,8 +287,13 @@ public class APRecipes extends RecipeProvider {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, "smelting/" + getItemName(item));
     }
 
-    private static ResourceLocation cuttingName(Block item, Block from) {
-        return new ResourceLocation(ArchitectsPalette.MOD_ID, "stonecutting/" + getItemName(item));
+    private static final Map<String, Boolean> stonecuttingMap = new HashMap<>();
+    private static ResourceLocation cuttingName(ItemLike item, ItemLike from) {
+        var string = getItemName(item);
+        if (stonecuttingMap.put(string, true) != null) {
+            string += "_from_" + getItemName(from);
+        }
+        return new ResourceLocation(ArchitectsPalette.MOD_ID, "stonecutting/" + string);
     }
     private static ResourceLocation warpingName(Block item, Block from) {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, "warping/" + getItemName(item) + "_from_" + getItemName(from) + "_warping");
@@ -305,6 +314,14 @@ public class APRecipes extends RecipeProvider {
                 .save(consumer, blastingName(result, from));
     }
 
+    private static void quickStonecuttingRecipe(Consumer<FinishedRecipe> consumer, ItemLike from, ItemLike result) {
+        quickStonecuttingRecipe(consumer, result, from, 1);
+    }
+    private static void quickStonecuttingRecipe(Consumer<FinishedRecipe> consumer, ItemLike from, ItemLike result, int amount) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(from), result, amount)
+                .unlockedBy(getHasName(from), has(from))
+                .save(consumer, cuttingName(result, from));
+    }
 
     private static Ingredient getStonecuttingIngredients(BlockNode node) {
         //Traverse the tree in reverse until we hit a step that doesn't use stonecutting.
