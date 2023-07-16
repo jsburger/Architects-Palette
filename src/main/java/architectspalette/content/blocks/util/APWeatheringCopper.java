@@ -107,7 +107,7 @@ public interface APWeatheringCopper extends ChangeOverTimeBlock<WeatheringCopper
                 if (player instanceof ServerPlayer) {
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
                 }
-                stack.shrink(1);
+                if (!player.isCreative()) stack.shrink(1);
                 //idk what these flags are
                 world.setBlock(pos, waxed.get(), 11);
                 //idk what this is but its from honeycomb code

@@ -66,7 +66,7 @@ public class NubBlock extends WaterloggableDirectionalBlock {
         }
 
         public boolean isRandomlyTicking(BlockState state) {
-            return WeatheringCopper.getNext(state.getBlock()).isPresent();
+            return APWeatheringCopper.getNext(state.getBlock()).isPresent();
         }
 
         public WeatheringCopper.WeatherState getAge() {
