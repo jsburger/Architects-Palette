@@ -407,9 +407,9 @@ public class APBlocks {
             })
             .build();
 
-    public static final BlockNode LUNSTONE = new Builder()
+    public static final BlockNode LUNESTONE = new Builder()
             .tool(Tool.PICK)
-            .base(createBlock("lunstone", () -> new Block(APBlockProperties.LUNSTONE)))
+            .base(createBlock("lunestone", () -> new Block(APBlockProperties.LUNESTONE)))
             .commonVariants()
             .variants(CHISELED)
             .bricks(b -> {
@@ -417,12 +417,12 @@ public class APBlocks {
                 b.addPart(CRACKED);
             })
             .addPart(SPECIAL, builder -> {
-                builder.setName("bordered_lunstone");
+                builder.setName("bordered_lunestone");
             })
             .build();
     public static final BlockNode CRATERSTONE = new Builder()
             .tool(Tool.PICK)
-            .base(createBlock("craterstone", () -> new Block(APBlockProperties.LUNSTONE)))
+            .base(createBlock("craterstone", () -> new Block(APBlockProperties.LUNESTONE)))
             .commonVariants()
             .build();
     public static final BlockNode NEBULITE = new Builder()

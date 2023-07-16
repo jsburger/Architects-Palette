@@ -6,6 +6,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,7 +19,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class BlockNode implements Supplier<Block> {
+public class BlockNode implements Supplier<Block>, ItemLike {
 
     public final BlockNode parent;
     public ArrayList<BlockNode> children;
@@ -126,6 +128,11 @@ public class BlockNode implements Supplier<Block> {
     }
     public boolean getDataFlag(DataFlag flag) {
         return (dataFlags & flag.value()) != 0;
+    }
+
+    @Override
+    public Item asItem() {
+        return get().asItem();
     }
 
     public static class Builder {

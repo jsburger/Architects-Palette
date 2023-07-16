@@ -4,6 +4,7 @@ import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.integration.APVerticalSlabsCondition;
 import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
+import architectspalette.core.registry.util.BlockNode.BlockType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -25,6 +26,7 @@ import java.util.function.Consumer;
 
 import static architectspalette.core.registry.APBlocks.*;
 import static architectspalette.core.registry.APItems.*;
+import static architectspalette.core.registry.util.BlockNode.BlockType.*;
 
 public class APRecipes extends RecipeProvider {
     public APRecipes(DataGenerator generator) {
@@ -39,10 +41,9 @@ public class APRecipes extends RecipeProvider {
         quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, Level.NETHER);
         quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, Level.NETHER);
         quickWarpingRecipe(consumer, NEBULITE.get(), Blocks.DIORITE, Level.NETHER);
-        quickWarpingRecipe(consumer, LUNSTONE.get(), Blocks.STONE, Level.NETHER);
-        quickWarpingRecipe(consumer, LUNSTONE.getChild(BlockNode.BlockType.BRICKS).get(), Blocks.STONE_BRICKS, Level.NETHER);
+        quickWarpingRecipe(consumer, LUNESTONE.get(), Blocks.STONE, Level.NETHER);
+        quickWarpingRecipe(consumer, LUNESTONE.getChild(BRICKS).get(), Blocks.STONE_BRICKS, Level.NETHER);
         quickWarpingRecipe(consumer, CRATERSTONE.get(), Blocks.COBBLESTONE, Level.NETHER);
-        quickSmeltingRecipe(consumer, LUNSTONE.get(), CRATERSTONE.get());
 
         //Base recipes for blocks
         ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 64)
@@ -81,14 +82,14 @@ public class APRecipes extends RecipeProvider {
         brickRecipe(ORACLE_BLOCK.get(), ORACLE_JELLY.get(), 8, consumer);
         brickRecipe(CEREBRAL_BLOCK.get(), CEREBRAL_PLATE.get(), 8, consumer);
 
-        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(BlockNode.BlockType.SPECIAL).get(), 2)
+        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(SPECIAL).get(), 2)
                 .pattern("xyx")
                 .define('x', CEREBRAL_PLATE.get())
                 .define('y', ORACLE_BLOCK.get())
                 .unlockedBy(getHasName(ORACLE_BLOCK.get()), has(ORACLE_BLOCK.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(BlockNode.BlockType.LAMP).get(), 2)
+        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(LAMP).get(), 2)
                 .pattern(" x ")
                 .pattern("xyx")
                 .pattern(" x ")
@@ -114,6 +115,16 @@ public class APRecipes extends RecipeProvider {
         quickBlastingRecipe(consumer, SUNMETAL_BRICK.get(), SUNMETAL_BLEND.get());
         quickBlastingRecipe(consumer, APItems.NETHER_BRASS.get(), BRASS_BLEND.get());
 
+        quickSmeltingRecipe(consumer, LUNESTONE.get(), CRATERSTONE.get());
+        ShapedRecipeBuilder.shaped(LUNESTONE.getChild(SPECIAL).get(), 2)
+                .pattern("s")
+                .pattern("b")
+                .pattern("s")
+                .define('s', Blocks.STONE_SLAB)
+                .define('b', LUNESTONE.get())
+                .unlockedBy(getHasName(LUNESTONE), has(LUNESTONE))
+                .save(consumer);
+
     }
 
     private static void processBlockNode(Consumer<FinishedRecipe> consumer, BlockNode node) {
@@ -133,7 +144,7 @@ public class APRecipes extends RecipeProvider {
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                 .save(consumer);
                         //Tile conversion recipe
-                        var tiles = n.getSibling(BlockNode.BlockType.TILES);
+                        var tiles = n.getSibling(TILES);
                         if (tiles != null) {
                             ShapedRecipeBuilder.shaped(block, 4)
                                     .pattern("xx")
@@ -152,7 +163,8 @@ public class APRecipes extends RecipeProvider {
                     }
                     case TILES -> {
                         //Brick conversion recipe
-                        var bricks = n.getSibling(BlockNode.BlockType.BRICKS);
+                        var bricks = n.getSibling(BRICKS);
+                        if (bricks == null) bricks = n.getSibling(POLISHED);
                         if (bricks != null) {
                             ShapedRecipeBuilder.shaped(block, 4)
                                     .pattern("xx")
@@ -172,7 +184,7 @@ public class APRecipes extends RecipeProvider {
                         }
                     }
                     case CHISELED -> {
-                        var slab = n.getSibling(BlockNode.BlockType.SLAB);
+                        var slab = n.getSibling(SLAB);
                         if (slab != null) {
                             ShapedRecipeBuilder.shaped(block, 1)
                                     .pattern("x")
@@ -202,7 +214,7 @@ public class APRecipes extends RecipeProvider {
                     case VERTICAL_SLAB -> {
                         //Special case with stoneCuttingCount here. The slabs make their own conditional stonecutting recipe
                         stoneCuttingCount = 0;
-                        var slab = n.getSibling(BlockNode.BlockType.SLAB).get();
+                        var slab = n.getSibling(SLAB).get();
                         //Craft from slabs
                         //I have no idea how this shit works
                         ConditionalRecipe.builder().addCondition(APVerticalSlabsCondition.instance)
@@ -354,7 +366,7 @@ public class APRecipes extends RecipeProvider {
         return new ResourceLocation(ArchitectsPalette.MOD_ID, name);
     }
 
-    private static int getStoneCuttingCount(BlockNode.BlockType type) {
+    private static int getStoneCuttingCount(BlockType type) {
         return switch (type) {
             case BASE, CRACKED, MOSSY, LAMP, DARK, SPECIAL -> 0;
             case BRICKS, FENCE, TILES, CHISELED, PILLAR, STAIRS, WALL, PLATING, POLISHED -> 1;
