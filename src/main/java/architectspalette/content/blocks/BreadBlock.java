@@ -1,14 +1,19 @@
 package architectspalette.content.blocks;
 
+import architectspalette.core.registry.APBlocks;
+import architectspalette.core.registry.util.BlockNode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 import static architectspalette.content.blocks.BreadBlock.BreadPart.*;
@@ -50,6 +55,15 @@ public class BreadBlock extends Block {
         }
 
         return state;
+    }
+
+    @Override
+    @javax.annotation.Nullable
+    public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+        var stack = context.getItemInHand();
+        if (!stack.canPerformAction(toolAction)) return null;
+        if (ToolActions.AXE_STRIP.equals(toolAction)) return APBlocks.BREAD_BLOCK.getChild(BlockNode.BlockType.SPECIAL).get().defaultBlockState();
+        return super.getToolModifiedState(state, context, toolAction, simulate);
     }
 
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {

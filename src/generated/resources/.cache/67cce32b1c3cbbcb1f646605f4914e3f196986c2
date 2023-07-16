@@ -1,4 +1,4 @@
-// 1.19.2	2023-07-15T17:00:07.6531696	LootTables
+// 1.19.2	2023-07-16T01:14:48.1591222	LootTables
 b4cc2a71b163d9fdca1c987792c6bb6a79e34a14 data/architects_palette/loot_tables/blocks/acacia_boards.json
 13107c692972154f0a724131f70b4df97d3d6773 data/architects_palette/loot_tables/blocks/acacia_board_slab.json
 7d1336f84efa3ddd28bf07eed353948f163ebd5b data/architects_palette/loot_tables/blocks/acacia_board_stairs.json
@@ -46,6 +46,7 @@ c528d3829addbc852e4a83072dcdc30a02b28d40 data/architects_palette/loot_tables/blo
 4e4524ed28bdacd0f67115ca558caf86c35189fd data/architects_palette/loot_tables/blocks/crimson_board_stairs.json
 69847d575e3f3266682afb673099cd77c67cd19a data/architects_palette/loot_tables/blocks/crimson_board_vertical_slab.json
 f0902bf99608e337d825d5391f4b8ac255ac44e6 data/architects_palette/loot_tables/blocks/crimson_board_wall.json
+573a1a4b049a65674f5f66a68b6ad4997e48bd6c data/architects_palette/loot_tables/blocks/crustless_bread_block.json
 54d1d4b644fe24faee2d6f39145d5d398f12c20a data/architects_palette/loot_tables/blocks/dark_oak_boards.json
 3464174058d5ae577bc5b2958bd817ae9906add9 data/architects_palette/loot_tables/blocks/dark_oak_board_slab.json
 b792549348898264c77f15e9ba66b240c56b7fda data/architects_palette/loot_tables/blocks/dark_oak_board_stairs.json
