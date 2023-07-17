@@ -285,11 +285,11 @@ public class Blockstates extends BlockStateProvider {
     private void nubModel(BlockNode node) {
         var block = (NubBlock) node.get();
         NodeTextures t = getBlockTextures(inFolder(node.getId(), "nubs"));
-        ModelFile nub = models().withExistingParent("nubs/" + node.getName(), inAPBlockFolder("nub/parent"))
+        ModelFile nub = models().withExistingParent("nubs/" + node.getName(), inAPBlockFolder("nubs/parent"))
                 .texture("bottom", t.bottom)
                 .texture("side", t.side)
                 .texture("top", t.top);
-        ModelFile h_nub = models().withExistingParent("nubs/" + node.getName() + "_horizontal", inAPBlockFolder("nub/parent_horizontal"))
+        ModelFile h_nub = models().withExistingParent("nubs/" + node.getName() + "_horizontal", inAPBlockFolder("nubs/parent_horizontal"))
                 .texture("bottom", t.bottom)
                 .texture("side", t.side)
                 .texture("top", t.top);
@@ -485,6 +485,12 @@ public class Blockstates extends BlockStateProvider {
 
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(tex0), new ConfiguredModel(tex1), new ConfiguredModel(tex2));
         simpleBlockItem(block, tex0);
+    }
+
+    private void stoneModel(BlockNode node) {
+        var name = node.getName();
+
+
     }
 
 

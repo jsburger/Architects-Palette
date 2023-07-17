@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "architects_palette:nubs/bread_nub",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "architects_palette:nubs/bread_nub_horizontal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "architects_palette:nubs/bread_nub_horizontal"
+    },
+    "facing=south": {
+      "model": "architects_palette:nubs/bread_nub_horizontal",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "architects_palette:nubs/bread_nub",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "architects_palette:nubs/bread_nub_horizontal",
+      "y": 270
+    }
+  }
+}

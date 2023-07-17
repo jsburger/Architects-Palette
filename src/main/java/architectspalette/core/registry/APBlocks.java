@@ -372,6 +372,7 @@ public class APBlocks {
             .exclude(ExcludeFlag.MODELS)
             .base(createBlock("bread_block", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL))))
             .addPart(SLAB, b -> b.exclude(ExcludeFlag.MODELS))
+            .addPart(BlockType.NUB)
             .addPart(SPECIAL, b -> {
                 b.setName("crustless_bread_block");
             })

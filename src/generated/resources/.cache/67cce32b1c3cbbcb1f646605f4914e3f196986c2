@@ -1,4 +1,4 @@
-// 1.19.2	2023-07-16T15:35:45.5698044	LootTables
+// 1.19.2	2023-07-16T22:11:20.3493855	LootTables
 b4cc2a71b163d9fdca1c987792c6bb6a79e34a14 data/architects_palette/loot_tables/blocks/acacia_boards.json
 13107c692972154f0a724131f70b4df97d3d6773 data/architects_palette/loot_tables/blocks/acacia_board_slab.json
 7d1336f84efa3ddd28bf07eed353948f163ebd5b data/architects_palette/loot_tables/blocks/acacia_board_stairs.json
@@ -11,6 +11,7 @@ bb75aea4690992bc4a6b4d97b4897de9729377c6 data/architects_palette/loot_tables/blo
 ab7963069dbe30ebdfcc9ca54d3a4e2ff7605473 data/architects_palette/loot_tables/blocks/birch_board_wall.json
 d17a09e03721be352f5628b675508b4d179ee219 data/architects_palette/loot_tables/blocks/bordered_lunestone.json
 e09c2173a349c6259bd6cc362e3fc01ff9299ab6 data/architects_palette/loot_tables/blocks/bread_block.json
+95faf7af3a0e701536ef915a7825e36f37cafda3 data/architects_palette/loot_tables/blocks/bread_nub.json
 f4cd3d16e390c13821d8d27f202fe8d90631d997 data/architects_palette/loot_tables/blocks/bread_slab.json
 a5638be3bca42dee3f43ac5bccc2c5f0a2732506 data/architects_palette/loot_tables/blocks/cerebral_block.json
 7e901f21d02ec703d6b2a49a57988ea04f03135b data/architects_palette/loot_tables/blocks/cerebral_pillar.json

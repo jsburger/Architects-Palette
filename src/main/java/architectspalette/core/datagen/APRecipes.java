@@ -289,7 +289,7 @@ public class APRecipes extends RecipeProvider {
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                 .save(consumer);
                 }
-                if (stoneCuttingCount > 0 && node.tool != BlockNode.Tool.AXE) {
+                if (stoneCuttingCount > 0 && (node.tool != BlockNode.Tool.AXE || node.type == NUB)) {
                     SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), block, stoneCuttingCount)
                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                             .save(consumer, cuttingName(block, parent));

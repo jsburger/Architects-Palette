@@ -1,0 +1,8 @@
+{
+  "parent": "architects_palette:block/nubs/parent_horizontal",
+  "textures": {
+    "bottom": "architects_palette:block/nubs/bread_nub_bottom",
+    "side": "architects_palette:block/nubs/bread_nub_side",
+    "top": "architects_palette:block/nubs/bread_nub_top"
+  }
+}
