@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "architects_palette:block/albert_bricks",
+    "side": "architects_palette:block/albert_bricks",
+    "top": "architects_palette:block/albert_bricks"
+  }
+}

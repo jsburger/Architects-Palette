@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "item": "architects_palette:lunestone_bricks"
-  },
-  "result": "architects_palette:cracked_lunestone_bricks"
-}

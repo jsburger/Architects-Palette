@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "architects_palette:block/lunestone",
-    "side": "architects_palette:block/lunestone",
-    "top": "architects_palette:block/lunestone"
-  }
-}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "architects_palette:albert_bricks"
+    }
+  },
+  "pattern": [
+    "xxx"
+  ],
+  "result": {
+    "count": 6,
+    "item": "architects_palette:albert_brick_slab"
+  }
+}

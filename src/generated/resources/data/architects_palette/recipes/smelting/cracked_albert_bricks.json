@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "architects_palette:albert_bricks"
+  },
+  "result": "architects_palette:cracked_albert_bricks"
+}

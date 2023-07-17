@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "architects_palette:block/albert_brick_slab"
+    },
+    "type=double": {
+      "model": "architects_palette:block/albert_bricks"
+    },
+    "type=top": {
+      "model": "architects_palette:block/albert_brick_slab_top"
+    }
+  }
+}
