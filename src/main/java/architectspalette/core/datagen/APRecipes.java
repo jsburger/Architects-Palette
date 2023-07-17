@@ -115,13 +115,13 @@ public class APRecipes extends RecipeProvider {
         quickBlastingRecipe(consumer, SUNMETAL_BRICK.get(), SUNMETAL_BLEND.get());
         quickBlastingRecipe(consumer, APItems.NETHER_BRASS.get(), BRASS_BLEND.get());
 
-        quickSmeltingRecipe(consumer, LUNESTONE.get(), CRATERSTONE.get());
+        quickSmeltingRecipe(consumer, LUNESTONE, CRATERSTONE);
         ShapedRecipeBuilder.shaped(LUNESTONE.getChild(SPECIAL).get(), 2)
                 .pattern("s")
                 .pattern("b")
                 .pattern("s")
                 .define('s', Blocks.STONE_SLAB)
-                .define('b', LUNESTONE.get())
+                .define('b', LUNESTONE)
                 .unlockedBy(getHasName(LUNESTONE), has(LUNESTONE))
                 .save(consumer);
 

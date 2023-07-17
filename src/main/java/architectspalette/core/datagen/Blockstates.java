@@ -1,7 +1,9 @@
 package architectspalette.core.datagen;
 
 import architectspalette.content.blocks.BreadBlock;
+import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
+import architectspalette.content.blocks.util.DirectionalFacingBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.APItems;
@@ -13,6 +15,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.*;
@@ -31,13 +34,14 @@ import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 public class Blockstates extends BlockStateProvider {
     private final BlockModelProvider awesomeBlockModels;
     private static BlockNode currentNode;
+    private final ExistingFileHelper fileHelper;
 
     private static final ResourceLocation dummy = new ResourceLocation("dummy:dummy");
     private static ResourceLocation currentModelName = dummy;
 
     public Blockstates(DataGenerator gen, String modid, ExistingFileHelper exFileHelper) {
         super(gen, modid, exFileHelper);
-
+        fileHelper = exFileHelper;
         this.awesomeBlockModels = new BlockModelProvider (gen, modid, exFileHelper) {
             @Override public void run(CachedOutput p_236071_) throws IOException {}
             @Override protected void registerModels() {}
@@ -125,6 +129,15 @@ public class Blockstates extends BlockStateProvider {
     private static ResourceLocation inBlockFolder(ResourceLocation original, String append) {
         return new ResourceLocation(original.getNamespace(), "block/" + original.getPath() + append);
     }
+    private static ResourceLocation inFolder(ResourceLocation original, String folder) {
+        return new ResourceLocation(original.getNamespace(), folder + "/" + original.getPath());
+    }
+    private static ResourceLocation append(ResourceLocation original, String append) {
+        return new ResourceLocation(original.getNamespace(), original.getPath() + append);
+    }
+    private static ResourceLocation bottom(ResourceLocation original) {return inBlockFolder(original, "_bottom"); }
+    private static ResourceLocation top(ResourceLocation original) { return inBlockFolder(original, "_top"); }
+    private static ResourceLocation side(ResourceLocation original) { return inBlockFolder(original, "_side");}
 
     private static ResourceLocation inMinecraftBlock(String name) {
         return new ResourceLocation("minecraft", "block/" + name);
@@ -159,6 +172,85 @@ public class Blockstates extends BlockStateProvider {
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(model));
     }
 
+    //Texture Searching
+    private record TextureResult(ResourceLocation result, Boolean found) {
+        public TextureResult(ResourceLocation possible, Boolean exists, ResourceLocation def){
+            this(exists ? possible : def, exists);
+        }
+    }
+    protected static final ExistingFileHelper.ResourceType TEXTURE = new ExistingFileHelper.ResourceType(PackType.CLIENT_RESOURCES, ".png", "textures");
+    private boolean textureExists(ResourceLocation location) {
+        return fileHelper.exists(location, TEXTURE);
+    }
+
+    private ResourceLocation getSideTexture(ResourceLocation block) {
+        var tex = inBlockFolder(block, "_side");
+        if (textureExists(tex)) return tex;
+        return inBlockFolder(block);
+    }
+    private TextureResult getTopTexture(ResourceLocation block) {
+        var topTex = inBlockFolder(block, "_top");
+        var exists = textureExists(topTex);
+        return new TextureResult(topTex, exists, getSideTexture(block));
+    }
+    private TextureResult getBottomTexture(ResourceLocation block) {
+        var bottomTex = inBlockFolder(block, "_bottom");
+        return new TextureResult(bottomTex, textureExists(bottomTex), getTopTexture(block).result);
+    }
+
+    private record NodeTextures(ResourceLocation top, ResourceLocation side, ResourceLocation bottom) {};
+    private NodeTextures getNodeTextures(BlockNode node, Boolean checkParent) {
+        ResourceLocation top = null, side = null, bottom = null;
+        if (checkParent && node.parent != null) {
+            var n = node.getId();
+            var p = node.parent.getId();
+            switch (node.style) {
+                case CUBE -> top = side = bottom = findFirst(side(n), side(p), inBlockFolder(n), inBlockFolder(p));
+                case TOP_SIDES -> {
+                    bottom = side = findFirst(side(n), side(p), inBlockFolder(n), inBlockFolder(p));
+                    top = findFirst(top(n), top(p), side);
+                }
+                case TOP_SIDE_BOTTOM -> {
+                    side = findFirst(side(n), side(p), inBlockFolder(n), inBlockFolder(p));
+                    top = findFirst(top(n), top(p), bottom(n), bottom(p), side);
+                    bottom = findFirst(bottom(n), bottom(p), top, side);
+                }
+            }
+        }
+        else {
+            var n = node.getId();
+            switch (node.style) {
+                case CUBE -> top = side = bottom = findFirst(side(n), inBlockFolder(n));
+                case TOP_SIDES -> {
+                    bottom = side = findFirst(side(n), inBlockFolder(n));
+                    top = findFirst(top(n), side);
+                }
+                case TOP_SIDE_BOTTOM -> {
+                    side = findFirst(side(n), inBlockFolder(n));
+                    top = findFirst(top(n), bottom(n), side);
+                    bottom = findFirst(bottom(n), top, side);
+                }
+            }
+        }
+
+        return new NodeTextures(top, side, bottom);
+    }
+    private NodeTextures getBlockTextures(ResourceLocation n) {
+        ResourceLocation top, side, bottom;
+        side = findFirst(side(n), inBlockFolder(n));
+        top = findFirst(top(n), bottom(n), side);
+        bottom = findFirst(bottom(n), top, side);
+        return new NodeTextures(top, side, bottom);
+    }
+
+    private ResourceLocation findFirst(ResourceLocation... names) {
+        for (ResourceLocation name : names) {
+            if (textureExists(name)) return name;
+        }
+        return names[names.length - 1];
+    }
+
+
     private static String getBlockName(Block block) {
         return Registry.BLOCK.getKey(block).getPath();
     }
@@ -190,6 +282,35 @@ public class Blockstates extends BlockStateProvider {
         simpleBlockItem(block, slab);
     }
 
+    private void nubModel(BlockNode node) {
+        var block = (NubBlock) node.get();
+        NodeTextures t = getBlockTextures(inFolder(node.getId(), "nubs"));
+        ModelFile nub = models().withExistingParent("nubs/" + node.getName(), inAPBlockFolder("nub/parent"))
+                .texture("bottom", t.bottom)
+                .texture("side", t.side)
+                .texture("top", t.top);
+        ModelFile h_nub = models().withExistingParent("nubs/" + node.getName() + "_horizontal", inAPBlockFolder("nub/parent_horizontal"))
+                .texture("bottom", t.bottom)
+                .texture("side", t.side)
+                .texture("top", t.top);
+        getVariantBuilder(block)
+                .forAllStatesExcept(state -> {
+                    Direction facing = state.getValue(DirectionalFacingBlock.FACING);
+                    if (facing.getAxis().isVertical()) {
+                        return ConfiguredModel.builder()
+                                .modelFile(nub)
+                                .rotationX(facing == Direction.UP ? 270 : 90)
+                                .build();
+                    }
+                    else {
+                        return ConfiguredModel.builder()
+                                .modelFile(h_nub)
+                                .rotationY(getYRotation(facing))
+                                .build();
+                    }
+                }, BlockStateProperties.WATERLOGGED);
+        simpleBlockItem(block, nub);
+    }
 
     //Generates the funny item model for boards which loads the odd texture.
     private void boardModel(String boardname, Block board) {
@@ -225,12 +346,12 @@ public class Blockstates extends BlockStateProvider {
             //TODO: Abyssaline support, will require a complete rewrite :)
             switch (node.type) {
                 case NUB -> {
-                    //TODO: Nub Models
-                    //                nubModel()
+                    nubModel(node);
                 }
                 case SLAB -> {
-                    //TODO: Fancy Slabs
-                    slabBlock((SlabBlock) block, node.parent.getId(), parentTexture);
+                    //TODO: Fancy Slabs Full Block
+                    NodeTextures t = getNodeTextures(node, true);
+                    slabBlock((SlabBlock) block, node.parent.getId(), t.side, t.bottom, t.top);
                     simpleBlockItem(block, blockModel(name));
                 }
                 case VERTICAL_SLAB -> {
@@ -365,16 +486,7 @@ public class Blockstates extends BlockStateProvider {
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(tex0), new ConfiguredModel(tex1), new ConfiguredModel(tex2));
         simpleBlockItem(block, tex0);
     }
-//
-//    //This class used to do a lot more but then I figured out how the model builder stuff worked
-//    private static class AwesomeModelBuilder extends BlockModelBuilder {
-//
-//
-//        public AwesomeModelBuilder(ResourceLocation outputLocation, ExistingFileHelper existingFileHelper) {
-//            super(outputLocation, existingFileHelper);
-//        }
-//
-//    }
+
 
     private static class WrappedModelLoaderBuilder <T extends ModelBuilder<T>> extends CustomLoaderBuilder<T> {
 
