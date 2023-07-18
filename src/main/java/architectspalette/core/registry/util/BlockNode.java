@@ -211,6 +211,12 @@ public class BlockNode implements Supplier<Block>, ItemLike {
             addChild(type);
             return this;
         }
+        public Builder withPart(BlockType type) {
+            return addChild(type);
+        }
+        public Builder done() {
+            return parent;
+        }
         public Builder variants(BlockType... types) {
             for (BlockType type : types) {
                 addChild(type);

@@ -28,6 +28,7 @@ import java.util.function.Supplier;
 
 import static architectspalette.core.registry.util.BlockNode.BlockType.*;
 import static architectspalette.core.registry.util.BlockNode.*;
+import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.*;
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
@@ -369,9 +370,9 @@ public class APBlocks {
 
     public static final BlockNode BREAD_BLOCK = new Builder()
             .tool(Tool.AXE)
-            .exclude(ExcludeFlag.MODELS)
+            .exclude(MODELS)
             .base(createBlock("bread_block", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL))))
-            .addPart(SLAB, b -> b.exclude(ExcludeFlag.MODELS))
+            .addPart(SLAB, b -> b.exclude(MODELS))
             .addPart(BlockType.NUB)
             .addPart(SPECIAL, b -> {
                 b.setName("crustless_bread_block");
@@ -403,7 +404,7 @@ public class APBlocks {
             .slabs()
             .variants(STAIRS, WALL, PILLAR)
             .tiles(b -> {
-                b.exclude(ExcludeFlag.MODELS);
+                b.exclude(MODELS);
                 b.commonVariants();
             })
             .build();
@@ -412,10 +413,13 @@ public class APBlocks {
             .tool(Tool.PICK)
             .base(createBlock("albert", () -> new Block(APBlockProperties.LUNESTONE)))
             .commonVariants()
+            .exclude(MODELS)
             .variants(CHISELED)
             .bricks(b -> {
                 b.commonVariants();
                 b.addPart(CRACKED);
+                b.withPart(CHISELED)
+                        .setName("albert_flagstone");
             })
             .addPart(SPECIAL, builder -> {
                 builder.setName("bordered_albert");
@@ -459,7 +463,7 @@ public class APBlocks {
     public static BlockNode createBoardNode(String name, Supplier<? extends Block> supplier) {
         BlockNode node = new Builder()
                 .tool(Tool.AXE)
-                .exclude(ExcludeFlag.MODELS)
+                .exclude(MODELS)
                 .base(createBlock(name, supplier))
                 .commonVariants()
                 .flag(DataFlag.BOARDS)

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "architects_palette:albert_brick_slab"
+    }
+  },
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "result": {
+    "item": "architects_palette:albert_flagstone"
+  }
+}

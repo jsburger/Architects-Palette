@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "architects_palette:block/albert"
-    }
+    "": [
+      {
+        "model": "architects_palette:block/albert"
+      },
+      {
+        "model": "architects_palette:block/albert_mirrored"
+      },
+      {
+        "model": "architects_palette:block/albert",
+        "y": 180
+      },
+      {
+        "model": "architects_palette:block/albert_mirrored",
+        "y": 180
+      }
+    ]
   }
 }

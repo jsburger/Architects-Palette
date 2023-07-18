@@ -111,6 +111,7 @@ public class Blockstates extends BlockStateProvider {
         }
 
         cerebralTiles(APBlocks.CEREBRAL_BLOCK.getChild(TILES).get());
+        stoneModel(APBlocks.LUNESTONE);
 
         BlockNode.forAllBaseNodes(this::processBlockNode);
         breadBlock(APBlocks.BREAD_BLOCK.get());
@@ -197,6 +198,7 @@ public class Blockstates extends BlockStateProvider {
         var bottomTex = inBlockFolder(block, "_bottom");
         return new TextureResult(bottomTex, textureExists(bottomTex), getTopTexture(block).result);
     }
+
 
     private record NodeTextures(ResourceLocation top, ResourceLocation side, ResourceLocation bottom) {};
     private NodeTextures getNodeTextures(BlockNode node, Boolean checkParent) {
@@ -488,9 +490,17 @@ public class Blockstates extends BlockStateProvider {
     }
 
     private void stoneModel(BlockNode node) {
-        var name = node.getName();
+        ModelFile normal = models().cubeAll(node.getName(), inBlockFolder(node.getId()));
+        ModelFile flipped = models().withExistingParent(node.getName() + "_mirrored", inMinecraftBlock("cube_mirrored_all"))
+                .texture("all", inBlockFolder(node.getId()));
 
-
+        getVariantBuilder(node.get()).partialState().setModels(
+                new ConfiguredModel(normal),
+                new ConfiguredModel(flipped),
+                ConfiguredModel.builder().modelFile(normal).rotationY(180).buildLast(),
+                ConfiguredModel.builder().modelFile(flipped).rotationY(180).buildLast()
+        );
+        simpleBlockItem(node.get(), normal);
     }
 
 

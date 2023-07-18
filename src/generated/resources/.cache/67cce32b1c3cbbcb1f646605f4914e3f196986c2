@@ -1,4 +1,4 @@
-// 1.19.2	2023-07-17T03:08:12.6668741	LootTables
+// 1.19.2	2023-07-18T18:44:45.2097286	LootTables
 b4cc2a71b163d9fdca1c987792c6bb6a79e34a14 data/architects_palette/loot_tables/blocks/acacia_boards.json
 13107c692972154f0a724131f70b4df97d3d6773 data/architects_palette/loot_tables/blocks/acacia_board_slab.json
 7d1336f84efa3ddd28bf07eed353948f163ebd5b data/architects_palette/loot_tables/blocks/acacia_board_stairs.json
@@ -10,6 +10,7 @@ a216828de74306fd3f2c8e6b4cc6d87b6f1aedf7 data/architects_palette/loot_tables/blo
 cfb6d5c9423ea147f2b92dce85b907872a77ebbb data/architects_palette/loot_tables/blocks/albert_brick_stairs.json
 b6f4dace2f4a065982aedf647e80e17d4bcefb4b data/architects_palette/loot_tables/blocks/albert_brick_vertical_slab.json
 142784e868b3a01bb609de96d67bed2e4a003d6e data/architects_palette/loot_tables/blocks/albert_brick_wall.json
+77069520b125ed3bbca468830d9ba297f7722737 data/architects_palette/loot_tables/blocks/albert_flagstone.json
 660cdaa45c109805ddd3f63d63e4150d2e146b7d data/architects_palette/loot_tables/blocks/albert_slab.json
 23a4b84563e81c75931c867db836ce39bb958319 data/architects_palette/loot_tables/blocks/albert_stairs.json
 73a003135cc515994b9816019b9b7aeb61227e67 data/architects_palette/loot_tables/blocks/albert_vertical_slab.json

@@ -1,6 +1,6 @@
-// 1.19.2	2023-07-17T03:08:12.6718756	Tags for minecraft:block
+// 1.19.2	2023-07-18T18:44:45.2057291	Tags for minecraft:block
 de68a24621c05400857c935c7b85f998c0fefa8b data/minecraft/tags/blocks/mineable/axe.json
-65f00f7503f82bb01422c565d752c92a76782821 data/minecraft/tags/blocks/mineable/pickaxe.json
+d234c6e2f093891876009b48eb356a6d8c00cfa3 data/minecraft/tags/blocks/mineable/pickaxe.json
 ad0646cfeb3c12682bf3d626f8943a49ec3f0267 data/minecraft/tags/blocks/slabs.json
 f8a2cc533805dae9f125d277ea9417c3a0de4aa4 data/minecraft/tags/blocks/stairs.json
 8163fdf7ed2a5ef11fad8317794401081407e653 data/minecraft/tags/blocks/walls.json
