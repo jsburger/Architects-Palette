@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "architects_palette:block/moonshale_slab"
+    },
+    "type=double": {
+      "model": "architects_palette:block/moonshale"
+    },
+    "type=top": {
+      "model": "architects_palette:block/moonshale_slab_top"
+    }
+  }
+}

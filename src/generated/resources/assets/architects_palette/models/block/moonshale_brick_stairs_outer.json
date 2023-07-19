@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "architects_palette:block/moonshale_bricks",
+    "side": "architects_palette:block/moonshale_bricks",
+    "top": "architects_palette:block/moonshale_bricks"
+  }
+}

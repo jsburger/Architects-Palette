@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "architects_palette:block/moonshale"
+      },
+      {
+        "model": "architects_palette:block/moonshale_mirrored"
+      },
+      {
+        "model": "architects_palette:block/moonshale",
+        "y": 180
+      },
+      {
+        "model": "architects_palette:block/moonshale_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

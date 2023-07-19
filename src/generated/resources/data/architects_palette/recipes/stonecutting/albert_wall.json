@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "architects_palette:albert"
-  },
-  "result": "architects_palette:albert_wall"
-}

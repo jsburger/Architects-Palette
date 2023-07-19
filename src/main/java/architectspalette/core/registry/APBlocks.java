@@ -411,7 +411,7 @@ public class APBlocks {
 
     public static final BlockNode LUNESTONE = new Builder()
             .tool(Tool.PICK)
-            .base(createBlock("albert", () -> new Block(APBlockProperties.LUNESTONE)))
+            .base(createBlock("moonshale", () -> new Block(APBlockProperties.LUNESTONE)))
             .commonVariants()
             .exclude(MODELS)
             .variants(CHISELED)
@@ -419,10 +419,10 @@ public class APBlocks {
                 b.commonVariants();
                 b.addPart(CRACKED);
                 b.withPart(CHISELED)
-                        .setName("albert_flagstone");
+                        .setName("moonshale_flagstone");
             })
             .addPart(SPECIAL, builder -> {
-                builder.setName("bordered_albert");
+                builder.setName("bordered_moonshale");
             })
             .build();
     public static final BlockNode CRATERSTONE = new Builder()

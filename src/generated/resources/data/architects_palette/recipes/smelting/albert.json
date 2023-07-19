@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredient": {
-    "item": "architects_palette:craterstone"
-  },
-  "result": "architects_palette:albert"
-}
