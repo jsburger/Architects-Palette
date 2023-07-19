@@ -41,8 +41,8 @@ public class APRecipes extends RecipeProvider {
         quickWarpingRecipe(consumer, ESOTERRACK.get(), Blocks.ANDESITE, Level.NETHER);
         quickWarpingRecipe(consumer, ONYX.get(), Blocks.GRANITE, Level.NETHER);
         quickWarpingRecipe(consumer, NEBULITE.get(), Blocks.DIORITE, Level.NETHER);
-        quickWarpingRecipe(consumer, LUNESTONE.get(), Blocks.STONE, Level.NETHER);
-        quickWarpingRecipe(consumer, LUNESTONE.getChild(BRICKS).get(), Blocks.STONE_BRICKS, Level.NETHER);
+        quickWarpingRecipe(consumer, MOONSHALE.get(), Blocks.STONE, Level.NETHER);
+        quickWarpingRecipe(consumer, MOONSHALE.getChild(BRICKS).get(), Blocks.STONE_BRICKS, Level.NETHER);
         quickWarpingRecipe(consumer, CRATERSTONE.get(), Blocks.COBBLESTONE, Level.NETHER);
 
         //Base recipes for blocks
@@ -115,14 +115,14 @@ public class APRecipes extends RecipeProvider {
         quickBlastingRecipe(consumer, SUNMETAL_BRICK.get(), SUNMETAL_BLEND.get());
         quickBlastingRecipe(consumer, APItems.NETHER_BRASS.get(), BRASS_BLEND.get());
 
-        quickSmeltingRecipe(consumer, LUNESTONE, CRATERSTONE);
-        ShapedRecipeBuilder.shaped(LUNESTONE.getChild(SPECIAL).get(), 2)
+        quickSmeltingRecipe(consumer, MOONSHALE, CRATERSTONE);
+        ShapedRecipeBuilder.shaped(MOONSHALE.getChild(SPECIAL).get(), 2)
                 .pattern("s")
                 .pattern("b")
                 .pattern("s")
                 .define('s', Blocks.STONE_SLAB)
-                .define('b', LUNESTONE)
-                .unlockedBy(getHasName(LUNESTONE), has(LUNESTONE))
+                .define('b', MOONSHALE)
+                .unlockedBy(getHasName(MOONSHALE), has(MOONSHALE))
                 .save(consumer);
 
     }

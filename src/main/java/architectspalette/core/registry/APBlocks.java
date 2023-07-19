@@ -409,9 +409,9 @@ public class APBlocks {
             })
             .build();
 
-    public static final BlockNode LUNESTONE = new Builder()
+    public static final BlockNode MOONSHALE = new Builder()
             .tool(Tool.PICK)
-            .base(createBlock("moonshale", () -> new Block(APBlockProperties.LUNESTONE)))
+            .base(createBlock("moonshale", () -> new Block(APBlockProperties.MOONSHALE)))
             .commonVariants()
             .exclude(MODELS)
             .variants(CHISELED)
@@ -427,7 +427,7 @@ public class APBlocks {
             .build();
     public static final BlockNode CRATERSTONE = new Builder()
             .tool(Tool.PICK)
-            .base(createBlock("craterstone", () -> new Block(APBlockProperties.LUNESTONE)))
+            .base(createBlock("craterstone", () -> new Block(APBlockProperties.MOONSHALE)))
             .commonVariants()
             .build();
     public static final BlockNode NEBULITE = new Builder()

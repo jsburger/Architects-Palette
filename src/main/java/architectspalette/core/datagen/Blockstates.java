@@ -111,7 +111,7 @@ public class Blockstates extends BlockStateProvider {
         }
 
         cerebralTiles(APBlocks.CEREBRAL_BLOCK.getChild(TILES).get());
-        stoneModel(APBlocks.LUNESTONE);
+        stoneModel(APBlocks.MOONSHALE);
 
         BlockNode.forAllBaseNodes(this::processBlockNode);
         breadBlock(APBlocks.BREAD_BLOCK.get());
