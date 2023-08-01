@@ -79,6 +79,7 @@ public class APBlockTags extends BlockTagsProvider {
                 CHISELED_ABYSSALINE_BRICKS,
                 ABYSSALINE_PILLAR,
                 ABYSSALINE_LAMP_BLOCK,
+                ABYSSALINE_PLATING,
                 HADALINE,
                 CHISELED_HADALINE_BRICKS,
                 HADALINE_PILLAR,
