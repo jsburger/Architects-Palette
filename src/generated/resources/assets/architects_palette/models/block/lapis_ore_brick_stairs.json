@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "architects_palette:block/lapis_ore_bricks",
+    "bottom": "architects_palette:block/lapis_ore_bricks",
+    "top": "architects_palette:block/lapis_ore_bricks"
+  }
+}

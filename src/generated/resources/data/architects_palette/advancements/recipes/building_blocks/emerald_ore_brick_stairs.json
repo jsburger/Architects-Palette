@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:emerald_ore_brick_stairs"
+    ]
+  },
+  "criteria": {
+    "has_emerald_ore_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:emerald_ore_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:emerald_ore_brick_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_emerald_ore_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

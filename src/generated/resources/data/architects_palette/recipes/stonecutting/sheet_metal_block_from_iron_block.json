@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 36,
   "ingredient": {
     "item": "minecraft:iron_block"
   },
-  "result": "architects_palette:sheet_metal_block"
+  "result": "architects_palette:sheet_metal_block",
+  "count": 36
 }

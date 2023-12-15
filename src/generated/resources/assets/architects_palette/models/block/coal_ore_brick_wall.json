@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "architects_palette:block/coal_ore_bricks"
+  }
+}

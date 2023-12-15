@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:iron_ore_bricks"
+    }
+  },
+  "result": {
+    "item": "architects_palette:iron_ore_brick_wall",
+    "count": 6
+  }
+}

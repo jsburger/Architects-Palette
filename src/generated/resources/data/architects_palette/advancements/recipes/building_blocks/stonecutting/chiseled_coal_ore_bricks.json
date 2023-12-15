@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "architects_palette:stonecutting/chiseled_coal_ore_bricks"
+    ]
+  },
+  "criteria": {
+    "has_coal_ore_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "architects_palette:coal_ore_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "architects_palette:stonecutting/chiseled_coal_ore_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coal_ore_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

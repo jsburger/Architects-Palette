@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "key": {
+    "x": {
+      "item": "architects_palette:coal_ore_brick_slab"
+    }
+  },
+  "result": {
+    "item": "architects_palette:chiseled_coal_ore_bricks"
+  }
+}

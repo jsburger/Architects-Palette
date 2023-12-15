@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x",
+    "x"
+  ],
   "key": {
     "x": {
       "item": "minecraft:iron_block"
     }
   },
-  "pattern": [
-    "x",
-    "x"
-  ],
   "result": {
-    "count": 64,
-    "item": "architects_palette:sheet_metal_block"
+    "item": "architects_palette:sheet_metal_block",
+    "count": 64
   }
 }

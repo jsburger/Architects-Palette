@@ -1,0 +1,20 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "architects_palette:enable_vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "ingredient": {
+          "item": "architects_palette:redstone_ore_bricks"
+        },
+        "result": "architects_palette:redstone_ore_brick_vertical_slab",
+        "count": 2
+      }
+    }
+  ]
+}
