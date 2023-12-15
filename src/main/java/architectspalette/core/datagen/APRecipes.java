@@ -203,6 +203,7 @@ public class APRecipes extends RecipeProvider {
                                 .save(consumer);
                     }
                     case NUB -> {
+
                     }
                     case SLAB -> {
                         ShapedRecipeBuilder.shaped(block, 6)
@@ -289,7 +290,7 @@ public class APRecipes extends RecipeProvider {
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                 .save(consumer);
                 }
-                if (stoneCuttingCount > 0 && (node.tool != BlockNode.Tool.AXE || node.type == NUB)) {
+                if (stoneCuttingCount > 0 && (node.tool != BlockNode.Tool.AXE || n.type == NUB)) {
                     SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), block, stoneCuttingCount)
                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                             .save(consumer, cuttingName(block, parent));
