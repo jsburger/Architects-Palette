@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "architects_palette:myonite_bricks_slab"
+      "item": "architects_palette:myonite_brick_slab"
     }
   },
   "result": {
-    "item": "architects_palette:myonite_bricks_vertical_slab",
+    "item": "architects_palette:myonite_brick_vertical_slab",
     "count": 3
   },
   "conditions": [
