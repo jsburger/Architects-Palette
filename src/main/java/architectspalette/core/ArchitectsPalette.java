@@ -10,7 +10,6 @@ import architectspalette.core.loot.WitheredBoneLootModifier;
 import architectspalette.core.registry.*;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -90,7 +89,7 @@ public class ArchitectsPalette {
 
     void registerRecipeSerializers(IEventBus bus) {
         //Register the recipe type
-        DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registry.RECIPE_TYPE_REGISTRY, ArchitectsPalette.MOD_ID);
+        DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ArchitectsPalette.MOD_ID);
         RegistryObject<RecipeType<WarpingRecipe>> WARPING = RECIPE_TYPES.register(WarpingRecipe.TYPE.toString(), () -> new RecipeType<WarpingRecipe>() {});
 
         //Register the serializer

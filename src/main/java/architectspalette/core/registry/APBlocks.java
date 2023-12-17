@@ -14,7 +14,8 @@ import architectspalette.content.worldgen.features.TwistedTree;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -26,9 +27,9 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-import static architectspalette.core.registry.util.BlockNode.BlockType.*;
 import static architectspalette.core.registry.util.BlockNode.*;
-import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.*;
+import static architectspalette.core.registry.util.BlockNode.BlockType.*;
+import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 import static architectspalette.core.registry.util.RegistryUtils.createBlock;
 import static architectspalette.core.registry.util.RegistryUtils.createBlockNoItem;
 import static architectspalette.core.registry.util.StoneBlockSet.SetComponent.FENCE;
@@ -61,10 +62,10 @@ public class APBlocks {
 
     // Villager Trade blocks
      // Funny fish blocks
-    public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block>       COD_LOG = createBlock("cod_log",       () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)));
+    public static final RegistryObject<Block>       COD_LOG = createBlock("cod_log",       () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)));
+    public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)));
+    public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)));
      // Entrails
     public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS).usesAxe();
      // Plating & Piping
@@ -196,14 +197,15 @@ public class APBlocks {
     public static final RegistryObject<Block>           TWISTED_LOG = createBlock("twisted_log",          () -> new StrippableLogBlock(APBlockProperties.TwistedWood(), STRIPPED_TWISTED_LOG.get()));
     public static final RegistryObject<Block>          TWISTED_WOOD = createBlock("twisted_wood",         () -> new StrippableLogBlock(APBlockProperties.TwistedWood(), STRIPPED_TWISTED_WOOD.get()));
     public static final RegistryObject<Block>        TWISTED_LEAVES = createBlock("twisted_leaves",       () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
-    public static final RegistryObject<Block>         TWISTED_FENCE = createBlock("twisted_fence",        () -> new         FenceBlock(APBlockProperties.TwistedWood()), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block>    TWISTED_FENCE_GATE = createBlock("twisted_fence_gate",   () -> new     FenceGateBlock(APBlockProperties.TwistedWood()), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block>          TWISTED_DOOR = createBlock("twisted_door",         () -> new          DoorBlock(APBlockProperties.TwistedWood().noOcclusion()), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block>      TWISTED_TRAPDOOR = createBlock("twisted_trapdoor",     () -> new      TrapDoorBlock(APBlockProperties.TwistedWood().noOcclusion()), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block>        TWISTED_BUTTON = createBlock("twisted_button",       () -> new    WoodButtonBlock(APBlockProperties.TwistedWood(true)), CreativeModeTab.TAB_REDSTONE);
+    public static final RegistryObject<Block>         TWISTED_FENCE = createBlock("twisted_fence",        () -> new         FenceBlock(APBlockProperties.TwistedWood()), CreativeModeTabs.BUILDING_BLOCKS);
+    public static final RegistryObject<Block>    TWISTED_FENCE_GATE = createBlock("twisted_fence_gate",   () -> new     FenceGateBlock(APBlockProperties.TwistedWood(), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>          TWISTED_DOOR = createBlock("twisted_door",         () -> new          DoorBlock(APBlockProperties.TwistedWood().noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>      TWISTED_TRAPDOOR = createBlock("twisted_trapdoor",     () -> new      TrapDoorBlock(APBlockProperties.TwistedWood().noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>        TWISTED_BUTTON = createBlock("twisted_button",
+            () -> new    ButtonBlock(APBlockProperties.TwistedWood(true), 30, true, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
     public static final RegistryObject<Block> TWISTED_PRESSURE_PLATE = createBlock("twisted_pressure_plate",
-            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, APBlockProperties.TwistedWood(true)), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new TwistedTree(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), CreativeModeTab.TAB_DECORATIONS);
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, APBlockProperties.TwistedWood(true), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new TwistedTree(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), CreativeModeTabs.NATURAL_BLOCKS);
     public static final RegistryObject<Block> POTTED_TWISTED_SAPLING = createPottedPlant(TWISTED_SAPLING);
 
     // Basalt Tiles
@@ -224,43 +226,43 @@ public class APBlocks {
     public static final RegistryObject<Block> HEAVY_CRACKED_END_STONE_BRICKS = createBlock("heavy_cracked_end_stone_bricks", () -> new BigBrickBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE_BRICKS), BigBrickBlock.BrickType.END_STONE));
 
     // Cage Lanterns
-    public static final RegistryObject<Block> REDSTONE_CAGE_LANTERN  = createBlock("redstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block> GLOWSTONE_CAGE_LANTERN = createBlock("glowstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTab.TAB_REDSTONE);
-    public static final RegistryObject<Block> ALGAL_CAGE_LANTERN     = createBlock("algal_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTab.TAB_REDSTONE);
+    public static final RegistryObject<Block> REDSTONE_CAGE_LANTERN  = createBlock("redstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTabs.FUNCTIONAL_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block> GLOWSTONE_CAGE_LANTERN = createBlock("glowstone_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTabs.FUNCTIONAL_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block> ALGAL_CAGE_LANTERN     = createBlock("algal_cage_lantern", () -> new CageLanternBlock(APBlockProperties.CAGE_LANTERN, 3), CreativeModeTabs.FUNCTIONAL_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
 
     // Acacia Totems
-    public static final RegistryObject<TotemWingBlock> ACACIA_TOTEM_WING = createBlock("acacia_totem_wing", () -> new TotemWingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).noOcclusion().noLootTable().sound(SoundType.SCAFFOLDING).noCollission()), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<TotemWingBlock> ACACIA_TOTEM_WING = createBlock("acacia_totem_wing", () -> new TotemWingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).noOcclusion().noLootTable().sound(SoundType.SCAFFOLDING).noCollission()));
     public static final RegistryObject<Block> GRINNING_ACACIA_TOTEM = createBlock("grinning_acacia_totem", () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.GRINNING));
-    public static final RegistryObject<Block> PLACID_ACACIA_TOTEM = createBlock("placid_acacia_totem", () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.PLACID));
-    public static final RegistryObject<Block> SHOCKED_ACACIA_TOTEM = createBlock("shocked_acacia_totem", () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.SHOCKED));
-    public static final RegistryObject<Block> BLANK_ACACIA_TOTEM = createBlock("blank_acacia_totem", () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.BLANK));
+    public static final RegistryObject<Block> PLACID_ACACIA_TOTEM   = createBlock("placid_acacia_totem",   () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.PLACID));
+    public static final RegistryObject<Block> SHOCKED_ACACIA_TOTEM  = createBlock("shocked_acacia_totem",  () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.SHOCKED));
+    public static final RegistryObject<Block> BLANK_ACACIA_TOTEM    = createBlock("blank_acacia_totem",    () -> new TotemBlock(APBlockProperties.ACACIA_TOTEM, ACACIA_TOTEM_WING.get(), TotemBlock.TotemFace.BLANK));
 
     // Ender Pearl Block
     public static final RegistryObject<Block> ENDER_PEARL_BLOCK = createBlock("ender_pearl_block", () -> new Block(APBlockProperties.ENDER_PEARL));
 
     // Boards
-    public static final BlockNode OAK_BOARDS = createBoardNode("oak_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final BlockNode BIRCH_BOARDS = createBoardNode("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-    public static final BlockNode SPRUCE_BOARDS = createBoardNode("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final BlockNode JUNGLE_BOARDS = createBoardNode("jungle_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final BlockNode OAK_BOARDS      = createBoardNode("oak_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final BlockNode BIRCH_BOARDS    = createBoardNode("birch_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final BlockNode SPRUCE_BOARDS   = createBoardNode("spruce_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final BlockNode JUNGLE_BOARDS   = createBoardNode("jungle_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
     public static final BlockNode DARK_OAK_BOARDS = createBoardNode("dark_oak_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final BlockNode ACACIA_BOARDS = createBoardNode("acacia_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
-    public static final BlockNode CRIMSON_BOARDS = createBoardNode("crimson_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final BlockNode WARPED_BOARDS = createBoardNode("warped_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final BlockNode ACACIA_BOARDS   = createBoardNode("acacia_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final BlockNode CRIMSON_BOARDS  = createBoardNode("crimson_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final BlockNode WARPED_BOARDS   = createBoardNode("warped_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
     public static final BlockNode MANGROVE_BOARDS = createBoardNode("mangrove_boards", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)));
-    public static final BlockNode TWISTED_BOARDS = createBoardNode("twisted_boards", () -> new Block(APBlockProperties.TwistedWood()));
+    public static final BlockNode TWISTED_BOARDS  = createBoardNode("twisted_boards", () -> new Block(APBlockProperties.TwistedWood()));
 
     // Railings
-    public static final RegistryObject<Block> OAK_RAILING = createBlock("oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> BIRCH_RAILING = createBlock("birch_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> SPRUCE_RAILING = createBlock("spruce_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> JUNGLE_RAILING = createBlock("jungle_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> DARK_OAK_RAILING = createBlock("dark_oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> ACACIA_RAILING = createBlock("acacia_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> CRIMSON_RAILING = createBlock("crimson_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> WARPED_RAILING = createBlock("warped_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> MANGROVE_RAILING = createBlock("mangrove_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> TWISTED_RAILING = createBlock("twisted_railing", () -> new RailingBlock(APBlockProperties.TwistedWood()), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> OAK_RAILING      = createBlock("oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> BIRCH_RAILING    = createBlock("birch_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
+    public static final RegistryObject<Block> SPRUCE_RAILING   = createBlock("spruce_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
+    public static final RegistryObject<Block> JUNGLE_RAILING   = createBlock("jungle_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
+    public static final RegistryObject<Block> DARK_OAK_RAILING = createBlock("dark_oak_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final RegistryObject<Block> ACACIA_RAILING   = createBlock("acacia_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
+    public static final RegistryObject<Block> CRIMSON_RAILING  = createBlock("crimson_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
+    public static final RegistryObject<Block> WARPED_RAILING   = createBlock("warped_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
+    public static final RegistryObject<Block> MANGROVE_RAILING = createBlock("mangrove_railing", () -> new RailingBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)));
+    public static final RegistryObject<Block> TWISTED_RAILING  = createBlock("twisted_railing", () -> new RailingBlock(APBlockProperties.TwistedWood()));
 
     // New stone block sets
     // Dripstone
@@ -296,8 +298,8 @@ public class APBlocks {
     public static final RegistryObject<Block> NETHER_BRASS_PILLAR = createBlock("nether_brass_pillar", () -> new RotatedPillarBlock(APBlockProperties.NETHER_BRASS));
     public static final StoneBlockSet SMOOTH_NETHER_BRASS = new StoneBlockSet(createBlock("smooth_nether_brass", () -> new Block(APBlockProperties.NETHER_BRASS)), NO_WALLS);
     public static final RegistryObject<Block> NETHER_BRASS_FIRE = createBlockNoItem("nether_brass_fire", () -> new GreenFireBlock(APBlockProperties.GREEN_FIRE));
-    public static final RegistryObject<Block> NETHER_BRASS_CHAIN = createBlock("nether_brass_chain", () -> new ChainBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.CHAIN)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> NETHER_BRASS_LANTERN = createBlock("nether_brass_lantern", () -> new LanternBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.LANTERN).lightLevel((a)->13)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> NETHER_BRASS_CHAIN = createBlock("nether_brass_chain", () -> new ChainBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.CHAIN)));
+    public static final RegistryObject<Block> NETHER_BRASS_LANTERN = createBlock("nether_brass_lantern", () -> new LanternBlock(BlockBehaviour.Properties.copy(NETHER_BRASS.get()).sound(SoundType.LANTERN).lightLevel((a)->13)), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.FUNCTIONAL_BLOCKS);
     public static final RegistryObject<Block> NETHER_BRASS_TORCH = createBlockNoItem("nether_brass_torch", () -> new CustomTorchBlock(APBlockProperties.BRASS_TORCH, MiscRegistry.GREEN_FLAME));
     public static final RegistryObject<Block> NETHER_BRASS_WALL_TORCH = createBlockNoItem("nether_brass_wall_torch", () -> new CustomWallTorchBlock(APBlockProperties.BRASS_TORCH.dropsLike(NETHER_BRASS_TORCH.get()), MiscRegistry.GREEN_FLAME));
 
@@ -344,7 +346,7 @@ public class APBlocks {
     public static final RegistryObject<Block> OXIDIZED_COPPER_NUB = makeCopperNub("oxidized_copper_nub", Blocks.OXIDIZED_COPPER, OXIDIZED);
     public static final RegistryObject<Block> WAXED_OXIDIZED_COPPER_NUB = makeCopperNub("waxed_oxidized_copper_nub", Blocks.OXIDIZED_COPPER, OXIDIZED);
 
-    public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> HAZARD_SIGN = createBlock("hazard_sign", () -> new SmallSignBlock(APBlockProperties.PLATING), CreativeModeTabs.BUILDING_BLOCKS);
 
 
     public static final BlockNode TREAD_PLATE = new Builder()
@@ -451,13 +453,13 @@ public class APBlocks {
     }
 
     private static RegistryObject<Block> makeNub(String name, Block block_to_copy) {
-        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy)), CreativeModeTab.TAB_DECORATIONS);
+        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy)));
     }
     private static RegistryObject<Block> makeNub(String name, Supplier<Block> block_to_copy) {
-        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy.get())), CreativeModeTab.TAB_DECORATIONS);
+        return createBlock(name, () -> new NubBlock(BlockBehaviour.Properties.copy(block_to_copy.get())));
     }
     private static RegistryObject<Block> makeCopperNub(String name, Block block_to_copy, WeatheringCopper.WeatherState weatheringstate) {
-        return createBlock(name, () -> new NubBlock.CopperNubBlock(BlockBehaviour.Properties.copy(block_to_copy), weatheringstate), CreativeModeTab.TAB_DECORATIONS);
+        return createBlock(name, () -> new NubBlock.CopperNubBlock(BlockBehaviour.Properties.copy(block_to_copy), weatheringstate));
     }
 
     public static BlockNode createBoardNode(String name, Supplier<? extends Block> supplier) {

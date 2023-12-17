@@ -34,7 +34,7 @@ public class APRecipes extends RecipeProvider {
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         BlockNode.forAllBaseNodes((node) -> processBlockNode(consumer, node));
 
         //Warping recipes

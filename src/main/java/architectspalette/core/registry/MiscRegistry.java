@@ -5,9 +5,9 @@ import architectspalette.core.ArchitectsPalette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.ParticleEngine;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -30,7 +30,7 @@ public class MiscRegistry {
     public static final TagKey<Block> NUBS = blockTag("nubs");
 
     public static TagKey<Block> blockTag(String name) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ArchitectsPalette.MOD_ID + ":" + name));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation(ArchitectsPalette.MOD_ID + ":" + name));
     }
 
     //Particles
