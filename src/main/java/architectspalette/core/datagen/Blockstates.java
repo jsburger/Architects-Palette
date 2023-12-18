@@ -11,18 +11,18 @@ import architectspalette.core.registry.util.BlockNode;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 import static architectspalette.core.event.RegisterModelLoadersEventHandler.MODELTYPE_BOARDS;
 import static architectspalette.core.registry.APBlocks.boards;
@@ -39,11 +39,11 @@ public class Blockstates extends BlockStateProvider {
     private static final ResourceLocation dummy = new ResourceLocation("dummy:dummy");
     private static ResourceLocation currentModelName = dummy;
 
-    public Blockstates(DataGenerator gen, String modid, ExistingFileHelper exFileHelper) {
+    public Blockstates(PackOutput gen, String modid, ExistingFileHelper exFileHelper) {
         super(gen, modid, exFileHelper);
         fileHelper = exFileHelper;
         this.awesomeBlockModels = new BlockModelProvider (gen, modid, exFileHelper) {
-            @Override public void run(CachedOutput p_236071_) throws IOException {}
+            @Override public CompletableFuture<?> run(CachedOutput cache) { return CompletableFuture.allOf(); }
             @Override protected void registerModels() {}
 
             @Override
@@ -254,7 +254,7 @@ public class Blockstates extends BlockStateProvider {
 
 
     private static String getBlockName(Block block) {
-        return Registry.BLOCK.getKey(block).getPath();
+        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
 
     private void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation baseBlock) {

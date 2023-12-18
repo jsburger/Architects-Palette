@@ -9,7 +9,6 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceKey;
@@ -18,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -57,7 +57,7 @@ public class WarpingRecipeBuilder implements RecipeBuilder {
     @Override
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation name) {
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(name)).rewards(AdvancementRewards.Builder.recipe(name)).requirements(RequirementsStrategy.OR);
-        consumer.accept(new Result(name, this.result, this.ingredients, this.dimension, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + name.getPath())));
+        consumer.accept(new Result(name, this.result, this.ingredients, this.dimension, this.advancement, new ResourceLocation(name.getNamespace(), "recipes/" + name.getPath())));
 
     }
 
@@ -91,7 +91,7 @@ public class WarpingRecipeBuilder implements RecipeBuilder {
             json.add("ingredient", jsonarray);
 
             JsonObject item = new JsonObject();
-            item.addProperty("item", Registry.ITEM.getKey(result).toString());
+            item.addProperty("item", ForgeRegistries.ITEMS.getKey(result).toString());
             json.add("result", item);
             json.addProperty("dimension", dimension.location().toString());
         }

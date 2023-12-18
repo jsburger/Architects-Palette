@@ -1,38 +1,42 @@
 package architectspalette.core.datagen;
 
+import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.registry.MiscRegistry;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 
 import static architectspalette.core.registry.APBlocks.*;
 
 public class APBlockTags extends BlockTagsProvider {
-    public APBlockTags(DataGenerator generator, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, modId, existingFileHelper);
+    public APBlockTags(PackOutput pack, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
+        super(pack, completableFuture, ArchitectsPalette.MOD_ID, existingFileHelper);
     }
 
+
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
         registerMiningTags();
         tagWalls();
     }
 
     @SafeVarargs
     private void tagBlocks(TagKey<Block> tagKey, RegistryObject<? extends Block>... registryObjects) {
-        TagAppender<Block> tag = tag(tagKey);
+        var tag = tag(tagKey);
         Arrays.stream(registryObjects).map(RegistryObject::get).forEach(tag::add);
     }
 
@@ -57,7 +61,7 @@ public class APBlockTags extends BlockTagsProvider {
     private void registerMiningTags() {
         //Handle all sets
         StoneBlockSet.forAllSets(set -> {
-            TagAppender<Block> tag = tag(set.miningTag);
+            var tag = tag(set.miningTag);
             set.forEach(tag::add);
             //TODO: Commented out for now because I don't need to mess with it atm
 //            if (set.miningLevel != null) {
@@ -68,7 +72,7 @@ public class APBlockTags extends BlockTagsProvider {
 
         BlockNode.forAllBaseNodes((node) -> {
             node.forEach((n) -> {
-                TagAppender<Block> tag = tag(n.tool.getToolTag());
+                var tag = tag(n.tool.getToolTag());
                 tag.add(n.get());
                 //TODO: Mining level, other tags
             });
@@ -216,6 +220,5 @@ public class APBlockTags extends BlockTagsProvider {
                 MANGROVE_RAILING
             );
     }
-
 
 }

@@ -6,6 +6,7 @@ import architectspalette.core.registry.APBlockProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
@@ -137,14 +138,14 @@ public class StoneBlockSet implements Supplier<Block> {
     }
 
     public enum SetComponent {
-        BLOCK("", CreativeModeTab.TAB_BUILDING_BLOCKS),
-        SLAB("_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
-        VERTICAL_SLAB("_vertical_slab", CreativeModeTab.TAB_BUILDING_BLOCKS),
-        STAIRS("_stairs", CreativeModeTab.TAB_BUILDING_BLOCKS),
-        WALL("_wall", CreativeModeTab.TAB_DECORATIONS),
-        FENCE("_fence", CreativeModeTab.TAB_DECORATIONS),
-        PILLAR(SetComponent::pillarName, CreativeModeTab.TAB_BUILDING_BLOCKS),
-        NUB("_nub", CreativeModeTab.TAB_DECORATIONS);
+        BLOCK("", CreativeModeTabs.BUILDING_BLOCKS),
+        SLAB("_slab", CreativeModeTabs.BUILDING_BLOCKS),
+        VERTICAL_SLAB("_vertical_slab", CreativeModeTabs.BUILDING_BLOCKS),
+        STAIRS("_stairs", CreativeModeTabs.BUILDING_BLOCKS),
+        WALL("_wall", CreativeModeTabs.BUILDING_BLOCKS),
+        FENCE("_fence", CreativeModeTabs.BUILDING_BLOCKS),
+        PILLAR(SetComponent::pillarName, CreativeModeTabs.BUILDING_BLOCKS),
+        NUB("_nub", CreativeModeTabs.BUILDING_BLOCKS);
 
         public final CreativeModeTab tab;
         public final Function<String, String> nameGenerator;

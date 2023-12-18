@@ -6,7 +6,7 @@ import architectspalette.core.registry.APItems;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.BlockNode.BlockType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -27,10 +27,11 @@ import java.util.function.Consumer;
 import static architectspalette.core.registry.APBlocks.*;
 import static architectspalette.core.registry.APItems.*;
 import static architectspalette.core.registry.util.BlockNode.BlockType.*;
+import static net.minecraft.data.recipes.RecipeCategory.*;
 
 public class APRecipes extends RecipeProvider {
-    public APRecipes(DataGenerator generator) {
-        super(generator);
+    public APRecipes(PackOutput pack) {
+        super(pack);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class APRecipes extends RecipeProvider {
         quickWarpingRecipe(consumer, CRATERSTONE.get(), Blocks.COBBLESTONE, Level.NETHER);
 
         //Base recipes for blocks
-        ShapedRecipeBuilder.shaped(SHEET_METAL.get(), 64)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, SHEET_METAL.get(), 64)
                 .pattern("x")
                 .pattern("x")
                 .define('x', Items.IRON_BLOCK)
@@ -56,7 +57,7 @@ public class APRecipes extends RecipeProvider {
         quickStonecuttingRecipe(consumer, Items.IRON_INGOT, SHEET_METAL.get(), 4);
         quickStonecuttingRecipe(consumer, Items.IRON_BLOCK, SHEET_METAL.get(), 36);
 
-        ShapedRecipeBuilder.shaped(TREAD_PLATE.get(), 4)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, TREAD_PLATE.get(), 4)
                 .pattern(" x ")
                 .pattern("xyx")
                 .pattern(" x ")
@@ -65,7 +66,7 @@ public class APRecipes extends RecipeProvider {
                 .unlockedBy(getHasName(PLATING_BLOCK.get()), has(PLATING_BLOCK.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(HAZARD_BLOCK.get(), 4)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, HAZARD_BLOCK.get(), 4)
                 .pattern("xy")
                 .pattern("yx")
                 .define('x', Blocks.YELLOW_CONCRETE)
@@ -73,7 +74,7 @@ public class APRecipes extends RecipeProvider {
                 .unlockedBy(getHasName(Blocks.YELLOW_CONCRETE), has(Blocks.YELLOW_CONCRETE))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(BREAD_BLOCK.get(), 9)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, BREAD_BLOCK.get(), 9)
                 .pattern("xxx")
                 .define('x', Blocks.HAY_BLOCK)
                 .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT))
@@ -82,14 +83,14 @@ public class APRecipes extends RecipeProvider {
         brickRecipe(ORACLE_BLOCK.get(), ORACLE_JELLY.get(), 8, consumer);
         brickRecipe(CEREBRAL_BLOCK.get(), CEREBRAL_PLATE.get(), 8, consumer);
 
-        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(SPECIAL).get(), 2)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, ORACLE_BLOCK.getChild(SPECIAL).get(), 2)
                 .pattern("xyx")
                 .define('x', CEREBRAL_PLATE.get())
                 .define('y', ORACLE_BLOCK.get())
                 .unlockedBy(getHasName(ORACLE_BLOCK.get()), has(ORACLE_BLOCK.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(ORACLE_BLOCK.getChild(LAMP).get(), 2)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, ORACLE_BLOCK.getChild(LAMP).get(), 2)
                 .pattern(" x ")
                 .pattern("xyx")
                 .pattern(" x ")
@@ -98,14 +99,14 @@ public class APRecipes extends RecipeProvider {
                 .unlockedBy(getHasName(ORACLE_BLOCK.get()), has(ORACLE_BLOCK.get()))
                 .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(ORACLE_JELLY.get(), 4)
+        ShapelessRecipeBuilder.shapeless(MISC, ORACLE_JELLY.get(), 4)
                 .requires(Items.CHORUS_FRUIT)
                 .requires(Items.AMETHYST_SHARD)
                 .requires(Items.SUGAR)
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
                 .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(CEREBRAL_PLATE.get(), 4)
+        ShapelessRecipeBuilder.shapeless(MISC, CEREBRAL_PLATE.get(), 4)
                 .requires(Blocks.TUFF)
                 .requires(Items.QUARTZ)
                 .requires(Items.CHARCOAL)
@@ -116,7 +117,7 @@ public class APRecipes extends RecipeProvider {
         quickBlastingRecipe(consumer, APItems.NETHER_BRASS.get(), BRASS_BLEND.get());
 
         quickSmeltingRecipe(consumer, MOONSHALE, CRATERSTONE);
-        ShapedRecipeBuilder.shaped(MOONSHALE.getChild(SPECIAL).get(), 2)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, MOONSHALE.getChild(SPECIAL).get(), 2)
                 .pattern("s")
                 .pattern("b")
                 .pattern("s")
@@ -137,7 +138,7 @@ public class APRecipes extends RecipeProvider {
                 int stoneCuttingCount = getStoneCuttingCount(n.type);
                 switch(n.type) {
                     case BRICKS, POLISHED -> {
-                        ShapedRecipeBuilder.shaped(block, 4)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 4)
                                 .pattern("xx")
                                 .pattern("xx")
                                 .define('x', parent)
@@ -146,7 +147,8 @@ public class APRecipes extends RecipeProvider {
                         //Tile conversion recipe
                         var tiles = n.getSibling(TILES);
                         if (tiles != null) {
-                            ShapedRecipeBuilder.shaped(block, 4)
+                            //brickRecipe(block, tiles.get(), 4, consumer);
+                            ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 4)
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', tiles.get())
@@ -155,7 +157,7 @@ public class APRecipes extends RecipeProvider {
                         }
                     }
                     case CRACKED -> {
-                        SimpleCookingRecipeBuilder.smelting(Ingredient.of(parent), block, .1f, 200)
+                        SimpleCookingRecipeBuilder.smelting(Ingredient.of(parent), BUILDING_BLOCKS, block, .1f, 200)
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                 .save(consumer, smeltingName(block, parent));
                     }
@@ -166,7 +168,7 @@ public class APRecipes extends RecipeProvider {
                         var bricks = n.getSibling(BRICKS);
                         if (bricks == null) bricks = n.getSibling(POLISHED);
                         if (bricks != null) {
-                            ShapedRecipeBuilder.shaped(block, 4)
+                            ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 4)
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', bricks.get())
@@ -175,7 +177,7 @@ public class APRecipes extends RecipeProvider {
                         }
                         //Default recipe if there are no bricks
                         else {
-                            ShapedRecipeBuilder.shaped(block, 4)
+                            ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 4)
                                     .pattern("xx")
                                     .pattern("xx")
                                     .define('x', parent)
@@ -186,7 +188,7 @@ public class APRecipes extends RecipeProvider {
                     case CHISELED -> {
                         var slab = n.getSibling(SLAB);
                         if (slab != null) {
-                            ShapedRecipeBuilder.shaped(block, 1)
+                            ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 1)
                                     .pattern("x")
                                     .pattern("x")
                                     .define('x', slab.get())
@@ -195,7 +197,7 @@ public class APRecipes extends RecipeProvider {
                         }
                     }
                     case PILLAR -> {
-                        ShapedRecipeBuilder.shaped(block, 2)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 2)
                                 .pattern("x")
                                 .pattern("x")
                                 .define('x', parent)
@@ -206,7 +208,7 @@ public class APRecipes extends RecipeProvider {
 
                     }
                     case SLAB -> {
-                        ShapedRecipeBuilder.shaped(block, 6)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 6)
                                 .pattern("xxx")
                                 .define('x', parent)
                                 .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
@@ -220,7 +222,7 @@ public class APRecipes extends RecipeProvider {
                         //I have no idea how this shit works
                         ConditionalRecipe.builder().addCondition(APVerticalSlabsCondition.instance)
                                 .addRecipe((c) -> {
-                                    ShapedRecipeBuilder.shaped(block, 3)
+                                    ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 3)
                                             .pattern("x")
                                             .pattern("x")
                                             .pattern("x")
@@ -233,7 +235,7 @@ public class APRecipes extends RecipeProvider {
                         //Revert to slab from vslab
                         ConditionalRecipe.builder().addCondition(APVerticalSlabsCondition.instance)
                                 .addRecipe((c) -> {
-                                    ShapelessRecipeBuilder.shapeless(slab, 1)
+                                    ShapelessRecipeBuilder.shapeless(BUILDING_BLOCKS, slab, 1)
                                             .group("vertical_slab_revert")
                                             .requires(block)
                                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
@@ -243,7 +245,7 @@ public class APRecipes extends RecipeProvider {
                         //Stonecut from block to vslab
                         ConditionalRecipe.builder().addCondition(APVerticalSlabsCondition.instance)
                                 .addRecipe((c) -> {
-                                    SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), block, 2)
+                                    SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), BUILDING_BLOCKS, block, 2)
                                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                                             .save(c);
                                 })
@@ -252,7 +254,7 @@ public class APRecipes extends RecipeProvider {
 
                     }
                     case STAIRS -> {
-                        ShapedRecipeBuilder.shaped(block, 4)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 4)
                                 .pattern("x  ")
                                 .pattern("xx ")
                                 .pattern("xxx")
@@ -261,7 +263,7 @@ public class APRecipes extends RecipeProvider {
                                 .save(consumer);
                     }
                     case WALL -> {
-                        ShapedRecipeBuilder.shaped(block, 6)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 6)
                                 .pattern("xxx")
                                 .pattern("xxx")
                                 .define('x', parent)
@@ -272,7 +274,7 @@ public class APRecipes extends RecipeProvider {
                         //TODO: fence recipe
                     }
                     case PLATING -> {
-                        ShapedRecipeBuilder.shaped(block, 8)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 8)
                                 .pattern("xxx")
                                 .pattern("x x")
                                 .pattern("xxx")
@@ -281,7 +283,7 @@ public class APRecipes extends RecipeProvider {
                                 .save(consumer);
                     }
                     case DARK ->
-                        ShapedRecipeBuilder.shaped(block, 8)
+                        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, block, 8)
                                 .pattern("xxx")
                                 .pattern("xdx")
                                 .pattern("xxx")
@@ -291,7 +293,7 @@ public class APRecipes extends RecipeProvider {
                                 .save(consumer);
                 }
                 if (stoneCuttingCount > 0 && (node.tool != BlockNode.Tool.AXE || n.type == NUB)) {
-                    SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), block, stoneCuttingCount)
+                    SingleItemRecipeBuilder.stonecutting(getStonecuttingIngredients(n), BUILDING_BLOCKS, block, stoneCuttingCount)
                             .unlockedBy(hasBase, InventoryChangeTrigger.TriggerInstance.hasItems(node.get()))
                             .save(consumer, cuttingName(block, parent));
                 }
@@ -327,12 +329,12 @@ public class APRecipes extends RecipeProvider {
     }
 
     private static void quickBlastingRecipe(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike from) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(from), result, .1f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(from), BUILDING_BLOCKS, result, .1f, 100)
                 .unlockedBy(getHasName(from), has(from))
                 .save(consumer, blastingName(result, from));
     }
     private static void quickSmeltingRecipe(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike from) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(from), result, .1f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(from), BUILDING_BLOCKS, result, .1f, 200)
                 .unlockedBy(getHasName(from), has(from))
                 .save(consumer, smeltingName(result, from));
     }
@@ -341,7 +343,7 @@ public class APRecipes extends RecipeProvider {
         quickStonecuttingRecipe(consumer, result, from, 1);
     }
     private static void quickStonecuttingRecipe(Consumer<FinishedRecipe> consumer, ItemLike from, ItemLike result, int amount) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(from), result, amount)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(from), BUILDING_BLOCKS, result, amount)
                 .unlockedBy(getHasName(from), has(from))
                 .save(consumer, cuttingName(result, from));
     }
@@ -377,7 +379,7 @@ public class APRecipes extends RecipeProvider {
 
 
     private static void brickRecipe(ItemLike result, ItemLike ingredient, int count, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(result, count)
+        ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, count)
                 .pattern("xx")
                 .pattern("xx")
                 .define('x', ingredient)

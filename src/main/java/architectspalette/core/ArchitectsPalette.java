@@ -2,7 +2,6 @@ package architectspalette.core;
 
 import architectspalette.core.config.APConfig;
 import architectspalette.core.crafting.WarpingRecipe;
-import architectspalette.core.datagen.GatherData;
 import architectspalette.core.integration.APCriterion;
 import architectspalette.core.integration.APTrades;
 import architectspalette.core.integration.APVerticalSlabsCondition;
@@ -65,7 +64,6 @@ public class ArchitectsPalette {
 
         CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
 
-        GatherData.load();
 //        AtomicInteger size = new AtomicInteger(APBlocks.BLOCKS.getEntries().size());
 //        StoneBlockSet.forAllSets((set -> {
 //            set.forEachRegistryObject(a ->

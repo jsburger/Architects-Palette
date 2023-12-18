@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
@@ -412,8 +413,7 @@ public class BlockNode implements Supplier<Block>, ItemLike {
 
     private static CreativeModeTab getTabForType(BlockType type) {
         return switch(type) {
-            case NUB, WALL, FENCE -> CreativeModeTab.TAB_DECORATIONS;
-            default -> CreativeModeTab.TAB_BUILDING_BLOCKS;
+            default -> CreativeModeTabs.BUILDING_BLOCKS;
         };
     }
 
