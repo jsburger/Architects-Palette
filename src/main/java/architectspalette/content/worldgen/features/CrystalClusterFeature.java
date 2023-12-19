@@ -2,7 +2,7 @@ package architectspalette.content.worldgen.features;
 
 import architectspalette.content.worldgen.features.configs.CrystalClusterConfig;
 import architectspalette.core.registry.MiscRegistry;
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,12 +40,12 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
         RandomSource random = context.random();
 
         //Set horizontal angle used to skew the shelves of crystals
-        Vector3f shelfAngle = Vector3f.XN.copy();
-        shelfAngle.transform(Vector3f.YP.rotationDegrees(random.nextFloat() * 360.0F));
+        Vector3f shelfAngle = new Vector3f(-1, 0, 0);
+        shelfAngle.rotateY((random.nextFloat() * 2 * (float)(Math.PI)));
 
         //Set horizontal angle that determines the spaces between shelves
-        Vector3f formationAngle = shelfAngle.copy();
-        formationAngle.transform(Vector3f.YP.rotationDegrees(fRandomRange(random,-15, 15) + 90));
+        Vector3f formationAngle = new Vector3f(shelfAngle);
+        formationAngle.rotateY((float)Math.toDegrees(fRandomRange(random,-15, 15) + 90));
 
         Vector3f placePos = new Vector3f(context.origin().getX(), context.origin().getY(), context.origin().getZ());
 
@@ -82,7 +82,7 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
 
         for (int i = 0; i < crystals; i++) {
 
-            Vector3f offset = shelfAngle.copy();
+            Vector3f offset = new Vector3f(shelfAngle);
             offset.mul(fRandomRange(random, .5f, 2.5f));
 
             placePos.add(offset);

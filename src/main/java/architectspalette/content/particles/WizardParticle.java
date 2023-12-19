@@ -1,8 +1,9 @@
 package architectspalette.content.particles;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import org.joml.AxisAngle4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -16,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class WizardParticle extends TextureSheetParticle {
 
     private final SpriteSet sprites;
-    private final Quaternion rotation;
+    private final Quaternionf rotation;
     //With no rotation, particles face towards -Z
     private static final Vec3 DEFAULT_PARTICLE_DIRECTION = new Vec3(0, 0, -1);
 
@@ -43,7 +44,7 @@ public class WizardParticle extends TextureSheetParticle {
         else {
             rotationAxis = new Vector3f((float) cross.x, (float) cross.y, (float) cross.z);
         }
-        rotation = new Quaternion(rotationAxis, (float) rotationAngle, false);
+        rotation = new Quaternionf(new AxisAngle4f((float) rotationAngle, rotationAxis));
     }
 
     @Override
@@ -65,13 +66,13 @@ public class WizardParticle extends TextureSheetParticle {
                 (float) (Mth.lerp(partialTicks, yo, y) - pos.y),
                 (float) (Mth.lerp(partialTicks, zo, z) - pos.z)
         );
-        Quaternion quat;
+        Quaternionf quat;
         if (roll == 0) {
             quat = rotation;
         }
         else {
-            quat = rotation.copy();
-            quat.mul(Vector3f.ZP.rotation(Mth.lerp(partialTicks, oRoll, roll)));
+            quat = new Quaternionf(rotation);
+            quat.rotateZ(Mth.lerp(partialTicks, oRoll, roll));
         }
 
         //I could clean this up, but I don't want to. It's just copied from the default particle.
@@ -80,7 +81,7 @@ public class WizardParticle extends TextureSheetParticle {
 
         for(int i = 0; i < 4; ++i) {
             Vector3f vector3f = avector3f[i];
-            vector3f.transform(quat);
+            vector3f.rotate(quat);
             vector3f.mul(size);
             vector3f.add(center);
         }
