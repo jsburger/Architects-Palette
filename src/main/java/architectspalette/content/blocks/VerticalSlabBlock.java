@@ -6,11 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -41,7 +39,7 @@ import java.util.List;
 
 /**
  * From Quark
- * Original: https://github.com/Vazkii/Quark/blob/fae8f48eae8157424dcf4f97f9be186d567a344d/src/main/java/vazkii/quark/content/building/block/VerticalSlabBlock.java
+ * Original: <a href="https://github.com/Vazkii/Quark/blob/fae8f48eae8157424dcf4f97f9be186d567a344d/src/main/java/vazkii/quark/content/building/block/VerticalSlabBlock.java">link</a>
  * @author Vazkii
  */
 public class VerticalSlabBlock extends Block implements SimpleWaterloggedBlock {
@@ -58,7 +56,7 @@ public class VerticalSlabBlock extends Block implements SimpleWaterloggedBlock {
 		registerDefaultState(defaultBlockState().setValue(TYPE, VerticalSlabType.NORTH).setValue(WATERLOGGED, false));
 	}
 	
-	private static boolean isQuarkEnabled() {
+	public static boolean isQuarkEnabled() {
 		if(!checkedQuark) {
 			quarkEnabled = ModList.get().isLoaded(QUARK_ID);
 			checkedQuark = true;
@@ -67,11 +65,11 @@ public class VerticalSlabBlock extends Block implements SimpleWaterloggedBlock {
 		return quarkEnabled || APConfig.VERTICAL_SLABS_FORCED.get();
 	}
 	
-	@Override
-	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		if(isQuarkEnabled())
-			super.fillItemCategory(group, items);
-	}
+//	@Override
+//	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
+//		if(isQuarkEnabled())
+//			super.fillItemCategory(group, items);
+//	}
 	
 	@Override
 	public void appendHoverText(ItemStack stack, BlockGetter worldIn, List<Component> tooltip, TooltipFlag flagIn) {

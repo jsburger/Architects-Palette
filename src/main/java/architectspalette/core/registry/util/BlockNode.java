@@ -413,6 +413,7 @@ public class BlockNode implements Supplier<Block>, ItemLike {
 
     private static CreativeModeTab getTabForType(BlockType type) {
         return switch(type) {
+            case VERTICAL_SLAB -> VerticalSlabBlock.isQuarkEnabled() ? CreativeModeTabs.BUILDING_BLOCKS : null;
             default -> CreativeModeTabs.BUILDING_BLOCKS;
         };
     }
