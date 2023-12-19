@@ -6,7 +6,6 @@ import architectspalette.core.model.util.SpriteShift;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -22,10 +21,8 @@ import net.minecraftforge.client.model.geometry.IUnbakedGeometry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Function;
 
 @Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -33,13 +30,10 @@ public class RegisterModelLoadersEventHandler {
 
     public static final String MODELTYPE_BOARDS = "boards";
     static {
-        WrappedModelLoader.register(MODELTYPE_BOARDS, new ModelWrapper() {
-            @Override
-            public BakedModelWrapper<?> apply(IGeometryBakingContext context, BakedModel bakedModel, BlockModel blockModel) {
-                ResourceLocation particle = blockModel.getMaterial("particle").texture();
-                var odd = new ResourceLocation(particle.getNamespace(), particle.getPath() + "_odd");
-                return new BoardModel(bakedModel, SpriteShift.getShift(particle, odd));
-            }
+        WrappedModelLoader.register(MODELTYPE_BOARDS, (context, bakedModel, blockModel) -> {
+            ResourceLocation particle = blockModel.getMaterial("particle").texture();
+            var odd = new ResourceLocation(particle.getNamespace(), particle.getPath() + "_odd");
+            return new BoardModel(bakedModel, SpriteShift.getShift(particle, odd));
         });
     }
     @SubscribeEvent
@@ -76,19 +70,26 @@ public class RegisterModelLoadersEventHandler {
         }
 
         @Override
-        public BakedModel bake(IGeometryBakingContext context, ModelBakery bakery, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
+        public BakedModel bake(IGeometryBakingContext context, ModelBaker bakery, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
             BakedModel baked = wrappedModel.bake(bakery, wrappedModel, spriteGetter, modelState, modelLocation, context.useBlockLight());
             return wrapper.apply(context, baked, wrappedModel);
         }
 
         @Override
-        public Collection<Material> getMaterials(IGeometryBakingContext context, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
-            return wrappedModel.getMaterials(modelGetter, missingTextureErrors);
+        public void resolveParents(Function<ResourceLocation, UnbakedModel> modelGetter, IGeometryBakingContext context) {
+            wrappedModel.resolveParents(modelGetter);
         }
+
+        //
+//        @Override
+//        public Collection<Material> getMaterials(IGeometryBakingContext context, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
+//            return wrappedModel.getMaterials(modelGetter, missingTextureErrors);
+//        }
     }
 
-    private abstract static class ModelWrapper {
-        public abstract  BakedModelWrapper<?> apply(IGeometryBakingContext context, BakedModel bakedModel, BlockModel blockModel);
+    @FunctionalInterface
+    private interface ModelWrapper {
+        BakedModelWrapper<?> apply(IGeometryBakingContext context, BakedModel bakedModel, BlockModel blockModel);
     }
 
 }
