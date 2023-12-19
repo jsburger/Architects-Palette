@@ -60,7 +60,7 @@ public class ArchitectsPalette {
         registerLootSerializers(modEventBus);
         // Biomes need to be registered before features.
         registerBiomeSerializers(modEventBus);
-        registerPlacedFeatures(modEventBus);
+        //registerPlacedFeatures(modEventBus);
 
         CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
 
@@ -110,7 +110,7 @@ public class ArchitectsPalette {
     }
 
     void registerPlacedFeatures(IEventBus bus) {
-        APPlacedFeatures.PLACED_FEATURES.register(bus);
+        //APPlacedFeatures.PLACED_FEATURES.register(bus);
     }
 
     void setupClient(final FMLClientSetupEvent event) {

@@ -14,7 +14,7 @@ public class APSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ArchitectsPalette.MOD_ID);
 
     private static RegistryObject<SoundEvent> register(String key) {
-        return SOUNDS.register(key, () -> new SoundEvent(new ResourceLocation(ArchitectsPalette.MOD_ID, key)));
+        return SOUNDS.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(ArchitectsPalette.MOD_ID, key)));
     }
 
     public static final RegistryObject<SoundEvent> BLOCK_ENTWINE_PLACE = register("block.entwine.place");
