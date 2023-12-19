@@ -208,19 +208,13 @@ public class StoneBlockSet implements Supplier<Block> {
     }
 
     private RegistryObject<Block> makePart(SetComponent part) {
-        var tab = part.tab;
-        if (part == VERTICAL_SLAB) {
-            if (!VerticalSlabBlock.isQuarkEnabled()) {
-                tab = null;
-            }
-        }
         return RegistryUtils.createBlock(part.getName(material_name), () -> {
             Block block = getPart(BLOCK);
             if (block instanceof IBlockSetBase base) {
                 return base.getBlockForPart(part, properties(), block);
             }
             return getBlockForPart(part, properties(), block);
-        }, tab);
+        }, part.tab);
     }
 
     public static Block getBlockForPart(SetComponent part, BlockBehaviour.Properties properties, Block base) {

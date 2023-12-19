@@ -48,8 +48,6 @@ public class BoardModel extends BakedModelWrapperWithData {
 
         quads = new ArrayList<>(quads);
 
-        //TODO: Consider offsetting UV's via code to avoid needing additional models
-
         for (int i = 0; i < quads.size(); i++) {
             BakedQuad quad = quads.get(i);
             boolean shift;

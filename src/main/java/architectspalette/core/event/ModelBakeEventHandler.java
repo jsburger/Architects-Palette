@@ -32,7 +32,7 @@ public class ModelBakeEventHandler {
     private static final Map<Entry, Function<BakedModel, ? extends BakedModel>> customBlockModels = new HashMap<>();
 
     @SubscribeEvent
-    public static void onModelBake(ModelEvent.BakingCompleted event) {
+    public static void onModelBake(ModelEvent.ModifyBakingResult event) {
         Map<ResourceLocation, BakedModel> modelRegistry = event.getModels();
 //
 //        SpriteShift birchShift = new SpriteShift(new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards"), new ResourceLocation(ArchitectsPalette.MOD_ID, "block/birch_boards_odd"));
@@ -44,7 +44,7 @@ public class ModelBakeEventHandler {
         register(APBlocks.SHEET_METAL.getObject(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
         register(APBlocks.SHEET_METAL.getChild(BlockNode.BlockType.WALL), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
 
-        SpriteShift.onTexturesDoneStitching();
+        //SpriteShift.onTexturesDoneStitching();
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
 

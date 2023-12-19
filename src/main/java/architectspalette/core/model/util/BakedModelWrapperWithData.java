@@ -21,6 +21,7 @@ public abstract class BakedModelWrapperWithData extends BakedModelWrapper<BakedM
     @Override
     public ModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state, ModelData modelData) {
         ModelData.Builder builder = ModelData.builder();
+//        ModelData.Builder builder = modelData.derive();
         if (originalModel instanceof BakedModelWrapperWithData wrappedModel) {
             wrappedModel.gatherModelData(builder, level, pos, state);
         }

@@ -26,23 +26,14 @@ public class APInternalData {
 
     static void populateSet(RegistrySetBuilder set) {
         // Feature wrappers
-        APFeatures.getFeatureWrappers().forEach(feature -> {
-            var configured_key = ResourceKey.create(Registries.CONFIGURED_FEATURE, ArchitectsPalette.rl(feature.name()));
-            set.add(Registries.CONFIGURED_FEATURE, context -> {
+        var wrappers = APFeatures.getFeatureWrappers();
+        set.add(Registries.CONFIGURED_FEATURE, context -> {
+            wrappers.forEach(feature -> {
                 context.register(
-                        configured_key,
+                        ResourceKey.create(Registries.CONFIGURED_FEATURE, ArchitectsPalette.rl(feature.name())),
                         feature.configuredFeature()
                 );
             });
-            set.add(Registries.PLACED_FEATURE, context -> {
-                context.register(
-                        ResourceKey.create(Registries.PLACED_FEATURE, ArchitectsPalette.rl(feature.name())),
-                        new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(configured_key), feature.placement())
-                );
-            });
-        });
-        // Twisted Tree, doesn't need placement because it is sapling only.
-        set.add(Registries.CONFIGURED_FEATURE, context -> {
             context.register(
                     ResourceKey.create(Registries.CONFIGURED_FEATURE, ArchitectsPalette.rl("twisted_tree")),
                     new ConfiguredFeature<>(Feature.TREE,
@@ -53,11 +44,18 @@ public class APInternalData {
                                     new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                                     new TwoLayersFeatureSize(1, 0, 2)
                             )
-                            .ignoreVines()
-                            .build()
+                                    .ignoreVines()
+                                    .build()
                     )
             );
         });
-
+        set.add(Registries.PLACED_FEATURE, context -> {
+            wrappers.forEach(feature -> {
+                context.register(
+                        ResourceKey.create(Registries.PLACED_FEATURE, ArchitectsPalette.rl(feature.name() + "_placed")),
+                        new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ResourceKey.create(Registries.CONFIGURED_FEATURE, ArchitectsPalette.rl(feature.name()))), feature.placement())
+                );
+            });
+        });
     }
 }

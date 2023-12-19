@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "x": {
       "item": "architects_palette:redstone_ore_bricks"

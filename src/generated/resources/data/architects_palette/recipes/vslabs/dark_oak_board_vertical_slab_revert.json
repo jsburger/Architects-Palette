@@ -9,6 +9,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shapeless",
+        "category": "building",
         "group": "vertical_slab_revert",
         "ingredients": [
           {

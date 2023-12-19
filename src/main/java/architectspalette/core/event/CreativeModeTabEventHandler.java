@@ -1,5 +1,6 @@
 package architectspalette.core.event;
 
+import architectspalette.content.blocks.VerticalSlabBlock;
 import architectspalette.core.ArchitectsPalette;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class CreativeModeTabEventHandler {
 
     private static final List<Supplier<? extends ItemLike>> items = new ArrayList<>();
@@ -28,14 +29,16 @@ public class CreativeModeTabEventHandler {
     @SubscribeEvent
     public static void onCreativeTabRegister(CreativeModeTabEvent.BuildContents event) {
         int i = 0;
-        for (Supplier<? extends ItemLike> item : items){
+        for (Supplier<? extends ItemLike> item : items) {
             if (event.getTab() == tabs.get(i)) {
-                event.accept(item);
+                if (!(item.get() instanceof VerticalSlabBlock && !VerticalSlabBlock.isQuarkEnabled())) {
+                    event.accept(item);
+                }
             }
             i++;
         }
-        tabs.clear();
-        items.clear();
+//        tabs.clear();
+//        items.clear();
     }
 
 
