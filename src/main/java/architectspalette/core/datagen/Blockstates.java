@@ -26,8 +26,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static architectspalette.core.event.RegisterModelLoadersEventHandler.MODELTYPE_BOARDS;
 import static architectspalette.core.registry.APBlocks.boards;
-import static architectspalette.core.registry.util.BlockNode.BlockType.SLAB;
-import static architectspalette.core.registry.util.BlockNode.BlockType.TILES;
+import static architectspalette.core.registry.util.BlockNode.BlockType.*;
 import static architectspalette.core.registry.util.BlockNode.DataFlag.BOARDS;
 import static architectspalette.core.registry.util.BlockNode.ExcludeFlag.MODELS;
 
@@ -91,7 +90,8 @@ public class Blockstates extends BlockStateProvider {
         if (currentNode != null) {
             currentModelName = builder.getUncheckedLocation();
             if (currentNode.getDataFlag(BOARDS)) {
-                returnvalue = builder.customLoader(WrappedModelLoaderBuilder::new).setWrapper(MODELTYPE_BOARDS, models().nested());
+                if (currentNode.type != WALL)
+                    returnvalue = builder.customLoader(WrappedModelLoaderBuilder::new).setWrapper(MODELTYPE_BOARDS, models().nested());
             }
 
             currentModelName = dummy;

@@ -14,7 +14,7 @@ public class SpriteShift {
 
     private static final Map<String, SpriteShift> entries = new HashMap<>();
     private static Boolean areTexturesReady = false;
-    //I wasn't going to copy this part from Create, but I now know why they needed it.
+
     public static SpriteShift getShift(ResourceLocation from_block, ResourceLocation to_block) {
         String key = from_block.toString() + "->" + to_block.toString();
         if (entries.containsKey(key)) {

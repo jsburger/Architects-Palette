@@ -1,10 +1,6 @@
 {
-  "loader": "architects_palette:wrapped",
-  "wrapped_model": {
-    "parent": "minecraft:block/template_wall_post",
-    "textures": {
-      "wall": "architects_palette:block/crimson_boards"
-    }
-  },
-  "wrapper_type": "boards"
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "architects_palette:block/crimson_boards"
+  }
 }

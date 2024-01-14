@@ -1,10 +1,6 @@
 {
-  "loader": "architects_palette:wrapped",
-  "wrapped_model": {
-    "parent": "minecraft:block/wall_inventory",
-    "textures": {
-      "wall": "architects_palette:block/twisted_boards"
-    }
-  },
-  "wrapper_type": "boards"
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "architects_palette:block/twisted_boards"
+  }
 }

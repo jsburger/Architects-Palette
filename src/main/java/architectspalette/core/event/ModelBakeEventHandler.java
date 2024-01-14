@@ -44,6 +44,11 @@ public class ModelBakeEventHandler {
         register(APBlocks.SHEET_METAL.getObject(), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
         register(APBlocks.SHEET_METAL.getChild(BlockNode.BlockType.WALL), model -> new SheetMetalModel(model, SpriteShift.getShift("block/sheet_metal_block", "block/sheet_metal_block_ct")));
 
+        for (BlockNode board : APBlocks.boards) {
+            var wall = board.getChild(BlockNode.BlockType.WALL);
+            var shift = SpriteShift.getShift("block/" + board.getName(), "block/" + board.getName() + "_odd");
+            register(wall, model -> new BoardModel(model, shift));
+        }
         //SpriteShift.onTexturesDoneStitching();
 
         customBlockModels.forEach((entry, factory) -> swapModels(modelRegistry, getAllBlockStateModelLocations(entry), factory));
