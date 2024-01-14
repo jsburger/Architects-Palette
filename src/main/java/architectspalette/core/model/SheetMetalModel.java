@@ -47,11 +47,11 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
             if (Block.shouldRenderFace(state, world, pos, face, checkPos.setWithOffset(pos, face)) || state.getBlock() instanceof WallBlock) {
                 int index = 1;
                 boolean doShift = false;
-                if (world.getBlockState(checkPos.setWithOffset(pos, getUpDirection(face))).is(state.getBlock())) {
+                if (world.getBlockState(checkPos.setWithOffset(pos, getUpDirection(face))).getAppearance(world, checkPos, face, state, pos).is(state.getBlock())) {
                     index += 1;
                     doShift = true;
                 }
-                if (world.getBlockState(checkPos.setWithOffset(pos, getDownDirection(face))).is(state.getBlock())) {
+                if (world.getBlockState(checkPos.setWithOffset(pos, getDownDirection(face))).getAppearance(world, checkPos, face, state, pos).is(state.getBlock())) {
                     index -= 1;
                     doShift = true;
                 }
@@ -63,7 +63,12 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
     }
 
     private static Direction getUpDirection(Direction face) {
-        return face.getAxis().isHorizontal() ? Direction.UP : Direction.NORTH;
+        return switch (face) {
+            case UP -> Direction.NORTH;
+            case DOWN -> Direction.SOUTH;
+            default -> Direction.UP;
+        };
+        //return face.getAxis().isHorizontal() ? Direction.UP : Direction.NORTH;
     }
     private static Direction getDownDirection(Direction face) {
         return getUpDirection(face).getOpposite();
@@ -71,7 +76,7 @@ public class SheetMetalModel extends BakedModelWrapperWithData {
 
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, RandomSource rand, ModelData extraData, RenderType renderType) {
-        List<BakedQuad> quads =  super.getQuads(state, side, rand);
+        List<BakedQuad> quads =  super.getQuads(state, side, rand, extraData, renderType);
 
         if (!extraData.has(CT_PROPERTY))
             return quads;
