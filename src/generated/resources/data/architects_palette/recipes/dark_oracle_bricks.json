@@ -17,5 +17,6 @@
   "result": {
     "count": 8,
     "item": "architects_palette:dark_oracle_bricks"
-  }
+  },
+  "show_notification": true
 }

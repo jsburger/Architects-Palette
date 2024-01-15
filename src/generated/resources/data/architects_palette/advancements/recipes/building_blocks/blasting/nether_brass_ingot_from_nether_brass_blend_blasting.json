@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:blasting/nether_brass_ingot_from_nether_brass_blend_blasting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

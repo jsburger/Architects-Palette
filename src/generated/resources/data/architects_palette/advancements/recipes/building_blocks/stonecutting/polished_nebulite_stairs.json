@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/polished_nebulite_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

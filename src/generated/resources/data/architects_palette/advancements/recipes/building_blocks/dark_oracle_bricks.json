@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:dark_oracle_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

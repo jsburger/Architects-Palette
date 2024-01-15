@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:warping/onyx_from_granite_warping"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

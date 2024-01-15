@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/redstone_ore_brick_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

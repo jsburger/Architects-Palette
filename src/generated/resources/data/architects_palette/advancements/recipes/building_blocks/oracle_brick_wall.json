@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:oracle_brick_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

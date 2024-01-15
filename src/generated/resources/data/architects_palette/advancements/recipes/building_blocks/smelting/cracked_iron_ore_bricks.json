@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:smelting/cracked_iron_ore_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

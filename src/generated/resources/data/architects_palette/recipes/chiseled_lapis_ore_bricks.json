@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:chiseled_lapis_ore_bricks"
-  }
+  },
+  "show_notification": true
 }

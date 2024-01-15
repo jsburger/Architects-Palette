@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/bread_nub"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/cerebral_tile_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

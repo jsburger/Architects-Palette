@@ -13,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "architects_palette:tread_plate_wall"
-  }
+  },
+  "show_notification": true
 }

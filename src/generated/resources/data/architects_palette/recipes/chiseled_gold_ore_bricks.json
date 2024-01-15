@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:chiseled_gold_ore_bricks"
-  }
+  },
+  "show_notification": true
 }

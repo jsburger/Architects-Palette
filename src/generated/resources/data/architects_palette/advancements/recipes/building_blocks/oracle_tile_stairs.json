@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:oracle_tile_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

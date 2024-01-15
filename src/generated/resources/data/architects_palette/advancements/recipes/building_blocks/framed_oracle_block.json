@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:framed_oracle_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:acacia_board_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

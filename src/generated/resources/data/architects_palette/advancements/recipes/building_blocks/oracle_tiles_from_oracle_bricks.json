@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:oracle_tiles_from_oracle_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:mangrove_board_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:hazard_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

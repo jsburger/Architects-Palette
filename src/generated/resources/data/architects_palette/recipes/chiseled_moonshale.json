@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:chiseled_moonshale"
-  }
+  },
+  "show_notification": true
 }

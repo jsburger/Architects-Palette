@@ -14,5 +14,6 @@
   "result": {
     "count": 4,
     "item": "architects_palette:dark_oracle_brick_stairs"
-  }
+  },
+  "show_notification": true
 }

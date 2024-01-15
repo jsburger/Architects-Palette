@@ -24,7 +24,8 @@
         "result": {
           "count": 3,
           "item": "architects_palette:moonshale_vertical_slab"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

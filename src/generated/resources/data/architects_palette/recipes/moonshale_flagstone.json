@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:moonshale_flagstone"
-  }
+  },
+  "show_notification": true
 }

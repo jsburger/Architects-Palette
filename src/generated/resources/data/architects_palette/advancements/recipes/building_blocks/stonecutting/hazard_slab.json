@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/hazard_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/emerald_ore_brick_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

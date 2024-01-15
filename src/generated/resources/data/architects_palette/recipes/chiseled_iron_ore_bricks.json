@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:chiseled_iron_ore_bricks"
-  }
+  },
+  "show_notification": true
 }

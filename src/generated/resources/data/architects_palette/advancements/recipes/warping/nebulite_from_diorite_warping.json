@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:warping/nebulite_from_diorite_warping"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

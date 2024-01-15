@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:moonshale_brick_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

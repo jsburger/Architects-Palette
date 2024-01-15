@@ -24,7 +24,8 @@
         "result": {
           "count": 3,
           "item": "architects_palette:birch_board_vertical_slab"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

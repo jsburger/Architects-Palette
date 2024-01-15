@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:sheet_metal_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

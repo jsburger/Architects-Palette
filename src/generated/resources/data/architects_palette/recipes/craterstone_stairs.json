@@ -14,5 +14,6 @@
   "result": {
     "count": 4,
     "item": "architects_palette:craterstone_stairs"
-  }
+  },
+  "show_notification": true
 }

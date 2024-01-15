@@ -30,5 +30,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "architects_palette:blocks/warped_board_vertical_slab"
 }

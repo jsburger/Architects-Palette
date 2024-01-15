@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:oracle_pillar"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

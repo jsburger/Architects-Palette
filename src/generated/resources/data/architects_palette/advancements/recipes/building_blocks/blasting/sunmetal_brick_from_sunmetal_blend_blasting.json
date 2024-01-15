@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:blasting/sunmetal_brick_from_sunmetal_blend_blasting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

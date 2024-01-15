@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:warping/moonshale_from_stone_warping"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

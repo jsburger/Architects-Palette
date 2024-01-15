@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:diamond_ore_brick_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

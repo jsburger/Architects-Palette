@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:smelting/moonshale"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

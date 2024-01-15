@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/hazard_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

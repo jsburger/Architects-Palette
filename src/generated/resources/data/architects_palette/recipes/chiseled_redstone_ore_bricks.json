@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "architects_palette:chiseled_redstone_ore_bricks"
-  }
+  },
+  "show_notification": true
 }

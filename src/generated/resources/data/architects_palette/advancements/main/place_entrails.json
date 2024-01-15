@@ -3,7 +3,12 @@
   "criteria": {
     "entrails": {
       "conditions": {
-        "block": "architects_palette:entrails"
+        "location": [
+          {
+            "block": "architects_palette:entrails",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
       },
       "trigger": "minecraft:placed_block"
     }
@@ -27,5 +32,6 @@
     [
       "entrails"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

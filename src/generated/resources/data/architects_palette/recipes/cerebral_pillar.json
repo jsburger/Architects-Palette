@@ -13,5 +13,6 @@
   "result": {
     "count": 2,
     "item": "architects_palette:cerebral_pillar"
-  }
+  },
+  "show_notification": true
 }

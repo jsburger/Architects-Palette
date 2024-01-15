@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:tread_plate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

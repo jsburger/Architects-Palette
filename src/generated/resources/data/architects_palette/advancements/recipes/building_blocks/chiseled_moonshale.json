@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:chiseled_moonshale"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

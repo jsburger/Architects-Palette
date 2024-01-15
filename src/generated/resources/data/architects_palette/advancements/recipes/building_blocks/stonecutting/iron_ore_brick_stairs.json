@@ -30,5 +30,6 @@
     "recipes": [
       "architects_palette:stonecutting/iron_ore_brick_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
