@@ -4,6 +4,7 @@ import architectspalette.content.blocks.BigBrickBlock;
 import architectspalette.content.blocks.CageLanternBlock;
 import architectspalette.core.ArchitectsPalette;
 import architectspalette.core.crafting.WarpingRecipe;
+import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -17,9 +18,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import static architectspalette.core.registry.APBlocks.*;
 
@@ -50,30 +54,39 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(WARPING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WarpingRecipe.TYPE));
 
         //Register item info
-        addItemInfo(registration, CHISELED_ABYSSALINE_BRICKS, "chiseled_chargeable");
-        addItemInfo(registration, CHISELED_HADALINE_BRICKS, "chiseled_chargeable");
-        Stream.of(ABYSSALINE, ABYSSALINE_PILLAR, ABYSSALINE_LAMP_BLOCK).
-                forEach((i) -> addItemInfo(registration, i, "chargeable"));
-        Stream.of(ABYSSALINE_BRICKS, ABYSSALINE_TILES).forEach((i) ->
-                i.forEach(block -> addItemInfo(registration, block, "chargeable")));
-        Stream.of(PLACID_ACACIA_TOTEM, GRINNING_ACACIA_TOTEM, SHOCKED_ACACIA_TOTEM, BLANK_ACACIA_TOTEM)
-                .forEach((i) -> addItemInfo(registration, i, "totem_carving"));
-        Stream.of(FLINT_BLOCK, FLINT_PILLAR)
-                .forEach((i) -> addItemInfo(registration, i, "flint_damage"));
-        addItemInfo(registration, FLINT_TILES, "flint_damage");
-        Stream.of(MOONSTONE, SUNSTONE)
-                .forEach((i) -> addItemInfo(registration, i, "celestial_stones"));
-        Stream.of(NETHER_BRASS, CUT_NETHER_BRASS, SMOOTH_NETHER_BRASS)
-                .forEach((i) -> addItemInfo(registration, i, "nether_brass"));
-        addItemInfo(registration, NETHER_BRASS_PILLAR, "nether_brass");
-        BLOCKS.getEntries().forEach((block -> {
-            if (block.get() instanceof BigBrickBlock) {
-                addItemInfo(registration, block, "heavy_bricks");
-            }
-            else if (block.get() instanceof CageLanternBlock) {
-                addItemInfo(registration, block, "cage_lanterns");
-            }
-        }));
+        builder()
+                .add(CHISELED_ABYSSALINE_BRICKS, CHISELED_HADALINE_BRICKS)
+                .registerInfo(registration, "chiseled_chargeable");
+        builder()
+                .add(ABYSSALINE, ABYSSALINE_PILLAR, ABYSSALINE_LAMP_BLOCK, ABYSSALINE_PLATING)
+                .add(ABYSSALINE_BRICKS, ABYSSALINE_TILES)
+                .add(HADALINE, HADALINE_PILLAR, HADALINE_LAMP_BLOCK, HADALINE_PLATING)
+                .add(HADALINE_BRICKS, HADALINE_TILES)
+                .registerInfo(registration, "chargeable");
+        builder()
+                .add(PLACID_ACACIA_TOTEM, GRINNING_ACACIA_TOTEM, SHOCKED_ACACIA_TOTEM, BLANK_ACACIA_TOTEM)
+                .registerInfo(registration, "totem_carving");
+        builder()
+                .add(FLINT_BLOCK, FLINT_PILLAR)
+                .add(FLINT_TILES)
+                .registerInfo(registration, "flint_damage");
+        builder()
+                .add(MOONSTONE, SUNSTONE)
+                .registerInfo(registration, "celestial_stones");
+        builder()
+                .add(NETHER_BRASS, CUT_NETHER_BRASS, SMOOTH_NETHER_BRASS)
+                .add(NETHER_BRASS_PILLAR)
+                .registerInfo(registration, "nether_brass");
+        builder()
+                .add(block -> block instanceof BigBrickBlock)
+                .registerInfo(registration, "heavy_bricks");
+        builder()
+                .add(block -> block instanceof CageLanternBlock)
+                .registerInfo(registration, "cage_lanterns");
+        builder()
+                .add(WARDSTONE, WARDSTONE_BRICKS)
+                .add(WARDSTONE_PILLAR, CHISELED_WARDSTONE, WARDSTONE_LAMP)
+                .registerInfo(registration, "wardstone");
     }
 
     private static void addItemInfo(IRecipeRegistration register, RegistryObject<? extends ItemLike> item, String infoString) {
@@ -86,5 +99,41 @@ public class JEIPlugin implements IModPlugin {
 
     private static void addItemInfo(IRecipeRegistration register, ItemLike item, String infoString) {
         register.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, Component.translatable(ArchitectsPalette.MOD_ID + ".info." + infoString));
+    }
+
+
+    private static BlockListBuilder builder() {
+        return new BlockListBuilder();
+    }
+    private static class BlockListBuilder {
+        private final List<Block> blocks = new ArrayList<>();
+        private BlockListBuilder add(BlockNode... nodes) {
+            for (BlockNode node : nodes)
+                node.forEach((n) -> blocks.add(n.get()));
+            return this;
+        }
+        private BlockListBuilder add(StoneBlockSet... sets) {
+            for (StoneBlockSet set : sets) {
+                set.forEach(blocks::add);
+            }
+            return this;
+        }
+        private BlockListBuilder add(Predicate<Block> filter) {
+            for (RegistryObject<Block> entry : BLOCKS.getEntries()) {
+                if (filter.test(entry.get())) blocks.add(entry.get());
+            }
+            return this;
+        }
+        @SafeVarargs
+        private BlockListBuilder add(RegistryObject<? extends Block>... blockList) {
+            for (RegistryObject<? extends Block> block : blockList) {
+                blocks.add(block.get());
+            };
+            return this;
+        }
+        private void registerInfo(IRecipeRegistration register, String infoString) {
+            register.addIngredientInfo(blocks.stream().map(ItemStack::new).toList(), VanillaTypes.ITEM_STACK, Component.translatable(ArchitectsPalette.MOD_ID + ".info." + infoString));
+            blocks.clear();
+        }
     }
 }
