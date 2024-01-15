@@ -12,8 +12,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.stream.Stream;
@@ -41,55 +42,74 @@ public class APBlockProperties {
 			.lightLevel(AbyssalineNubBlock::getLightValue);
 
 
-	public static Block.Properties Meat(MaterialColor color) {
-		return Block.Properties.of(Material.VEGETABLE, color).strength(1.0F).sound(SoundType.CORAL_BLOCK);
+	public static Block.Properties Meat(MapColor color) {
+		return Block.Properties.of().mapColor(color).strength(1.0F).sound(SoundType.CORAL_BLOCK);
 	}
 
-	public static final Block.Properties FLINT = Block.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(3.0F, 16.0F).requiresCorrectToolForDrops();
+	private static Block.Properties stoneBase() {
+		return BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.STONE);
+	}
+	private static Block.Properties metalBase() {
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL);
+	}
+	private static Block.Properties woodBase() {
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+				.ignitedByLava()
+				.instrument(NoteBlockInstrument.BASS)
+				.strength(2.0F)
+				.sound(SoundType.WOOD);
+	}
+
+	public static final Block.Properties FLINT = stoneBase().mapColor(MapColor.COLOR_GRAY).strength(3.0F, 16.0F).requiresCorrectToolForDrops();
 	public static final Block.Properties MYONITE = Block.Properties.copy(Blocks.STONE);
-	public static final Block.Properties SUNMETAL = Block.Properties.of(Material.METAL, MaterialColor.COLOR_BROWN).strength(2.0F, 8.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
+	public static final Block.Properties SUNMETAL = Block.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 8.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
 	 // Should be less slippery?
 	public static final Block.Properties BUILDING_ICE = Block.Properties.copy(Blocks.PACKED_ICE).friction(0.8F);
 	 // As Prismarine
-	public static final Block.Properties OLIVESTONE = Block.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_GREEN).strength(1.5F, 6.0F).requiresCorrectToolForDrops();
+	public static final Block.Properties OLIVESTONE = stoneBase().mapColor(MapColor.TERRACOTTA_GREEN).strength(1.5F, 6.0F).requiresCorrectToolForDrops();
 	 // As Nether Bricks
-	public static final Block.Properties ALGAL_BRICK = Block.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_CYAN).strength(2.0F, 6.0F).sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops();
+	public static final Block.Properties ALGAL_BRICK = stoneBase().mapColor(MapColor.TERRACOTTA_CYAN).strength(2.0F, 6.0F).sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops();
 
-	public static final Block.Properties ENTWINE = Block.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE).requiresCorrectToolForDrops();
-	public static final Block.Properties ENDER_PEARL = Block.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).strength(1.5F).sound(APSounds.APSoundTypes.ENDER_PEARL);
-	public static final BlockBehaviour.Properties PLATING = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.STONE).strength(4.0F, 10.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
+	public static final Block.Properties ENTWINE = stoneBase().mapColor(MapColor.COLOR_CYAN).strength(3.0F, 6.0F).sound(APSounds.APSoundTypes.ENTWINE).requiresCorrectToolForDrops();
+	public static final Block.Properties ENDER_PEARL = stoneBase().mapColor(MapColor.COLOR_CYAN).strength(1.5F).sound(APSounds.APSoundTypes.ENDER_PEARL);
+	public static final BlockBehaviour.Properties PLATING = metalBase().mapColor(MapColor.STONE).strength(4.0F, 10.0F).sound(SoundType.NETHERITE_BLOCK).requiresCorrectToolForDrops();
 	public static final BlockBehaviour.Properties NETHER_CRYSTAL = BlockBehaviour.Properties.copy(Blocks.GLASS).lightLevel(e -> 12).requiresCorrectToolForDrops().strength(1.2f);
-	public static final BlockBehaviour.Properties NETHER_BRASS = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(4.0F, 10.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops();
+	public static final BlockBehaviour.Properties NETHER_BRASS = metalBase().mapColor(MapColor.COLOR_YELLOW).strength(4.0F, 10.0F).sound(SoundType.COPPER).requiresCorrectToolForDrops();
 
-	public static final BlockBehaviour.Properties ESOTERRACK = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.RAW_IRON).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK);
-	public static final BlockBehaviour.Properties ONYX = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.5F, 6).sound(SoundType.STONE);
-	public static final BlockBehaviour.Properties WARDSTONE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(2F, 6).sound(SoundType.NETHER_BRICKS);
-	public static final BlockBehaviour.Properties MOONSHALE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).requiresCorrectToolForDrops().strength(1.5F, 6.0F);
-	public static final BlockBehaviour.Properties NEBULITE = BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(1.5F, 6.0F);
+	public static final BlockBehaviour.Properties ESOTERRACK = stoneBase().mapColor(MapColor.RAW_IRON).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK);
+	public static final BlockBehaviour.Properties ONYX = stoneBase().mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.5F, 6).sound(SoundType.STONE);
+	public static final BlockBehaviour.Properties WARDSTONE = stoneBase().mapColor(MapColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(2F, 6).sound(SoundType.NETHER_BRICKS);
+	public static final BlockBehaviour.Properties MOONSHALE = stoneBase().mapColor(MapColor.TERRACOTTA_WHITE).requiresCorrectToolForDrops().strength(1.5F, 6.0F);
+	public static final BlockBehaviour.Properties NEBULITE = stoneBase().mapColor(MapColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(1.5F, 6.0F);
 
-	public static final BlockBehaviour.Properties ANCIENT_PLATING = Block.Properties.of(Material.METAL, MaterialColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(4.0F, 12.0F).sound(SoundType.NETHERITE_BLOCK);
+	public static final BlockBehaviour.Properties ANCIENT_PLATING = metalBase().mapColor(MapColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(4.0F, 12.0F).sound(SoundType.NETHERITE_BLOCK);
 
-	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_GREEN)
+	public static final BlockBehaviour.Properties GREEN_FIRE = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.COLOR_LIGHT_GREEN)
 			.noCollission()
 			.instabreak()
 			.lightLevel((p_50884_) -> 13)
 			.sound(SoundType.WOOL)
-			.noLootTable();
+			.noLootTable()
+			.pushReaction(PushReaction.DESTROY);
 
-	public static final BlockBehaviour.Properties BRASS_TORCH = BlockBehaviour.Properties.of(Material.DECORATION)
+	public static final BlockBehaviour.Properties BRASS_TORCH = BlockBehaviour.Properties.of()
 			.noCollission()
 			.instabreak()
 			.lightLevel((p_50884_) -> 13)
+			.pushReaction(PushReaction.DESTROY)
 			.sound(SoundType.WOOD);
 
-	public static final BlockBehaviour.Properties MOLTEN_BRICK = Block.Properties.of(Material.STONE, MaterialColor.NETHER)
+	public static final BlockBehaviour.Properties MOLTEN_BRICK = stoneBase()
+			.mapColor(MapColor.NETHER)
 			.requiresCorrectToolForDrops()
 			.strength(2.0F, 6.0F)
 			.lightLevel((state) -> 3)
 			.hasPostProcess((a, b, c) -> true)
 			.emissiveRendering((a, b, c) -> true);
 
-	public static final BlockBehaviour.Properties CAGE_LANTERN = BlockBehaviour.Properties.of(Material.METAL)
+	public static final BlockBehaviour.Properties CAGE_LANTERN = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.METAL)
 			.requiresCorrectToolForDrops()
 			.emissiveRendering((state, reader, pos) -> state.getValue(CageLanternBlock.LIT))
 			.hasPostProcess((state, reader, pos) -> state.getValue(CageLanternBlock.LIT))
@@ -97,7 +117,10 @@ public class APBlockProperties {
 			.sound(SoundType.LANTERN)
 			.noOcclusion();
 
-	public static final BlockBehaviour.Properties ACACIA_TOTEM = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE)
+	public static final BlockBehaviour.Properties ACACIA_TOTEM = BlockBehaviour.Properties.of()
+			.mapColor(MapColor.COLOR_ORANGE)
+			.ignitedByLava()
+			.instrument(NoteBlockInstrument.BASS)
 			.strength(2.0F)
 			.sound(SoundType.WOOD);
 
@@ -114,7 +137,7 @@ public class APBlockProperties {
 	// This makes a new property each time so that setting the door to not solid doesn't interfere.
 	// That might not be a thing but I don't care to come up with a way of checking.
 	public static BlockBehaviour.Properties TwistedWood() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_PURPLE).strength(2.0F, 3.0F).sound(SoundType.WOOD);
+		return woodBase().mapColor(MapColor.COLOR_PURPLE).strength(2.0F, 3.0F).sound(SoundType.WOOD);
 	}
 	public static BlockBehaviour.Properties TwistedWood(boolean redstoneComponent) {
 		BlockBehaviour.Properties p = TwistedWood();
@@ -154,7 +177,9 @@ public class APBlockProperties {
 		}
 	}
 
-	@SuppressWarnings("removal")
+	//"use json for it" yeah nice try forge. i know you won't take this out.
+	//if you add dynamic render layers, then we'll talk.
+	@SuppressWarnings("deprecation")
 	public static void setupRenderLayers() {
 		ItemBlockRenderTypes.setRenderLayer(APBlocks.ENTWINE_BARS.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(APBlocks.SUNMETAL_BARS.get(), RenderType.cutout());

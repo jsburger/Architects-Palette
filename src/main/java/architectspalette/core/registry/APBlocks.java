@@ -18,8 +18,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -62,12 +63,12 @@ public class APBlocks {
 
     // Villager Trade blocks
      // Funny fish blocks
-    public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)));
-    public static final RegistryObject<Block>       COD_LOG = createBlock("cod_log",       () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)));
-    public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_RED)));
-    public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_YELLOW)));
+    public static final RegistryObject<Block>    SALMON_LOG = createBlock("salmon_log",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MapColor.TERRACOTTA_RED)));
+    public static final RegistryObject<Block>       COD_LOG = createBlock("cod_log",       () -> new RotatedPillarBlock(APBlockProperties.Meat(MapColor.TERRACOTTA_YELLOW)));
+    public static final RegistryObject<Block> SALMON_SCALES = createBlock("salmon_scales", () -> new RotatedPillarBlock(APBlockProperties.Meat(MapColor.TERRACOTTA_RED)));
+    public static final RegistryObject<Block>    COD_SCALES = createBlock("cod_scales",    () -> new RotatedPillarBlock(APBlockProperties.Meat(MapColor.TERRACOTTA_YELLOW)));
      // Entrails
-    public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MaterialColor.TERRACOTTA_PINK))), NO_WALLS).usesAxe();
+    public static final StoneBlockSet ENTRAILS = new StoneBlockSet(createBlock("entrails", () -> new DrippyBlock(APBlockProperties.Meat(MapColor.TERRACOTTA_PINK))), NO_WALLS).usesAxe();
      // Plating & Piping
     public static final StoneBlockSet PLATING_BLOCK = new StoneBlockSet(createBlock("plating_block", () -> new Block(APBlockProperties.PLATING)), TYPICAL, NUB);
     public static final RegistryObject<Block> PIPE = createBlock("pipe", () -> new PipeBlock(BlockBehaviour.Properties.copy(APBlocks.PLATING_BLOCK.get()).noOcclusion()));
@@ -165,9 +166,9 @@ public class APBlocks {
     public static final RegistryObject<Block> RUNIC_GLOWSTONE = createBlock("runic_glowstone", () -> new DirectionalFacingBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE)));
 
     // Scute Block
-    public static final RegistryObject<Block> SCUTE_BLOCK = createBlock("scute_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_GREEN).strength(5.0F, 6.0F).sound(SoundType.BASALT)));
+    public static final RegistryObject<Block> SCUTE_BLOCK = createBlock("scute_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(5.0F, 6.0F).sound(SoundType.BASALT).instrument(NoteBlockInstrument.BASEDRUM)));
     // Rotten Flesh Block
-    public static final RegistryObject<Block> ROTTEN_FLESH_BLOCK = createBlock("rotten_flesh_block", () -> new Block(APBlockProperties.Meat(MaterialColor.COLOR_ORANGE)));
+    public static final RegistryObject<Block> ROTTEN_FLESH_BLOCK = createBlock("rotten_flesh_block", () -> new Block(APBlockProperties.Meat(MapColor.COLOR_ORANGE)));
 
     // Gilded Sandstone
     public static final StoneBlockSet GILDED_SANDSTONE = new StoneBlockSet(createBlock("gilded_sandstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE))), NO_WALLS);
@@ -199,12 +200,12 @@ public class APBlocks {
     public static final RegistryObject<Block>        TWISTED_LEAVES = createBlock("twisted_leaves",       () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block>         TWISTED_FENCE = createBlock("twisted_fence",        () -> new         FenceBlock(APBlockProperties.TwistedWood()), CreativeModeTabs.BUILDING_BLOCKS);
     public static final RegistryObject<Block>    TWISTED_FENCE_GATE = createBlock("twisted_fence_gate",   () -> new     FenceGateBlock(APBlockProperties.TwistedWood(), SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
-    public static final RegistryObject<Block>          TWISTED_DOOR = createBlock("twisted_door",         () -> new          DoorBlock(APBlockProperties.TwistedWood().noOcclusion(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
-    public static final RegistryObject<Block>      TWISTED_TRAPDOOR = createBlock("twisted_trapdoor",     () -> new      TrapDoorBlock(APBlockProperties.TwistedWood().noOcclusion(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>          TWISTED_DOOR = createBlock("twisted_door",         () -> new          DoorBlock(APBlockProperties.TwistedWood().noOcclusion(), BlockSetType.OAK), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+    public static final RegistryObject<Block>      TWISTED_TRAPDOOR = createBlock("twisted_trapdoor",     () -> new      TrapDoorBlock(APBlockProperties.TwistedWood().noOcclusion(), BlockSetType.OAK), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
     public static final RegistryObject<Block>        TWISTED_BUTTON = createBlock("twisted_button",
-            () -> new    ButtonBlock(APBlockProperties.TwistedWood(true), 30, true, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+            () -> new    ButtonBlock(APBlockProperties.TwistedWood(true), BlockSetType.OAK, 30, true), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
     public static final RegistryObject<Block> TWISTED_PRESSURE_PLATE = createBlock("twisted_pressure_plate",
-            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, APBlockProperties.TwistedWood(true), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, APBlockProperties.TwistedWood(true), BlockSetType.OAK), CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.REDSTONE_BLOCKS);
     public static final RegistryObject<Block>        TWISTED_SAPLING = createBlock("twisted_sapling", () -> new SaplingBlock(new TwistedTree(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), CreativeModeTabs.NATURAL_BLOCKS);
     public static final RegistryObject<Block> POTTED_TWISTED_SAPLING = createPottedPlant(TWISTED_SAPLING);
 
