@@ -5,8 +5,9 @@
   "compatibilityLevel": "JAVA_16",
   "refmap": "architects_palette.refmap.json",
   "mixins": [
-    "ServerWorldMixin",
-    "BaseFireBlockMixin"
+    "AbstractArrowMixin",
+    "BaseFireBlockMixin",
+    "ServerWorldMixin"
   ],
   "client": [],
   "server": [],

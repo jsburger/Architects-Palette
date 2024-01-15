@@ -94,6 +94,11 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.3"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.3.3")) {
+        jarJar.ranged(it, "[0.3.3,)")
+    }
+
     //Copied from https://github.com/mezz/JustEnoughItems/wiki/Getting-Started-%5B1.13-and-Up%5D
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
