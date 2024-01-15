@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class APItemTags extends ItemTagsProvider {
     public APItemTags(PackOutput pack, CompletableFuture<HolderLookup.Provider> cf, TagsProvider<Block> blockTagsProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(pack, cf, blockTagsProvider, ArchitectsPalette.MOD_ID, existingFileHelper);
+        super(pack, cf, blockTagsProvider.contentsGetter(), ArchitectsPalette.MOD_ID, existingFileHelper);
         //super(generator, blockTagsProvider, modId, existingFileHelper);
     }
 

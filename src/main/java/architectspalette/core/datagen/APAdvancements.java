@@ -7,7 +7,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.PlacedBlockTrigger;
+import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -67,7 +67,7 @@ public class APAdvancements implements ForgeAdvancementProvider.AdvancementGener
         Advancement buyPipes = buyAdvancement(architectsPalette, APBlocks.PIPE.get().asItem(), "buy_pipe", "pipe", advancementConsumer, existingFileHelper);
         Advancement buyEntrails = buyAdvancement(architectsPalette, APBlocks.ENTRAILS.get().asItem(), "buy_entrails", "entrails", advancementConsumer, existingFileHelper);
         Advancement placeEntrails = getAdvancement(buyEntrails, APBlocks.ENTRAILS.get().asItem(), "place_entrails", FrameType.TASK, true, true, true)
-                .addCriterion("entrails", PlacedBlockTrigger.TriggerInstance.placedBlock(APBlocks.ENTRAILS.get()))
+                .addCriterion("entrails", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(APBlocks.ENTRAILS.get()))
                 .save(advancementConsumer, getNameId("main/place_entrails"), existingFileHelper);
 
         Advancement buyPlating = buyAdvancement(architectsPalette, APBlocks.PLATING_BLOCK.get().asItem(), "buy_plating", "plating", advancementConsumer, existingFileHelper);

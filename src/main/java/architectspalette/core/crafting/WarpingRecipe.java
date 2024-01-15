@@ -1,9 +1,9 @@
 package architectspalette.core.crafting;
 
-import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -51,8 +51,8 @@ public class WarpingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container inv) {
-        return this.getResultItem().copy();
+    public ItemStack assemble(Container inv, RegistryAccess registryAccess) {
+        return this.getResultItem(registryAccess).copy();
     }
 
     @Override
@@ -61,7 +61,10 @@ public class WarpingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return this.output;
+    }
+    public ItemStack getResult() {
         return this.output;
     }
 

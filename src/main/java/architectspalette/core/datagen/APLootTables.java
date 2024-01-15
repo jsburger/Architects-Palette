@@ -6,25 +6,17 @@ import architectspalette.core.registry.util.StoneBlockSet.SetComponent;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTables;
-import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class APLootTables extends LootTableProvider {
     public APLootTables(PackOutput pack) {
         super(pack, Collections.emptySet(), List.of(new SubProviderEntry(APBlockLoot::new, LootContextParamSets.BLOCK)));
-    }
-
-
-    @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
-        map.forEach((location, lootTable) -> LootTables.validate(validationtracker, location, lootTable));
     }
 
     private static class APBlockLoot extends BlockLootSubProvider {

@@ -16,8 +16,6 @@ import java.util.Map;
 @Mod.EventBusSubscriber(modid = ArchitectsPalette.MOD_ID)
 public class TradingEventHandler {
 
-     //this sucks, please let me know how to make it better, thanks
-     //To break it down a little
      // this + Profession -> Map of trades for that profession, Map + Trade level -> List of trades of that level
     private static final Map<VillagerProfession, Map<Integer, LinkedList<VillagerTrades.ItemListing>>> professionMap = new HashMap<>();
 
@@ -27,7 +25,7 @@ public class TradingEventHandler {
         professionMap.get(prof).get(level).add(trade);
     }
 
-     // i think i can use this to save memory, idk tho (currently un-used as i dont know where to put it)
+     //(currently un-used as i dont know where to put it)
     private static void clear_map() {
         professionMap.clear();
     }

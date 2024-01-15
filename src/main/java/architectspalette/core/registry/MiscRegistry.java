@@ -2,9 +2,7 @@ package architectspalette.core.registry;
 
 import architectspalette.content.particles.WizardParticle;
 import architectspalette.core.ArchitectsPalette;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -40,8 +38,7 @@ public class MiscRegistry {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        ParticleEngine engine = Minecraft.getInstance().particleEngine;
-        engine.register(GREEN_FLAME.get(), FlameParticle.Provider::new);
-        engine.register(WIZARDLY_DEFENSE_BLAST.get(), WizardParticle.Provider::new);
+        event.registerSpriteSet(GREEN_FLAME.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(WIZARDLY_DEFENSE_BLAST.get(), WizardParticle.Provider::new);
     }
 }

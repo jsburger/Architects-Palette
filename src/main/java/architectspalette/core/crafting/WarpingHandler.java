@@ -57,7 +57,7 @@ public class WarpingHandler {
 //        }
 //        return null;
         //intellij decided it could replace the above with this, kinda nuts
-        return recipe.map(warpingRecipe -> warpingRecipe.assemble(transformationInv)).orElse(null);
+        return recipe.map(warpingRecipe -> warpingRecipe.assemble(transformationInv, world.getServer().registryAccess())).orElse(null);
     }
 
 
@@ -68,7 +68,7 @@ public class WarpingHandler {
         if (resultStack != null) {
             resultStack.setCount(baseStack.getCount());
             itemIn.setItem(resultStack);
-            itemIn.level.playSound(null, itemIn.getX(), itemIn.getY(), itemIn.getZ(), APSounds.ITEM_WARPS.get(), SoundSource.BLOCKS, 1F, 1F);
+            itemIn.level().playSound(null, itemIn.getX(), itemIn.getY(), itemIn.getZ(), APSounds.ITEM_WARPS.get(), SoundSource.BLOCKS, 1F, 1F);
         }
     }
 

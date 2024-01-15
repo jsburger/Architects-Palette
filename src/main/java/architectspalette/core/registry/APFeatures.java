@@ -26,6 +26,8 @@ public class APFeatures {
 
     public static final RegistryObject<Feature<CrystalClusterConfig>> CRYSTAL_CLUSTER = FEATURES.register("crystal_cluster", () -> new CrystalClusterFeature(CrystalClusterConfig.CODEC));
 
+    // Configured and Placed features are completely data-driven now, so this function is only ever called during datagen.
+    // However, this can effectively be treated as registration.
     public static List<FeatureWrapper<?>> getFeatureWrappers() {
         return List.of(
                 new FeatureWrapper<>("heliodor_cluster",

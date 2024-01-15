@@ -3,6 +3,7 @@ package architectspalette.core.registry.util;
 import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
 import architectspalette.core.registry.APBlockProperties;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -149,12 +150,12 @@ public class StoneBlockSet implements Supplier<Block> {
         PILLAR(SetComponent::pillarName, CreativeModeTabs.BUILDING_BLOCKS),
         NUB("_nub", CreativeModeTabs.BUILDING_BLOCKS);
 
-        public final CreativeModeTab tab;
+        public final ResourceKey<CreativeModeTab> tab;
         public final Function<String, String> nameGenerator;
-        SetComponent(String suffix, CreativeModeTab tab) {
+        SetComponent(String suffix, ResourceKey<CreativeModeTab> tab) {
             this((material) -> addSuffix(material, suffix), tab);
         }
-        SetComponent(Function<String, String> nameGen, CreativeModeTab tab) {
+        SetComponent(Function<String, String> nameGen, ResourceKey<CreativeModeTab> tab) {
             this.nameGenerator = nameGen;
             this.tab = tab;
         }

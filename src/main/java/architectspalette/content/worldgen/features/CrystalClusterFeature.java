@@ -57,7 +57,7 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
             float scale = ((float)i+1)/shelves;
             //1-7 pillars each shelf
             int pillars = iRandomRange(random,1, 7);
-            placeShelf(new BlockPos(placePos.x(), placePos.y(), placePos.z()), pillars, shelfAngle, scale, context, posList);
+            placeShelf(BlockPos.containing(placePos.x(), placePos.y(), placePos.z()), pillars, shelfAngle, scale, context, posList);
 
             //Offset next shelf position
             formationAngle.normalize();
@@ -168,6 +168,6 @@ public class CrystalClusterFeature extends Feature<CrystalClusterConfig> {
     }
 
     private static boolean canReplace(BlockState state) {
-        return state.isAir() || state.getMaterial().isReplaceable() || state.is(MiscRegistry.CRYSTAL_REPLACEABLE);
+        return state.isAir() || state.canBeReplaced() || state.is(MiscRegistry.CRYSTAL_REPLACEABLE);
     }
 }

@@ -51,7 +51,6 @@ public class ArchitectsPalette {
         APBlocks.BLOCKS.register(modEventBus);
         APItems.ITEMS.register(modEventBus);
         APFeatures.FEATURES.register(modEventBus);
-//        APTileEntities.TILE_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, this::setupCommon);
         modEventBus.addListener(EventPriority.LOWEST, this::setupClient);
@@ -60,18 +59,8 @@ public class ArchitectsPalette {
         registerLootSerializers(modEventBus);
         // Biomes need to be registered before features.
         registerBiomeSerializers(modEventBus);
-        //registerPlacedFeatures(modEventBus);
 
         CraftingHelper.register(new APVerticalSlabsCondition.Serializer());
-
-//        AtomicInteger size = new AtomicInteger(APBlocks.BLOCKS.getEntries().size());
-//        StoneBlockSet.forAllSets((set -> {
-//            set.forEachRegistryObject(a ->
-//                    size.addAndGet(-1)
-//            );
-//            size.addAndGet(1);
-//        }));
-//        LOGGER.debug("Block Count: " + size.get());
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -88,7 +77,8 @@ public class ArchitectsPalette {
     void registerRecipeSerializers(IEventBus bus) {
         //Register the recipe type
         DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ArchitectsPalette.MOD_ID);
-        RegistryObject<RecipeType<WarpingRecipe>> WARPING = RECIPE_TYPES.register(WarpingRecipe.TYPE.toString(), () -> new RecipeType<WarpingRecipe>() {});
+        RegistryObject<RecipeType<WarpingRecipe>> WARPING = RECIPE_TYPES.register(WarpingRecipe.TYPE.toString(), () -> new RecipeType<>() {
+        });
 
         //Register the serializer
         DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ArchitectsPalette.MOD_ID);
@@ -107,10 +97,6 @@ public class ArchitectsPalette {
 
     void registerBiomeSerializers(IEventBus bus) {
         APBiomeModifiers.BIOME_MODIFIER_SERIALIZER.register(bus);
-    }
-
-    void registerPlacedFeatures(IEventBus bus) {
-        //APPlacedFeatures.PLACED_FEATURES.register(bus);
     }
 
     void setupClient(final FMLClientSetupEvent event) {

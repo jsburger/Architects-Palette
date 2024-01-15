@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Half;
@@ -25,9 +26,10 @@ public class ProjectileImpactEventHandler {
     public static void projectileImpact(ProjectileImpactEvent event) {
         Projectile projectile = event.getProjectile();
         if (projectile.getDeltaMovement().length() > .2 && event.getRayTraceResult() instanceof BlockHitResult hitResult) {
-            BlockState state = projectile.getLevel().getBlockState(hitResult.getBlockPos());
+            BlockState state = projectile.level().getBlockState(hitResult.getBlockPos());
+            Level level = projectile.level();
             if (state.is(MiscRegistry.WIZARD_BLOCKS)) {
-                event.setCanceled(true);
+                event.setImpactResult(ProjectileImpactEvent.ImpactResult.SKIP_ENTITY);
 
                 //Get normal (atLowerCorner is just to cast it from Vec3i, I'm lazy)
                 Vec3 normal = Vec3.atLowerCornerOf(hitResult.getDirection().getNormal());
@@ -51,7 +53,7 @@ public class ProjectileImpactEventHandler {
                 Vec3 a = normal.scale(-dot * 2);
                 //Prevent excessive bouncing upwards, specifically to prevent stuff bouncing on the ground too much
                 if ((a.length() < .05) && hitResult.getDirection() == Direction.UP) {
-                    event.setCanceled(false);
+                    event.setImpactResult(ProjectileImpactEvent.ImpactResult.DEFAULT);
                 } else {
                     projectile.setDeltaMovement(motion.add(a));
                 }
@@ -69,13 +71,13 @@ public class ProjectileImpactEventHandler {
 
                 //Place particle slightly off the surface.
                 hit = event.getRayTraceResult().getLocation().add(normal.scale(.02));
-                if (projectile.level.isClientSide) {
-                    projectile.level.addParticle(MiscRegistry.WIZARDLY_DEFENSE_BLAST.get(), hit.x, hit.y, hit.z, normal.x, normal.y, normal.z);
-                    projectile.level.playLocalSound(hit.x, hit.y, hit.z, APSounds.WIZARD_BLAST.get(), SoundSource.BLOCKS, .5f, projectile.level.random.nextFloat() * .4f + .8f, false);
+                if (level.isClientSide) {
+                    level.addParticle(MiscRegistry.WIZARDLY_DEFENSE_BLAST.get(), hit.x, hit.y, hit.z, normal.x, normal.y, normal.z);
+                    level.playLocalSound(hit.x, hit.y, hit.z, APSounds.WIZARD_BLAST.get(), SoundSource.BLOCKS, .5f, level.random.nextFloat() * .4f + .8f, false);
                 }
 
                 //Check if projectile will hit another block, if so, line it up so that it doesn't end up inside
-                BlockHitResult check = projectile.level.clip(new ClipContext(projectile.position(), projectile.position().add(vec3), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, projectile));
+                BlockHitResult check = level.clip(new ClipContext(projectile.position(), projectile.position().add(vec3), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, projectile));
                 if (check.getType() != HitResult.Type.MISS && !check.isInside() && (check.getBlockPos() != hitResult.getBlockPos())) {
                     projectile.setPos(check.getLocation().subtract(vec3.scale(1.1)));
                 }

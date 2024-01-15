@@ -2,10 +2,7 @@ package architectspalette.core.integration.advancement;
 
 import architectspalette.core.ArchitectsPalette;
 import com.google.gson.JsonObject;
-import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
-import net.minecraft.advancements.critereon.DeserializationContext;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -22,18 +19,18 @@ public class CarveTotemTrigger extends SimpleCriterionTrigger<CarveTotemTrigger.
     }
 
     @Override
-    protected Instance createInstance(JsonObject json, EntityPredicate.Composite player, DeserializationContext conditionsParser) {
-        return new CarveTotemTrigger.Instance(player);
+    protected Instance createInstance(JsonObject json, ContextAwarePredicate context, DeserializationContext conditionsParser) {
+        return new CarveTotemTrigger.Instance(context);
     }
 
     public static class Instance extends AbstractCriterionTriggerInstance {
 
-        public Instance(EntityPredicate.Composite player) {
-            super(CarveTotemTrigger.ID, player);
+        public Instance(ContextAwarePredicate context) {
+            super(CarveTotemTrigger.ID, context);
         }
 
         public static CarveTotemTrigger.Instance simple() {
-            return new CarveTotemTrigger.Instance(EntityPredicate.Composite.ANY);
+            return new CarveTotemTrigger.Instance(ContextAwarePredicate.ANY);
         }
 
         public boolean test() {

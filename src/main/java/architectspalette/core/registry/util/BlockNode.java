@@ -2,6 +2,7 @@ package architectspalette.core.registry.util;
 
 import architectspalette.content.blocks.NubBlock;
 import architectspalette.content.blocks.VerticalSlabBlock;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -411,7 +412,7 @@ public class BlockNode implements Supplier<Block>, ItemLike {
         };
     }
 
-    private static CreativeModeTab getTabForType(BlockType type) {
+    private static ResourceKey<CreativeModeTab> getTabForType(BlockType type) {
         return switch(type) {
             //case VERTICAL_SLAB -> VerticalSlabBlock.isQuarkEnabled() ? CreativeModeTabs.BUILDING_BLOCKS : null;
             default -> CreativeModeTabs.BUILDING_BLOCKS;

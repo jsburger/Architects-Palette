@@ -58,7 +58,7 @@ public class WarpingRecipeCategory implements IRecipeCategory<WarpingRecipe> {
         builder.addSlot(RecipeIngredientRole.INPUT, 16, 22)
                 .addItemStacks(Arrays.asList(recipe.getInput().getItems()));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 87, 22)
-                .addItemStack(recipe.getResultItem());
+                .addItemStack(recipe.getResult());
     }
 
 
