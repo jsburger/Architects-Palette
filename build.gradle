@@ -1,38 +1,20 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-//        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
-    }
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
-//plugins {
-//  id "com.wynprice.cursemaven" version "2.1.1"
-//}
-
-apply plugin: 'net.minecraftforge.gradle'
-
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-
-//apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
-
-version = project.modVersion
+version = mod_version
 group = 'architectspalette.core.ArchitectsPalette'
-archivesBaseName = "${project.modName}-${project.minecraftVersion}"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-mixin {
-    add sourceSets.main, "${project.modId}.refmap.json"
+base {
+    archivesName = "${mod_build_name}-${minecraft_version}"
 }
 
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 //Add datagen and asset repo to resources folder when built
 sourceSets.main.resources {
@@ -40,51 +22,46 @@ sourceSets.main.resources {
     srcDirs += 'src/generated/resources'
 }
 
+//println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: "${project.mappingsChannel}", version: project.mappings
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    
+
     runs {
-        client {
+        // applies to all the run configs below
+        configureEach {
             workingDirectory project.file('run')
+
             property 'forge.logging.markers', ''
             property 'forge.logging.console.level', 'debug'
-            arg "--mixin="+project.modId+".mixins.json"
 
+            arg "--mixin="+project.mod_id+".mixins.json"
             mods {
-                architects_palette {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', ''
-            property 'forge.logging.console.level', 'debug'
-            arg "--mixin="+project.modId+".mixins.json"
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
 
-            mods {
-                architects_palette {
-                    source sourceSets.main
-                }
-            }
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         data {
-            workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', project.modId, '--all', '--output', file('src/generated/resources/'), '--existing', file("src/main/resources"), '--existing', file("src/ap-assets/resources")
-
-            environment 'target', 'fmluserdevdata'
-
-            mods {
-                architects_palette {
-                    source sourceSets.main
-                }
-            }
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file("src/ap-assets/resources")
         }
     }
 }
@@ -95,8 +72,9 @@ processResources {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 }
 
-//JEI repositories
 repositories {
+    // Put repositories for dependencies here
+
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -108,37 +86,66 @@ repositories {
         url = "https://modmaven.dev"
     }
 }
-
 dependencies {
-    minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
-//    implementation fg.deobf("curse.maven:jei:${project.jei}")
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    // For more info:
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 
     //Copied from https://github.com/mezz/JustEnoughItems/wiki/Getting-Started-%5B1.13-and-Up%5D
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-common:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraftVersion}-forge:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+}
+mixin {
+    add sourceSets.main, "${project.mod_id}.refmap.json"
 }
 
-jar {
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
+// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+// Example for how to get properties into the manifest for reading at runtime.
+tasks.named('jar', Jar).configure {
     //Added duplicate strategy here too, not sure if it's required
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     manifest {
         attributes([
-            "Specification-Title": "Architects Palette",
-            "Specification-Vendor": "Architects Palette",
-            "Specification-Version": "1",
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"Architects Palette",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "${modId}.mixins.json"
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "${mod_id}.mixins.json"
         ])
     }
+
+    // This is the preferred method to reobfuscate your jar file
+    finalizedBy 'reobfJar'
 }
 
-jar.finalizedBy('reobfJar')
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
