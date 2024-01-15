@@ -1,5 +1,6 @@
 package architectspalette.core.datagen;
 
+import architectspalette.core.registry.APBlocks;
 import architectspalette.core.registry.util.BlockNode;
 import architectspalette.core.registry.util.StoneBlockSet;
 import architectspalette.core.registry.util.StoneBlockSet.SetComponent;
@@ -28,12 +29,14 @@ public class APLootTables extends LootTableProvider {
         @Override
         protected void generate() {
             BlockNode.forAllBaseNodes(this::processBlockNode);
+            this.add(APBlocks.TWISTED_LEAVES.get(), (leaves) -> this.createLeavesDrops(leaves, APBlocks.TWISTED_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
             List<Block> blocks = new LinkedList<>();
             BlockNode.forAllBaseNodes((node -> node.forEach(n -> blocks.add(n.get()))));
+            blocks.add(APBlocks.TWISTED_LEAVES.get());
             return blocks;
             //return APBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).toList();
         }

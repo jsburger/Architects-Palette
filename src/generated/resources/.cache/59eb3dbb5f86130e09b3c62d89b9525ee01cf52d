@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-14T21:19:35.189252	Loot Tables
+// 1.20.1	2024-01-15T00:36:12.3312186	Loot Tables
 22772e9dd6b4e00ea8df60ba7986b33ae5347990 data/architects_palette/loot_tables/blocks/acacia_boards.json
 1fdfa17c678cbfc963c1f5cae6c33017a1910836 data/architects_palette/loot_tables/blocks/acacia_board_slab.json
 b2102d951783522b80bc3cffc85d86f5d4e28aec data/architects_palette/loot_tables/blocks/acacia_board_stairs.json
@@ -169,6 +169,7 @@ b938eeb2e04fd9c7f574704d82e4b42c9c38f990 data/architects_palette/loot_tables/blo
 ce7dc36fb319fe380e402892da97f26edc640280 data/architects_palette/loot_tables/blocks/twisted_board_stairs.json
 a86dedffd448963fe85848df34a3d6e4cbda1fb4 data/architects_palette/loot_tables/blocks/twisted_board_vertical_slab.json
 4a74d65047a8081223004248706231b2dc9417f5 data/architects_palette/loot_tables/blocks/twisted_board_wall.json
+539a3eda60b7b9ac4ef61252506c1853635aa772 data/architects_palette/loot_tables/blocks/twisted_leaves.json
 405a2eb7c5a8b0fbab2505643ec8f2407a3d739a data/architects_palette/loot_tables/blocks/warped_boards.json
 dba0b869015079ffc3d752c8e612cde27d899fd4 data/architects_palette/loot_tables/blocks/warped_board_slab.json
 d462baedc4ea28958139627130e1ed27eb256dbb data/architects_palette/loot_tables/blocks/warped_board_stairs.json
