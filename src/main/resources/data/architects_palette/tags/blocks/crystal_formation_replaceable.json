@@ -2,6 +2,10 @@
     "replace": false,
     "values": [
         "minecraft:nether_wart_block",
-        "minecraft:warped_wart_block"
+        "minecraft:warped_wart_block",
+        "minecraft:weeping_vines",
+        "minecraft:weeping_vines_plant",
+        "minecraft:twisting_vines",
+        "minecraft:twisting_vines_plant"
     ]
 }
