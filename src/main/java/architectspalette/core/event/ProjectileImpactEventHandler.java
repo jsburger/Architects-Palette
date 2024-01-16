@@ -30,7 +30,7 @@ public class ProjectileImpactEventHandler {
     public static void projectileImpact(ProjectileImpactEvent event) {
         Projectile projectile = event.getProjectile();
         if (projectile.getDeltaMovement().length() > .2 && event.getRayTraceResult() instanceof BlockHitResult hitResult) {
-            if (deflect(projectile, hitResult, 0)) event.setImpactResult(ProjectileImpactEvent.ImpactResult.SKIP_ENTITY);
+            if (deflect(projectile, hitResult, 0)) event.setCanceled(true);
         }
     }
 
@@ -74,8 +74,6 @@ public class ProjectileImpactEventHandler {
             double d0 = newMotion.horizontalDistance();
             float xrot = ((float) (Mth.atan2(newMotion.y, d0) * (180F / Math.PI)));
             float yrot = ((float) (Mth.atan2(newMotion.x, newMotion.z) * (180F / Math.PI)));
-
-//                Vec3 hit = event.getRayTraceResult().getLocation();
 
 //            Vec3 diff = hitResult.getLocation().subtract(projectile.position());
 //            double speedDiff = previousSpeed - newMotion.length();

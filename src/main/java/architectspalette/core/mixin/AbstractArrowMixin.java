@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(AbstractArrow.class)
 public class AbstractArrowMixin {
 
+    //This is used to fix behavior broken by Forge updating the projectile impact event
+    //They added an option to change the impact 'result' but neglected to add one that doesn't result in the arrow landing.
     @WrapWithCondition(
             method = "tick",
             at = @At(
