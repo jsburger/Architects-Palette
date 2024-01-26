@@ -100,6 +100,6 @@ public class ArchitectsPalette {
     }
 
     void setupClient(final FMLClientSetupEvent event) {
-        APBlockProperties.setupRenderLayers();
+        APRenderLayers.setupRenderLayers();
     }
 }
